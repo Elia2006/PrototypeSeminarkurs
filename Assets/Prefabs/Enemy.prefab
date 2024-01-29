@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7720035102172982524}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,6 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993069319525506787}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5882893, y: 4.6367164, z: 1.7592807}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,7 +35,6 @@ Transform:
   m_Children:
   - {fileID: 26341291770643893}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8863187541900817458
 MonoBehaviour:
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533f70f94f5297849a643ab1a77649dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   health: 50
 --- !u!136 &1463223594386297471
 CapsuleCollider:
@@ -107,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533f70f94f5297849a643ab1a77649dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 9173999469662822690, guid: 0527fcaa6df77694d91e80572abc19c3, type: 3}
   health: 50
 --- !u!1 &8150683926055933241
 GameObject:
@@ -134,13 +132,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8150683926055933241}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3981613487860266440}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5480763006765537716
 MeshFilter:

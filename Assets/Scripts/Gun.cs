@@ -26,6 +26,9 @@ public class Gun : MonoBehaviour
         if(Physics.Raycast(Cam.position, Cam.forward, out hit))
         {
             transform.LookAt(hit.point);
+        }else
+        {
+            transform.localRotation = Quaternion.identity;
         }
 
         if (Input.GetButtonDown("Fire1")) 
