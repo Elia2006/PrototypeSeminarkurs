@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(transform.position);
+
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.5f, groundMask);
 
         if (isGrounded) 

@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public Transform cam;
-    public GameObject trail;
-    private GameObject tempTrail;
+    public GameObject Projectile;
+    public Transform Cam;
+    private Transform BulletSpawnPoint;
+
 
     private float range = 10;
-    Vector3 hitPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        BulletSpawnPoint = gameObject.transform.GetChild(0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
+
+        if(Physics.Raycast(Cam.position, Cam.forward, out hit))
+        {
+            transform.LookAt(hit.point);
+        }
+
         if (Input.GetButtonDown("Fire1")) 
         {
             Shoot();
@@ -28,25 +36,6 @@ public class Gun : MonoBehaviour
 
     void Shoot() 
     {
-        RaycastHit hit;
-
-        Physics.Raycast(cam.position, cam.forward, out hit, range);
-        Enemy enemy = hit.transform.GetComponent<Enemy>();
-
-        if (enemy != null)
-        {
-            hitPoint = hit.point;
-            enemy.TakeDamage(10);
-        }
-        else 
-        {
-            hitPoint = transform.position + transform.forward * range;
-        }
-
-  
-        GameObject tempTrail = Instantiate(trail, transform.position, Quaternion.identity);
-        tempTrail.GetComponent<BulletTrailMovement>().endPos = hitPoint;
-
-        
+        Instantiate(Projectile, BulletSpawnPoint.position, transform.rotation);
     }
 }
