@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = -9.81f * 2;
     private Vector3 velocity;
 
-    private bool isGrounded;
+    private float groundDistance;
+    private bool onGround;
     public Transform groundCheck;
     public LayerMask groundMask;
 
@@ -24,14 +25,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(transform.position);
+        onGround = Physics.CheckSphere(groundCheck.position, 0.6f, groundMask);
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.5f, groundMask);
+        RaycastHit hit;
+        Physics.Raycast(groundCheck.position, new Vector3(0, -1, 0), out hit, groundMask);
 
-        if (isGrounded) 
+        Debug.DrawLine(groundCheck.position, hit.point, Color.red);
+        Debug.Log(hit.distance);
+
+        if(onGround && velocity.y < 0)
         {
-            velocity.y = 0;
+            velocity.y = -2;
         }
+
+
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -40,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround)) 
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
 
