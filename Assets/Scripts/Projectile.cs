@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public float speed = 10;
     public float range;
-
+    public int damage = 10;
     private float startTime;
     private float distanceTravelled;
 
@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Linecast(transform.position, lastPosition, out hit) && !hit.transform.CompareTag("Player"))
+        if(Physics.Linecast(transform.position, lastPosition, out hit) /*&& !hit.transform.CompareTag("Player")*/)
         {
             OnTriggerEnter(hit.transform.GetComponent<Collider>());
         }
@@ -45,7 +45,11 @@ public class Projectile : MonoBehaviour
         }
 
         if(other.CompareTag("Enemy")){
-            other.GetComponent<Enemy>().TakeDamage(10);
+            other.GetComponent<Enemy>().TakeDamage(damage);
+        }
+        else if(other.CompareTag("Player"))
+        {
+            other.GetComponent<DamageCalculation>().PlayerTakeDamage(damage);
         }
     }
 }

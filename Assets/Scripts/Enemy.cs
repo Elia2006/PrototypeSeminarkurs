@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     private Transform player;
     private UnityEngine.AI.NavMeshAgent agent;
 
-    public int health = 50;
+    public int EnemyHealth = 50;
+    public int EnemyMeleeDamage = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +23,13 @@ public class Enemy : MonoBehaviour
         agent.destination = player.position;
     }
 
+    
+
     public void TakeDamage(int amount)
     {
-        health -= amount;
+        EnemyHealth -= amount;
 
-        if (health <= 0) 
+        if (EnemyHealth <= 0) 
         { 
             Destroy(gameObject);
         }
