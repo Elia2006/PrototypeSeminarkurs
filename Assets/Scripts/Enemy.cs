@@ -19,7 +19,28 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = player.position;
+        
+
+        RaycastHit hit;
+
+        /*
+        for(int y = -2; y <= 2; y++)
+        {
+            for(int x = -2; x <= 2; x++)
+            {
+                Physics.Raycast(transform.position, transform.forward, out hit);
+                Debug.DrawLine(transform.position, hit.point, Color.red);
+            }
+        }*/
+
+        Physics.Linecast(transform.position, player.position, out hit);
+
+        Debug.Log(hit.distance);
+
+        if(hit.transform.CompareTag("Player") && hit.distance < 10)
+        {
+            agent.destination = player.position;
+        }
     }
 
     public void TakeDamage(int amount)

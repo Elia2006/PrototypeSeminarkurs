@@ -30,9 +30,6 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(groundCheck.position, new Vector3(0, -1, 0), out hit, groundMask);
 
-        Debug.DrawLine(groundCheck.position, hit.point, Color.red);
-        Debug.Log(hit.distance);
-
         if(onGround && velocity.y < 0)
         {
             velocity.y = -2;
