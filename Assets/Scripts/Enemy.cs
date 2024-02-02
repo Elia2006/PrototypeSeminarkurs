@@ -9,35 +9,22 @@ public class Enemy : MonoBehaviour
 
     public int health = 50;
 
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         player = GameObject.Find("Player").GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
 
         RaycastHit hit;
 
-        /*
-        for(int y = -2; y <= 2; y++)
-        {
-            for(int x = -2; x <= 2; x++)
-            {
-                Physics.Raycast(transform.position, transform.forward, out hit);
-                Debug.DrawLine(transform.position, hit.point, Color.red);
-            }
-        }*/
 
         Physics.Linecast(transform.position, player.position, out hit);
 
-        Debug.Log(hit.distance);
-
-        if(hit.transform.CompareTag("Player") && hit.distance < 10)
+        if(hit.transform.CompareTag("Player") && hit.distance < 20)
         {
             agent.destination = player.position;
         }
@@ -46,6 +33,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
+        agent.destination = player.position;
 
         if (health <= 0) 
         { 

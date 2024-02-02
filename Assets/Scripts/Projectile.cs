@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
     private float startTime;
     private float distanceTravelled;
 
+    
+    RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +32,6 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        RaycastHit hit;
-
         if(Physics.Linecast(transform.position, lastPosition, out hit) && !hit.transform.CompareTag("Player"))
         {
             OnTriggerEnter(hit.transform.GetComponent<Collider>());
@@ -39,7 +40,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Ground") || other.CompareTag("Enemy"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
