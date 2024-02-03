@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
 
         if(Physics.Raycast(Cam.position, Cam.forward, out hit))
         {
-            transform.LookAt(hit.point);
+            BulletSpawnPoint.LookAt(hit.point);
         }else
         {
             transform.localRotation = Quaternion.identity;
@@ -39,6 +39,6 @@ public class Gun : MonoBehaviour
 
     void Shoot() 
     {
-        Instantiate(Projectile, BulletSpawnPoint.position, transform.rotation);
+        Instantiate(Projectile, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
     }
 }
