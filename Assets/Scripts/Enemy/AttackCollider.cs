@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class AttackCollider : MonoBehaviour
 {
-    public Enemy enemyScript;
+    public MeleeEnemy enemyScript;
     public ParticleSystem EnemyHitEffect;
     private float waitBeforeAttack = -2;
 

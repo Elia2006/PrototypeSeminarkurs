@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class EnemyRange : MonoBehaviour
 {
     private GameObject player;
     private Transform playerTrans;
@@ -14,30 +14,47 @@ public class Enemy : MonoBehaviour
     private int health = 50;
 
     //Patrolling
-    public int sightRange = 10;
-    public int patrollingRange = 10;
-    private Vector3 patrollingPos;
+    [SerializeField] int sightRange = 10;
+    [SerializeField] int stopDistance = 10;
+    [SerializeField] int patrollingRange = 10;
+    [SerializeField] Vector3 patrollingPos;
 
     //Attack
     private float attackCooldown;
+    [SerializeField] GameObject Projectile;
 
+
+    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         player = GameObject.Find("Player");
         playerTrans = player.GetComponent<Transform>();
+
     }
 
     void Update()
     {
+        agent.isStopped = false;
 
 
-        Physics.Linecast(transform.position, playerTrans.position, out hit, groundLayer);
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTrans.position);
 
-        if(hit.transform == null && hit.distance < sightRange)
+
+
+        if(!Physics.Linecast(transform.position, playerTrans.position, out hit, groundLayer) && distanceToPlayer < sightRange)
         {
-            agent.destination = playerTrans.position;
+            Debug.Log(hit.transform);
+            Debug.DrawLine(transform.position, playerTrans.position);
+            if(distanceToPlayer < stopDistance)
+            {
+                Attack();
+                agent.isStopped = true;
 
+            }else
+            {
+                agent.destination = playerTrans.position;
+            }
         }else if(Vector3.Distance(transform.position, agent.destination) < 2 )
         {
             Patrolling();
@@ -60,15 +77,19 @@ public class Enemy : MonoBehaviour
         agent.destination = patrollingPos;
     }
 
-    public void Attack()
+    private void Attack()
     {
-        
-        if(attackCooldown <= 0)
+        //temporary: Möchte es noch rotation über Zeit machen
+        transform.LookAt(playerTrans.position);
+
+        if(attackCooldown < 0)
         {
-            attackCooldown = 1;
-            player.GetComponent<HUD>().TakeDamage(10);
+            Instantiate(Projectile, transform.position, transform.rotation);
+            attackCooldown = 2;
         }
+        
     }
+
 
     public void TakeDamage(int amount)
     {
@@ -79,5 +100,6 @@ public class Enemy : MonoBehaviour
         { 
             Destroy(gameObject);
         }
+
     }
 }

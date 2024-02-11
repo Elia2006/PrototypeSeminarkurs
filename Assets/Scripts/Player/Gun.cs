@@ -46,7 +46,7 @@ public class Gun : MonoBehaviour
 
         if(Physics.Raycast(Cam.position, Cam.forward, out hit))
         {
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            MeleeEnemy enemy = hit.transform.GetComponent<MeleeEnemy>();
             if(enemy != null)
             {
                 enemy.TakeDamage(10);
