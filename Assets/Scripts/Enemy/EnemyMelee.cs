@@ -3,60 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MeleeEnemy : MonoBehaviour
+public class EnemyMelee : Enemy
 {
-    private GameObject player;
-    private Transform playerTrans;
-    private UnityEngine.AI.NavMeshAgent agent;
-    RaycastHit hit;
+    private GameObject Player;
+    private NavMeshAgent agent;
     [SerializeField] LayerMask groundLayer;
+    private int patrollingRange = 20;
 
-    private int health = 50;
-
-    //Patrolling
-    public int sightRange = 10;
-    public int patrollingRange = 10;
-    private Vector3 patrollingPos;
+    private float sightDistance = 30;
+    private float allertDistance = 40;
 
     //Attack
     private float attackCooldown;
 
     void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        player = GameObject.Find("Player");
-        playerTrans = player.GetComponent<Transform>();
+        Player = GameObject.Find("Player");
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
 
-        float distanceToPlayer = Vector3.Distance(transform.position, playerTrans.position);
+        if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
+        {          
 
-        if(!Physics.Linecast(transform.position, playerTrans.position, out hit, groundLayer) && distanceToPlayer < sightRange)
-        {
-            agent.destination = playerTrans.position;
-
-        }else if(Vector3.Distance(transform.position, agent.destination) < 2 )
-        {
-            Patrolling();
+            newPos = AttackState(Player.transform);
+        }else
+        {      
+            newPos = PatrollingState(patrollingRange);
+                  
         }
+        agent.destination = newPos;
 
         attackCooldown -= Time.deltaTime;
-    }
-
-    private void Patrolling()
-    {
-        NavMeshHit hit;
-        Vector3 randomDirection;
-        
-        randomDirection = Random.insideUnitSphere * patrollingRange;
-
-        randomDirection += transform.position;
-        NavMesh.SamplePosition(randomDirection, out hit, patrollingRange, NavMesh.AllAreas);
-
-        patrollingPos = hit.position;
-        agent.destination = patrollingPos;
     }
 
     public void Attack()
@@ -65,18 +45,8 @@ public class MeleeEnemy : MonoBehaviour
         if(attackCooldown <= 0)
         {
             attackCooldown = 1;
-            player.GetComponent<HUD>().TakeDamage(10);
+            Player.GetComponent<HUD>().TakeDamage(10);
         }
     }
 
-    public void TakeDamage(int amount)
-    {
-        health -= amount;
-        agent.destination = playerTrans.position;
-
-        if (health <= 0) 
-        { 
-            Destroy(gameObject);
-        }
-    }
 }

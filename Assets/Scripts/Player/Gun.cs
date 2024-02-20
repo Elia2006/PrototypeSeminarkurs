@@ -8,14 +8,12 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform Cam;
     private Transform BulletSpawnPoint;
     [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] GameObject ImpactEffect;
-    
+    [SerializeField] GameObject ImpactEffect;    
 
     // Start is called before the first frame update
     void Start()
     {
         BulletSpawnPoint = gameObject.transform.GetChild(0);
-
     }
 
     // Update is called once per frame
@@ -46,7 +44,7 @@ public class Gun : MonoBehaviour
 
         if(Physics.Raycast(Cam.position, Cam.forward, out hit))
         {
-            MeleeEnemy enemy = hit.transform.GetComponent<MeleeEnemy>();
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
             if(enemy != null)
             {
                 enemy.TakeDamage(10);

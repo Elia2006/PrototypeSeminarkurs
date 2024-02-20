@@ -7,11 +7,11 @@ public class EnemyRange : MonoBehaviour
 {
     private GameObject player;
     private Transform playerTrans;
-    private UnityEngine.AI.NavMeshAgent agent;
     RaycastHit hit;
     [SerializeField] LayerMask groundLayer;
+    private NavMeshAgent agent;
 
-    private int health = 50;
+    
 
     //Patrolling
     [SerializeField] int sightRange = 10;
@@ -24,7 +24,6 @@ public class EnemyRange : MonoBehaviour
     [SerializeField] GameObject Projectile;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -39,8 +38,6 @@ public class EnemyRange : MonoBehaviour
 
 
         float distanceToPlayer = Vector3.Distance(transform.position, playerTrans.position);
-
-
 
         if(!Physics.Linecast(transform.position, playerTrans.position, out hit, groundLayer) && distanceToPlayer < sightRange)
         {
@@ -90,16 +87,4 @@ public class EnemyRange : MonoBehaviour
         
     }
 
-
-    public void TakeDamage(int amount)
-    {
-        health -= amount;
-        agent.destination = playerTrans.position;
-
-        if (health <= 0) 
-        { 
-            Destroy(gameObject);
-        }
-
-    }
 }

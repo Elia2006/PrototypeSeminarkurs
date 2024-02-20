@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class AttackCollider : MonoBehaviour
 {
-    public MeleeEnemy enemyScript;
+    public EnemyMelee enemyScript;
     public ParticleSystem EnemyHitEffect;
     private float waitBeforeAttack = -2;
 

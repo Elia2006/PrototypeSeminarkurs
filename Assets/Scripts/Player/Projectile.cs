@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
         }
 
         if(other.CompareTag("Enemy")){
-            other.GetComponent<MeleeEnemy>().TakeDamage(10);
+            other.GetComponent<Enemy>().TakeDamage(10);
         }
     }
 }
