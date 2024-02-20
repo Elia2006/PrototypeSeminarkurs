@@ -28,13 +28,12 @@ public class EnemyMelee : Enemy
         if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
         {          
 
-            newPos = AttackState(Player.transform);
+            agent.destination = AttackState(Player.transform);
         }else
         {      
-            newPos = PatrollingState(patrollingRange);
+            agent.destination = PatrollingState(patrollingRange);
                   
         }
-        agent.destination = newPos;
 
         attackCooldown -= Time.deltaTime;
     }

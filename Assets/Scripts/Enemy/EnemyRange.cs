@@ -3,88 +3,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyRange : MonoBehaviour
+public class EnemyRange : Enemy
 {
-    private GameObject player;
-    private Transform playerTrans;
-    RaycastHit hit;
-    [SerializeField] LayerMask groundLayer;
+    private GameObject Player;
     private NavMeshAgent agent;
 
+    [SerializeField] LayerMask groundLayer;
+
+    private int patrollingRange = 20;
+    private float sightDistance = 30;
+    private float allertDistance = 40;
+
+    private int stopDistance = 10;
+    private int attackCooldown = 1;
     
 
-    //Patrolling
-    [SerializeField] int sightRange = 10;
-    [SerializeField] int stopDistance = 10;
-    [SerializeField] int patrollingRange = 10;
-    [SerializeField] Vector3 patrollingPos;
-
     //Attack
-    private float attackCooldown;
+    private float attackTimer;
     [SerializeField] GameObject Projectile;
 
 
     void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        player = GameObject.Find("Player");
-        playerTrans = player.GetComponent<Transform>();
+        agent = GetComponent<NavMeshAgent>();
+        Player = GameObject.Find("Player");
 
     }
 
     void Update()
     {
-        agent.isStopped = false;
-
-
-        float distanceToPlayer = Vector3.Distance(transform.position, playerTrans.position);
-
-        if(!Physics.Linecast(transform.position, playerTrans.position, out hit, groundLayer) && distanceToPlayer < sightRange)
+        agent.enabled = true;
+        if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
         {
-            Debug.Log(hit.transform);
-            Debug.DrawLine(transform.position, playerTrans.position);
-            if(distanceToPlayer < stopDistance)
+            agent.destination = AttackState(Player.transform);
+            Attack();
+            if(Vector3.Distance(transform.position, Player.transform.position) < stopDistance)
             {
-                Attack();
-                agent.isStopped = true;
-
-            }else
-            {
-                agent.destination = playerTrans.position;
+                agent.enabled = false;
             }
-        }else if(Vector3.Distance(transform.position, agent.destination) < 2 )
+        }else
         {
-            Patrolling();
+            agent.destination = PatrollingState(patrollingRange);
         }
 
-        attackCooldown -= Time.deltaTime;
-    }
-
-    private void Patrolling()
-    {
-        NavMeshHit hit;
-        Vector3 randomDirection;
-        
-        randomDirection = Random.insideUnitSphere * patrollingRange;
-
-        randomDirection += transform.position;
-        NavMesh.SamplePosition(randomDirection, out hit, patrollingRange, NavMesh.AllAreas);
-
-        patrollingPos = hit.position;
-        agent.destination = patrollingPos;
+        attackTimer -= Time.deltaTime;
     }
 
     private void Attack()
     {
-        //temporary: Möchte es noch rotation über Zeit machen
-        transform.LookAt(playerTrans.position);
+        transform.LookAt(Player.transform.position);
 
-        if(attackCooldown < 0)
+        if(attackTimer < 0)
         {
             Instantiate(Projectile, transform.position, transform.rotation);
-            attackCooldown = 2;
+            attackTimer = attackCooldown;
         }
-        
     }
 
 }

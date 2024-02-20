@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float groundDistance;
     private bool onGround;
     public Transform groundCheck;
-    public LayerMask groundMask;
+    [SerializeField] LayerMask groundMask;
 
     void Start()
     {
@@ -28,13 +27,12 @@ public class PlayerMovement : MonoBehaviour
         onGround = Physics.CheckSphere(groundCheck.position, 0.5f, groundMask);
 
         RaycastHit hit;
-        Physics.Raycast(groundCheck.position, new Vector3(0, -1, 0), out hit, groundMask);
+        Physics.Raycast(groundCheck.position, Vector3.down, out hit, Mathf.Infinity, groundMask);
 
         if(onGround && velocity.y < 0)
         {
             velocity.y = -2;
         }
-
 
 
         float x = Input.GetAxis("Horizontal");

@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
 {
     private int health = 50;
     public Vector3 newPos;
+    protected int prevState = 0;
+
+    [SerializeField] ParticleSystem AllertEffect;
 
     public void TakeDamage(int amount)
     {
@@ -47,13 +50,18 @@ public class Enemy : MonoBehaviour
         Physics.Linecast(transform.position, PlayerTrans.position, out hit, groundLayer);
         if(hit.transform == null && Vector3.Distance(transform.position, PlayerTrans.position) < sightDistance)
         {
-            hits = Physics.SphereCastAll(transform.position, allertRadius, Vector3.up, 0);
-            foreach(RaycastHit i in hits)
+            if(prevState == 0)
             {
-                if(i.transform.GetComponent<Enemy>() != null){
-                    i.transform.GetComponent<Enemy>().newPos = PlayerTrans.position;
+                AllertEffect.Play();
+                hits = Physics.SphereCastAll(transform.position, allertRadius, Vector3.up, 0);
+                foreach(RaycastHit i in hits)
+                {
+                    if(i.transform.GetComponent<Enemy>() != null){
+                        i.transform.GetComponent<Enemy>().newPos = PlayerTrans.position;
+                    }
                 }
             }
+
 
             return true;
         }else
@@ -68,6 +76,7 @@ public class Enemy : MonoBehaviour
         {
             newPos = FindRandPos(patrollingRange);
         }
+        prevState = 0;
 
         return newPos;
     }
@@ -75,6 +84,8 @@ public class Enemy : MonoBehaviour
     protected Vector3 AttackState(Transform PlayerTrans)
     {
         newPos = PlayerTrans.position;
+
+        prevState = 1;
 
         return newPos;
     }
