@@ -16,11 +16,18 @@ public class SpawnPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && collision)
+        
+    }
+
+    public void InitiateTeleport()
+    {
+        if (collision) 
         {
             teleport = true;
             collision = false;
         }
+    
+
     }
 
     private void OnTriggerEnter(Collider other)

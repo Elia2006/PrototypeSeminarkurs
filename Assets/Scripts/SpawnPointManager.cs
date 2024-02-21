@@ -17,14 +17,19 @@ public class SpawnPointManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < SpawnPoints.Length; i++)
+        
+    }
+
+    public void Teleport (int teleporterindex)
+    {
+        for (int i = 0; i < SpawnPoints.Length; i++)
         {
-            if(SpawnPoints[i].transform.GetChild(0).GetComponent<SpawnPoint>().teleport)
+            if (SpawnPoints[i].transform.GetChild(0).GetComponent<SpawnPoint>().teleport)
             {
                 //Der Charakter Controller findets gar nicht gut teleportiert zu werden, daher muss er kurz abgestellt werden
-                
+
                 playerCc.enabled = false;
-                Player.transform.position = SpawnPoints[(i + 1) % SpawnPoints.Length].transform.position + new Vector3(0, 1.2f, 0);
+                Player.transform.position = SpawnPoints[teleporterindex].transform.position + new Vector3(0, 1.2f, 0);
                 playerCc.enabled = true;
                 SpawnPoints[i].transform.GetChild(0).GetComponent<SpawnPoint>().teleport = false;
             }
