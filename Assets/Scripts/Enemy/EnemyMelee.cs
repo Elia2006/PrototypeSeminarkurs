@@ -6,6 +6,9 @@ using UnityEngine.AI;
 public class EnemyMelee : Enemy
 {
     
+
+
+
     //Attack
     private float attackCooldown;
 
@@ -15,10 +18,9 @@ public class EnemyMelee : Enemy
         agent = GetComponent<NavMeshAgent>();
         speed = 5;
         patrollingRange = 20;
+
         sightDistance = 30;
         allertDistance = 40;
-        newPos = transform.position;
-        Debug.Log(newPos);
     }
 
     void Update()
@@ -31,6 +33,7 @@ public class EnemyMelee : Enemy
         }else
         {      
             agent.destination = PatrollingState(patrollingRange);
+                  
         }
         agent.speed = speed * AgentSpeed();
 

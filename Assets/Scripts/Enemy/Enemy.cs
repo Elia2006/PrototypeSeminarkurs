@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
 
     private int health = 50;
-    protected Vector3 newPos;
+    private Vector3 newPos;
     protected int prevState = 0;
 
     [SerializeField] ParticleSystem AllertEffect;
@@ -88,9 +88,7 @@ public class Enemy : MonoBehaviour
         {
             newPos = FindRandPos(patrollingRange);
             prevState = 0;
-
         }
-                        Debug.Log("hell");
 
         return newPos;
     }
