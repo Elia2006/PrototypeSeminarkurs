@@ -6,8 +6,6 @@ using UnityEngine.AI;
 public class EnemyRange : Enemy
 {
 
-
-
     private int stopDistance = 10;
     private int attackCooldown = 1;
     
@@ -25,6 +23,9 @@ public class EnemyRange : Enemy
         patrollingRange = 20;
         sightDistance = 30;
         allertDistance = 40;
+        newPos = transform.position;
+        Debug.Log(newPos);
+
     }
 
     void Update()
