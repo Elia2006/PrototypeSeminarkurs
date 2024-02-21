@@ -5,14 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyRange : Enemy
 {
-    private GameObject Player;
-    private NavMeshAgent agent;
 
-    [SerializeField] LayerMask groundLayer;
 
-    private int patrollingRange = 20;
-    private float sightDistance = 30;
-    private float allertDistance = 40;
 
     private int stopDistance = 10;
     private int attackCooldown = 1;
@@ -27,7 +21,10 @@ public class EnemyRange : Enemy
     {
         agent = GetComponent<NavMeshAgent>();
         Player = GameObject.Find("Player");
-
+        speed = 5;
+        patrollingRange = 20;
+        sightDistance = 30;
+        allertDistance = 40;
     }
 
     void Update()
@@ -45,6 +42,7 @@ public class EnemyRange : Enemy
         {
             agent.destination = PatrollingState(patrollingRange);
         }
+        agent.speed = speed * AgentSpeed();
 
         attackTimer -= Time.deltaTime;
     }
@@ -55,7 +53,8 @@ public class EnemyRange : Enemy
 
         if(attackTimer < 0)
         {
-            Instantiate(Projectile, transform.position, transform.rotation);
+            GameObject Bullet = Instantiate(Projectile, transform.position, transform.rotation);
+            Destroy(Bullet, 1);
             attackTimer = attackCooldown;
         }
     }

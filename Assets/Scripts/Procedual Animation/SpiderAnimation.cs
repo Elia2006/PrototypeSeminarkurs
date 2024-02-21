@@ -62,10 +62,10 @@ public class SpiderAnimation : MonoBehaviour
         Vector3 newRawPos = targetPos.position + spiderDirection * (legMoveDistance - 1);
         Vector3 rayOrigin = newRawPos + Vector3.up;
 
-        if(Physics.Raycast(rayOrigin, Vector3.down, out hit, groundLayer))
+        if(Physics.Raycast(rayOrigin, Vector3.down, out hit, Mathf.Infinity, groundLayer))
         {
             newPos =  hit.point;
-            Debug.DrawLine(rayOrigin, hit.point, Color.red, 60);
+            //Debug.DrawLine(rayOrigin, hit.point, Color.red, 60);
         }
     }
 
@@ -83,10 +83,5 @@ public class SpiderAnimation : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(newPos, 0.5f);
-        /*
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(oldPos, 0.5f);
-        Gizmos.color = Color.white;
-        Gizmos.DrawSphere(rayOrigin, 0.5f);*/
     }
 }

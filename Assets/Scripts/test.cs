@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    [SerializeField] LayerMask ground;
+    [SerializeField] Transform Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,16 +14,7 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-
-        if(Physics.Raycast(transform.position, Vector3.down, out hit))
-        {
-            Debug.DrawLine(transform.position, hit.point);
-        }else
-        {
-            Debug.Log("hole");
-        }
-
+        transform.position = Player.position + Player.forward * 50;
 
     }
 }

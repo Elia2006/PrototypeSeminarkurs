@@ -5,8 +5,20 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    protected GameObject Player;
+    protected NavMeshAgent agent;
+    public LayerMask groundLayer;
+    protected int speed;
+    
+    protected int patrollingRange = 20;
+    protected float sightDistance = 30;
+    protected float allertDistance = 40;
+
+
+
+
     private int health = 50;
-    public Vector3 newPos;
+    private Vector3 newPos;
     protected int prevState = 0;
 
     [SerializeField] ParticleSystem AllertEffect;
@@ -75,8 +87,8 @@ public class Enemy : MonoBehaviour
         if(Vector3.Distance(transform.position, newPos) < 3)
         {
             newPos = FindRandPos(patrollingRange);
+            prevState = 0;
         }
-        prevState = 0;
 
         return newPos;
     }
@@ -88,5 +100,16 @@ public class Enemy : MonoBehaviour
         prevState = 1;
 
         return newPos;
+    }
+
+    protected float AgentSpeed()
+    {
+        if(prevState == 1)
+        {
+            return 1;
+        }else
+        {
+            return 0.5f;
+        }
     }
 }

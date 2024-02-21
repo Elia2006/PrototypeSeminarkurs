@@ -5,13 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyMelee : Enemy
 {
-    private GameObject Player;
-    private NavMeshAgent agent;
-    [SerializeField] LayerMask groundLayer;
-    private int patrollingRange = 20;
+    
 
-    private float sightDistance = 30;
-    private float allertDistance = 40;
+
 
     //Attack
     private float attackCooldown;
@@ -20,6 +16,11 @@ public class EnemyMelee : Enemy
     {
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
+        speed = 5;
+        patrollingRange = 20;
+
+        sightDistance = 30;
+        allertDistance = 40;
     }
 
     void Update()
@@ -34,6 +35,7 @@ public class EnemyMelee : Enemy
             agent.destination = PatrollingState(patrollingRange);
                   
         }
+        agent.speed = speed * AgentSpeed();
 
         attackCooldown -= Time.deltaTime;
     }
