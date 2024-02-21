@@ -6,39 +6,36 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] GameObject Projectile;
     [SerializeField] Transform Cam;
-    private Transform BulletSpawnPoint;
     [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] GameObject ImpactEffect;    
+    [SerializeField] GameObject ImpactEffect;
+    [SerializeField] GameObject HitTexture;
+    private float hitTextureCooldown = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        BulletSpawnPoint = gameObject.transform.GetChild(0);
+        HitTexture = GameObject.Find("HitTexture");
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        RaycastHit hit;
 
-        if(Physics.Raycast(Cam.position, Cam.forward, out hit))
-        {
-            BulletSpawnPoint.LookAt(hit.point);
-        }else
-        {
-            transform.localRotation = Quaternion.identity;
-        }*/
-
-        if (Input.GetButtonDown("Fire1")) 
+        if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+        }
+        
+        if(hitTextureCooldown > Time.time)
+        {
+            HitTexture.SetActive(true);
+        }else{
+            HitTexture.SetActive(false);
         }
     }
 
     void Shoot() 
     {
-        //Instantiate(Projectile, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
 
         RaycastHit hit;
 
@@ -48,6 +45,7 @@ public class Gun : MonoBehaviour
             if(enemy != null)
             {
                 enemy.TakeDamage(10);
+                hitTextureCooldown = Time.time + 0.1f;
             }
         }
         muzzleFlash.Play();
