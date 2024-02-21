@@ -19,6 +19,7 @@ public class EnemyRange : Enemy
 
     void Start()
     {
+        newPos = transform.position;
         agent = GetComponent<NavMeshAgent>();
         Player = GameObject.Find("Player");
         speed = 5;

@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
 
     private int health = 50;
-    private Vector3 newPos;
+    protected Vector3 newPos;
     protected int prevState = 0;
 
     [SerializeField] ParticleSystem AllertEffect;

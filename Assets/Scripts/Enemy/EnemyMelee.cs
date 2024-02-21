@@ -14,6 +14,7 @@ public class EnemyMelee : Enemy
 
     void Start()
     {
+        newPos = transform.position;
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
         speed = 5;
