@@ -14,14 +14,18 @@ public class EnemyMelee : Enemy
 
     void Start()
     {
-        newPos = transform.position;
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
         speed = 5;
         patrollingRange = 20;
 
         sightDistance = 30;
-        allertDistance = 40;
+        allertDistance = 60;
+    }
+    private void Awake()
+    {
+        newPos = transform.position;
+
     }
 
     void Update()

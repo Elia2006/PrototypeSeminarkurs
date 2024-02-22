@@ -27,10 +27,14 @@ public class Enemy : MonoBehaviour
     {
         health -= amount;
 
+        newPos = Player.transform.position;
+        prevState = 1;
+
         if (health <= 0)
         {
             Destroy(gameObject);
         }
+
     }
 
     protected Vector3 FindRandPos(int patrollingRange)
@@ -47,7 +51,9 @@ public class Enemy : MonoBehaviour
             randomDirection += transform.position;
             NavMesh.SamplePosition(randomDirection, out hit, patrollingRange, NavMesh.AllAreas);
 
-            NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, path);
+            if (hit.position != new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity)) {
+                NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, path);
+            }
         }while(!(path.status == NavMeshPathStatus.PathComplete));
 
 
@@ -70,6 +76,7 @@ public class Enemy : MonoBehaviour
                 {
                     if(i.transform.GetComponent<Enemy>() != null){
                         i.transform.GetComponent<Enemy>().newPos = PlayerTrans.position;
+                        i.transform.GetComponent<Enemy>().prevState = 1;
                     }
                 }
             }

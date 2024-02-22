@@ -19,13 +19,17 @@ public class EnemyRange : Enemy
 
     void Start()
     {
-        newPos = transform.position;
         agent = GetComponent<NavMeshAgent>();
         Player = GameObject.Find("Player");
         speed = 5;
         patrollingRange = 20;
         sightDistance = 30;
-        allertDistance = 40;
+        allertDistance = 60;
+    }
+    private void Awake()
+    {
+        newPos = transform.position;
+
     }
 
     void Update()

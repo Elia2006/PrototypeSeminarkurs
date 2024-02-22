@@ -16,7 +16,7 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKey(KeyCode.E))
         {
             Canvas.SetActive(true);
             Cursor.lockState = CursorLockMode.Confined;
