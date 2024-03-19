@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour
 {
@@ -21,4 +22,10 @@ public class HUD : MonoBehaviour
     {
         playerHealth -= amount;
     }
+
+    public void Die()
+    {
+        //SceneManager.LoadScene(Death);
+    }
 }
+   
