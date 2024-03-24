@@ -27,33 +27,30 @@ public class Enemy : MonoBehaviour
     {
         health -= amount;
 
-        newPos = Player.transform.position;
-        prevState = 1;
-
         if (health <= 0)
         {
             Destroy(gameObject);
         }
-
     }
 
-    protected Vector3 FindRandPos(int patrollingRange)
+    protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction)
     {
         NavMeshHit hit;
         NavMeshPath path;
         Vector3 randomDirection;
+        float loopPrevent = 1;
 
         path = new NavMeshPath();
 
+        //Problematisch weil loop, wenn sich Programm irgendwie aufhängt liegts wahrscheinlich hierdran
         do{
-            randomDirection = Random.insideUnitSphere * patrollingRange;
+            randomDirection = direction * distance * loopPrevent;
+            loopPrevent -= 0.1f;
 
             randomDirection += transform.position;
-            NavMesh.SamplePosition(randomDirection, out hit, patrollingRange, NavMesh.AllAreas);
+            NavMesh.SamplePosition(randomDirection, out hit, distance, NavMesh.AllAreas);
 
-            if (hit.position != new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity)) {
-                NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, path);
-            }
+            NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, path);
         }while(!(path.status == NavMeshPathStatus.PathComplete));
 
 
@@ -76,7 +73,6 @@ public class Enemy : MonoBehaviour
                 {
                     if(i.transform.GetComponent<Enemy>() != null){
                         i.transform.GetComponent<Enemy>().newPos = PlayerTrans.position;
-                        i.transform.GetComponent<Enemy>().prevState = 1;
                     }
                 }
             }
@@ -93,10 +89,10 @@ public class Enemy : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, newPos) < 3)
         {
-            newPos = FindRandPos(patrollingRange);
+            newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere);
             prevState = 0;
-        }
 
+        }
         return newPos;
     }
 

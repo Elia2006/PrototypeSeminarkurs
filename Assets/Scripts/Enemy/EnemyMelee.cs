@@ -34,7 +34,7 @@ public class EnemyMelee : Enemy
         if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
         {          
 
-            agent.destination = AttackState(Player.transform);
+            agent.destination = FindAttackPos();
         }else
         {      
             agent.destination = PatrollingState(patrollingRange);
@@ -53,6 +53,16 @@ public class EnemyMelee : Enemy
             attackCooldown = 1;
             Player.GetComponent<HUD>().TakeDamage(10);
         }
+    }
+    private Vector3 FindAttackPos()
+    {
+        Vector3 attackPos = new Vector3();
+        if(Vector3.Distance(transform.position, attackPos) < 1)
+        {
+            attackPos = FindPosOnNavMesh(10, transform.forward);
+        }
+
+        return attackPos;
     }
 
 }

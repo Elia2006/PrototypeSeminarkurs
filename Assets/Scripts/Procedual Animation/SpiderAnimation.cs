@@ -11,7 +11,7 @@ public class SpiderAnimation : MonoBehaviour
     public Transform targetPos;
     [SerializeField] LayerMask groundLayer;
 
-    private float legMoveDistance = 2;
+    private float legMoveDistance = 1.5f;
     private Vector3 currentPos;
     private Vector3 oldPos;
     public Vector3 newPos;
@@ -56,7 +56,8 @@ public class SpiderAnimation : MonoBehaviour
 
         lerp = 0;
 
-        spiderDirection = (Spider.position - oldSpiderPos).normalized;
+        spiderDirection = (Spider.position - oldSpiderPos).normalized * 2;
+        Debug.Log(spiderDirection);
 
         RaycastHit hit;
         Vector3 newRawPos = targetPos.position + spiderDirection * (legMoveDistance - 1);
@@ -65,7 +66,6 @@ public class SpiderAnimation : MonoBehaviour
         if(Physics.Raycast(rayOrigin, Vector3.down, out hit, Mathf.Infinity, groundLayer))
         {
             newPos =  hit.point;
-            //Debug.DrawLine(rayOrigin, hit.point, Color.red, 60);
         }
     }
 
@@ -81,7 +81,9 @@ public class SpiderAnimation : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        /*
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(newPos, 0.5f);
+        */
     }
 }
