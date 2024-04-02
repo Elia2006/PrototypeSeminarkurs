@@ -2,26 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackCollider : MonoBehaviour
+public class EnemyMeleeCollider : MonoBehaviour
 {
-    public EnemyMelee enemyScript;
-    public ParticleSystem EnemyHitEffect;
-    private float waitBeforeAttack = -2;
+    public bool colliding;
 
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        waitBeforeAttack -= Time.deltaTime;
+        colliding = true;
     }
-
-    public void OnTriggerStay(Collider other)
+    public void OnTriggerExit(Collider other)
     {
-        if(waitBeforeAttack <= -0.5f)
-        {
-            waitBeforeAttack = 0.5f;
-            EnemyHitEffect.Play();
-        }else if(waitBeforeAttack < 0 && waitBeforeAttack > -0.5f)
-        {
-            enemyScript.Attack();
-        }
+        colliding = false;
     }
 }

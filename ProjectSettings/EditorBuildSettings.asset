@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Death.unity
+    path: Assets/Scenes/StartGame.unity
     guid: ce7d4be3be159e14daba6cf543da6037
   - enabled: 1
     path: Assets/Scenes/Presentation.unity
     guid: 1f4cb722e1a69934e807f05373e05098
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 40168cb6e3a3f41499bd24ce8d5213cd
   m_configObjects: {}

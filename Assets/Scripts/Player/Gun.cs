@@ -38,7 +38,8 @@ public class Gun : MonoBehaviour
 
     void Shoot() 
     {
-        GameObject LineRenderer = Instantiate(Line, GunEnd.position, Quaternion.identity);
+        
+        GameObject LineRenderer = Instantiate(Line, GunEnd.position, Quaternion.identity, Cam);
 
         RaycastHit hit;
         
@@ -63,6 +64,24 @@ public class Gun : MonoBehaviour
         Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         
 
+        /*
+        RaycastHit hit;
+
+        Physics.Raycast(Cam.position, Cam.forward, out hit);
+
+        if(hit.transform != null)
+        {
+            GunEnd.LookAt(hit.point);
+        }
+        else
+        {
+            GunEnd.LookAt(Cam.position + Cam.forward * 50);
+        }
         
+
+        Instantiate(Projectile, GunEnd.position, GunEnd.rotation);
+
+        muzzleFlash.Play();
+        */
     }
 }

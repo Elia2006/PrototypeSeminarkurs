@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+/*
 public class EnemyRange : Enemy
 {
 
@@ -45,7 +45,7 @@ public class EnemyRange : Enemy
             }
         }else
         {
-            agent.destination = PatrollingState(patrollingRange);
+            PatrollingState(patrollingRange, agent);
         }
         agent.speed = speed * AgentSpeed();
 
@@ -65,3 +65,4 @@ public class EnemyRange : Enemy
     }
 
 }
+*/

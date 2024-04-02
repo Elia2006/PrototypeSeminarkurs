@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     public LayerMask groundLayer;
     protected int speed;
+    protected float speedMultiplier;
     
     protected int patrollingRange = 20;
+    protected float waitTime = 0;
     protected float sightDistance = 30;
     protected float allertDistance = 40;
 
@@ -33,51 +35,39 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction)
+    protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction, NavMeshAgent agent)
     {
         NavMeshHit hit;
-        NavMeshPath path;
         Vector3 randomDirection;
-        float loopPrevent = 1;
 
-        path = new NavMeshPath();
+        randomDirection = direction * distance;
 
-        //Problematisch weil loop, wenn sich Programm irgendwie aufhängt liegts wahrscheinlich hierdran
-        do{
-            randomDirection = direction * distance * loopPrevent;
-            loopPrevent -= 0.1f;
+        NavMesh.SamplePosition(randomDirection + transform.position, out hit, distance, NavMesh.AllAreas);
 
-            randomDirection += transform.position;
-            NavMesh.SamplePosition(randomDirection, out hit, distance, NavMesh.AllAreas);
+        NavMeshPath path = new NavMeshPath();
 
-            NavMesh.CalculatePath(transform.position, hit.position, NavMesh.AllAreas, path);
-        }while(!(path.status == NavMeshPathStatus.PathComplete));
+        agent.CalculatePath(hit.position, path);
 
+        if(path.status == NavMeshPathStatus.PathComplete)
+        {
+            return hit.position;
+        }
+        else{
+            return new Vector3(0, 0, 0);
+        }
 
-        return hit.position;
+        
     }
 
     protected bool IsPlayerInRange(Transform PlayerTrans, LayerMask groundLayer, float sightDistance, float allertRadius)
     {
         RaycastHit hit;
-        RaycastHit[] hits;
         
         Physics.Linecast(transform.position, PlayerTrans.position, out hit, groundLayer);
         if(hit.transform == null && Vector3.Distance(transform.position, PlayerTrans.position) < sightDistance)
         {
-            if(prevState == 0)
-            {
-                AllertEffect.Play();
-                hits = Physics.SphereCastAll(transform.position, allertRadius, Vector3.up, 0);
-                foreach(RaycastHit i in hits)
-                {
-                    if(i.transform.GetComponent<Enemy>() != null){
-                        i.transform.GetComponent<Enemy>().newPos = PlayerTrans.position;
-                    }
-                }
-            }
-
-
+            //problem weil enemy sich selbst die position setzt was heißt charge funktioniert nicht mehr wie gedacht
+            //Allert(allertRadius, PlayerTrans);
             return true;
         }else
         {
@@ -85,34 +75,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected Vector3 PatrollingState(int patrollingRange)
+    private void Allert(float allertRadius, Transform PlayerTrans)
     {
-        if(Vector3.Distance(transform.position, newPos) < 3)
+        RaycastHit[] hits;
+        if(prevState == 0)
         {
-            newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere);
-            prevState = 0;
-
-        }
-        return newPos;
-    }
-
-    protected Vector3 AttackState(Transform PlayerTrans)
-    {
-        newPos = PlayerTrans.position;
-
-        prevState = 1;
-
-        return newPos;
-    }
-
-    protected float AgentSpeed()
-    {
-        if(prevState == 1)
-        {
-            return 1;
-        }else
-        {
-            return 0.5f;
+            //AllertEffect.Play();
+            hits = Physics.SphereCastAll(transform.position, allertRadius, Vector3.up, 0);
+            foreach(RaycastHit i in hits)
+            {
+                if(i.transform.GetComponent<Enemy>() != null){
+                    i.transform.GetComponent<Enemy>().newPos = PlayerTrans.position;
+                }
+            }
         }
     }
 }

@@ -57,7 +57,6 @@ public class SpiderAnimation : MonoBehaviour
         lerp = 0;
 
         spiderDirection = (Spider.position - oldSpiderPos).normalized * 2;
-        Debug.Log(spiderDirection);
 
         RaycastHit hit;
         Vector3 newRawPos = targetPos.position + spiderDirection * (legMoveDistance - 1);

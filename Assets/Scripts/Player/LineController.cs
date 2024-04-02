@@ -15,7 +15,7 @@ public class LineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pos0 += new Vector3(0, 0, 1);
+        pos0 += new Vector3(0, 0, 0.2f);
         lineRenderer.SetPosition(0, pos0);
     }
 }
