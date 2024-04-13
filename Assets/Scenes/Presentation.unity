@@ -2245,6 +2245,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8150751746688642261, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 492107915}
+    - target: {fileID: 9100665933074588008, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 492107915}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5768,8 +5776,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9489ef12703e045956405f62b0b592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 492107915}
+  SpawnPointManager: {fileID: 0}
   Canvas: {fileID: 1250343046}
-  mapOpen: 0
+  canMapOpen: 0
 --- !u!4 &1488902684
 Transform:
   m_ObjectHideFlags: 0
@@ -5797,7 +5807,7 @@ PrefabInstance:
     - target: {fileID: 91104409039401813, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: Map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1488902682}
     - target: {fileID: 688167868358308128, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -152.4814
@@ -6440,7 +6450,7 @@ PrefabInstance:
     - target: {fileID: 91104409039401813, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: Map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1488902682}
     - target: {fileID: 688167868358308128, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 99.51863
@@ -7327,7 +7337,7 @@ PrefabInstance:
     - target: {fileID: 91104409039401813, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: Map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1488902682}
     - target: {fileID: 91104409039401813, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: teleport
       value: 0

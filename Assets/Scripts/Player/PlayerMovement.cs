@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
+    public bool locked = false;
 
     public float speed = 5;
     public float jumpHeight = 3;
@@ -39,14 +40,16 @@ public class PlayerMovement : MonoBehaviour
         float y = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * y;
+        if(!locked) {
+            controller.Move(move * speed * Time.deltaTime);
 
-        controller.Move(move * speed * Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
 
-        if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround)) 
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-
+            }
         }
+        
 
         //gravity
         velocity.y += gravity * Time.deltaTime;

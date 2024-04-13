@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     [SerializeField] GameObject Line;
     [SerializeField] Transform GunEnd;
     private float hitTextureCooldown = 0;
+    public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !Player.GetComponent<PlayerMovement>().locked)
         {
             Shoot();
         }
