@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] InteractSystemBox InteractSys;
+    [SerializeField] InteractSystemPoint InteractSys;
 
     private float lerp = 0;
     private int lerpDirection = -1;

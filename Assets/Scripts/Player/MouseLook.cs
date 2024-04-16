@@ -19,19 +19,18 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         //gets Mouse Input
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
         
         //prevents Overrotating
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
-    if (!Player.GetComponent<PlayerMovement>().locked)
+        if (!Player.GetComponent<PlayerMovement>().locked)
         {
             //Rotates Body around X and Cam around Y
             transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
             playerBody.Rotate(Vector3.up * mouseX);
         }
-        
 
     }
 }

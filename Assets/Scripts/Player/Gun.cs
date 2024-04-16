@@ -8,14 +8,14 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform Cam;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject ImpactEffect;
-    [SerializeField] GameObject HitTexture;
+    private GameObject HitTexture;
     [SerializeField] GameObject Line;
     [SerializeField] Transform GunEnd;
     private float hitTextureCooldown = 0;
-    public GameObject Player;
+    private float attackCooldown;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         HitTexture = GameObject.Find("HitTexture");
     }
@@ -24,9 +24,10 @@ public class Gun : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1") && !Player.GetComponent<PlayerMovement>().locked)
+        if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
         {
             Shoot();
+            attackCooldown = Time.time + 0.7f;
         }
         
         if(hitTextureCooldown > Time.time)

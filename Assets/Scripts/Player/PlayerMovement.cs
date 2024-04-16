@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        Application.targetFrameRate = 120;
     }
 
     void Update()

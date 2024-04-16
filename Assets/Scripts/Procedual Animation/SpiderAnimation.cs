@@ -11,7 +11,7 @@ public class SpiderAnimation : MonoBehaviour
     public Transform targetPos;
     [SerializeField] LayerMask groundLayer;
 
-    private float legMoveDistance = 1.5f;
+    private float legMoveDistance = 0.5f;
     private Vector3 currentPos;
     private Vector3 oldPos;
     public Vector3 newPos;
@@ -80,9 +80,7 @@ public class SpiderAnimation : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        /*
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(newPos, 0.5f);
-        */
     }
 }

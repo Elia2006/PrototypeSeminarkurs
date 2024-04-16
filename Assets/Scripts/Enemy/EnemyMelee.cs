@@ -12,6 +12,7 @@ public class EnemyMelee : Enemy
 
     //Attack
     private float attackCooldown;
+    private float jumpCooldown;
     private float lerp;
     private Vector3 oldPos;
     private Vector3 jumpDestination;
@@ -24,11 +25,11 @@ public class EnemyMelee : Enemy
     {
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
-        speed = 5;
+        speed = 10;
         speedMultiplier = 0.5f;
         patrollingRange = 20;
 
-        sightDistance = 30;
+        sightDistance = 50;
         allertDistance = 60;
     }
     private void Awake()
@@ -48,13 +49,11 @@ public class EnemyMelee : Enemy
             Patroll();
         }
         agent.speed = speed * speedMultiplier;
-
-        attackCooldown -= Time.deltaTime;
     }
 
     public void Attack()
     {
-        float distance = Vector3.Distance(transform.position, newPos);
+        float distance = Vector3.Distance(transform.position, Player.transform.position);
         
         if(lerp > 0)
         {
@@ -111,7 +110,7 @@ public class EnemyMelee : Enemy
         speedMultiplier = 0.5f;
         if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
         {
-            waitTime += 3;
+            waitTime = Time.time + 3;
             do{
                 newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent);
             }while(newPos == new Vector3(0, 0, 0));
