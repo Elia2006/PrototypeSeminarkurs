@@ -9,15 +9,19 @@ public class HUD : MonoBehaviour
 {
     public TextMeshProUGUI playerHealthText;
     [SerializeField] Image damageImage;
-    public int playerHealth = 100;
+    public float playerHealth = 100;
+    public float maxHealth;
     private float damageAlphaColor = 0;
+    public Image healthBar;
     void Start()
     {
-
+        maxHealth = playerHealth;
     }
 
     void Update()
     {
+        healthBar.fillAmount = Mathf.Clamp(playerHealth/maxHealth,0,1);
+        Debug.Log(healthBar.fillAmount);
         playerHealthText.text = playerHealth + "/100";
 
         Color newColor = new Color(1, 1, 1, damageAlphaColor);
