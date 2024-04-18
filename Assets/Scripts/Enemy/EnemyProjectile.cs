@@ -6,11 +6,18 @@ public class EnemyProjectile : MonoBehaviour
 {
     private float speed = 40;
     private HUD playerHUD;
+    private Transform Player;
+
+    private float spread = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         playerHUD = GameObject.Find("Player").GetComponent<HUD>();
+        Player = GameObject.Find("Player").GetComponent<Transform>();
+        var playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        transform.LookAt(Player.position + playerMovement.direction * 40);
+        transform.rotation *= Quaternion.Euler(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
     }
 
     // Update is called once per frame

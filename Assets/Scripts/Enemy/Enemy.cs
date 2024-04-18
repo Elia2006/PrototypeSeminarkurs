@@ -66,7 +66,6 @@ public class Enemy : MonoBehaviour
         Physics.Linecast(transform.position, PlayerTrans.position, out hit, groundLayer);
         if(hit.transform == null && Vector3.Distance(transform.position, PlayerTrans.position) < sightDistance)
         {
-            //problem weil enemy sich selbst die position setzt was heißt charge funktioniert nicht mehr wie gedacht
             //Allert(allertRadius, PlayerTrans);
             return true;
         }else

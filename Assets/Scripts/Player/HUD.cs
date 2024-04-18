@@ -12,7 +12,7 @@ public class HUD : MonoBehaviour
     public float playerHealth = 100;
     public float maxHealth;
     private float damageAlphaColor = 0;
-    public Image healthBar;
+    [SerializeField] Image healthBar;
     void Start()
     {
         maxHealth = playerHealth;

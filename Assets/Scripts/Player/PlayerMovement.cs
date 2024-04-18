@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private bool onGround;
     public Transform groundCheck;
     [SerializeField] LayerMask groundMask;
+
+    public Vector3 direction;
+    private Vector3 lastPos;
 
     void Start()
     {
@@ -56,5 +60,13 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        calculateDirection();
+    }
+
+    private void calculateDirection()
+    {
+        direction = transform.position - lastPos;
+        lastPos = transform.position;
     }
 }

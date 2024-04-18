@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
 
     private float startTime;
     private float distanceTravelled;
+    private Gun gun;
 
     
     RaycastHit hit;
@@ -17,6 +18,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         startTime = Time.time;
+        gun = GameObject.Find("Gun").GetComponent<Gun>();
     }
 
     // Update is called once per frame
@@ -40,13 +42,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
 
         if(other.CompareTag("Enemy")){
             other.GetComponent<Enemy>().TakeDamage(10);
+            gun.HitEffect();
         }
     }
 }

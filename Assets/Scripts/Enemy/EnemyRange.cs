@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-/*
+
 public class EnemyRange : Enemy
 {
 
-
-
+    //Navigation
     private int stopDistance = 10;
-    private int attackCooldown = 1;
     
 
     //Attack
-    private float attackTimer;
+    private float attackCooldown = 1;
+    private int bulletsLeft = 20;
+    private float ReloadTime;
     [SerializeField] GameObject Projectile;
 
 
@@ -29,7 +29,6 @@ public class EnemyRange : Enemy
     private void Awake()
     {
         newPos = transform.position;
-
     }
 
     void Update()
@@ -37,32 +36,65 @@ public class EnemyRange : Enemy
         agent.enabled = true;
         if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
         {
-            agent.destination = AttackState(Player.transform);
             Attack();
-            if(Vector3.Distance(transform.position, Player.transform.position) < stopDistance)
-            {
-                agent.enabled = false;
-            }
         }else
         {
-            PatrollingState(patrollingRange, agent);
+            Patroll();
         }
-        agent.speed = speed * AgentSpeed();
-
-        attackTimer -= Time.deltaTime;
+        agent.speed = speed * speedMultiplier;
     }
 
     private void Attack()
     {
         transform.LookAt(Player.transform.position);
+        transform.localRotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+        Debug.Log("");
 
-        if(attackTimer < 0)
+        if(attackCooldown < Time.time)
         {
-            GameObject Bullet = Instantiate(Projectile, transform.position, transform.rotation);
-            Destroy(Bullet, 1);
-            attackTimer = attackCooldown;
+            if(bulletsLeft > 0)
+            {
+                GameObject Bullet = Instantiate(Projectile, transform.position, transform.rotation);
+                Destroy(Bullet, 1);
+                bulletsLeft--;
+                attackCooldown = Time.time + 0.1f;
+                ReloadTime = Time.time + 2;
+            }else if(ReloadTime < Time.time)
+            {
+                bulletsLeft = 20;
+            }
+
+        }
+
+        var distance = Vector3.Distance(Player.transform.position, transform.position);
+        
+        if(distance > stopDistance)
+        {
+            newPos = Player.transform.position;
+            speedMultiplier = 1;
+        }else
+        {
+            newPos = transform.position;
+        }
+
+        agent.destination = newPos;
+    }
+
+    private void Patroll()
+    {
+        speedMultiplier = 0.5f;
+        if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
+        {
+            waitTime = Time.time + 3;
+            do{
+                newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent);
+            }while(newPos == new Vector3(0, 0, 0));
+
+        }
+        else if(waitTime < Time.time)
+        {         
+            agent.destination = newPos;
         }
     }
 
 }
-*/

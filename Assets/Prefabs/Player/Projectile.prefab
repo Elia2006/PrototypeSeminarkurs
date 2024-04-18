@@ -315,4 +315,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  range: 100
+  range: 20
