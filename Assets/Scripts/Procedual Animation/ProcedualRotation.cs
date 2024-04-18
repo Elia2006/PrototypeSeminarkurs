@@ -14,6 +14,12 @@ public class ProcedualRotation : MonoBehaviour
     private Vector3 normalBackRight;
     private Vector3 normalBackLeft;
 
+    private float distanceFrontRight;
+    private float distanceFrontLeft;
+    private float distanceBackRight;
+    private float distanceBackLeft;
+
+
     private Quaternion lerpAverage;
 
     // Start is called before the first frame update
@@ -24,6 +30,56 @@ public class ProcedualRotation : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        Rotate();
+        MoveLegs();
+    }
+
+    private void MoveLegs()
+    {
+        if(frontRight.distance + frontLeft.distance > 5)
+        {
+            if(frontRight.distance > frontLeft.distance)
+            {
+                frontRight.SetNewPos();
+            }else
+            {
+                frontLeft.SetNewPos();
+            }
+        }
+        if(backRight.distance + backLeft.distance > 5)
+        {
+            if(backRight.distance > backLeft.distance)
+            {
+                backRight.SetNewPos();
+            }else
+            {
+                backLeft.SetNewPos();
+            }
+        }
+        if(frontLeft.distance + backLeft.distance > 5)
+        {
+            if(frontLeft.distance > backLeft.distance)
+            {
+                frontLeft.SetNewPos();
+            }else
+            {
+                backLeft.SetNewPos();
+            }
+        }
+        if(backRight.distance + frontRight.distance > 5)
+        {
+            if(backRight.distance > frontRight.distance)
+            {
+                backRight.SetNewPos();
+            }else
+            {
+                frontRight.SetNewPos();
+            }
+        }
+    }
+
+    private void Rotate()
     {
         RaycastHit hit;
 

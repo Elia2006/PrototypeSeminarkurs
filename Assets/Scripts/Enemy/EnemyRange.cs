@@ -11,7 +11,6 @@ public class EnemyRange : Enemy
     
 
     //Attack
-    private float attackCooldown = 1;
     private int bulletsLeft = 20;
     private float ReloadTime;
     [SerializeField] GameObject Projectile;

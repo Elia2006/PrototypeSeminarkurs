@@ -11,7 +11,8 @@ public class SpiderAnimation : MonoBehaviour
     public Transform targetPos;
     [SerializeField] LayerMask groundLayer;
 
-    private float legMoveDistance = 0.5f;
+    private float legMoveDistance = 2;
+    private float legMoveSpeed = 3;
     private Vector3 currentPos;
     private Vector3 oldPos;
     public Vector3 newPos;
@@ -23,6 +24,7 @@ public class SpiderAnimation : MonoBehaviour
     public SpiderAnimation diagonalLeg1;
     public SpiderAnimation diagonalLeg2;
     public SpiderAnimation oppositeLeg;
+    public float distance;
 
 
     // Start is called before the first frame update
@@ -35,13 +37,10 @@ public class SpiderAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(currentPos, targetPos.position) > legMoveDistance && !(lerp < 1) &&
-            !(diagonalLeg1.lerp < 1) && !(diagonalLeg2.lerp < 1))
-        {
-            SetNewPos();
-            oppositeLeg.SetNewPos();
+        spiderDirection = (Spider.position - oldSpiderPos).normalized;
 
-        }
+
+        distance = Vector3.Distance(newPos, targetPos.position + spiderDirection * 1.5f);
 
         LerpToNewPos();
 
@@ -56,10 +55,8 @@ public class SpiderAnimation : MonoBehaviour
 
         lerp = 0;
 
-        spiderDirection = (Spider.position - oldSpiderPos).normalized * 2;
-
         RaycastHit hit;
-        Vector3 newRawPos = targetPos.position + spiderDirection * (legMoveDistance - 1);
+        Vector3 newRawPos = targetPos.position + spiderDirection * 1.5f;
         Vector3 rayOrigin = newRawPos + Vector3.up;
 
         if(Physics.Raycast(rayOrigin, Vector3.down, out hit, Mathf.Infinity, groundLayer))
@@ -72,7 +69,7 @@ public class SpiderAnimation : MonoBehaviour
     {
         if(lerp < 1)
         {
-            lerp += 0.01f;
+            lerp += Time.deltaTime * legMoveSpeed;
             currentPos = Vector3.Lerp(oldPos, newPos, lerp);
             currentPos.y += Mathf.Sin(lerp * Mathf.PI) * 0.5f;
         }
@@ -80,7 +77,8 @@ public class SpiderAnimation : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        /*
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(newPos, 0.5f);
+        Gizmos.DrawSphere(newPos, 0.5f);*/
     }
 }

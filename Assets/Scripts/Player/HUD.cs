@@ -21,7 +21,6 @@ public class HUD : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = Mathf.Clamp(playerHealth/maxHealth,0,1);
-        Debug.Log(healthBar.fillAmount);
         playerHealthText.text = playerHealth + "/100";
 
         Color newColor = new Color(1, 1, 1, damageAlphaColor);
@@ -32,13 +31,13 @@ public class HUD : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        playerHealth -= amount;
+        damageAlphaColor = 0.8f;
+
         if(playerHealth <= 0)
         {
             Die();
         }
-
-        playerHealth -= amount;
-        damageAlphaColor = 0.8f;
     }
 
     public void Die()

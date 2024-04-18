@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     protected float waitTime = 0;
     protected float sightDistance = 30;
     protected float allertDistance = 40;
+    protected float attackCooldown = 0;
 
 
 

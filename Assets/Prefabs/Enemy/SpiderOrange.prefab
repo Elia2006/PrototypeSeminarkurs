@@ -236,13 +236,13 @@ GameObject:
   - component: {fileID: 95204184301125184}
   - component: {fileID: 5319285702519077259}
   - component: {fileID: 7155713010509971503}
-  - component: {fileID: 4495107402207171756}
   - component: {fileID: 4138603339110165255}
   - component: {fileID: 8353099538964852078}
   - component: {fileID: 801691903910124571}
+  - component: {fileID: 5868076927138489371}
   m_Layer: 0
   m_Name: SpiderOrange
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,22 +357,6 @@ MonoBehaviour:
   - m_Rig: {fileID: 2046440493813032552}
     m_Active: 1
   m_Effectors: []
---- !u!114 &4495107402207171756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537008473948126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533f70f94f5297849a643ab1a77649dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  AllertEffect: {fileID: 921933054598964593}
 --- !u!114 &4138603339110165255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +383,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -432,6 +416,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5, y: 2, z: 3.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5868076927138489371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537008473948126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4967ae7ec14350343b3a0ac37a1fd9bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!1 &1545403800867726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1072,7 @@ MonoBehaviour:
   diagonalLeg1: {fileID: 5981337008233745755}
   diagonalLeg2: {fileID: 7252880665393158745}
   oppositeLeg: {fileID: 7688832942680349303}
+  distance: 0
 --- !u!1 &4344707985973705008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1127,7 @@ MonoBehaviour:
   diagonalLeg1: {fileID: 7595551046387624126}
   diagonalLeg2: {fileID: 7688832942680349303}
   oppositeLeg: {fileID: 7252880665393158745}
+  distance: 0
 --- !u!1 &4980415850895845668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1285,7 @@ MonoBehaviour:
   diagonalLeg1: {fileID: 7252880665393158745}
   diagonalLeg2: {fileID: 5981337008233745755}
   oppositeLeg: {fileID: 7595551046387624126}
+  distance: 0
 --- !u!1 &5602887761198354323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1412,7 @@ MonoBehaviour:
   diagonalLeg1: {fileID: 7688832942680349303}
   diagonalLeg2: {fileID: 7595551046387624126}
   oppositeLeg: {fileID: 5981337008233745755}
+  distance: 0
 --- !u!1 &6995907039781926247
 GameObject:
   m_ObjectHideFlags: 0

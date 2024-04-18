@@ -11,7 +11,6 @@ public class EnemyMelee : Enemy
 
 
     //Attack
-    private float attackCooldown;
     private float jumpCooldown;
     private float lerp;
     private Vector3 oldPos;
@@ -41,7 +40,7 @@ public class EnemyMelee : Enemy
     void Update()
     {
 
-        if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
+        if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance) || lerp > 0)
         {
             Attack();
         }else
@@ -63,26 +62,29 @@ public class EnemyMelee : Enemy
             if(lerp <= 0)
             {
                 Instantiate(JumpHit, jumpDestination, jumpHitRotation);
+                GetComponent<Collider>().enabled = true;
+                agent.enabled = true;
             }
         }
-        else if(distance > 10 && distance < 15)
+        else if(jumpCooldown < Time.time && distance < 15)
         {
             lerp = 1; 
             oldPos = transform.position;
 
             RaycastHit hit;
 
-            Physics.Raycast(Player.transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer);
+            Physics.Raycast(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * 10, Vector3.down, out hit, Mathf.Infinity, groundLayer);
 
             jumpHitRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
 
             jumpDestination = hit.point + Vector3.up; //wegen eigener Größe des Charakters
             newPos = jumpDestination;
             agent.enabled = false;
+            GetComponent<Collider>().enabled = false;
+            jumpCooldown = Time.time + 5;
         }
         else
         {
-            agent.enabled = true;
             newPos = Player.transform.position;
             agent.destination = newPos;
 

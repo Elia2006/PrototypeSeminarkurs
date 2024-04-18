@@ -7,11 +7,13 @@ public class SpawnPointManager : MonoBehaviour
     public GameObject[] SpawnPoints;
     public GameObject Player;
     private CharacterController playerCc;
+    private MouseLook playerLook;
 
     // Start is called before the first frame update
     void Start()
     {
         playerCc = Player.GetComponent<CharacterController>();
+        playerLook = GameObject.Find("PlayerCamera").GetComponent<MouseLook>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,9 @@ public class SpawnPointManager : MonoBehaviour
 
                 playerCc.enabled = false;
                 Player.transform.position = SpawnPoints[teleporterindex].transform.position + new Vector3(0, 1.2f, 0);
+                Player.transform.rotation = SpawnPoints[i].transform.rotation;
+                playerLook.xRotation = 0;
+                GameObject.Find("PlayerCamera").transform.eulerAngles = new Vector3(0, 0, 0);
                 playerCc.enabled = true;
                 SpawnPoints[i].transform.GetChild(0).GetComponent<SpawnPoint>().teleport = false;
             }

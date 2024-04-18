@@ -9,6 +9,7 @@ public class Map : MonoBehaviour
     public GameObject SpawnPointManager;
     public GameObject Canvas;
     public bool canMapOpen = false;
+    public bool toggle = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,18 +19,22 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            toggle = !toggle;
+        }
         
-            if (Input.GetKey(KeyCode.E) && canMapOpen)
-            {
-                Canvas.SetActive(true);
-                Cursor.lockState = CursorLockMode.Confined;
-                Player.GetComponent<PlayerMovement>().locked = true;
-            }
-            else
-            {
-                Canvas.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Player.GetComponent<PlayerMovement>().locked = false;
+        if (toggle && canMapOpen)
+        {
+            Canvas.SetActive(true);
+            Cursor.lockState = CursorLockMode.Confined;
+            Player.GetComponent<PlayerMovement>().locked = true;
+        }
+        else
+        {
+            Canvas.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Player.GetComponent<PlayerMovement>().locked = false;
         }
         
     }
