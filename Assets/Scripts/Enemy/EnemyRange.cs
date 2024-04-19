@@ -9,7 +9,6 @@ public class EnemyRange : Enemy
     //Navigation
     private int stopDistance = 10;
     
-
     //Attack
     private int bulletsLeft = 20;
     private float ReloadTime;
@@ -45,9 +44,9 @@ public class EnemyRange : Enemy
 
     private void Attack()
     {
-        transform.LookAt(Player.transform.position);
-        transform.localRotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
-        Debug.Log("");
+        var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * 50 - transform.position, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
         if(attackCooldown < Time.time)
         {

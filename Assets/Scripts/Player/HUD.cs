@@ -36,7 +36,7 @@ public class HUD : MonoBehaviour
 
         if(playerHealth <= 0)
         {
-            Die();
+            //Die();
         }
     }
 

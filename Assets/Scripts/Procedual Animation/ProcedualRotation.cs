@@ -99,8 +99,6 @@ public class ProcedualRotation : MonoBehaviour
 
         Quaternion quatAverage = Quaternion.FromToRotation(transform.up, average) * transform.rotation;
 
-        Debug.DrawLine(transform.position, transform.position + average);
-
         transform.rotation = Quaternion.Euler(lerpAverage.eulerAngles.x, transform.rotation.eulerAngles.y, lerpAverage.eulerAngles.z);
 
         lerpAverage = Quaternion.Lerp(transform.rotation, quatAverage, 0.03f);
