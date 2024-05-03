@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,9 +14,12 @@ public class HUD : MonoBehaviour
     public float maxHealth;
     private float damageAlphaColor = 0;
     [SerializeField] Image healthBar;
+    [SerializeField] GameObject TaskText;
+    [SerializeField] GameObject Canvas;
     void Start()
     {
         maxHealth = playerHealth;
+        Tasks();
     }
 
     void Update()
@@ -38,6 +42,11 @@ public class HUD : MonoBehaviour
         {
             //Die();
         }
+    }
+
+    private void Tasks()
+    {
+        
     }
 
     public void Die()
