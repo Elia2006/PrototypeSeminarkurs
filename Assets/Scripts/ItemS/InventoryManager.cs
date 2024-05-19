@@ -11,15 +11,40 @@ public class InventoryManager : MonoBehaviour
 
     public Transform ItemContent;
     public GameObject InventoryItem;
+    public GameObject Inventory;
+    public GameObject Player;
 
     public Toggle EnableRemove;
 
     public InventoryItemController[] InventoryItems;
+
+    public bool invactive = false;
     private void Awake()
     {
         Instance = this;
     }
-    
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && invactive == false)
+        {
+            Player.GetComponent<PlayerMovement>().locked = true;
+            Debug.Log(Player.GetComponent<PlayerMovement>().locked + "invmanager");
+            Inventory.SetActive(true);
+            ListItems();
+            invactive = true;
+        }  
+
+        if (Input.GetKeyDown(KeyCode.Escape) && invactive == true)
+        {
+            Player.GetComponent<PlayerMovement>().locked = false;
+            Debug.Log(Player.GetComponent<PlayerMovement>().locked + "invmanager");
+            Inventory.SetActive(false);
+            invactive = false;
+        }
+    }
+
+
     public void Add (ItemScriptableObject item)
     {
         Items.Add (item);

@@ -70,4 +70,14 @@ public class PlayerMovement : MonoBehaviour
         direction = transform.position - lastPos;
         lastPos = transform.position;
     }
+
+    public void LockTheGame()
+    {
+        if (GameObject.Find("InventoryManager").GetComponent<InventoryManager>().invactive == false && GameObject.Find("Map").GetComponent<Map>().mapOpen==false)
+        {
+            locked = false;
+            Debug.Log(locked + "playermovement");
+
+        }
+    }
 }
