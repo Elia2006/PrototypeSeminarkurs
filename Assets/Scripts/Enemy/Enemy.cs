@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,19 +21,30 @@ public class Enemy : MonoBehaviour
 
 
 
-    private int health = 50;
+    protected int health = 50;
     protected Vector3 newPos;
     protected int prevState = 0;
 
+    protected Vector3 knockback;
+    protected Vector3 knockbackOldPos;
+    protected Vector3 knockbackNewPos;
+    protected float knockbackLerp = 1;
+
     [SerializeField] ParticleSystem AllertEffect;
+
+    void Update()
+    {
+
+    }
 
     public void TakeDamage(int amount)
     {
         health -= amount;
+        Knockback();
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -73,6 +85,17 @@ public class Enemy : MonoBehaviour
         {
             return false;
         }
+    }
+
+    protected void Knockback()
+    {
+        //knockback = Quaternion.LookRotation(transform.position - Player.transform.position, Vector3.up).eulerAngles.normalized * 0.2f;
+        knockback = Player.transform.forward * 3;
+        knockbackOldPos = transform.position;
+        knockbackLerp = 0;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(transform.position + knockback, out hit, 10, NavMesh.AllAreas);
+        knockbackNewPos = hit.position;
     }
 
     private void Allert(float allertRadius, Transform PlayerTrans)

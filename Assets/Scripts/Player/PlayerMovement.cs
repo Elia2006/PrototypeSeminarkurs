@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     public bool locked = false;
 
-    public float speed = 5;
+    public float speed;
     public float jumpHeight = 3;
 
     private float gravity = -9.81f * 3;

@@ -18,6 +18,7 @@ public class WeoponSwitch : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
+            Weapon1.GetComponent<Animator>().Stop();
             Weapon1.SetActive(true);
             Weapon2.SetActive(false);
         } else if(Input.GetKeyDown(KeyCode.Alpha2))

@@ -24,9 +24,10 @@ public class EnemyMelee : Enemy
     {
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
-        speed = 10;
-        speedMultiplier = 0.5f;
+        speed = 20;
+        speedMultiplier = 0.4f;
         patrollingRange = 20;
+        health = 100;
 
         sightDistance = 50;
         allertDistance = 60;
@@ -39,14 +40,38 @@ public class EnemyMelee : Enemy
 
     void Update()
     {
-
-        if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance) || lerp > 0)
+        
+        if(knockbackLerp >= 1)
         {
-            Attack();
+            agent.enabled = true;
+            if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance) || lerp > 0)
+            {
+                Attack();
+            }else
+            {     
+                Patroll();
+            }
         }else
-        {     
-            Patroll();
+        {
+            agent.enabled = false;/*
+            knockback = Vector3.Slerp(knockback, new Vector3(0, 0, 0), Time.deltaTime * 10);
+            if(knockback.x + knockback.y + knockback.z < 0.1f)
+            {
+                knockback = new Vector3(0, 0, 0);
+            }
+            transform.position += knockback;*/
+            
+            
+            transform.position = Vector3.Slerp(knockbackOldPos, knockbackNewPos + Vector3.up, knockbackLerp);
+            knockbackLerp += Time.deltaTime * 5;
         }
+
+
+            
+        
+        
+
+
         agent.speed = speed * speedMultiplier;
     }
 
@@ -62,8 +87,10 @@ public class EnemyMelee : Enemy
             if(lerp <= 0)
             {
                 Instantiate(JumpHit, jumpDestination, jumpHitRotation);
-                GetComponent<Collider>().enabled = true;
                 agent.enabled = true;
+            }else
+            {
+                agent.enabled = false;
             }
         }
         else if(jumpCooldown < Time.time && distance < 15)
@@ -79,8 +106,6 @@ public class EnemyMelee : Enemy
 
             jumpDestination = hit.point + Vector3.up; //wegen eigener Größe des Charakters
             newPos = jumpDestination;
-            agent.enabled = false;
-            GetComponent<Collider>().enabled = false;
             jumpCooldown = Time.time + 5;
         }
         else
