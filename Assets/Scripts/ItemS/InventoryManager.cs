@@ -26,7 +26,7 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && invactive == false)
+        if (Input.GetKeyDown(KeyCode.Tab) && invactive == false)
         {
             Player.GetComponent<PlayerMovement>().locked = true;
             Debug.Log(Player.GetComponent<PlayerMovement>().locked + "invmanager");
@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
             invactive = true;
         }  
 
-        if (Input.GetKeyDown(KeyCode.Escape) && invactive == true)
+        else if (Input.GetKeyDown(KeyCode.Tab) && invactive == true)
         {
             Player.GetComponent<PlayerMovement>().locked = false;
             Debug.Log(Player.GetComponent<PlayerMovement>().locked + "invmanager");

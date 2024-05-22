@@ -52,7 +52,9 @@ public class CrowbarScript : MonoBehaviour
         {
             alreadyDamaged.Add(other);
             Enemy enemy = other.GetComponent<Enemy>();
+            Debug.Log(enemy);
             enemy.TakeDamage(20);
+            enemy.Knockback();
             hitTextureCooldown = Time.time + 0.1f;
         }
 

@@ -176,11 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad73f5c9eaa28e45b12f04790cff935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPos: {x: 0, y: 0, z: 0}
-  AllertEffect: {fileID: 5501354641214455707}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  AllertEffect: {fileID: 5501354641214455707}
   Projectile: {fileID: 2383939769391311264, guid: 8612b9a968cbf214c9edc16fce2a2d42, type: 3}
 --- !u!1 &4731492584631217141
 GameObject:
@@ -5164,7 +5163,6 @@ GameObject:
   - component: {fileID: 256719674808301120}
   - component: {fileID: 7666574736232827335}
   - component: {fileID: 8529478192146537668}
-  - component: {fileID: 4709485797829933052}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Enemy
@@ -5237,29 +5235,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4709485797829933052
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923637783995568046}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8384854958416941929
 GameObject:
   m_ObjectHideFlags: 0

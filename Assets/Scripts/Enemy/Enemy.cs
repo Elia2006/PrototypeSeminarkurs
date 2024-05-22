@@ -40,11 +40,10 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
-        Knockback();
 
         if (health <= 0)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -87,7 +86,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void Knockback()
+    public void Knockback()
     {
         //knockback = Quaternion.LookRotation(transform.position - Player.transform.position, Vector3.up).eulerAngles.normalized * 0.2f;
         knockback = Player.transform.forward * 3;

@@ -16,7 +16,23 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = Player.position;
+        if(agent.enabled == true)
+        {
+            agent.destination = Player.position;
+        }
+        
 
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Debug.Log("hello");
+            if(agent.enabled == true)
+            {
+                agent.enabled = false;
+            }else
+            {
+                agent.enabled = true;
+            }
+            
+        }
     }
 }

@@ -31,20 +31,37 @@ public class EnemyRange : Enemy
 
     void Update()
     {
-        agent.enabled = true;
-        if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
+        if(knockbackLerp >= 1)
         {
-            Attack();
+            agent.enabled = true;
+            if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
+            {
+                Attack();
+            }else
+            {
+                Patroll();
+            }
         }else
         {
-            Patroll();
+            agent.enabled = false;/*
+            knockback = Vector3.Slerp(knockback, new Vector3(0, 0, 0), Time.deltaTime * 10);
+            if(knockback.x + knockback.y + knockback.z < 0.1f)
+            {
+                knockback = new Vector3(0, 0, 0);
+            }
+            transform.position += knockback;*/
+            
+            
+            transform.position = Vector3.Slerp(knockbackOldPos, knockbackNewPos + Vector3.up, knockbackLerp);
+            knockbackLerp += Time.deltaTime * 5;
         }
+
         agent.speed = speed * speedMultiplier;
     }
 
     private void Attack()
     {
-        var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * 50 - transform.position, Vector3.up);
+        var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) - transform.position, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
