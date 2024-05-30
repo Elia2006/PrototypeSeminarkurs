@@ -8,14 +8,15 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     public bool locked = false;
 
-    public float speed;
+    private float speed;
+    private Vector3 move;
     public float jumpHeight = 3;
 
     private float gravity = -9.81f * 3;
     private Vector3 velocity;
 
     private float groundDistance;
-    private bool onGround;
+    public bool onGround;
     public Transform groundCheck;
     [SerializeField] LayerMask groundMask;
 
@@ -44,9 +45,26 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * y;
+        //Sprint
+        if(y > 0 && Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 8;
+        }else
+        {
+            speed = 3;
+        }
+
+        if(onGround)
+        {
+            move = transform.right * x + transform.forward * y;
+        }else
+        {
+            //aircontroll
+            move = Vector3.Lerp(move, transform.right * x + transform.forward * y, 0.05f);
+        }
         if(!locked) {
-            controller.Move(move * speed * Time.deltaTime);
+
+            controller.Move(move.normalized * speed * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround))
             {

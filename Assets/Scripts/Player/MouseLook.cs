@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour
@@ -9,6 +11,11 @@ public class MouseLook : MonoBehaviour
 
     public Transform playerBody;
     public GameObject Player;
+    
+    //camwigwag
+    private float wigwag; 
+    private Vector3 lastFramePos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +38,21 @@ public class MouseLook : MonoBehaviour
             //Rotates Body around X and Cam around Y
             transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
             playerBody.Rotate(Vector3.up * mouseX);
-        }
 
+            //cam wigwag
+            Vector3 diff = transform.position - lastFramePos;
+
+            float speed = Mathf.Sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z);
+
+            if(Player.GetComponent<PlayerMovement>().onGround)
+            {
+                wigwag += Mathf.Sqrt(speed);
+            }
+
+            transform.localPosition = new Vector3(0, 0.5f + Mathf.Sin(wigwag * 0.5f) * 0.1f, 0);
+
+            lastFramePos = transform.position;
+
+        }
     }
 }

@@ -23,6 +23,8 @@ public class EnemyRange : Enemy
         patrollingRange = 20;
         sightDistance = 30;
         allertDistance = 60;
+
+        agent.updateRotation = false;
     }
     private void Awake()
     {
@@ -61,7 +63,7 @@ public class EnemyRange : Enemy
 
     private void Attack()
     {
-        var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) - transform.position, Vector3.up);
+        var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) * 3 - transform.position, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
@@ -87,6 +89,11 @@ public class EnemyRange : Enemy
         {
             newPos = Player.transform.position;
             speedMultiplier = 1;
+        }else if(distance < stopDistance - 2)
+        {
+            NavMeshHit hit;
+            NavMesh.SamplePosition(transform.position - transform.forward, out hit, 5, NavMesh.AllAreas);
+            newPos = hit.position;
         }else
         {
             newPos = transform.position;
