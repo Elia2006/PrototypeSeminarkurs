@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class ProcedualRotation : MonoBehaviour
 {
-    public SpiderAnimation frontRight;
-    public SpiderAnimation frontLeft;
-    public SpiderAnimation backRight;
-    public SpiderAnimation backLeft;
-
-    private Vector3 normalFrontRight;
-    private Vector3 normalFrontLeft;
-    private Vector3 normalBackRight;
-    private Vector3 normalBackLeft;
-
-    private float distanceFrontRight;
-    private float distanceFrontLeft;
-    private float distanceBackRight;
-    private float distanceBackLeft;
+    [SerializeField] SpiderAnimation[] Legs;
+    private Vector3 average;
 
 
     private Quaternion lerpAverage;
@@ -32,70 +20,19 @@ public class ProcedualRotation : MonoBehaviour
     void Update()
     {
         Rotate();
-        MoveLegs();
-    }
-
-    private void MoveLegs()
-    {
-        if(frontRight.distance + frontLeft.distance > 5)
-        {
-            if(frontRight.distance > frontLeft.distance)
-            {
-                frontRight.SetNewPos();
-            }else
-            {
-                frontLeft.SetNewPos();
-            }
-        }
-        if(backRight.distance + backLeft.distance > 5)
-        {
-            if(backRight.distance > backLeft.distance)
-            {
-                backRight.SetNewPos();
-            }else
-            {
-                backLeft.SetNewPos();
-            }
-        }
-        if(frontLeft.distance + backLeft.distance > 5)
-        {
-            if(frontLeft.distance > backLeft.distance)
-            {
-                frontLeft.SetNewPos();
-            }else
-            {
-                backLeft.SetNewPos();
-            }
-        }
-        if(backRight.distance + frontRight.distance > 5)
-        {
-            if(backRight.distance > frontRight.distance)
-            {
-                backRight.SetNewPos();
-            }else
-            {
-                frontRight.SetNewPos();
-            }
-        }
     }
 
     private void Rotate()
     {
         RaycastHit hit;
 
-        Physics.Raycast(frontRight.newPos + Vector3.up, Vector3.down, out hit, LayerMask.NameToLayer("Ground"), 10);
-        normalFrontRight = hit.normal;
-
-        Physics.Raycast(frontLeft.newPos + Vector3.up, Vector3.down, out hit, LayerMask.NameToLayer("Ground"), 10);
-        normalFrontLeft = hit.normal;
-
-        Physics.Raycast(backRight.newPos + Vector3.up, Vector3.down, out hit, LayerMask.NameToLayer("Ground"));
-        normalBackRight = hit.normal;
-
-        Physics.Raycast(backLeft.newPos + Vector3.up, Vector3.down, out hit, LayerMask.NameToLayer("Ground"));
-        normalBackLeft = hit.normal;
-
-        Vector3 average = (normalFrontRight + normalFrontLeft + normalBackRight + normalBackLeft) / 4;
+        average = new Vector3(0, 0, 0);
+        foreach(SpiderAnimation leg in Legs)
+        {
+            Physics.Raycast(leg.newPos + transform.up, -transform.up, out hit, LayerMask.NameToLayer("Ground"));
+            average += hit.normal;
+        }
+        average /= Legs.Length;
 
         Quaternion quatAverage = Quaternion.FromToRotation(transform.up, average) * transform.rotation;
 

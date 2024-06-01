@@ -22,9 +22,8 @@ public class test : MonoBehaviour
         }
         
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftControl))
         {
-            Debug.Log("hello");
             if(agent.enabled == true)
             {
                 agent.enabled = false;

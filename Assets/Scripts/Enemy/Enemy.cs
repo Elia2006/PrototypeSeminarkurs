@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     protected float knockbackLerp = 1;
 
     [SerializeField] ParticleSystem AllertEffect;
+    [SerializeField] Transform PatrollPoint;
 
     void Update()
     {
@@ -95,6 +96,11 @@ public class Enemy : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(transform.position + knockback, out hit, 10, NavMesh.AllAreas);
         knockbackNewPos = hit.position;
+    }
+
+    protected void Patroll()
+    {
+        
     }
 
     private void Allert(float allertRadius, Transform PlayerTrans)

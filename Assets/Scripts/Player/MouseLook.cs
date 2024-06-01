@@ -49,7 +49,7 @@ public class MouseLook : MonoBehaviour
                 wigwag += Mathf.Sqrt(speed);
             }
 
-            transform.localPosition = new Vector3(0, 0.5f + Mathf.Sin(wigwag * 0.5f) * 0.1f, 0);
+            transform.localPosition = new Vector3(0, 0.5f + Mathf.Sin(wigwag * 0.5f) * 0.07f, 0);
 
             lastFramePos = transform.position;
 
