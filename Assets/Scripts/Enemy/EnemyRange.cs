@@ -23,8 +23,6 @@ public class EnemyRange : Enemy
         patrollingRange = 20;
         sightDistance = 30;
         allertDistance = 60;
-
-        agent.updateRotation = false;
     }
     private void Awake()
     {
@@ -36,26 +34,18 @@ public class EnemyRange : Enemy
         if(knockbackLerp >= 1)
         {
             agent.enabled = true;
-            if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance))
+            if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance))
             {
                 Attack();
+                agent.updateRotation = false;
             }else
             {
                 Patroll();
+                agent.updateRotation = true;
             }
         }else
         {
-            agent.enabled = false;/*
-            knockback = Vector3.Slerp(knockback, new Vector3(0, 0, 0), Time.deltaTime * 10);
-            if(knockback.x + knockback.y + knockback.z < 0.1f)
-            {
-                knockback = new Vector3(0, 0, 0);
-            }
-            transform.position += knockback;*/
-            
-            
-            transform.position = Vector3.Slerp(knockbackOldPos, knockbackNewPos + Vector3.up, knockbackLerp);
-            knockbackLerp += Time.deltaTime * 5;
+            KnockbackUpdate(1f);
         }
 
         agent.speed = speed * speedMultiplier;

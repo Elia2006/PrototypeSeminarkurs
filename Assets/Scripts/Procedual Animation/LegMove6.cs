@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class LegMove6 : MonoBehaviour
@@ -9,6 +10,7 @@ public class LegMove6 : MonoBehaviour
     [SerializeField] Transform[] LegDefaultPos;
     private Vector3 lastPos;
     private Transform currentLeg;
+    [SerializeField] LayerMask groundLayer;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class LegMove6 : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 direction = (transform.position - lastPos).normalized * 0.5f;
-            Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up, -transform.up, out hit);
+            Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up, -transform.up, out hit, Mathf.Infinity, groundLayer);
 
             if(distance > Vector3.Distance(hit.point, LegDefaultPos[moveCicle].transform.position))
             {

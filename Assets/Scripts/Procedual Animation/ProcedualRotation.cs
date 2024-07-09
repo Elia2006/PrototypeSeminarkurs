@@ -6,6 +6,7 @@ public class ProcedualRotation : MonoBehaviour
 {
     [SerializeField] SpiderAnimation[] Legs;
     private Vector3 average;
+    [SerializeField] LayerMask groundLayer;
 
 
     private Quaternion lerpAverage;
@@ -29,7 +30,7 @@ public class ProcedualRotation : MonoBehaviour
         average = new Vector3(0, 0, 0);
         foreach(SpiderAnimation leg in Legs)
         {
-            Physics.Raycast(leg.newPos + transform.up, -transform.up, out hit, LayerMask.NameToLayer("Ground"));
+            Physics.Raycast(leg.newPos + transform.up, -transform.up, out hit, Mathf.Infinity, groundLayer);
             average += hit.normal;
         }
         average /= Legs.Length;
