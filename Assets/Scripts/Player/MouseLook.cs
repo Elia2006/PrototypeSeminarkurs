@@ -28,6 +28,8 @@ public class MouseLook : MonoBehaviour
 
         if (!Player.GetComponent<PlayerMovement>().locked)
         {
+            Cursor.lockState= CursorLockMode.Locked;
+            Debug.Log("Cursorlock");
             //gets Mouse Input
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -53,6 +55,11 @@ public class MouseLook : MonoBehaviour
 
             lastFramePos = transform.position;
 
+        }
+        else if(Player.GetComponent<PlayerMovement>().locked)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Debug.Log("open");
         }
     }
 }

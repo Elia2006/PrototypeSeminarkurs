@@ -13,6 +13,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryItem;
     public GameObject Inventory;
     public GameObject Player;
+    public GameObject Map;
 
     public Toggle EnableRemove;
 
@@ -28,12 +29,17 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab) && invactive == false)
         {
+            if (Map.GetComponent<Map>().mapOpen)
+            {
+                Map.GetComponent<Map>().toggle = !Map.GetComponent<Map>().toggle;
+            }
+
             Player.GetComponent<PlayerMovement>().locked = true;
             Debug.Log(Player.GetComponent<PlayerMovement>().locked + "invmanager");
             Inventory.SetActive(true);
             ListItems();
             invactive = true;
-        }  
+        }
 
         else if (Input.GetKeyDown(KeyCode.Tab) && invactive == true)
         {

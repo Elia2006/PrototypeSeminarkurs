@@ -8,7 +8,12 @@ public class Map : MonoBehaviour
 {
     public GameObject Player;
     public GameObject SpawnPointManager;
-    public GameObject Canvas;
+    public GameObject StandardCanvas;
+    public GameObject MapCanvas;
+    public GameObject arrow;
+    public GameObject MapCamera;
+    public GameObject PlayerCamera;
+    public GameObject InvManager;
     public bool canMapOpen = false;
     public bool toggle = false;
     public bool mapOpen = false;
@@ -21,7 +26,7 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab) && canMapOpen)
+        if(Input.GetKeyDown(KeyCode.M) && canMapOpen)
         {
             toggle = !toggle;
         }
@@ -32,14 +37,19 @@ public class Map : MonoBehaviour
         }
         else 
         {
-            Canvas.SetActive(false);
+            MapCanvas.SetActive(false);
+            StandardCanvas.SetActive(true);
+            MapCamera.SetActive(false);
+            PlayerCamera.SetActive(true);
+            arrow.SetActive(false); 
             mapOpen = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            
             
             if (canMapOpen && !toggle) 
             {
                 Player.GetComponent<PlayerMovement>().locked = false;
                 Debug.Log(Player.GetComponent<PlayerMovement>().locked + "map");
+                Debug.Log(canMapOpen +" "+ toggle);
             }
         }
 
@@ -47,12 +57,24 @@ public class Map : MonoBehaviour
 
     public void ActivateCanvas()
     {
-        Canvas.SetActive(true);
+        if (InvManager.GetComponent<InventoryManager>().invactive) 
+        {
+            InvManager.GetComponent<InventoryManager>().Inventory.SetActive(false);
+            InvManager.GetComponent<InventoryManager>().invactive = false;
+            Debug.Log("invactive false map");
+        }
+        StandardCanvas.SetActive(false);
+        MapCanvas.SetActive(true);
+        
+        MapCamera.SetActive(true);
+        arrow.SetActive(true);
         mapOpen=true;
         Cursor.lockState = CursorLockMode.Confined;
+        Debug.Log("openmap");
         Player.GetComponent<PlayerMovement>().locked = true;
         Debug.Log(Player.GetComponent<PlayerMovement>().locked + "map");
     }
+    
 
 
 }
