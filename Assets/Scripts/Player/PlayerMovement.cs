@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float speed;
     private Vector3 move;
-    public float jumpHeight = 3;
+    public float jumpHeight = 2;
 
     private float gravity = -9.81f * 3;
     private Vector3 velocity;
@@ -23,10 +23,14 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 direction;
     private Vector3 lastPos;
 
+    //Knockback
+    private Vector3 KnockbackForce;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Application.targetFrameRate = 120;
+        lastPos = transform.position;
     }
 
     void Update()
@@ -79,7 +83,10 @@ public class PlayerMovement : MonoBehaviour
 
             calculateDirection();
         }
-        
+
+        //Knockback
+        controller.Move(KnockbackForce);
+        KnockbackForce = Vector3.Lerp(KnockbackForce, new Vector3(), 0.05f);
 
     }
 
@@ -97,5 +104,10 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log(locked + "playermovement");
 
         }
+    }
+
+    public void Knockback(Transform enemy)
+    {
+        KnockbackForce = (transform.position - enemy.position).normalized * 0.2f;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,10 +22,15 @@ public class Enemy : MonoBehaviour
 
 
 
-    protected int health = 50;
+    
     protected Vector3 newPos;
     protected int prevState = 0;
 
+    //Damage
+    protected int health = 50;
+    protected Boolean gotHit;
+
+    //Knockback
     protected Vector3 knockback;
     protected Vector3 knockbackOldPos;
     protected Vector3 knockbackNewPos;
@@ -41,6 +47,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
+        gotHit = true;
 
         if (health <= 0)
         {
@@ -72,12 +79,9 @@ public class Enemy : MonoBehaviour
         
     }
 
-    protected bool IsPlayerInRange(Transform PlayerTrans, LayerMask groundLayer, float sightDistance, float allertRadius)
+    protected bool IsPlayerInRange(Vector3 playerPosition, LayerMask groundLayer, float sightDistance)
     {
-        RaycastHit hit;
-        
-        Physics.Linecast(transform.position, PlayerTrans.position, out hit, groundLayer);
-        if(hit.transform == null && Vector3.Distance(transform.position, PlayerTrans.position) < sightDistance)
+        if(!Physics.Linecast(transform.position, playerPosition, groundLayer) && Vector3.Distance(transform.position, playerPosition) < sightDistance)
         {
             //Allert(allertRadius, PlayerTrans);
             return true;
@@ -87,7 +91,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Knockback()
+    public void KnockbackStart()
     {
         //knockback = Quaternion.LookRotation(transform.position - Player.transform.position, Vector3.up).eulerAngles.normalized * 0.2f;
         knockback = Player.transform.forward * 3;
@@ -97,11 +101,16 @@ public class Enemy : MonoBehaviour
         NavMesh.SamplePosition(transform.position + knockback, out hit, 10, NavMesh.AllAreas);
         knockbackNewPos = hit.position;
     }
-
-    protected void Patroll()
+    
+    protected void KnockbackUpdate(float height)
     {
+        agent.enabled = false;
         
+        
+        transform.position = Vector3.Slerp(knockbackOldPos, knockbackNewPos + Vector3.up * height, knockbackLerp);
+        knockbackLerp += Time.deltaTime * 5;
     }
+
 
     private void Allert(float allertRadius, Transform PlayerTrans)
     {

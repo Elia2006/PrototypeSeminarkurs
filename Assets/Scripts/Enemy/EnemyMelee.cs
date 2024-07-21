@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,8 +17,19 @@ public class EnemyMelee : Enemy
     private Vector3 oldPos;
     private Vector3 jumpDestination;
     [SerializeField] GameObject JumpHit;
-    [SerializeField] GameObject Hit;
+
     private Quaternion jumpHitRotation;
+
+    //Attack
+    enum AttackState {Charge, Retreat, JumpStart, Jumping};
+    [SerializeField] GameObject Hit;
+    private AttackState attackState;
+    private float chargeTimer;
+
+    //Retreat
+    private int dodge = 3;
+
+    //animation
 
 
     void Start()
@@ -27,9 +39,9 @@ public class EnemyMelee : Enemy
         speed = 20;
         speedMultiplier = 0.4f;
         patrollingRange = 20;
-        health = 100;
+        health = 300;
 
-        sightDistance = 50;
+        sightDistance = 30;
         allertDistance = 60;
     }
     private void Awake()
@@ -44,7 +56,7 @@ public class EnemyMelee : Enemy
         if(knockbackLerp >= 1)
         {
             agent.enabled = true;
-            if(IsPlayerInRange(Player.transform, groundLayer, sightDistance, allertDistance) || lerp > 0)
+            if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
             {
                 Attack();
             }else
@@ -53,23 +65,8 @@ public class EnemyMelee : Enemy
             }
         }else
         {
-            agent.enabled = false;/*
-            knockback = Vector3.Slerp(knockback, new Vector3(0, 0, 0), Time.deltaTime * 10);
-            if(knockback.x + knockback.y + knockback.z < 0.1f)
-            {
-                knockback = new Vector3(0, 0, 0);
-            }
-            transform.position += knockback;*/
-            
-            
-            transform.position = Vector3.Slerp(knockbackOldPos, knockbackNewPos + Vector3.up, knockbackLerp);
-            knockbackLerp += Time.deltaTime * 5;
+            KnockbackUpdate(0.3f);
         }
-
-
-            
-        
-        
 
 
         agent.speed = speed * speedMultiplier;
@@ -78,24 +75,53 @@ public class EnemyMelee : Enemy
     public void Attack()
     {
         float distance = Vector3.Distance(transform.position, Player.transform.position);
-        
+
+        //Rotate towards Player
+        agent.updateRotation = false;
+        var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) * 3 - transform.position, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+
+
+        //get attackState
+
         if(lerp > 0)
         {
-            transform.position = Vector3.Lerp(jumpDestination, oldPos, lerp);
-            transform.position += new Vector3(0, Mathf.Sin(lerp * Mathf.PI) * 4, 0);
-            lerp -= Time.deltaTime * 1.5f;
+            attackState = AttackState.Jumping;
+            lerp -= Time.deltaTime;
             if(lerp <= 0)
             {
                 Instantiate(JumpHit, jumpDestination, jumpHitRotation);
+                attackState = AttackState.Charge;
                 agent.enabled = true;
-            }else
-            {
-                agent.enabled = false;
+                chargeTimer = Time.time + 4;
             }
+        }
+        else if(chargeTimer > Time.time)
+        {
+            attackState = AttackState.Charge;
         }
         else if(jumpCooldown < Time.time && distance < 15)
         {
-            lerp = 1; 
+            attackState = AttackState.JumpStart;
+            jumpCooldown = Time.time + 10;
+            lerp = 1;
+        }
+        else
+        {
+            attackState = AttackState.Retreat;
+        }
+        
+        
+        //execute attack
+        if(attackState == AttackState.Jumping)
+        {
+            transform.position = Vector3.Lerp(jumpDestination, oldPos, lerp);
+            transform.position += new Vector3(0, Mathf.Sin(lerp * Mathf.PI) * 4, 0);
+            
+        }
+        else if(attackState == AttackState.JumpStart)
+        {
             oldPos = transform.position;
 
             RaycastHit hit;
@@ -106,9 +132,10 @@ public class EnemyMelee : Enemy
 
             jumpDestination = hit.point + Vector3.up; //wegen eigener Größe des Charakters
             newPos = jumpDestination;
-            jumpCooldown = Time.time + 5;
+
+            agent.enabled = false;            
         }
-        else
+        else if(attackState == AttackState.Charge)
         {
             newPos = Player.transform.position;
             agent.destination = newPos;
@@ -127,6 +154,29 @@ public class EnemyMelee : Enemy
                 attackCooldown = Time.time + 1;
             }
         }
+        else if(attackState == AttackState.Retreat)
+        {
+            if(distance < 13)
+            {
+                do{
+                    agent.destination = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent);
+                }while(agent.destination == new Vector3(0, 0, 0));
+            }
+            else if(distance > 15)
+            {
+                agent.destination = Player.transform.position;
+            }
+            else
+            {
+                if(Random.Range(0, Time.deltaTime * 1000) > 1)
+                {
+                    dodge *= -1;
+                }
+
+                agent.destination = transform.position + transform.right * dodge;
+                Debug.Log(dodge);
+            }
+        }
         
 
 
@@ -134,6 +184,8 @@ public class EnemyMelee : Enemy
     }
     private void Patroll()
     {
+        agent.updateRotation = true;
+
         speedMultiplier = 0.5f;
         if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
         {
