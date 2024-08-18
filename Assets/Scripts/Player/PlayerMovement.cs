@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        
         onGround = Physics.CheckSphere(groundCheck.position, 0.5f, groundMask);
 
         RaycastHit hit;
