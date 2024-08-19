@@ -25,15 +25,14 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!Player.GetComponent<PlayerMovement>().locked)
+        if (!PauseMenu.isPaused)
         {
-            Cursor.lockState= CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked;
             Debug.Log("Cursorlock");
             //gets Mouse Input
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-            
+
             //prevents Overrotating
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90, 90);
@@ -46,7 +45,7 @@ public class MouseLook : MonoBehaviour
 
             float speed = Mathf.Sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z);
 
-            if(Player.GetComponent<PlayerMovement>().onGround)
+            if (Player.GetComponent<PlayerMovement>().onGround)
             {
                 wigwag += Mathf.Sqrt(speed);
             }
@@ -54,9 +53,8 @@ public class MouseLook : MonoBehaviour
             transform.localPosition = new Vector3(0, 0.5f + Mathf.Sin(wigwag * 0.5f) * 0.07f, 0);
 
             lastFramePos = transform.position;
-
         }
-        else if(Player.GetComponent<PlayerMovement>().locked)
+        else if(PauseMenu.isPaused)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Debug.Log("open");

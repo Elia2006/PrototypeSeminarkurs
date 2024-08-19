@@ -26,32 +26,35 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M) && canMapOpen)
+        if (!PauseMenu.isPaused)
         {
-            toggle = !toggle;
-        }
-
-        if (toggle && canMapOpen)
-        {
-            ActivateCanvas();
-        }
-        else 
-        {
-            MapCanvas.SetActive(false);
-            StandardCanvas.SetActive(true);
-            MapCamera.SetActive(false);
-            PlayerCamera.SetActive(true);
-            arrow.SetActive(false); 
-            mapOpen = false;
-            
-            
-            if (canMapOpen && !toggle) 
+            if (Input.GetKeyDown(KeyCode.M) && canMapOpen)
             {
-                Player.GetComponent<PlayerMovement>().locked = false;
-                Debug.Log(Player.GetComponent<PlayerMovement>().locked + "map");
-                Debug.Log(canMapOpen +" "+ toggle);
+                toggle = !toggle;
+            }
+
+            if (toggle && canMapOpen)
+            {
+                ActivateCanvas();
+            }
+            else
+            {
+                MapCanvas.SetActive(false);
+                StandardCanvas.SetActive(true);
+                MapCamera.SetActive(false);
+                PlayerCamera.SetActive(true);
+                arrow.SetActive(false);
+                mapOpen = false;
+
+
+                if (canMapOpen && !toggle)
+                {
+                    Time.timeScale = 1f;
+                    Debug.Log(canMapOpen + " " + toggle);
+                }
             }
         }
+        
 
     }
 
@@ -71,8 +74,8 @@ public class Map : MonoBehaviour
         mapOpen=true;
         Cursor.lockState = CursorLockMode.Confined;
         Debug.Log("openmap");
-        Player.GetComponent<PlayerMovement>().locked = true;
-        Debug.Log(Player.GetComponent<PlayerMovement>().locked + "map");
+        Time.timeScale = 0f;
+        
     }
     
 

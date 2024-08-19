@@ -27,27 +27,29 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && invactive == false)
+        if (!PauseMenu.isPaused)
         {
-            if (Map.GetComponent<Map>().mapOpen)
+            if (Input.GetKeyDown(KeyCode.Tab) && invactive == false)
             {
-                Map.GetComponent<Map>().toggle = !Map.GetComponent<Map>().toggle;
+                if (Map.GetComponent<Map>().mapOpen)
+                {
+                    Map.GetComponent<Map>().toggle = !Map.GetComponent<Map>().toggle;
+                }
+
+                Time.timeScale = 0f;
+                Inventory.SetActive(true);
+                ListItems();
+                invactive = true;
             }
 
-            Player.GetComponent<PlayerMovement>().locked = true;
-            Debug.Log(Player.GetComponent<PlayerMovement>().locked + "invmanager");
-            Inventory.SetActive(true);
-            ListItems();
-            invactive = true;
+            else if (Input.GetKeyDown(KeyCode.Tab) && invactive == true)
+            {
+                Time.timeScale = 1f;
+                Inventory.SetActive(false);
+                invactive = false;
+            }
         }
-
-        else if (Input.GetKeyDown(KeyCode.Tab) && invactive == true)
-        {
-            Player.GetComponent<PlayerMovement>().locked = false;
-            Debug.Log(Player.GetComponent<PlayerMovement>().locked + "invmanager");
-            Inventory.SetActive(false);
-            invactive = false;
-        }
+        
     }
 
 

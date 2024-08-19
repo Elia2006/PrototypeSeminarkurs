@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!Player.GetComponent<PlayerMovement>().locked)
+        if(!PauseMenu.isPaused)
         {
             if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
             {
@@ -43,6 +43,8 @@ public class Gun : MonoBehaviour
                 HitTexture.SetActive(false);
             }
         }
+            
+        
 
         
     }
