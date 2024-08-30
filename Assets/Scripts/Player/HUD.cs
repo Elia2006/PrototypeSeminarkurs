@@ -18,7 +18,9 @@ public class HUD : MonoBehaviour
     public float maxEnergy;
     private float damageAlphaColor = 0;
     public Vector3 position;
+    public Quaternion rotation;
     public GameObject Player;
+
     private CharacterController playerCc;
     [SerializeField] Image healthBar;
     [SerializeField] Image energyBar;
@@ -83,10 +85,17 @@ public class HUD : MonoBehaviour
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
+
+        rotation.x = data.rotation[0];
+        rotation.y = data.rotation[1];
+        rotation.z = data.rotation[2];
+        rotation.w = data.rotation[3];
+        
         Debug.Log(position + "gespeicherter vector");
 
         playerCc.enabled = false;
         transform.position = position;
+        transform.rotation = rotation;
         Debug.Log(transform.position + "aktuelle position");
         playerCc.enabled = true;
 

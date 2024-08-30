@@ -1537,6 +1537,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128240154}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &129551320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3847429786605148230, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+  m_PrefabInstance: {fileID: 599638862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &134869004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,7 +2917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &295961715
 Transform:
   m_ObjectHideFlags: 0
@@ -4797,6 +4802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -39.581
       objectReference: {fileID: 0}
+    - target: {fileID: 2442672608536566664, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4431405115785750069, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
       propertyPath: Weapon1
       value: 
@@ -4805,6 +4814,10 @@ PrefabInstance:
       propertyPath: Weapon2
       value: 
       objectReference: {fileID: 659641658}
+    - target: {fileID: 4431405115785750069, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: Weapon3
+      value: 
+      objectReference: {fileID: 129551320}
     - target: {fileID: 4431405115785750069, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
       propertyPath: weapon1
       value: 
@@ -4852,6 +4865,14 @@ PrefabInstance:
     - target: {fileID: 5383505836862736951, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913230397405193090, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807464398166099475, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8150751746688642261, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
       propertyPath: Player
@@ -7768,7 +7789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &982966843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10160,7 +10181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1250343047
 MonoBehaviour:
   m_ObjectHideFlags: 0
