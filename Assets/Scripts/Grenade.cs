@@ -36,13 +36,14 @@ public class Grenade : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Gegner getroffen");
             Explode();
-            other.GetComponent<Enemy>().TakeDamage(grenadeDamage);
-            
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(grenadeDamage);
+
         }
     }
 }

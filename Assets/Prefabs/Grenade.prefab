@@ -4935,7 +4935,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -14757,6 +14757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2ccf4080405b14a9bbe9210b4bbd62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grenadeDamage: 100
   delay: 3
   explosionEffect: {fileID: 2636958562085867874}
 --- !u!1 &5178901595941438096
