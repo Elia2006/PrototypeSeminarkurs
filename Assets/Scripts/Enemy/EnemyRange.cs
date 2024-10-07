@@ -31,7 +31,7 @@ public class EnemyRange : Enemy
 
     void Update()
     {
-        if(knockbackLerp >= 1)
+        if(!KnockbackUpdate(1f))
         {
             agent.enabled = true;
             if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance))
@@ -43,9 +43,6 @@ public class EnemyRange : Enemy
                 Patroll();
                 agent.updateRotation = true;
             }
-        }else
-        {
-            KnockbackUpdate(1f);
         }
 
         agent.speed = speed * speedMultiplier;
@@ -99,7 +96,7 @@ public class EnemyRange : Enemy
         {
             waitTime = Time.time + 3;
             do{
-                newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent);
+                newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, transform.position);
             }while(newPos == new Vector3(0, 0, 0));
 
         }

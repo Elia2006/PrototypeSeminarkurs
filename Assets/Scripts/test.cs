@@ -21,7 +21,7 @@ public class test : MonoBehaviour
             agent.destination = Player.position;
         }
         
-
+/*
         if(Input.GetKeyDown(KeyCode.LeftControl))
         {
             if(agent.enabled == true)
@@ -32,6 +32,6 @@ public class test : MonoBehaviour
                 agent.enabled = true;
             }
             
-        }
+        }*/
     }
 }

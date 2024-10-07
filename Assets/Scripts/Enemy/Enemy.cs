@@ -32,9 +32,6 @@ public class Enemy : MonoBehaviour
 
     //Knockback
     protected Vector3 knockback;
-    protected Vector3 knockbackOldPos;
-    protected Vector3 knockbackNewPos;
-    protected float knockbackLerp = 1;
 
     [SerializeField] ParticleSystem AllertEffect;
     [SerializeField] Transform PatrollPoint;
@@ -55,14 +52,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction, NavMeshAgent agent)
+    protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction, NavMeshAgent agent, Vector3 originPoint)
     {
         NavMeshHit hit;
         Vector3 randomDirection;
 
         randomDirection = direction * distance;
 
-        NavMesh.SamplePosition(randomDirection + transform.position, out hit, distance, NavMesh.AllAreas);
+        NavMesh.SamplePosition(randomDirection + originPoint, out hit, distance, NavMesh.AllAreas);
 
         NavMeshPath path = new NavMeshPath();
 
@@ -93,22 +90,27 @@ public class Enemy : MonoBehaviour
 
     public void KnockbackStart()
     {
-        //knockback = Quaternion.LookRotation(transform.position - Player.transform.position, Vector3.up).eulerAngles.normalized * 0.2f;
-        knockback = Player.transform.forward * 3;
-        knockbackOldPos = transform.position;
-        knockbackLerp = 0;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(transform.position + knockback, out hit, 10, NavMesh.AllAreas);
-        knockbackNewPos = hit.position;
+
+        knockback = Player.transform.forward / 3;
     }
     
-    protected void KnockbackUpdate(float height)
+    protected bool KnockbackUpdate(float height)
     {
-        agent.enabled = false;
+        NavMeshHit hit;
+        knockback *= 0.95f;
+        if(Vector3.Distance(new Vector3(), knockback) <= 0.05f)
+        {
+            knockback = new Vector3();
+            return false;
+        }
+        else
+        {
+            agent.enabled = false;
+            NavMesh.SamplePosition(transform.position + knockback * Time.deltaTime * 100, out hit, 10, NavMesh.AllAreas);
+            transform.position = hit.position;
+            return true;
+        }
         
-        
-        transform.position = Vector3.Slerp(knockbackOldPos, knockbackNewPos + Vector3.up * height, knockbackLerp);
-        knockbackLerp += Time.deltaTime * 5;
     }
 
 

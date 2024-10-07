@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,6 +18,7 @@ public class EnemyMelee : Enemy
     private Vector3 oldPos;
     private Vector3 jumpDestination;
     [SerializeField] GameObject JumpHit;
+    [SerializeField] Vector3 patrollPoint;
 
     private Quaternion jumpHitRotation;
 
@@ -29,32 +31,37 @@ public class EnemyMelee : Enemy
     //Retreat
     private int dodge = 3;
 
-    //animation
+    //ANIMATION
+
+    //get direction
+    private Vector3 lastPos;
+    private Vector3 currentDirection;
+    [SerializeField] Transform RotationFix;
 
 
     void Start()
     {
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
-        speed = 20;
-        speedMultiplier = 0.4f;
+        speed = 5;
         patrollingRange = 20;
         health = 300;
 
         sightDistance = 30;
         allertDistance = 60;
+
+        agent.updateUpAxis = false;
     }
     private void Awake()
     {
         newPos = transform.position;
-
     }
 
     void Update()
     {
-        
-        if(knockbackLerp >= 1)
+        if(!KnockbackUpdate(1f))
         {
+
             agent.enabled = true;
             if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
             {
@@ -63,10 +70,10 @@ public class EnemyMelee : Enemy
             {     
                 Patroll();
             }
-        }else
-        {
-            KnockbackUpdate(0.3f);
+            gotHit = false;
         }
+
+        //Rotation();
 
 
         agent.speed = speed * speedMultiplier;
@@ -74,6 +81,8 @@ public class EnemyMelee : Enemy
 
     public void Attack()
     {
+        speedMultiplier = 2;
+
         float distance = Vector3.Distance(transform.position, Player.transform.position);
 
         //Rotate towards Player
@@ -89,13 +98,21 @@ public class EnemyMelee : Enemy
         {
             attackState = AttackState.Jumping;
             lerp -= Time.deltaTime;
-            if(lerp <= 0)
+            if(knockback != new Vector3())
+            {
+                attackState = AttackState.Charge;
+                agent.enabled = true;
+                chargeTimer = Time.time + 4;
+                lerp = 0;
+            }
+            else if(lerp <= 0)
             {
                 Instantiate(JumpHit, jumpDestination, jumpHitRotation);
                 attackState = AttackState.Charge;
                 agent.enabled = true;
                 chargeTimer = Time.time + 4;
             }
+
         }
         else if(chargeTimer > Time.time)
         {
@@ -159,7 +176,7 @@ public class EnemyMelee : Enemy
             if(distance < 13)
             {
                 do{
-                    agent.destination = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent);
+                    agent.destination = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent, transform.position);
                 }while(agent.destination == new Vector3(0, 0, 0));
             }
             else if(distance > 15)
@@ -174,7 +191,6 @@ public class EnemyMelee : Enemy
                 }
 
                 agent.destination = transform.position + transform.right * dodge;
-                Debug.Log(dodge);
             }
         }
         
@@ -186,12 +202,12 @@ public class EnemyMelee : Enemy
     {
         agent.updateRotation = true;
 
-        speedMultiplier = 0.5f;
+        speedMultiplier = 1;
         if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
         {
             waitTime = Time.time + 3;
             do{
-                newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent);
+                newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint);
             }while(newPos == new Vector3(0, 0, 0));
 
         }
@@ -199,6 +215,23 @@ public class EnemyMelee : Enemy
         {         
             agent.destination = newPos;
         }
+    }
+    private void Rotation()
+    {
+        currentDirection = transform.position - lastPos;
+
+        lastPos = transform.position;
+
+        Quaternion targetRotation = Quaternion.LookRotation(currentDirection, Vector3.up);
+
+        targetRotation = Quaternion.Lerp(targetRotation, Quaternion.Euler(Vector3.up), 0.7f);
+
+        RotationFix.rotation = targetRotation;
+
+        Debug.DrawLine(transform.position, transform.position + currentDirection * 1000);
+
+        //RotationFix.rotation = Quaternion.Euler(currentDirection.z * 1000, 90, -currentDirection.x * 1000);
+
     }
 
 }
