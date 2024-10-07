@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -13,6 +14,7 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform GunEnd;
     private float hitTextureCooldown = 0;
     private float attackCooldown;
+    public GameObject Player;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,19 +25,28 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!PauseMenu.isPaused)
+        {
+            if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
+            {
+                Shoot();
+                attackCooldown = Time.time + 0.7f;
+                Debug.Log("shot");
+            }
 
-        if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
-        {
-            Shoot();
-            attackCooldown = Time.time + 0.7f;
+            if (hitTextureCooldown > Time.time)
+            {
+                HitTexture.SetActive(true);
+            }
+            else
+            {
+                HitTexture.SetActive(false);
+            }
         }
+            
         
-        if(hitTextureCooldown > Time.time)
-        {
-            HitTexture.SetActive(true);
-        }else{
-            HitTexture.SetActive(false);
-        }
+
+        
     }
 
     void Shoot() 

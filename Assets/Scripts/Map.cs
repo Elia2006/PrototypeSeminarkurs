@@ -8,7 +8,12 @@ public class Map : MonoBehaviour
 {
     public GameObject Player;
     public GameObject SpawnPointManager;
-    public GameObject Canvas;
+    public GameObject StandardCanvas;
+    public GameObject MapCanvas;
+    public GameObject arrow;
+    public GameObject MapCamera;
+    public GameObject PlayerCamera;
+    public GameObject InvManager;
     public bool canMapOpen = false;
     public bool toggle = false;
     public bool mapOpen = false;
@@ -21,38 +26,58 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab) && canMapOpen)
+        if (!PauseMenu.isPaused)
         {
-            toggle = !toggle;
-        }
-
-        if (toggle && canMapOpen)
-        {
-            ActivateCanvas();
-        }
-        else 
-        {
-            Canvas.SetActive(false);
-            mapOpen = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            
-            if (canMapOpen && !toggle) 
+            if (Input.GetKeyDown(KeyCode.M) && canMapOpen)
             {
-                Player.GetComponent<PlayerMovement>().locked = false;
-                Debug.Log(Player.GetComponent<PlayerMovement>().locked + "map");
+                toggle = !toggle;
+            }
+
+            if (toggle && canMapOpen)
+            {
+                ActivateCanvas();
+            }
+            else
+            {
+                MapCanvas.SetActive(false);
+                StandardCanvas.SetActive(true);
+                MapCamera.SetActive(false);
+                PlayerCamera.SetActive(true);
+                arrow.SetActive(false);
+                mapOpen = false;
+
+
+                if (canMapOpen && !toggle)
+                {
+                    Time.timeScale = 1f;
+                    Debug.Log(canMapOpen + " " + toggle);
+                }
             }
         }
+        
 
     }
 
     public void ActivateCanvas()
     {
-        Canvas.SetActive(true);
+        if (InvManager.GetComponent<InventoryManager>().invactive) 
+        {
+            InvManager.GetComponent<InventoryManager>().Inventory.SetActive(false);
+            InvManager.GetComponent<InventoryManager>().invactive = false;
+            Debug.Log("invactive false map");
+        }
+        StandardCanvas.SetActive(false);
+        MapCanvas.SetActive(true);
+        
+        MapCamera.SetActive(true);
+        arrow.SetActive(true);
         mapOpen=true;
         Cursor.lockState = CursorLockMode.Confined;
-        Player.GetComponent<PlayerMovement>().locked = true;
-        Debug.Log(Player.GetComponent<PlayerMovement>().locked + "map");
+        Debug.Log("openmap");
+        Time.timeScale = 0f;
+        
     }
+    
 
 
 }
