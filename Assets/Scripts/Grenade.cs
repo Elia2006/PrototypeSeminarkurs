@@ -41,7 +41,9 @@ public class Grenade : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Gegner getroffen");
-            Explode();
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+            
             collision.gameObject.GetComponent<Enemy>().TakeDamage(grenadeDamage);
 
         }

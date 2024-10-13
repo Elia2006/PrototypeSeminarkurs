@@ -7,13 +7,18 @@ public class Boss : MonoBehaviour
 {
     public Animator anim;
     public GameObject Player;
+    public GameObject MissileArm;
+    public GameObject GrenadeArm;
 
+    public GameObject MissilePrefab;
+    public GameObject GrenadePrefab;
     
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("Player");
-        anim = GetComponent<Animator>();   
+        anim = GetComponent<Animator>();
+        anim.SetBool("Attacking", true);
     }
 
     // Update is called once per frame
@@ -23,15 +28,17 @@ public class Boss : MonoBehaviour
         //animator.SetFloat("Speed", BossSpeed);
         anim.SetFloat(("distance"), (transform.position - Player.transform.position).magnitude);
         //muss hier noch ein if für die Distanz zum Player, so dass er ggf moved reinpacken
+        Attack();
     }
 
     void LookAtPlayer()
     {
-        transform.LookAt(Player.transform.position);
+        //transform.LookAt(Player.transform.position);
     }
 
     private void Attack()
     {
+        Debug.Log(anim.GetBool("Attacking"));
         if (anim.GetBool("Attacking"))
         {
             int rand = 0;
@@ -46,9 +53,11 @@ public class Boss : MonoBehaviour
             {
                 case 0:
                     anim.SetTrigger("Missile"); // standard Missile Attack
+                    Missile();
                     break;
                 case 1:
                     anim.SetTrigger("Grenade"); // standard grenade attack
+                    Grenade();
                     break;
                 case 2:
                     anim.SetTrigger("Dash"); //dashes a short distance 
@@ -64,9 +73,60 @@ public class Boss : MonoBehaviour
                     break;
             }
 
-            anim.SetBool(("Attacking"), false);
+            //anim.SetBool(("Attacking"), false);
 
         }
        
     }
+
+    #region BossAttacks
+
+    public void Missile ()
+    {
+        StartCoroutine(MissileAttack(6));
+    }
+
+    IEnumerator MissileAttack (int counter)
+    {
+        Vector3 missileSpawnPos = MissileArm.transform.position;
+        Vector3 missileDir = transform.forward;
+        Vector3 spawnPos = missileSpawnPos + missileDir;
+        float delay = 0.25f;
+        GameObject Missile = Instantiate(MissilePrefab, spawnPos, Quaternion.identity);
+        yield return new WaitForSeconds(delay);
+        if (counter > 0)
+        {
+            StartCoroutine(MissileAttack(counter - 1));
+        }
+    }
+
+    void Grenade ()
+    {
+        Vector3 grenadeSpawnPos = GrenadeArm.transform.position;
+        Vector3 grenadeDir = transform.forward;
+        Vector3 spawnPos = grenadeSpawnPos + grenadeDir;
+        GameObject Grenade = Instantiate(GrenadePrefab, spawnPos, Quaternion.identity);
+    }
+
+    void Dash ()
+    {
+
+    }
+
+    void Phase2Missiles ()
+    {
+
+    }
+
+    void Phase2Grenade ()
+    {
+
+    }
+
+    void TrackingMissiles ()
+    {
+
+    }
+
+    #endregion 
 }
