@@ -39,7 +39,7 @@ public class Map : MonoBehaviour
             }
             else
             {
-                MapCanvas.SetActive(false);
+                //MapCanvas.SetActive(false);
                 StandardCanvas.SetActive(true);
                 MapCamera.SetActive(false);
                 PlayerCamera.SetActive(true);

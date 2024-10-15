@@ -37,9 +37,9 @@ public class HUD : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = Mathf.Clamp(playerHealth/maxHealth,0,1);
-        energyBar.fillAmount = Mathf.Clamp(playerEnergy / maxEnergy, 0, 1);
+        //energyBar.fillAmount = Mathf.Clamp(playerEnergy / maxEnergy, 0, 1);
         playerHealthText.text = playerHealth + "/" + maxHealth;
-        playerEnergyText.text = playerEnergy + "/" + maxEnergy;
+        //playerEnergyText.text = playerEnergy + "/" + maxEnergy;
 
         Color newColor = new Color(1, 1, 1, damageAlphaColor);
         damageImage.color = newColor;

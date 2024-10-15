@@ -15,6 +15,13 @@ public class WeoponSwitch : MonoBehaviour
         Weapon3.SetActive(false);
     }
 
+    void Awake()
+    {
+        Weapon1.SetActive(true);
+        Weapon2.SetActive(false);
+        Weapon3.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {

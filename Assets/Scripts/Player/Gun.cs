@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
     void Awake()
     {
         HitTexture = GameObject.Find("HitTexture");
+        Debug.Log(HitTexture);
     }
 
     // Update is called once per frame
@@ -31,7 +32,6 @@ public class Gun : MonoBehaviour
             {
                 Shoot();
                 attackCooldown = Time.time + 0.7f;
-                Debug.Log("shot");
             }
 
             if (hitTextureCooldown > Time.time)
