@@ -40,11 +40,11 @@ public class Map : MonoBehaviour
             else
             {
                 //MapCanvas.SetActive(false);
-                StandardCanvas.SetActive(true);
-                MapCamera.SetActive(false);
-                PlayerCamera.SetActive(true);
-                arrow.SetActive(false);
-                mapOpen = false;
+                //StandardCanvas.SetActive(true);
+                //MapCamera.SetActive(false);
+                //PlayerCamera.SetActive(true);
+                //arrow.SetActive(false);
+                //mapOpen = false;
 
 
                 if (canMapOpen && !toggle)
