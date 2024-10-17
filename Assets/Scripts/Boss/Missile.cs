@@ -4,41 +4,44 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed = 20;
     public float range;
 
-    private float startTime;
-    private float distanceTravelled;
+    private HUD playerHUD;
+    private Transform Player;
+
     
 
 
-    RaycastHit hit;
+
+   
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        startTime = Time.time;
-       
+        playerHUD = GameObject.Find("Player").GetComponent<HUD>();
+        Player = GameObject.Find("Player").GetComponent<Transform>();
+        var playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        var rotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
+        transform.rotation = Quaternion.Euler(rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 lastPosition = transform.position;
-
-        distanceTravelled = speed * (Time.time - startTime);
-        transform.position += transform.forward * speed * Time.deltaTime;
-
-        if (distanceTravelled >= range)
-        {
-            Destroy(gameObject);
-        }
-
-        if (Physics.Linecast(transform.position, lastPosition, out hit) && hit.transform.CompareTag("Player"))
-        {
-            OnTriggerEnter(hit.transform.GetComponent<Collider>());
-        }
+        
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
+ 
+    
+
+    
+
+    // Start is called before the first frame update
+    
+
 
     private void OnTriggerEnter(Collider other)
     {
