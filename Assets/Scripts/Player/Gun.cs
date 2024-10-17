@@ -20,7 +20,6 @@ public class Gun : MonoBehaviour
     void Awake()
     {
         HitTexture = GameObject.Find("HitTexture");
-        Debug.Log(HitTexture);
     }
 
     // Update is called once per frame
