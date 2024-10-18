@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class Scavanger : Enemy
 {
     int allyCount;
-    public GameObject scavangerPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,22 +17,10 @@ public class Scavanger : Enemy
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(IsPlayerInRange(Player.transform.position, groundLayer, 30))
-        {
-            Attack();
-        }else
-        {     
-            Patroll();
-        }
 
-        
-    }
-
-    private void Attack()
+    protected bool Attack()
     {
-        Collider[] allysArround = Physics.OverlapSphere(transform.position, 50);
+        Collider[] allysArround = Physics.OverlapSphere(transform.position, 30);
         allyCount = 0;
 
         foreach(var ally in allysArround)
@@ -44,19 +31,32 @@ public class Scavanger : Enemy
                 allyCount++;
             }
         }
-        if(allyCount > 1)
+        if(allyCount > 2)
         {
             agent.destination = newPos;
             newPos = Player.transform.position;
+
+            foreach(var ally in allysArround)
+            {
+                Scavanger scavanger = ally.gameObject.GetComponent<Scavanger>();
+                if(scavanger != null)
+                {
+                    scavanger.setNextPatrollPosition(newPos);
+                }
+            }
+
+            return true;
         }
         else
         {
-            agent.destination = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent, transform.position);
+            newPos = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent, transform.position);
+            agent.destination = newPos;
+            return false;
         }
 
     }
     
-    private void Patroll()
+    protected void Patroll()
     {
         agent.destination = newPos;
 
@@ -73,7 +73,10 @@ public class Scavanger : Enemy
                 {
                     Scavanger scavanger = ally.gameObject.GetComponent<Scavanger>();
 
-                    scavanger.setNextPatrollPosition(newPos);
+                    if(scavanger != null)
+                    {
+                        scavanger.setNextPatrollPosition(newPos);
+                    }
                 }
             }
             
@@ -84,4 +87,11 @@ public class Scavanger : Enemy
     {
         newPos = nextPatrollPos;
     }
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 30);
+    }
+
 }
