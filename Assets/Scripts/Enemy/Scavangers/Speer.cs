@@ -22,17 +22,11 @@ public class Speer : MonoBehaviour
         velocityY -= 1;
         transform.position += (transform.forward * 30 + new Vector3(0, velocityY, 0)) * Time.deltaTime;
 
-        RaycastHit hit;
-        if(Physics.Linecast(transform.position, lastPos, out hit))
-        {
-            OnTriggerEnter(hit.transform.GetComponent<Collider>());
-        }
-        lastPos = transform.position;
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.transform);
         if(other.transform.CompareTag("Ground"))
         {
             Destroy(gameObject);

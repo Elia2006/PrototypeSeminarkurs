@@ -87,4 +87,11 @@ public class Scavanger : Enemy
     {
         newPos = nextPatrollPos;
     }
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 30);
+    }
+
 }
