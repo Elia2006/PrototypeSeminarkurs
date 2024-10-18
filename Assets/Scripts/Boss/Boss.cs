@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     public Animator anim;
@@ -10,6 +10,8 @@ public class Boss : MonoBehaviour
     public GameObject MissileArm;
     public GameObject GrenadeArm;
     public Rigidbody BossRB;
+    [SerializeField] Image bossHealthBar;
+    public GameObject BossHealth;
 
     public GameObject DamageAura;
 
@@ -19,10 +21,7 @@ public class Boss : MonoBehaviour
     bool missile = false;
     bool grenade = false;
 
-    #region State Machine Variables
-   
-
-    #endregion
+    
 
     #region Variables
     public float throwForce;
@@ -30,16 +29,17 @@ public class Boss : MonoBehaviour
     bool wait = false;
     int rand = 0;
     float bossMoveSpeed = 20f;
+    public float bossHealth = 1000;
+    public float bossMaxHealth;
+    
     #endregion
 
-    //private void Awake()
-    //{
-    //    StateMachine = new StateMachine();
-    //    grenadeState = new BossGrenadeState(this, StateMachine);
-    //    damageAuraDashState = new BossDamageAuraDashState(this, StateMachine);
-    //    missileState = new BossMissileState(this, StateMachine);
+    private void Awake()
+    {
+    
+        BossHealth.SetActive(true);
 
-    //}
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -47,27 +47,37 @@ public class Boss : MonoBehaviour
         Player = GameObject.Find("Player");
         anim = GetComponent<Animator>();
         anim.SetBool("Attacking", true);
-
-        //StateMachine.Initialize(grenadeState);
+        bossMaxHealth = bossHealth;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //StateMachine.CurrentState.FrameUpdate();
+        bossHealthBar.fillAmount = Mathf.Clamp(bossHealth / bossMaxHealth, 0, 1); 
+       
 
         LookAtPlayer();
-        //animator.SetFloat("Speed", BossSpeed);
+        
         anim.SetFloat(("distance"), (transform.position - Player.transform.position).magnitude);
         
-        //muss hier noch ein if für die Distanz zum Player, so dass er ggf moved reinpacken
-        if (anim.GetFloat("distance") > 10 && anim.GetFloat("distance") < 45 )
+        
+        if (anim.GetFloat("distance") > 9 && anim.GetFloat("distance") < 45 )
         {
+            DamageAura.SetActive(false);
             if (wait == false) { InitializeAttack(); }
         } else if((transform.position - Player.transform.position).magnitude > 45)
         {
-            Debug.Log("Unstoppable");
-            Unstoppable();
+            //Funktioniert, sieht aber schlecht aus und ist nicht sauber
+            Vector3 towards = new Vector3 (Player.transform.position.x, 3.24f, Player.transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, towards, bossMoveSpeed * Time.deltaTime);
+        } else if(anim.GetFloat("distance") < 9)
+        {
+            //an der Damage Aura noch arbeiten
+            DamageAura.SetActive(true);
+            Vector3 away = new Vector3(Player.transform.position.x , transform.position.y , Player.transform.position.z/2);
+            Debug.Log(transform.position - away);
+            transform.position = Vector3.MoveTowards(transform.position, away, -1*bossMoveSpeed);
         }
             
     }
@@ -136,7 +146,7 @@ public class Boss : MonoBehaviour
             {
                 missile = false;
                 Vector3 missileSpawnPos = MissileArm.transform.position;
-                //nicht wirklich die dir
+            
                 Vector3 missileDir = MissileArm.transform.forward;
                 Vector3 spawnPos = missileSpawnPos + missileDir;
                 GameObject Missile = Instantiate(MissilePrefab, MissileArm.transform.position, MissileArm.transform.rotation);
@@ -193,90 +203,37 @@ public class Boss : MonoBehaviour
             
 
         }
-    //funktioniert noch nicht
+    
+    
     public void Unstoppable()
     {
         Vector3 targetPos = transform.position - Player.transform.position / 2;
-        while ((transform.position - targetPos).magnitude < 2)
+        Debug.Log(targetPos);
+        
+        while ((transform.position - targetPos).magnitude > 2)
         {
             transform.position = targetPos * bossMoveSpeed * Time.deltaTime;
         }
+        
 
+    }
+
+    public void BossTakeDamage(int amount)
+    {
+        bossHealth -= amount;
+        if(bossHealth <= 0)
+        {
+            BossDeath();
+        }
+    }
+
+    public void BossDeath()
+    {
+        BossHealth.SetActive(false);
+        Destroy(gameObject);
+        //Todeseffekt kommt auch hier rein
     }
 
 }
 
-    #region BossAttacks
-
-
-
-    //public void Missile ()
-    //{
-    //    StartCoroutine(MissileAttack());
-    //}
-
-    //IEnumerator MissileAttack ()//int counter
-    //{
-        
-    //   // yield return new WaitForSeconds(delay);
-    //    //if (counter > 0)
-    //    //{
-    //    //    StartCoroutine(MissileAttack(counter - 1));
-    //    //}
-    //    //yield return new WaitForSeconds(5);
-    //    //anim.SetBool("Attacking", true);
-    //}
-
-    //void Grenade ()
-    //{
-    //    StartCoroutine(GrenadeAttack());
-    //}
-
-    //IEnumerator GrenadeAttack () 
-    //{
-        
-    //    //yield return new WaitForSeconds(5);
-    //    //anim.SetBool("Attacking", true);
-    //}
-
-    //alle Attacken in ein Skript?
-    //void Dash ()
-    //{
-
-    //}
-
-    /*void Phase2Missiles ()
-    {
-
-    }
-
-    void Phase2Grenade ()
-    {
-
-    }
-
-    void TrackingMissiles ()
-    {
-
-    }*/
-
-    #endregion 
-    /*void PlayerTooNear()
-    {
-       // DamageAura.SetActive(true);
-        //Dash();
-
-    }*/
-
-    #region Triggers
-
-    
-
-    public enum AnimationTriggerType
-    {
-        EnemyDamaged,
-        PlayFootstepSound
-    }
-        
-    #endregion
 

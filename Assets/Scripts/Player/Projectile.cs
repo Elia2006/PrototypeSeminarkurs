@@ -48,5 +48,11 @@ public class Projectile : MonoBehaviour
             other.GetComponent<Enemy>().TakeDamage(10);
             gun.HitEffect();
         }
+        else if (other.CompareTag("Boss"))
+        {
+            other.GetComponent<Boss>().BossTakeDamage(20);
+            gun.HitEffect();
+        }
+
     }
 }

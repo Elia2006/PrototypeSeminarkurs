@@ -45,16 +45,25 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
 
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>().TakeDamage(10);
             
         }
-        else if (other.CompareTag("Player"))
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Spieler nimmt Schaden");
+            playerHUD.TakeDamage(10);
         }
     }
+
 }

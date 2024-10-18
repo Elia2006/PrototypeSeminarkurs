@@ -58,6 +58,14 @@ public class CrowbarScript : MonoBehaviour
             enemy.KnockbackStart();
             hitTextureCooldown = Time.time + 0.1f;
         }
+        if (other.transform.CompareTag("Boss") && isAttacking && !alreadyDamaged.Contains(other))
+        {
+            alreadyDamaged.Add(other);
+            Boss boss = other.GetComponent<Boss>();
+            boss.BossTakeDamage(20);
+            
+            hitTextureCooldown = Time.time + 0.1f;
+        }
 
     }
 }

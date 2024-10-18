@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour
+public class BossGrenade : MonoBehaviour
 {
     public int grenadeDamage;
 
@@ -22,7 +22,7 @@ public class Grenade : MonoBehaviour
     void Update()
     {
         countdown -= Time.deltaTime;
-        if(countdown <= 0f && hasExploded == false)
+        if (countdown <= 0f && hasExploded == false)
         {
             Explode();
             hasExploded = true;
@@ -43,15 +43,23 @@ public class Grenade : MonoBehaviour
             Debug.Log("Gegner getroffen");
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
-            
+
             collision.gameObject.GetComponent<Enemy>().TakeDamage(grenadeDamage);
 
-        } if (collision.gameObject.CompareTag("Boss"))
+        }
+        if (collision.gameObject.CompareTag("Boss"))
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
 
             collision.gameObject.GetComponent<Boss>().BossTakeDamage(grenadeDamage / 2);
-        } 
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+
+            collision.gameObject.GetComponent<HUD>().TakeDamage(grenadeDamage / 4);
+        }
     }
 }
