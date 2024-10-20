@@ -50,9 +50,7 @@ public class EnemyRange : Enemy
 
     private void Attack()
     {
-        var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) * 3 - transform.position, Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
-        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+        
 
         if(attackCooldown < Time.time)
         {
@@ -68,6 +66,16 @@ public class EnemyRange : Enemy
                 bulletsLeft = 20;
             }
 
+        }
+        if(bulletsLeft <= 0)
+        {
+            var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) * 3 - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
+            transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+            agent.isStopped = false;
+        }else
+        {
+            agent.isStopped = true;
         }
 
         var distance = Vector3.Distance(Player.transform.position, transform.position);

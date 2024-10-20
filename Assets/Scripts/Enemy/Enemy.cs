@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
-        Debug.Log(health);
         gotHit = true;
 
         if (health <= 0)

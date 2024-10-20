@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 10;
-    public float range;
+    private float speed = 100;
+    private float range = 40;
 
     private float startTime;
     private float distanceTravelled;
     private Gun gun;
+    [SerializeField] GameObject hitParticle;
+    Vector3 lastPos;
 
     
     RaycastHit hit;
@@ -19,13 +21,12 @@ public class Projectile : MonoBehaviour
     {
         startTime = Time.time;
         gun = GameObject.Find("Gun").GetComponent<Gun>();
+        lastPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 lastPosition = transform.position;
-
         distanceTravelled = speed * (Time.time - startTime);
         transform.position += transform.forward * speed * Time.deltaTime;
         
@@ -34,15 +35,20 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(Physics.Linecast(transform.position, lastPosition, out hit) && !hit.transform.CompareTag("Player"))
+        /*
+        if(Physics.Linecast(transform.position, lastPos, out hit) && !hit.transform.CompareTag("Player"))
         {
             OnTriggerEnter(hit.transform.GetComponent<Collider>());
-        }
+        }*/
+        lastPos = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+
+        RaycastHit hit;
+        Physics.Raycast(lastPos, transform.forward, out hit);
+        Instantiate(hitParticle, lastPos, Quaternion.LookRotation(hit.normal));
 
         if(other.CompareTag("Enemy")){
             other.GetComponent<Enemy>().TakeDamage(10);
@@ -53,6 +59,7 @@ public class Projectile : MonoBehaviour
             other.GetComponent<Boss>().BossTakeDamage(20);
             gun.HitEffect();
         }
-
+        Destroy(gameObject);
+        
     }
 }

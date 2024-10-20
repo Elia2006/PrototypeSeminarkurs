@@ -97,15 +97,9 @@ public class EnemyMelee : Enemy
         if(lerp > 0)
         {
             attackState = AttackState.Jumping;
-            lerp -= Time.deltaTime;
-            if(knockback != new Vector3())
-            {
-                attackState = AttackState.Charge;
-                agent.enabled = true;
-                chargeTimer = Time.time + 4;
-                lerp = 0;
-            }
-            else if(lerp <= 0)
+            lerp -= Time.deltaTime * 1/2;
+
+            if(lerp <= 0)
             {
                 Instantiate(JumpHit, jumpDestination, jumpHitRotation);
                 attackState = AttackState.Charge;
@@ -134,7 +128,7 @@ public class EnemyMelee : Enemy
         if(attackState == AttackState.Jumping)
         {
             transform.position = Vector3.Lerp(jumpDestination, oldPos, lerp);
-            transform.position += new Vector3(0, Mathf.Sin(lerp * Mathf.PI) * 4, 0);
+            transform.position += new Vector3(0, Mathf.Sin(lerp * Mathf.PI) * 10, 0);
             
         }
         else if(attackState == AttackState.JumpStart)
