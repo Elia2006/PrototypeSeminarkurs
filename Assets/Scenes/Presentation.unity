@@ -3556,7 +3556,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: bd3d22b04eabf3b4d8d8299fef3f0052, type: 3}
+  - {fileID: 2100000, guid: e05a5029a4193a04f9d5c760bd563d63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3594,13 +3594,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579701207}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.794477, y: 0.525383, z: -0.17319365, w: -0.25056544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -54.429, y: 10.2, z: -8.426435}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -12.483, y: -146.529, z: -250.72}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &599638862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3746,9 +3746,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8150751746688642261, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1586272133}
+    - target: {fileID: 8150751746688642261, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 492107915}
+    - target: {fileID: 8150751746688642261, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+      propertyPath: shader
+      value: 
+      objectReference: {fileID: -6465566751694194690, guid: bd3d22b04eabf3b4d8d8299fef3f0052, type: 3}
     - target: {fileID: 9100665933074588008, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
       propertyPath: Player
       value: 
@@ -9429,6 +9437,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1699411184735273116, guid: c097a918fd1eb224d9d56eb943510003, type: 3}
+--- !u!20 &1586272133 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6913230397405193090, guid: 00f23535e13d297448ce785a52c6a3fe, type: 3}
+  m_PrefabInstance: {fileID: 599638862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1603929885
 GameObject:
   m_ObjectHideFlags: 0
