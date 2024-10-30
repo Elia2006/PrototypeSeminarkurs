@@ -11,6 +11,13 @@ public class WeoponSwitch : MonoBehaviour
     void Start()
     {
         Weapon1.SetActive(true);
+        Weapon2.SetActive(true);
+        Weapon3.SetActive(true);
+    }
+
+    void Awake()
+    {
+        Weapon1.SetActive(true);
         Weapon2.SetActive(false);
         Weapon3.SetActive(false);
     }

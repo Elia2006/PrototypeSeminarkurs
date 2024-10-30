@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 3617501360135439695}
   - component: {fileID: 7988825829513361506}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1520,6 +1520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliding: 0
+  collider: {fileID: 0}
 --- !u!1 &5527492879578402720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,7 +2139,6 @@ MonoBehaviour:
     m_Bits: 8
   AllertEffect: {fileID: 0}
   PatrollPoint: {fileID: 0}
-  Cam: {fileID: 0}
   attackCollider: {fileID: 7988825829513361506}
 --- !u!136 &4825417298404084512
 CapsuleCollider:

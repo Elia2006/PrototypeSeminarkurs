@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class SandCrab : Enemy
 {
-    [SerializeField] Transform Cam;
+    private Transform Cam;
     [SerializeField] AttackCollider attackCollider;
     private Vector3 previousPos;
 
@@ -20,6 +20,7 @@ public class SandCrab : Enemy
     void Start()
     {
         Player = GameObject.Find("Player");
+        Cam = GameObject.Find("PlayerCamera").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -82,7 +83,7 @@ public class SandCrab : Enemy
     }
     private void Attack()
     {
-        if(attackCooldown < Time.time && attackCollider.colliding)
+        if(attackCooldown < Time.time && attackCollider.colliding && attackCollider.collider != null && attackCollider.collider.gameObject.CompareTag("Player"))
         {
             attackCooldown = Time.time + 3;
             Player.GetComponent<HUD>().TakeDamage(10);

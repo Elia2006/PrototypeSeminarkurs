@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -9,7 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public bool locked = false;
 
     private float speed;
-    private Vector3 move;
+    private float x;
+    private float y;
+    public Vector3 move;
     public float jumpHeight = 2;
 
     private float gravity = -9.81f * 3;
@@ -26,6 +29,14 @@ public class PlayerMovement : MonoBehaviour
     //Knockback
     private Vector3 KnockbackForce;
 
+    //Dodge
+    public float dodgeTimer;
+    private float dodgeCooldown;
+    private Vector3 dodgeDirection;
+
+    //sliding from steep surface
+    private bool canMove = true;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -35,8 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
-        onGround = Physics.CheckSphere(groundCheck.position, 0.5f, groundMask);
+        onGround = Physics.CheckSphere(groundCheck.position, 0.6f, groundMask);
+        checkStandingSurface();
 
         RaycastHit hit;
         Physics.Raycast(groundCheck.position, Vector3.down, out hit, Mathf.Infinity, groundMask);
@@ -47,27 +58,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
 
-        //Sprint
-        if(y > 0 && Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = 8;
-        }else
-        {
-            speed = 3;
-        }
+        Sprint();
 
-        if(onGround)
-        {
-            move = transform.right * x + transform.forward * y;
-        }else
-        {
-            //aircontroll
-            move = Vector3.Lerp(move, transform.right * x + transform.forward * y, 0.05f);
-        }
-        if(!locked) {
+        Move();
+
+        Dodge();
+
+        if(!locked && canMove) {
 
             controller.Move(move.normalized * speed * Time.deltaTime);
 
@@ -89,7 +89,64 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(KnockbackForce);
         KnockbackForce = Vector3.Lerp(KnockbackForce, new Vector3(), 0.05f);
 
+        
+
     }
+
+    private void Dodge()
+    {
+        if(dodgeTimer > Time.time)
+        {
+            controller.Move(dodgeDirection * 30 * Time.deltaTime);
+        }
+        else if(Input.GetKeyDown(KeyCode.LeftAlt) && dodgeCooldown < Time.time)
+        {
+            dodgeTimer = 0.1f + Time.time;
+            dodgeCooldown = 2 + Time.time;
+            dodgeDirection = move;
+        }
+    }
+
+    
+    private void Sprint()
+    {
+        if(y > 0 && Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 8;
+        }else
+        {
+            speed = 3;
+        }
+    }
+
+    private void Move()
+    {
+        if(onGround)
+        {
+            move = transform.right * x + transform.forward * y;
+        }else
+        {
+            //aircontroll
+            move = Vector3.Lerp(move, transform.right * x + transform.forward * y, 0.05f);
+        }
+    }
+
+    private void checkStandingSurface()
+    {
+        canMove = true;
+        if(onGround){
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundMask);
+            Debug.DrawLine(hit.point, hit.point + hit.normal);
+
+            if(hit.normal.y < 0.75f)
+            {
+                canMove = false;
+                controller.Move(new Vector3(hit.normal.x * 0.05f, 0, hit.normal.z * 0.05f));
+            }
+        }
+    }
+
 
     private void calculateDirection()
     {

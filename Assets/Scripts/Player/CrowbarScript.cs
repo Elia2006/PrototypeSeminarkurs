@@ -10,6 +10,7 @@ public class CrowbarScript : MonoBehaviour
     private Animator anim;
     float hitTextureCooldown;
     bool isAttacking = false;
+    private float attackCooldown;
     List<Collider> alreadyDamaged = new List<Collider>();
     // Start is called before the first frame update
     void Awake()
@@ -21,10 +22,11 @@ public class CrowbarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
         {
             anim.SetTrigger("Attack");
             isAttacking = true;
+            attackCooldown = Time.time + 1;
         }
 
         AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo (0);
@@ -56,6 +58,15 @@ public class CrowbarScript : MonoBehaviour
             enemy.KnockbackStart();
             hitTextureCooldown = Time.time + 0.1f;
         }
+        /*
+        if (other.transform.CompareTag("Boss") && isAttacking && !alreadyDamaged.Contains(other))
+        {
+            alreadyDamaged.Add(other);
+            Boss boss = other.GetComponent<Boss>();
+            boss.BossTakeDamage(20);
+            
+            hitTextureCooldown = Time.time + 0.1f;
+        }*/
 
     }
 }
