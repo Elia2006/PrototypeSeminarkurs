@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            agent.enabled = false;
+            agent.isStopped = true;
             NavMesh.SamplePosition(transform.position + knockback * Time.deltaTime * 100, out hit, 10, NavMesh.AllAreas);
             transform.position = hit.position;
             return true;

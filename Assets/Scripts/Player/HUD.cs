@@ -52,7 +52,6 @@ public class HUD : MonoBehaviour
     {
         playerHealth -= amount;
         damageAlphaColor = 0.8f;
-        Debug.Log("hello");
 
         playerMovement.ReduceSpeed(1, 1);
 

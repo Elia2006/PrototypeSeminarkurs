@@ -8,10 +8,6 @@ using UnityEngine.AI;
 
 public class EnemyMelee : Enemy
 {
-    
-
-
-
     //Attack
     private float jumpCooldown;
     private float lerp;
@@ -38,6 +34,9 @@ public class EnemyMelee : Enemy
     private Vector3 currentDirection;
     [SerializeField] Transform RotationFix;
 
+    private float attackChargeTimer;
+    private bool attack = false;
+
 
     void Start()
     {
@@ -62,7 +61,7 @@ public class EnemyMelee : Enemy
         if(!KnockbackUpdate(1f))
         {
 
-            agent.enabled = true;
+            agent.isStopped = false;
             if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
             {
                 Attack();
@@ -103,8 +102,8 @@ public class EnemyMelee : Enemy
             {
                 Instantiate(JumpHit, jumpDestination, jumpHitRotation);
                 attackState = AttackState.Charge;
-                agent.enabled = true;
-                chargeTimer = Time.time + 4;
+                agent.isStopped = false;
+                chargeTimer = Time.time + 1000;
             }
 
         }
@@ -144,17 +143,17 @@ public class EnemyMelee : Enemy
             jumpDestination = hit.point + Vector3.up; //wegen eigener Größe des Charakters
             newPos = jumpDestination;
 
-            agent.enabled = false;            
+            agent.isStopped = true;     
         }
         else if(attackState == AttackState.Charge)
         {
 
-            if(Vector3.Distance(transform.position, Player.transform.position) < 2)
+            if(Vector3.Distance(transform.position, Player.transform.position) < 2 || attack)
             {
-                agent.enabled = false;
+                agent.isStopped = true;
             }else
             {
-                agent.enabled = true;
+                agent.isStopped = false;
                 newPos = Player.transform.position;
                 agent.destination = newPos;
             }
@@ -166,14 +165,20 @@ public class EnemyMelee : Enemy
 
 
 
-            if(hit.transform != null && hit.transform.CompareTag("Player") && attackCooldown < Time.time)
+            if(attackCooldown < Time.time && !attack)
             {
-                                        Debug.Log("hwllo");
-                Physics.Raycast(transform.position + transform.forward * 4, Vector3.down, out hit, Mathf.Infinity, groundLayer);
+                attack = true;
+                attackChargeTimer = Time.time + 0.4f;
+            }
+
+            if(attackChargeTimer < Time.time && attack)
+            {
+                Physics.Raycast(transform.position + Vector3.up * 2 + transform.forward * 2, Vector3.down, out hit, Mathf.Infinity, groundLayer);
 
                 Instantiate(Hit, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 
-                attackCooldown = Time.time + 1;
+                attackCooldown = Time.time + 2;
+                attack = false;
             }
         }
         else if(attackState == AttackState.Retreat)

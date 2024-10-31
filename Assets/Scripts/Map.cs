@@ -73,7 +73,6 @@ public class Map : MonoBehaviour
         arrow.SetActive(true);
         mapOpen=true;
         Cursor.lockState = CursorLockMode.Confined;
-        Debug.Log("openmap");
         Time.timeScale = 0f;
         
     }

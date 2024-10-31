@@ -29,7 +29,10 @@ public class CrowbarScript : MonoBehaviour
             anim.SetTrigger("Attack");
             isAttacking = true;
             attackCooldown = Time.time + 1;
-            playerMovement.ReduceSpeed(1, 1);
+            if(playerMovement != null) // playerMovement ist jeden 2. Frame null, keine Ahnung wieso aber das geht so erstmal
+            {
+                playerMovement.ReduceSpeed(1, 1);
+            }
         }
 
 
