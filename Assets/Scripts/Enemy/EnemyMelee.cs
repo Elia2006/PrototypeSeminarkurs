@@ -148,16 +148,27 @@ public class EnemyMelee : Enemy
         }
         else if(attackState == AttackState.Charge)
         {
-            newPos = Player.transform.position;
-            agent.destination = newPos;
+
+            if(Vector3.Distance(transform.position, Player.transform.position) < 2)
+            {
+                agent.enabled = false;
+            }else
+            {
+                agent.enabled = true;
+                newPos = Player.transform.position;
+                agent.destination = newPos;
+            }
 
             RaycastHit hit;
 
             Physics.Raycast(transform.position, transform.forward, out hit, 4);
             Debug.DrawLine(transform.position, transform.position + transform.forward * 4);
 
+
+
             if(hit.transform != null && hit.transform.CompareTag("Player") && attackCooldown < Time.time)
             {
+                                        Debug.Log("hwllo");
                 Physics.Raycast(transform.position + transform.forward * 4, Vector3.down, out hit, Mathf.Infinity, groundLayer);
 
                 Instantiate(Hit, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
@@ -187,10 +198,6 @@ public class EnemyMelee : Enemy
                 agent.destination = transform.position + transform.right * dodge;
             }
         }
-        
-
-
-
     }
     private void Patroll()
     {

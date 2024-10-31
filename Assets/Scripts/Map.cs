@@ -43,7 +43,7 @@ public class Map : MonoBehaviour
                 StandardCanvas.SetActive(true);
                 MapCamera.SetActive(false);
                 PlayerCamera.SetActive(true);
-                //arrow.SetActive(false);
+                arrow.SetActive(false);
                 mapOpen = false;
 
 

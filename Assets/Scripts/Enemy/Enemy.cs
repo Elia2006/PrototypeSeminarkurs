@@ -95,9 +95,8 @@ public class Enemy : MonoBehaviour
 
     protected void TurnTowardsPlayer()
     {
-        var lookRotation = Quaternion.LookRotation(Player.transform.position, Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
-        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+        var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
+        transform.rotation = Quaternion.Euler(new Vector3(0, Quaternion.Lerp(transform.rotation, lookRotation, 0.05f).eulerAngles.y, 0));
     }
 
     public void KnockbackStart()
