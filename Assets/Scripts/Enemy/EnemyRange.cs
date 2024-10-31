@@ -12,7 +12,9 @@ public class EnemyRange : Enemy
     //Attack
     private int bulletsLeft = 20;
     private float ReloadTime;
+    private float ChargeTimer;
     [SerializeField] GameObject Projectile;
+    private float xRotation;
 
 
     void Start()
@@ -54,24 +56,24 @@ public class EnemyRange : Enemy
 
         if(attackCooldown < Time.time)
         {
-            if(bulletsLeft > 0)
+            if(bulletsLeft > 0 && ChargeTimer < Time.time)
             {
-                GameObject Bullet = Instantiate(Projectile, transform.position, transform.rotation);
+                GameObject Bullet = Instantiate(Projectile, transform.position, Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.eulerAngles.z));
                 Destroy(Bullet, 1);
                 bulletsLeft--;
                 attackCooldown = Time.time + 0.1f;
                 ReloadTime = Time.time + 2;
-            }else if(ReloadTime < Time.time)
+            }else if(ReloadTime < Time.time && bulletsLeft <= 0)
             {
                 bulletsLeft = 20;
+                ChargeTimer = Time.time + 1;
             }
 
         }
         if(bulletsLeft <= 0)
         {
-            var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) * 3 - transform.position, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
-            transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
+            TurnTowardsPlayer();
+            xRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up).eulerAngles.x;
             agent.isStopped = false;
         }else
         {

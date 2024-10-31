@@ -25,7 +25,7 @@ public class Filmgrain : MonoBehaviour
             {
                 filmGrain.intensity.value = intensity;
             }
-            intensity += Time.deltaTime * 0.3f;
+            intensity += Time.deltaTime * 0.1f;
         }
         else if(intensity > 0)
         {
@@ -33,7 +33,7 @@ public class Filmgrain : MonoBehaviour
             {
                 filmGrain.intensity.value = intensity;
             }
-            intensity -= Time.deltaTime * 0.3f;
+            intensity -= Time.deltaTime * 0.1f;
         }
 
     }

@@ -36,6 +36,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] ParticleSystem AllertEffect;
     [SerializeField] Transform PatrollPoint;
 
+    void Start()
+    {
+        Player = GameObject.Find("Player");
+    }
+
     void Update()
     {
 
@@ -86,6 +91,13 @@ public class Enemy : MonoBehaviour
         {
             return false;
         }
+    }
+
+    protected void TurnTowardsPlayer()
+    {
+        var lookRotation = Quaternion.LookRotation(Player.transform.position, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
     }
 
     public void KnockbackStart()

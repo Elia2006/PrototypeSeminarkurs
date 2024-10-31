@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class CrowbarScript : MonoBehaviour
 {
+    public bool unEquip = false;
+    [SerializeField] PlayerMovement playerMovement;
     private GameObject HitTexture;
     private Animator anim;
     float hitTextureCooldown;
@@ -27,7 +29,9 @@ public class CrowbarScript : MonoBehaviour
             anim.SetTrigger("Attack");
             isAttacking = true;
             attackCooldown = Time.time + 1;
+            playerMovement.ReduceSpeed(1, 1);
         }
+
 
         AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo (0);
         if(animStateInfo.normalizedTime >= 1 && animStateInfo.IsName("CrowbarHit"))
@@ -44,6 +48,11 @@ public class CrowbarScript : MonoBehaviour
         }else{
             HitTexture.SetActive(false);
         }
+    }
+
+    public void Unequip()
+    {
+        anim.SetTrigger("Equip");
     }
 
     private void OnTriggerStay(Collider other)

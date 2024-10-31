@@ -48,15 +48,17 @@ public class Projectile : MonoBehaviour
 
         RaycastHit hit;
         Physics.Raycast(lastPos, transform.forward, out hit);
-        Instantiate(hitParticle, lastPos, Quaternion.LookRotation(hit.normal));
+        
 
         if(other.CompareTag("Enemy")){
             other.GetComponent<Enemy>().TakeDamage(10);
             gun.HitEffect();
             Destroy(gameObject);
+            Instantiate(hitParticle, lastPos, Quaternion.LookRotation(hit.normal));
         }else if(other.CompareTag("Ground"))
         {
             Destroy(gameObject);
+            Instantiate(hitParticle, lastPos, Quaternion.LookRotation(hit.normal));
         }
         /*else if (other.CompareTag("Boss"))
         {

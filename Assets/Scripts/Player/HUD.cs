@@ -26,6 +26,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Image energyBar;
     [SerializeField] GameObject TaskText;
     [SerializeField] GameObject Canvas;
+    [SerializeField] PlayerMovement playerMovement;
     void Start()
     {
         maxHealth = playerHealth;
@@ -51,6 +52,9 @@ public class HUD : MonoBehaviour
     {
         playerHealth -= amount;
         damageAlphaColor = 0.8f;
+        Debug.Log("hello");
+
+        playerMovement.ReduceSpeed(1, 1);
 
         if(playerHealth <= 0)
         {

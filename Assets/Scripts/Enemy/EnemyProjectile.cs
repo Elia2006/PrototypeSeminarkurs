@@ -15,10 +15,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         playerHUD = GameObject.Find("Player").GetComponent<HUD>();
         Player = GameObject.Find("Player").GetComponent<Transform>();
-        var playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
-        var rotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
-        transform.localRotation = Quaternion.Euler(rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-        
+
+      
         transform.rotation *= Quaternion.Euler(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
     }
 

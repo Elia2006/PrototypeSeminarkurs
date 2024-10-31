@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     //Knockback
     private Vector3 KnockbackForce;
 
+    private float speedReductionTimer;
+    private float speedReduction;
+
     //Dodge
     public float dodgeTimer;
     private float dodgeCooldown;
@@ -61,12 +64,13 @@ public class PlayerMovement : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
-        Sprint();
+        
 
         Move();
 
         Dodge();
 
+        Sprint();
         if(!locked && canMove) {
 
             controller.Move(move.normalized * speed * Time.deltaTime);
@@ -110,7 +114,11 @@ public class PlayerMovement : MonoBehaviour
     
     private void Sprint()
     {
-        if(y > 0 && Input.GetKey(KeyCode.LeftShift))
+        if(speedReductionTimer > Time.time)
+        {
+            speed = speedReduction;
+        }
+        else if(y > 0 && Input.GetKey(KeyCode.LeftShift))
         {
             speed = 8;
         }else
@@ -167,5 +175,11 @@ public class PlayerMovement : MonoBehaviour
     public void Knockback(Transform enemy)
     {
         KnockbackForce = (transform.position - enemy.position).normalized * 0.2f;
+    }
+
+    public void ReduceSpeed(float speed, float time)
+    {
+        speedReduction = speed;
+        speedReductionTimer = Time.time + time;
     }
 }

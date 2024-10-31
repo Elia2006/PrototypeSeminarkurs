@@ -6,18 +6,18 @@ public class GrenadeLauncher : MonoBehaviour
 {
     public Transform cam;
     public Transform attackPoint;
-    public GameObject Grenade;
+    [SerializeField] GameObject Grenade;
 
     public float throwForce;
     public float throwUpwardForce;
 
-    [SerializeField] GameObject HitTexture;
+    private GameObject HitTexture;
     private float hitTextureCooldown = 0;
     private float attackCooldown;
     // Start is called before the first frame update
     void Start()
     {
-        
+        HitTexture = GameObject.Find("HitTexture");
     }
 
     // Update is called once per frame
@@ -29,23 +29,22 @@ public class GrenadeLauncher : MonoBehaviour
             {
                 ThrowGrenade();
                 attackCooldown = Time.time + 2f;
-                Debug.Log("shot");
             }
 
-            //if (hitTextureCooldown > Time.time)
-            //{
-            //    HitTexture.SetActive(true);
-            //}
-            //else
-            //{
-            //    HitTexture.SetActive(false);
-            //}
+            if (hitTextureCooldown > Time.time)
+            {
+                HitTexture.SetActive(true);
+            }
+            else
+            {
+                HitTexture.SetActive(false);
+            }
         }
     }
 
     void ThrowGrenade()
     {
-        GameObject grenade = Instantiate(Grenade, attackPoint.position, cam.rotation);
+        GameObject grenade = Instantiate(Grenade, attackPoint.position, Quaternion.EulerAngles(cam.transform.forward));
 
         Rigidbody grenadeRb = grenade.GetComponent<Rigidbody>();
 
@@ -61,5 +60,10 @@ public class GrenadeLauncher : MonoBehaviour
         Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
 
         grenadeRb.AddForce(forceToAdd, ForceMode.Impulse);
+    }
+
+    public void HitEffect()
+    {
+        hitTextureCooldown = Time.time + 0.1f;
     }
 }
