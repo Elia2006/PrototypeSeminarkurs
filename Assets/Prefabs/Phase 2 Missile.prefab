@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6861157686948856403}
   - component: {fileID: -3330986643387910437}
   m_Layer: 0
-  m_Name: Missile
+  m_Name: Phase 2 Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aeebd6936e00a0458a6eb99462c0547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 40
   range: 100
 --- !u!54 &-3330986643387910437
 Rigidbody:

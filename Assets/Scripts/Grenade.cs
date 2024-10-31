@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
+    public bool phase2 = false;
     public int grenadeDamage;
 
     public float delay = 3f;
@@ -45,6 +47,10 @@ public class Grenade : MonoBehaviour
             Destroy(gameObject);
             
             collision.gameObject.GetComponent<Enemy>().TakeDamage(grenadeDamage);
+            if (phase2)
+            {
+                areaOfEffectDamage();
+            }
 
         } if (collision.gameObject.CompareTag("Boss"))
         {
@@ -52,6 +58,15 @@ public class Grenade : MonoBehaviour
             Destroy(gameObject);
 
             collision.gameObject.GetComponent<Boss>().BossTakeDamage(grenadeDamage / 2);
+            if (phase2)
+            {
+                areaOfEffectDamage();
+            }
         } 
+    }
+
+    private void areaOfEffectDamage()
+    {
+        //leave behind aoe
     }
 }

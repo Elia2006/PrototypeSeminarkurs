@@ -2942,6 +2942,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1548585563}
     - target: {fileID: 6726160475029014928, guid: ea9d1729092a24b438ead728896711bf, type: 3}
+      propertyPath: throwForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726160475029014928, guid: ea9d1729092a24b438ead728896711bf, type: 3}
       propertyPath: GrenadePrefab
       value: 
       objectReference: {fileID: 8223104297409813012, guid: 878e3ad63f254da46a8f5498d498d29f, type: 3}
@@ -2949,6 +2953,10 @@ PrefabInstance:
       propertyPath: bossHealthBar
       value: 
       objectReference: {fileID: 403845206}
+    - target: {fileID: 6726160475029014928, guid: ea9d1729092a24b438ead728896711bf, type: 3}
+      propertyPath: Phase2MissilePrefab
+      value: 
+      objectReference: {fileID: 5962441121839814205, guid: c819e845aa809ec4390010449c55e34e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

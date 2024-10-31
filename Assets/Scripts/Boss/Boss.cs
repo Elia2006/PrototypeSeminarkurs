@@ -16,10 +16,16 @@ public class Boss : MonoBehaviour
     public GameObject DamageAura;
 
     public GameObject MissilePrefab;
+    public GameObject Phase2MissilePrefab;
     public GameObject GrenadePrefab;
+    public GameObject Phase2GrenadePrefab;
+    public GameObject HomingMissilePrefab;
 
     bool missile = false;
     bool grenade = false;
+    bool phase2missile = false;
+    bool phase2grenade = false;
+    bool trackingmissiles = false;
 
     
 
@@ -133,18 +139,22 @@ public class Boss : MonoBehaviour
                     break;
                 case 3:
                     anim.SetTrigger("Phase 2 Missiles"); // accelerated Missiles
+                    phase2missile = true;
                     break;
                 case 4:
                     anim.SetTrigger("Phase 2 Grenade"); //grenade, that leaves behind a AOE field
+                    phase2grenade = true;
                     break;
                 case 5:
                     anim.SetTrigger("Tracking Missiles"); // shoots homing missiles after a delay
+                    trackingmissiles = true;
                     break;
             }
 
             if (missile) 
             {
                 missile = false;
+                //in ne andere methode, um so nen burst von 6 zu spawnen jeweils
                 Vector3 missileSpawnPos = MissileArm.transform.position;
             
                 Vector3 missileDir = MissileArm.transform.forward;
@@ -192,6 +202,57 @@ public class Boss : MonoBehaviour
                 wait = false;
 
                 
+            } else if (phase2missile)
+            {
+                phase2missile = false;
+                Vector3 missileSpawnPos = MissileArm.transform.position;
+
+                Vector3 missileDir = MissileArm.transform.forward;
+                Vector3 spawnPos = missileSpawnPos + missileDir;
+                GameObject Missile = Instantiate(MissilePrefab, MissileArm.transform.position, MissileArm.transform.rotation);
+                Rigidbody MissileRb = Missile.GetComponent<Rigidbody>();
+
+                Vector3 forceDirection = GrenadeArm.transform.position - Player.transform.position;
+
+                RaycastHit hit;
+
+                if (Physics.Raycast(MissileArm.transform.position, Player.transform.position, out hit, 50f))
+                {
+                    forceDirection = (hit.point - MissileArm.transform.position).normalized;
+                }
+
+                Vector3 forceToAdd = forceDirection;
+
+                MissileRb.AddForce(forceToAdd);
+
+                yield return new WaitForSeconds(3);
+                wait = false;
+            } else if(phase2grenade)
+            {
+                phase2grenade = false;
+                Vector3 grenadeSpawnPos = GrenadeArm.transform.position;
+                Vector3 grenadeDir = transform.forward;
+                Vector3 spawnPos = grenadeSpawnPos + grenadeDir;
+                GameObject Grenade = Instantiate(Phase2GrenadePrefab, spawnPos, GrenadeArm.transform.rotation);
+                Rigidbody grenadeRb = Grenade.GetComponent<Rigidbody>();
+
+                Vector3 forceDirection = GrenadeArm.transform.position - Player.transform.position;
+
+                RaycastHit hit;
+
+                if (Physics.Raycast(GrenadeArm.transform.position, GrenadeArm.transform.forward, out hit, 50f))
+                {
+                    forceDirection = (hit.point - GrenadeArm.transform.position).normalized;
+                }
+
+                Vector3 forceToAdd = forceDirection * throwForce + GrenadeArm.transform.up * throwUpwardForce;
+
+                grenadeRb.AddForce(forceToAdd, ForceMode.Impulse);
+                yield return new WaitForSeconds(3);
+                wait = false;
+            } else if(trackingmissiles)
+            {
+                //spawn tracking missiles
             }
         }
 
