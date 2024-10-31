@@ -17,6 +17,7 @@ public class MouseLook : MonoBehaviour
     private float wigwag; 
     private Vector3 lastFramePos;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,6 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (!Player.GetComponent<PlayerMovement>().locked)
         {
             //gets Mouse Input
@@ -49,6 +49,8 @@ public class MouseLook : MonoBehaviour
     private void camWigWag()
     {
         PlayerMovement playerMov = Player.GetComponent<PlayerMovement>();
+
+        //dodge
         if(playerMov.dodgeTimer > Time.time)
         {
             float percentOfDodge = (playerMov.dodgeTimer - Time.time) / 0.1f;
