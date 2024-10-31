@@ -27,8 +27,10 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Player.GetComponent<PlayerMovement>().locked)
+        if (!PauseMenu.isPaused)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+
             //gets Mouse Input
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -43,7 +45,11 @@ public class MouseLook : MonoBehaviour
             camWigWag();
 
 
+        }else if(PauseMenu.isPaused)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
         }
+
     }
 
     private void camWigWag()

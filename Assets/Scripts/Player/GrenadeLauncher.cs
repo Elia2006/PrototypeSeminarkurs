@@ -44,7 +44,7 @@ public class GrenadeLauncher : MonoBehaviour
 
     void ThrowGrenade()
     {
-        GameObject grenade = Instantiate(Grenade, attackPoint.position, Quaternion.EulerAngles(cam.transform.forward));
+        GameObject grenade = Instantiate(Grenade, attackPoint.position, Quaternion.identity);
 
         Rigidbody grenadeRb = grenade.GetComponent<Rigidbody>();
 

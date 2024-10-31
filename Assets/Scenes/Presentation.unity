@@ -2548,7 +2548,6 @@ GameObject:
   m_Component:
   - component: {fileID: 295961715}
   - component: {fileID: 295961717}
-  - component: {fileID: 295961716}
   - component: {fileID: 295961718}
   - component: {fileID: 295961719}
   m_Layer: 0
@@ -2573,14 +2572,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
---- !u!81 &295961716
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295961714}
-  m_Enabled: 1
 --- !u!20 &295961717
 Camera:
   m_ObjectHideFlags: 0
@@ -4852,6 +4843,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752408064}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &757810320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1325045231450004967, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+  m_PrefabInstance: {fileID: 4034260944236558057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &766493229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -793602185607015424, guid: c097a918fd1eb224d9d56eb943510003, type: 3}
@@ -10475,7 +10471,7 @@ MonoBehaviour:
   SpawnPointManager: {fileID: 0}
   StandardCanvas: {fileID: 1452016897}
   MapCanvas: {fileID: 1250343046}
-  arrow: {fileID: 0}
+  arrow: {fileID: 757810320}
   MapCamera: {fileID: 295961714}
   PlayerCamera: {fileID: 1802962703}
   InvManager: {fileID: 1245746594}
@@ -11734,15 +11730,15 @@ PrefabInstance:
       objectReference: {fileID: 1488902682}
     - target: {fileID: 688167868358308128, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 99.51863
+      value: 22.800003
       objectReference: {fileID: 0}
     - target: {fileID: 688167868358308128, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.78927
+      value: 30.9
       objectReference: {fileID: 0}
     - target: {fileID: 688167868358308128, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -189.1613
+      value: -86.700005
       objectReference: {fileID: 0}
     - target: {fileID: 688167868358308128, guid: a7bc1c1d1b2d50243b001d29ce0d437c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12977,7 +12973,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 849589377422146270}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -15666,6 +15662,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91fa46149dacaa49aa517941ffb314d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &849589377422146270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7467256976990264991, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+  m_PrefabInstance: {fileID: 4034260944236558057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849589377422146257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a60b7caa7fb0e4793f7538be7eef0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2956412956641900017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16067,7 +16074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8795115664668336719, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.91
+      value: 22.2
       objectReference: {fileID: 0}
     - target: {fileID: 8795115664668336719, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16135,11 +16142,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004988135706221403, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1964682599652517270, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2289449738681310630, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+    - {fileID: 7316777822975204638, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6384132475834403252, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
