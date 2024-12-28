@@ -213,10 +213,12 @@ public class EnemyMelee : Enemy
         if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
         {
             waitTime = Time.time + 3;
-            do{
-                newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint);
-            }while(newPos == new Vector3(0, 0, 0));
 
+            var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint);
+            if(checkNewPos != new Vector3(0, 0, 0))
+            {
+                newPos = checkNewPos;
+            }
         }
         else if(waitTime < Time.time)
         {         

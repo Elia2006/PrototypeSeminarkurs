@@ -105,9 +105,12 @@ public class EnemyRange : Enemy
         if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
         {
             waitTime = Time.time + 3;
-            do{
-                newPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, transform.position);
-            }while(newPos == new Vector3(0, 0, 0));
+            
+            var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, transform.position);
+            if(checkNewPos != new Vector3(0, 0, 0))
+            {
+                newPos = checkNewPos;
+            }
 
         }
         else if(waitTime < Time.time)
