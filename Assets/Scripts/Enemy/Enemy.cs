@@ -53,8 +53,12 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Death();
         }
+    }
+    protected virtual void Death()
+    {
+
     }
 
     protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction, NavMeshAgent agent, Vector3 originPoint)

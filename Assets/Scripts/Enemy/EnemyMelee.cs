@@ -42,7 +42,7 @@ public class EnemyMelee : Enemy
     {
         Player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>();
-        speed = 5;
+        speed = 3;
         patrollingRange = 20;
         health = 300;
 
@@ -58,6 +58,7 @@ public class EnemyMelee : Enemy
 
     void Update()
     {
+        
         if(!KnockbackUpdate(1f))
         {
 
@@ -222,6 +223,18 @@ public class EnemyMelee : Enemy
             agent.destination = newPos;
         }
     }
+    protected override void Death()
+    {
+        
+        //transform.GetChild(0).gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        //transform.GetChild(0).gameObject.GetComponent<MeshCollider>().enabled = true;
+        //transform.GetChild(1).gameObject.AddComponent<Rigidbody>();
+        //transform.GetChild(2).gameObject.AddComponent<Rigidbody>();
+        //Destroy(transform.GetChild(3).gameObject);
+        //transform.DetachChildren();
+        Destroy(gameObject);
+    }
+
     private void Rotation()
     {
         currentDirection = transform.position - lastPos;

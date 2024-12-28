@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         onGround = Physics.CheckSphere(groundCheck.position, 0.6f, groundMask);
-        checkStandingSurface();
+        //checkStandingSurface();
 
         RaycastHit hit;
         Physics.Raycast(groundCheck.position, Vector3.down, out hit, Mathf.Infinity, groundMask);
