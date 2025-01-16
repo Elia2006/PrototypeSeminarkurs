@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383af032eadd9b946871ea848d1c7576, type: 3}
+  m_Name: TestQuest
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: TestQuest
+  displayName: Collect 3 Metal Ingots
+  levelRequirement: 0
+  questPrerequisites: []
+  questStepPrefabs:
+  - {fileID: 2437984384241215630, guid: 0ebaf11a97e96be4c850716b17e58d53, type: 3}
+  goldReward: 0
+  experienceReward: 0
+  rewardsList: 1
