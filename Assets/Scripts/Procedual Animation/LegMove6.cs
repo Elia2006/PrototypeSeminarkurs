@@ -12,6 +12,11 @@ public class LegMove6 : MonoBehaviour
     private Transform currentLeg;
     [SerializeField] LayerMask groundLayer;
 
+    //Settings
+    [SerializeField] float maxDistance;
+    [SerializeField] float stepDistance;
+    [SerializeField] float legLerp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,19 +26,19 @@ public class LegMove6 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveCicle > 5)
+        if (moveCicle >= Legs.Length)
         {
             moveCicle = 0;
         }
 
-        
+       
 
         float distance = Vector3.Distance(Legs[moveCicle].GetComponent<SpiderAnimation>().newPos, LegDefaultPos[moveCicle].transform.position);
 
-        if(distance > 0.2f && currentLeg.GetComponent<SpiderAnimation>().lerp >= 0.5f)
+        if(distance > maxDistance && currentLeg.GetComponent<SpiderAnimation>().lerp >= legLerp)
         {
             RaycastHit hit;
-            Vector3 direction = (transform.position - lastPos).normalized * 0.5f;
+            Vector3 direction = (transform.position - lastPos).normalized * stepDistance;
             Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up, -transform.up, out hit, Mathf.Infinity, groundLayer);
 
             if(distance > Vector3.Distance(hit.point, LegDefaultPos[moveCicle].transform.position))

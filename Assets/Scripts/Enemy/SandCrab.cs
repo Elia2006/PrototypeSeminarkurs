@@ -38,12 +38,11 @@ public class SandCrab : Enemy
         {
             chargeAttack = true;
         }
-        if(!IsPlayerInRange(Player.transform.position, groundLayer, 20))
+        else if(!IsPlayerInRange(Player.transform.position, groundLayer, 20))
         {
             chargeAttack = false;
         }
-        if((!(Mathf.Abs(sight.x) > 1 || Mathf.Abs(sight.y) > 1 || Mathf.Abs(sight.z) > 1) || 
-            chargeAttack) && IsPlayerInRange(Player.transform.position, groundLayer, 20))
+        if(!(Mathf.Abs(sight.x) > 1 || Mathf.Abs(sight.y) > 1 || Mathf.Abs(sight.z) > 1) || chargeAttack)
         {
             if(previousState == 1)
             {
@@ -52,7 +51,15 @@ public class SandCrab : Enemy
             }
 
             if(lerp > 1){
-                agent.enabled = true;
+                
+                if(Vector3.Distance(transform.position, Player.transform.position) < 4)
+                {
+                    agent.isStopped = true;
+                }else
+                {
+                    agent.isStopped = false;
+                }
+
                 agent.destination = Player.transform.position;
                 previousPos = transform.position;
                 Attack();
@@ -70,7 +77,7 @@ public class SandCrab : Enemy
             {
                 previousState = 1;
                 lerp = 0;
-                agent.enabled = false;
+                agent.isStopped = true;
             }
 
             transform.position = Vector3.Lerp(previousPos, previousPos - transform.up, lerp);
@@ -79,16 +86,21 @@ public class SandCrab : Enemy
 
         }
 
-        gotHit = false;
+        if(!IsPlayerInRange(Player.transform.position, groundLayer, 45))
+        {
+            gotHit = false;
+        }
     }
     private void Attack()
     {
-        if(attackCooldown < Time.time && attackCollider.colliding && attackCollider.collider != null && attackCollider.collider.gameObject.CompareTag("Player"))
+        if(attackCooldown < Time.time && attackCollider.collider != null && attackCollider.collider.gameObject.CompareTag("Player"))
         {
-            attackCooldown = Time.time + 3;
+            attackCooldown = Time.time + 2;
             Player.GetComponent<HUD>().TakeDamage(10);
             Player.GetComponent<PlayerMovement>().Knockback(gameObject.transform);
         }
     }
+
+
 }
 

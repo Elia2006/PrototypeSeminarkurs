@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour
             other.GetComponent<Enemy>().TakeDamage(10);
             gun.HitEffect();
             Destroy(gameObject);
-            Instantiate(hitParticle, lastPos, Quaternion.LookRotation(hit.normal));
+            Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
         }else if(other.CompareTag("Ground"))
         {
             Destroy(gameObject);

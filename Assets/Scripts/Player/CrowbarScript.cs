@@ -39,8 +39,6 @@ public class CrowbarScript : MonoBehaviour
         AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
         if(animStateInfo.normalizedTime >= 1 && animStateInfo.IsName("CrowbarHit"))
         {
-                        Debug.Log("hello");
-
             isAttacking = false;
             alreadyDamaged.Clear();
             transform.position = new Vector3(0.3f, -0.415f, 0.6f);

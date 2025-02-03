@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SpiderAnimation : MonoBehaviour
 {
-    private float legMoveSpeed = 8;
+    [SerializeField] float legMoveSpeed = 8;
     private Vector3 currentPos;
     private Vector3 oldPos;
     public Vector3 newPos;

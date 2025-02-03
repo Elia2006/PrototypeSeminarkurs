@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void Death()
     {
-
+        Destroy(gameObject);
     }
 
     protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction, NavMeshAgent agent, Vector3 originPoint)

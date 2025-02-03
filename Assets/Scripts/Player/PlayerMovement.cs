@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public bool onGround;
     public Transform groundCheck;
     [SerializeField] LayerMask groundMask;
+    private float jumpTimer;
 
     public Vector3 direction;
     private Vector3 lastPos;
@@ -75,10 +76,10 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(move.normalized * speed * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround))
+            if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround) && jumpTimer < Time.time)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-
+                jumpTimer = Time.time + 1;
             }
             
             //gravity
