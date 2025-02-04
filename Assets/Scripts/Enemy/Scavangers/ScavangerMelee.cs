@@ -25,7 +25,7 @@ public class ScavangerMelee : Scavanger
         {
             if(Attack())
             {
-                if(AttackCollider.colliding && AttackCollider.collider != null && AttackCollider.collider.gameObject.CompareTag("Player"))
+                if(AttackCollider.colliding && AttackCollider.coll != null && AttackCollider.coll.gameObject.CompareTag("Player"))
                 {
                     agent.isStopped = true;
                     if(attackCooldown < Time.time)

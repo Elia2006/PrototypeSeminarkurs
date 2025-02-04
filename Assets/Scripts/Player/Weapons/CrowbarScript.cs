@@ -8,7 +8,7 @@ public class CrowbarScript : MonoBehaviour
 {
     public bool unEquip = false;
     [SerializeField] PlayerMovement playerMovement;
-    private GameObject HitTexture;
+    private HitTextureS hitTexture;
     private Animator anim;
     float hitTextureCooldown;
     bool isAttacking = false;
@@ -17,7 +17,7 @@ public class CrowbarScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        HitTexture = GameObject.Find("HitTexture");
+        hitTexture = GameObject.Find("HitTexture").GetComponent<HitTextureS>();
         anim = GetComponent<Animator>();
     }
 
@@ -44,13 +44,6 @@ public class CrowbarScript : MonoBehaviour
             transform.position = new Vector3(0.3f, -0.415f, 0.6f);
             transform.rotation = Quaternion.Euler(-76.5f, 90, -90);
         }
-
-        if(hitTextureCooldown > Time.time)
-        {
-            HitTexture.SetActive(true);
-        }else{
-            HitTexture.SetActive(false);
-        }
     }
 
     public void Unequip()
@@ -67,7 +60,7 @@ public class CrowbarScript : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             enemy.TakeDamage(20);
             enemy.KnockbackStart();
-            hitTextureCooldown = Time.time + 0.1f;
+            hitTexture.Hit();
         }
         /*
         if (other.transform.CompareTag("Boss") && isAttacking && !alreadyDamaged.Contains(other))

@@ -5,12 +5,12 @@ using UnityEngine;
 public class AttackCollider : MonoBehaviour
 {
     public bool colliding;
-    public Collider collider;
+    public Collider coll;
 
     public void OnTriggerEnter(Collider other)
     {
         colliding = true;
-        collider = other;  
+        coll = other;  
     }
     public void OnTriggerExit(Collider other)
     {

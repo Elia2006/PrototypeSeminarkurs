@@ -6,7 +6,7 @@ public class ImpactScript : MonoBehaviour
 {
     [SerializeField] int damage;
     private float lifetime = 0;
-    private bool enabled = true;
+    private bool active = true;
     private GameObject Player;
     // Start is called before the first frame update
     void Start()
@@ -31,10 +31,10 @@ public class ImpactScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other == Player.GetComponent<Collider>() && enabled)
+        if(other == Player.GetComponent<Collider>() && active)
         {
             Player.GetComponent<HUD>().TakeDamage(damage);
-            enabled = false;
+            active = false;
         }
     }
 }

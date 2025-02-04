@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 806881326199672180}
   - component: {fileID: 5660544820109066187}
   - component: {fileID: 8833861211360912253}
+  - component: {fileID: 3566169385462120813}
   m_Layer: 5
   m_Name: HitTexture
   m_TagString: Untagged
@@ -315,6 +316,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3566169385462120813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327464260577169296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80456703b8099c744be347723e9685de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3477598478820910808
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +608,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7769838214313928409}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

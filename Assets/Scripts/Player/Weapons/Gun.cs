@@ -10,9 +10,7 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform Cam;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject ImpactEffect;
-    private GameObject HitTexture;
     [SerializeField] Transform GunEnd;
-    private float hitTextureCooldown = 0;
     private float attackCooldown;
     public GameObject Player;
 
@@ -24,7 +22,6 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        HitTexture = GameObject.Find("HitTexture");
         defXRot = transform.localRotation.eulerAngles.x;
     }
 
@@ -36,16 +33,14 @@ public class Gun : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
             {
                 Shoot();
-                attackCooldown = Time.time/* + 0.7f*/;
+                attackCooldown = Time.time + 0.7f;
                 rotD = 8;
             }
 
             transform.localRotation = Quaternion.Euler(defXRot - rot, 0, 0);
 
             if(rotD > 0 || rot > 0)
-            {
-                //Debug.Log(rotD);
-                
+            {                
                 if(rotD > 0)
                 {
                     rotD -= Mathf.Pow(rot * 1, 2) * Time.deltaTime;
@@ -60,17 +55,6 @@ public class Gun : MonoBehaviour
                     rotD -= Time.deltaTime;
                 }
                 rot += rotD;
-            }
-
-
-
-            if (hitTextureCooldown > Time.time)
-            {
-                HitTexture.SetActive(true);
-            }
-            else
-            {
-                HitTexture.SetActive(false);
             }
         }
     }
@@ -96,10 +80,5 @@ public class Gun : MonoBehaviour
 
         muzzleFlash.Play();
         
-    }
-
-    public void HitEffect()
-    {
-        hitTextureCooldown = Time.time + 0.1f;
     }
 }

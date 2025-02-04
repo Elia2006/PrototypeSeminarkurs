@@ -93,7 +93,7 @@ public class SandCrab : Enemy
     }
     private void Attack()
     {
-        if(attackCooldown < Time.time && attackCollider.collider != null && attackCollider.collider.gameObject.CompareTag("Player"))
+        if(attackCooldown < Time.time && attackCollider.coll != null && attackCollider.coll.gameObject.CompareTag("Player"))
         {
             attackCooldown = Time.time + 2;
             Player.GetComponent<HUD>().TakeDamage(10);

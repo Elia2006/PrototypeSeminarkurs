@@ -9,8 +9,9 @@ public class Projectile : MonoBehaviour
 
     private float startTime;
     private float distanceTravelled;
-    private Gun gun;
+    private GameObject hitTexture;
     [SerializeField] GameObject hitParticle;
+    [SerializeField] int damage;
     Vector3 lastPos;
 
     
@@ -20,13 +21,15 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         startTime = Time.time;
-        gun = GameObject.Find("Gun").GetComponent<Gun>();
         lastPos = transform.position;
+        hitTexture = GameObject.Find("HitTexture");
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        
         distanceTravelled = speed * (Time.time - startTime);
         transform.position += transform.forward * speed * Time.deltaTime;
         
@@ -51,8 +54,8 @@ public class Projectile : MonoBehaviour
         
 
         if(other.CompareTag("Enemy")){
-            other.GetComponent<Enemy>().TakeDamage(10);
-            gun.HitEffect();
+            other.GetComponent<Enemy>().TakeDamage(damage);
+            hitTexture.GetComponent<HitTextureS>().Hit();
             Destroy(gameObject);
             Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
         }else if(other.CompareTag("Ground"))
