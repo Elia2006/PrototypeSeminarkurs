@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliding: 0
-  collider: {fileID: 0}
+  coll: {fileID: 0}
 --- !u!1 &1789838584642338206
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 917631676373296332}
   - component: {fileID: 311138781972177232}
   - component: {fileID: 7271748257358515051}
+  - component: {fileID: 3663441701464607032}
   m_Layer: 0
   m_Name: ScavangerMelee
   m_TagString: Enemy
@@ -334,8 +335,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   AllertEffect: {fileID: 0}
-  PatrollPoint: {fileID: 0}
+  patrollPoint: {fileID: 0}
   AttackCollider: {fileID: 4078469915161724728}
+--- !u!114 &3663441701464607032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707313836441786390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ec1973b4445b24e8313a938999a4db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Method: 2
+  m_Curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5917482430460597045
 GameObject:
   m_ObjectHideFlags: 0

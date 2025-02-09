@@ -49,8 +49,12 @@ public class Scavanger : Enemy
         }
         else
         {
-            newPos = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent, transform.position);
-            agent.destination = newPos;
+            Vector3 tempNewPos = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent, transform.position);
+            if(tempNewPos != new Vector3(0, 0, 0))
+            {
+                newPos = tempNewPos;
+                agent.destination = newPos;
+            }
             return false;
         }
 

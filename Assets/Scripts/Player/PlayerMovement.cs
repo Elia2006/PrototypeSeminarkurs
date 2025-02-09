@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     //sliding from steep surface
     private bool canMove = true;
+    private Vector3 slidingDirection;
 
     void Start()
     {
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         onGround = Physics.CheckSphere(groundCheck.position, 0.6f, groundMask);
-        //checkStandingSurface();
+        CheckStandingSurface();
 
         RaycastHit hit;
         Physics.Raycast(groundCheck.position, Vector3.down, out hit, Mathf.Infinity, groundMask);
@@ -140,21 +141,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void checkStandingSurface()
+    private void CheckStandingSurface()
     {
         canMove = true;
         if(onGround){
-            RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundMask);
-            Debug.DrawLine(hit.point, hit.point + hit.normal);
-
-            if(hit.normal.y < 0.75f)
+            
+            if(IsToSteep(new Vector3(0, 0, 0)) && IsToSteep(new Vector3(0.5f, 0, 0)) && IsToSteep(new Vector3(-0.5f, 0, 0)) && 
+            IsToSteep(new Vector3(0, 0, 0.5f)) && IsToSteep(new Vector3(0, 0, -0.5f)))
             {
                 canMove = false;
-                controller.Move(new Vector3(hit.normal.x * 0.05f, 0, hit.normal.z * 0.05f));
+                controller.Move(new Vector3(slidingDirection.x * 0.05f, -slidingDirection.y * 0.05f, slidingDirection.z * 0.05f));
             }
         }
     }
+
+    private bool IsToSteep(Vector3 offset)
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position + offset, Vector3.down, out hit, Mathf.Infinity, groundMask);
+        Debug.DrawLine(hit.point, hit.point + hit.normal);
+        if(hit.transform != null && hit.normal.y < 0.5f)
+        {
+            slidingDirection = hit.normal;
+            return true;
+        }
+        return false;
+    }
+    
 
 
     private void calculateDirection()
@@ -173,9 +186,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Knockback(Transform enemy)
+    public void Knockback(Transform enemy, float force)
     {
-        KnockbackForce = (transform.position - enemy.position).normalized * 0.2f;
+        KnockbackForce = (transform.position - enemy.position).normalized * force;
     }
 
     public void ReduceSpeed(float speed, float time)

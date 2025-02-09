@@ -32,7 +32,7 @@ public class Speer : MonoBehaviour
             Destroy(gameObject);
         }else if(other.transform.CompareTag("Player"))
         {
-            Player.GetComponent<HUD>().TakeDamage(5);
+            Player.GetComponent<HUD>().TakeDamage(5, 1, transform, 0.05f);
             Destroy(gameObject);
         }
     }

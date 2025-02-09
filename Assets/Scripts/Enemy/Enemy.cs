@@ -28,13 +28,13 @@ public class Enemy : MonoBehaviour
 
     //Damage
     protected int health = 50;
-    protected Boolean gotHit;
+    protected Boolean continueCharge;
 
     //Knockback
     protected Vector3 knockback;
 
     [SerializeField] ParticleSystem AllertEffect;
-    [SerializeField] Transform PatrollPoint;
+    public Transform patrollPoint;
 
     void Start()
     {
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
-        gotHit = true;
+        continueCharge = true;
 
         if (health <= 0)
         {
@@ -97,10 +97,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void TurnTowardsPlayer()
+    protected Quaternion TurnTowardsPlayer(float speed)
     {
         var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
-        transform.rotation = Quaternion.Euler(new Vector3(0, Quaternion.Lerp(transform.rotation, lookRotation, 0.05f).eulerAngles.y, 0));
+        return Quaternion.Euler(new Vector3(0, Quaternion.Lerp(transform.rotation, lookRotation, speed).eulerAngles.y, 0));
     }
 
     public void KnockbackStart()

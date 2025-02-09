@@ -9,8 +9,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public TextMeshProUGUI playerHealthText;
-    public TextMeshProUGUI playerEnergyText;
+
     [SerializeField] Image damageImage;
     public float playerHealth = 100;
     public float maxHealth;
@@ -22,8 +21,12 @@ public class HUD : MonoBehaviour
     public GameObject Player;
 
     private CharacterController playerCc;
-    [SerializeField] Image healthBar;
-    [SerializeField] Image energyBar;
+
+    private Image healthBar;
+    private Image healthBar2;
+    private TextMeshProUGUI playerHealthText;
+
+
     [SerializeField] GameObject TaskText;
     [SerializeField] GameObject Canvas;
     [SerializeField] PlayerMovement playerMovement;
@@ -33,27 +36,44 @@ public class HUD : MonoBehaviour
         maxEnergy = playerEnergy;
         Tasks();
         playerCc = Player.GetComponent<CharacterController>();
+
+        healthBar = GameObject.Find("healthBar").GetComponent<Image>();
+        healthBar2 = GameObject.Find("healthBar2").GetComponent<Image>();
+        playerHealthText = GameObject.Find("playerHealthText").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(playerHealth/maxHealth,0,1);
-        energyBar.fillAmount = Mathf.Clamp(playerEnergy / maxEnergy, 0, 1);
-        playerHealthText.text = playerHealth + "/" + maxHealth;
-        playerEnergyText.text = playerEnergy + "/" + maxEnergy;
+
+        HealthBar();
 
         Color newColor = new Color(1, 1, 1, damageAlphaColor);
-        damageImage.color = newColor;
+        //damageImage.color = newColor;
 
         damageAlphaColor -= Time.deltaTime * 2;
     }
+    private void HealthBar()
+    {
+        healthBar.fillAmount = Mathf.Clamp(playerHealth/maxHealth,0,1);
 
-    public void TakeDamage(int amount)
+        if(healthBar2.fillAmount > playerHealth/maxHealth)
+        {
+            healthBar2.fillAmount -= 0.001f;
+        }else if(healthBar2.fillAmount < playerHealth/maxHealth)
+        {
+            healthBar2.fillAmount = playerHealth/maxHealth;
+        }
+
+        playerHealthText.text = playerHealth + "/" + maxHealth;
+    }
+
+    public void TakeDamage(int amount, float speedReduction, Transform enemy, float knockbackForce)
     {
         playerHealth -= amount;
         damageAlphaColor = 0.8f;
 
-        playerMovement.ReduceSpeed(1, 1);
+        playerMovement.ReduceSpeed(speedReduction, 1);
+        playerMovement.Knockback(enemy, knockbackForce);
 
         if(playerHealth <= 0)
         {

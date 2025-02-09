@@ -14,6 +14,6 @@ public class AttackCollider : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        colliding = false;
+        coll = null;
     }
 }

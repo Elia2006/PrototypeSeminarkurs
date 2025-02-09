@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject ImpactEffect;
     [SerializeField] Transform GunEnd;
+    [SerializeField] Animator anim;
     private float attackCooldown;
     public GameObject Player;
 
@@ -33,34 +34,17 @@ public class Gun : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
             {
                 Shoot();
-                attackCooldown = Time.time + 0.7f;
+                attackCooldown = Time.time + 0.3f;
                 rotD = 8;
             }
-
-            transform.localRotation = Quaternion.Euler(defXRot - rot, 0, 0);
-
-            if(rotD > 0 || rot > 0)
-            {                
-                if(rotD > 0)
-                {
-                    rotD -= Mathf.Pow(rot * 1, 2) * Time.deltaTime;
-
-                    if(rotD < 0)
-                    {
-                        rotD = 0;
-                    }
-                
-                }else
-                {
-                    rotD -= Time.deltaTime;
-                }
-                rot += rotD;
-            }
+            
         }
     }
 
     void Shoot() 
     {
+        anim.SetTrigger("Shoot");
+
         RaycastHit hit;
 
         Physics.Raycast(Cam.position, Cam.forward, out hit);

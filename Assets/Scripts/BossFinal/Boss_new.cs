@@ -19,26 +19,44 @@ public class Boss_new : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {/*
-        transform.LookAt(Player.position);
-        transform.localRotation = Quaternion.Euler(-90, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);*/
+    {
+        TurnTowardsPlayer();
+        GoTowardsPlayer();
 
+        //Flamethrower();
+    }
+
+    private void TurnTowardsPlayer()
+    {
         var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.01f);
 
-        transform.localRotation = Quaternion.Euler(-90, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        transform.localRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+    }
 
-        Flamethrower();
+    private void GoTowardsPlayer()
+    {
+        if(Vector3.Distance(transform.position, Player.position) > 20)
+        {
+            transform.position += transform.forward * Time.deltaTime;
+        }
     }
 
     private void Flamethrower()
     {
         if(flameCooldown < Time.time)
         {
+            
+
+            flamethrowerEnd.LookAt(Player.transform);
+
+            float rand = 1 / Vector3.Distance(transform.position, Player.position) * 50;
+            flamethrowerEnd.rotation *= Quaternion.Euler(Random.Range(-rand, rand), Random.Range(-rand, rand), 0);
+
             Instantiate(fire, flamethrowerEnd.position, flamethrowerEnd.rotation);  
 
-            flameCooldown = Time.time + 0.4f;
+            flameCooldown = Time.time + 0.7f;
         }
     }
 }

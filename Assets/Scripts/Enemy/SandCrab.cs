@@ -32,9 +32,9 @@ public class SandCrab : Enemy
     void Update()
     {
         Vector3 sight = (transform.position - Player.transform.position).normalized + Cam.forward;
+        float distance = Vector3.Distance(transform.position, Player.transform.position);
 
-
-        if(Vector3.Distance(transform.position, Player.transform.position) < 5 || gotHit)
+        if(distance < 5 || continueCharge)
         {
             chargeAttack = true;
         }
@@ -42,7 +42,7 @@ public class SandCrab : Enemy
         {
             chargeAttack = false;
         }
-        if(!(Mathf.Abs(sight.x) > 1 || Mathf.Abs(sight.y) > 1 || Mathf.Abs(sight.z) > 1) || chargeAttack)
+        if(!(Mathf.Abs(sight.x) > 1 || Mathf.Abs(sight.y) > 1 || Mathf.Abs(sight.z) > 1) && distance < 40 || chargeAttack)
         {
             if(previousState == 1)
             {
@@ -52,7 +52,7 @@ public class SandCrab : Enemy
 
             if(lerp > 1){
                 
-                if(Vector3.Distance(transform.position, Player.transform.position) < 4)
+                if(distance < 3)
                 {
                     agent.isStopped = true;
                 }else
@@ -88,7 +88,7 @@ public class SandCrab : Enemy
 
         if(!IsPlayerInRange(Player.transform.position, groundLayer, 45))
         {
-            gotHit = false;
+            continueCharge = false;
         }
     }
     private void Attack()
@@ -96,8 +96,8 @@ public class SandCrab : Enemy
         if(attackCooldown < Time.time && attackCollider.coll != null && attackCollider.coll.gameObject.CompareTag("Player"))
         {
             attackCooldown = Time.time + 2;
-            Player.GetComponent<HUD>().TakeDamage(10);
-            Player.GetComponent<PlayerMovement>().Knockback(gameObject.transform);
+            Player.GetComponent<HUD>().TakeDamage(10, 1, transform, 0.2f);
+            continueCharge = true;
         }
     }
 

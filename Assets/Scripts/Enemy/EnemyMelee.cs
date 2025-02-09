@@ -14,7 +14,6 @@ public class EnemyMelee : Enemy
     private Vector3 oldPos;
     private Vector3 jumpDestination;
     [SerializeField] GameObject JumpHit;
-    [SerializeField] Vector3 patrollPoint;
 
     private Quaternion jumpHitRotation;
 
@@ -70,7 +69,7 @@ public class EnemyMelee : Enemy
             {     
                 Patroll();
             }
-            gotHit = false;
+            continueCharge = false;
         }
 
         //Rotation();
@@ -214,7 +213,7 @@ public class EnemyMelee : Enemy
         {
             waitTime = Time.time + 3;
 
-            var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint);
+            var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint.position);
             if(checkNewPos != new Vector3(0, 0, 0))
             {
                 newPos = checkNewPos;

@@ -14,7 +14,9 @@ public class EnemyRange : Enemy
     private float ReloadTime;
     private float ChargeTimer;
     [SerializeField] GameObject Projectile;
-    private float xRotation;
+    [SerializeField] Transform BulletOrigin;
+    [SerializeField] Rotate ring1;
+    [SerializeField] Rotate ring2;
 
 
     void Start()
@@ -52,33 +54,17 @@ public class EnemyRange : Enemy
 
     private void Attack()
     {
-        
+
+        var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
+        BulletOrigin.rotation = Quaternion.Lerp(BulletOrigin.rotation, lookRotation, 0.05f);
 
         if(attackCooldown < Time.time)
         {
-            if(bulletsLeft > 0 && ChargeTimer < Time.time)
-            {
-                GameObject Bullet = Instantiate(Projectile, transform.position, Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.eulerAngles.z));
-                Destroy(Bullet, 1);
-                bulletsLeft--;
-                attackCooldown = Time.time + 0.1f;
-                ReloadTime = Time.time + 2;
-            }else if(ReloadTime < Time.time && bulletsLeft <= 0)
-            {
-                bulletsLeft = 20;
-                ChargeTimer = Time.time + 1;
-            }
-
+            StopAllCoroutines();
+            StartCoroutine(Shoot());
+            attackCooldown = Time.time + 7;
         }
-        if(bulletsLeft <= 0)
-        {
-            TurnTowardsPlayer();
-            xRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up).eulerAngles.x;
-            agent.isStopped = false;
-        }else
-        {
-            agent.isStopped = true;
-        }
+        
 
         var distance = Vector3.Distance(Player.transform.position, transform.position);
         
@@ -99,6 +85,62 @@ public class EnemyRange : Enemy
         agent.destination = newPos;
     }
 
+    IEnumerator Shoot()
+    {
+        agent.isStopped = true;
+
+        yield return StartCoroutine(AccelelrateRings());
+
+        for(int i = 0; i < 20; i++)
+        {
+            GameObject Bullet = Instantiate(Projectile, BulletOrigin.position, BulletOrigin.rotation);
+            Destroy(Bullet, 1);
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        yield return StartCoroutine(DecelerateRings());
+
+        agent.isStopped = false;
+
+
+        yield return null;
+    }
+
+    IEnumerator AccelelrateRings()
+    {
+        while(ring1.rotationSpeed < 800)
+        {
+            ring1.rotationSpeed += 10;
+            ring2.rotationSpeed += 10;
+
+            float lerp = (ring1.rotationSpeed - 100) / 700;
+
+            ring1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
+            ring2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return null;
+    }
+
+    IEnumerator DecelerateRings()
+    {
+        while(ring1.rotationSpeed > 100)
+        {
+            ring1.rotationSpeed -= 10;
+            ring2.rotationSpeed -= 10;
+
+            float lerp = (ring1.rotationSpeed - 100) / 700;
+
+            ring1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
+            ring2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return null;
+    }
+
+
     private void Patroll()
     {
         speedMultiplier = 0.5f;
@@ -106,7 +148,7 @@ public class EnemyRange : Enemy
         {
             waitTime = Time.time + 3;
             
-            var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, transform.position);
+            var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint.position);
             if(checkNewPos != new Vector3(0, 0, 0))
             {
                 newPos = checkNewPos;

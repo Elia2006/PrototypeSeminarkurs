@@ -11,8 +11,6 @@ public class EnemyMelee1 : Enemy
     //Attack
     private float lerp;
 
-    [SerializeField] Vector3 patrollPoint;
-
     //Attack
     [SerializeField] GameObject Hit;
 
@@ -27,6 +25,8 @@ public class EnemyMelee1 : Enemy
     private float attackChargeTimer;
     private bool attack = false;
 
+    [SerializeField] bool isStationary;
+
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class EnemyMelee1 : Enemy
         agent = GetComponent<NavMeshAgent>();
         speed = 2;
         patrollingRange = 20;
-        health = 300;
+        health = 70;
 
         sightDistance = 30;
         allertDistance = 60;
@@ -60,7 +60,7 @@ public class EnemyMelee1 : Enemy
             {     
                 Patroll();
             }
-            gotHit = false;
+            continueCharge = false;
         }
 
         //Rotation();
@@ -84,7 +84,7 @@ public class EnemyMelee1 : Enemy
         
 
 
-        if(Vector3.Distance(transform.position, Player.transform.position) < 2 || attack)
+        if(distance < 2 || attack)
         {
             agent.isStopped = true;
         }else
@@ -111,7 +111,8 @@ public class EnemyMelee1 : Enemy
         {
             Physics.Raycast(transform.position + Vector3.up * 2 + transform.forward * 2, Vector3.down, out hit, Mathf.Infinity, groundLayer);
 
-            Instantiate(Hit, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            GameObject hitAttack = Instantiate(Hit, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            hitAttack.GetComponent<ImpactScript>().SetEnemy(transform);
 
             attackCooldown = Time.time + 2;
             attack = false;
@@ -122,19 +123,26 @@ public class EnemyMelee1 : Enemy
         agent.updateRotation = true;
 
         speedMultiplier = 1;
-        if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
+        if(isStationary)
         {
-            waitTime = Time.time + 3;
-
-            var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint);
-            if(checkNewPos != new Vector3(0, 0, 0))
-            {
-                newPos = checkNewPos;
-            }
-        }
-        else if(waitTime < Time.time)
-        {         
+            newPos = patrollPoint.position;
             agent.destination = newPos;
+        }else
+        {
+            if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
+            {
+                waitTime = Time.time + 3;
+
+                var checkNewPos = FindPosOnNavMesh(patrollingRange, Random.insideUnitSphere, agent, patrollPoint.position);
+                if(checkNewPos != new Vector3(0, 0, 0))
+                {
+                    newPos = checkNewPos;
+                }
+            }
+            else if(waitTime < Time.time)
+            {         
+                agent.destination = newPos;
+            }
         }
     }
     protected override void Death()

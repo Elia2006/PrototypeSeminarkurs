@@ -31,7 +31,7 @@ public class CrowbarScript : MonoBehaviour
             attackCooldown = Time.time + 1;
             if(playerMovement != null) // playerMovement ist jeden 2. Frame null, keine Ahnung wieso aber das geht so erstmal
             {
-                playerMovement.ReduceSpeed(1, 1);
+                playerMovement.ReduceSpeed(2, 0.5f);
             }
         }
 

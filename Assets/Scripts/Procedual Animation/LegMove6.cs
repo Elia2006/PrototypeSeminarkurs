@@ -31,8 +31,6 @@ public class LegMove6 : MonoBehaviour
             moveCicle = 0;
         }
 
-       
-
         float distance = Vector3.Distance(Legs[moveCicle].GetComponent<SpiderAnimation>().newPos, LegDefaultPos[moveCicle].transform.position);
 
         if(distance > maxDistance && currentLeg.GetComponent<SpiderAnimation>().lerp >= legLerp)
@@ -52,4 +50,5 @@ public class LegMove6 : MonoBehaviour
         lastPos = transform.position;
 
     }
+    
 }

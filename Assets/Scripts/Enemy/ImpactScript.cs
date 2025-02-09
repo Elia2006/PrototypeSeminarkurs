@@ -8,6 +8,7 @@ public class ImpactScript : MonoBehaviour
     private float lifetime = 0;
     private bool active = true;
     private GameObject Player;
+    private Transform enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +30,16 @@ public class ImpactScript : MonoBehaviour
         }
     }
 
+    public void SetEnemy(Transform enemy2)
+    {
+        enemy = enemy2;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other == Player.GetComponent<Collider>() && active)
         {
-            Player.GetComponent<HUD>().TakeDamage(damage);
+            Player.GetComponent<HUD>().TakeDamage(damage, 1, enemy, 0.1f);
             active = false;
         }
     }
