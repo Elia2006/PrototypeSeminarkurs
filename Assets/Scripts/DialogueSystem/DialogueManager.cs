@@ -59,11 +59,6 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
-        if(anim.GetAnimatorTransitionInfo(0).IsName("DialogueBoxClosed->DialogueBoxOpen"))
-        {
-            yield return new WaitForSeconds(10);
-        }
-
         dialogueText.text = "";
         foreach(char letter in sentence.ToCharArray())
         {

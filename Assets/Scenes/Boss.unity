@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 490848653}
   - component: {fileID: 490848654}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg2_target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633932468}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FlamethrowerEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804718852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm2_target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 862010917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm1_target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884483592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg2_hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 894823400}
   - component: {fileID: 894823401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1009382060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm2_hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076768331}
   - component: {fileID: 1076768330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rig 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,6 +699,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1118932808}
+  - {fileID: 1465477496}
   - {fileID: 1201527214}
   - {fileID: 1500042011}
   - {fileID: 894823400}
@@ -714,7 +715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118932808}
   - component: {fileID: 1118932809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -798,6 +799,10 @@ PrefabInstance:
       propertyPath: playerHealthText
       value: 
       objectReference: {fileID: 2044733629}
+    - target: {fileID: 6808019419508190021, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 447
+      objectReference: {fileID: 0}
     - target: {fileID: 8795115664668336719, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.99
@@ -853,7 +858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1201527214}
   - component: {fileID: 1201527215}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,21 +892,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201527213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeda7bfbf984f2a4da5ab4b8967b115d, type: 3}
+  m_Script: {fileID: 11500000, guid: e3c430f382484144e925c097c2d33cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Root: {fileID: 1383421049}
-    m_Mid: {fileID: 1277056054}
-    m_Tip: {fileID: 851729699}
-    m_Target: {fileID: 804718852}
-    m_Hint: {fileID: 1009382060}
-    m_TargetPositionWeight: 1
-    m_TargetRotationWeight: 1
-    m_HintWeight: 1
-    m_MaintainTargetPositionOffset: 0
-    m_MaintainTargetRotationOffset: 0
+    m_ConstrainedObject: {fileID: 1277056054}
+    m_SourceObjects:
+      m_Length: 1
+      m_Item0:
+        transform: {fileID: 1520353213}
+        weight: 1
+      m_Item1:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item2:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item3:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item4:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item5:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item6:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item7:
+        transform: {fileID: 0}
+        weight: 0
+    m_Offset: {x: 90, y: 0, z: 0}
+    m_MinLimit: -90
+    m_MaxLimit: 90
+    m_AimAxis: 4
+    m_UpAxis: 2
+    m_WorldUpType: 0
+    m_WorldUpObject: {fileID: 0}
+    m_WorldUpAxis: 2
+    m_MaintainOffset: 0
+    m_ConstrainedAxes:
+      x: 1
+      y: 1
+      z: 1
 --- !u!1 &1230269848
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230269849}
   - component: {fileID: 1230269850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg1_target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405398741}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg1_hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1078,6 +1113,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -7624844003837130931, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
   m_PrefabInstance: {fileID: 1676122182}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1465477495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465477496}
+  - component: {fileID: 1465477497}
+  m_Layer: 7
+  m_Name: Arm2Upper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1465477496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465477495}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1076768331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1465477497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465477495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c430f382484144e925c097c2d33cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 1
+  m_Data:
+    m_ConstrainedObject: {fileID: 1383421049}
+    m_SourceObjects:
+      m_Length: 1
+      m_Item0:
+        transform: {fileID: 1520353213}
+        weight: 1
+      m_Item1:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item2:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item3:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item4:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item5:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item6:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item7:
+        transform: {fileID: 0}
+        weight: 0
+    m_Offset: {x: 0, y: 0, z: 0}
+    m_MinLimit: -180
+    m_MaxLimit: 180
+    m_AimAxis: 4
+    m_UpAxis: 2
+    m_WorldUpType: 0
+    m_WorldUpObject: {fileID: 0}
+    m_WorldUpAxis: 2
+    m_MaintainOffset: 0
+    m_ConstrainedAxes:
+      x: 1
+      y: 1
+      z: 1
 --- !u!1 &1492516965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492516966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg1_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1500042011}
   - component: {fileID: 1500042012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,7 +1298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1504948264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm1_hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,6 +1344,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8891543383114207517, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1263,9 +1388,77 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7036570434901810546, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6086165200959882473, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -5643355052834626934, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4710744848278642383, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2618567992856139937, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2260177680316094619, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2039963591415333060, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1361536116314050168, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1144407432668719534, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -402016446260677803, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -128571668347392776, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
       propertyPath: m_Name
       value: boss als 1 objekt
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612626122787862329, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769959990850083895, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143392534611652846, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829825619187663742, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 37c0173b8b7d3ee4a853713896b1e6e7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1519,6 +1712,7 @@ MonoBehaviour:
   Player: {fileID: 1520353213}
   fire: {fileID: 271867323804614064, guid: d7e269b4ab459f541b630e0a13e3381f, type: 3}
   flamethrowerEnd: {fileID: 633932468}
+  Missile: {fileID: 4101838764135480632, guid: 9848d98483115654eae943962ddd75ca, type: 3}
 --- !u!1001 &1756871543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1743,7 +1937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1983235847}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg2_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

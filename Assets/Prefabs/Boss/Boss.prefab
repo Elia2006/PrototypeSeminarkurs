@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2936279956820886749}
   - component: {fileID: 5542389491290619551}
   - component: {fileID: 8488668110701523619}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4755857c4d1acb48a042b33203445de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2936279956820886749}
+  anim: {fileID: 0}
   Player: {fileID: 0}
 --- !u!1001 &2019348171003009256
 PrefabInstance:
@@ -182,9 +182,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1728532444438980708}
     m_Modifications:
+    - target: {fileID: 377112017969167186, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636958562085867874, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820631334621582646, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4834910933568497801, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
       propertyPath: m_Name
       value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834910933568497801, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178901595941438096, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473806506984382337, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8964154881912873935, guid: b5447d15b1315a644bf1f87bfb8285c4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -287,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 4664221358383494447, guid: e09ec446e1ef0ff4099be6f8e9505472, type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664221358383494447, guid: e09ec446e1ef0ff4099be6f8e9505472, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6386760001126799388, guid: e09ec446e1ef0ff4099be6f8e9505472, type: 3}
       propertyPath: m_Enabled
