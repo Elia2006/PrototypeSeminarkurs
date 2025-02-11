@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - WeaponPickupQuest1
   layers:
   - Default
   - TransparentFX

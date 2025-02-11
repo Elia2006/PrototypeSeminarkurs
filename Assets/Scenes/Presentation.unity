@@ -16785,7 +16785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -960, y: -539.9586}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2808075692832483946
@@ -18032,7 +18032,6 @@ GameObject:
   - component: {fileID: 3351430152673083963}
   - component: {fileID: 5970428442732766957}
   - component: {fileID: 8974270077955028318}
-  - component: {fileID: 7773539352885431164}
   - component: {fileID: 8974270077955028319}
   m_Layer: 5
   m_Name: QuestLogScrollingList
@@ -18117,13 +18116,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contentParent: {fileID: 6417421018573299229}
-  scrollingList: {fileID: 0}
-  questDisplayNameText: {fileID: 0}
-  questStatusText: {fileID: 0}
-  goldRewardsText: {fileID: 0}
-  experienceRewardsText: {fileID: 0}
-  levelRequirementsText: {fileID: 0}
-  questRequirementsText: {fileID: 0}
+  scrollingList: {fileID: 8974270077955028319}
+  questDisplayNameText: {fileID: 184015368640180153}
+  questStatusText: {fileID: 4547743295821793489}
+  goldRewardsText: {fileID: 5106345716086003968}
+  experienceRewardsText: {fileID: 106999714494837362}
+  levelRequirementsText: {fileID: 5016780744904618870}
+  questRequirementsText: {fileID: 7227819866865076888}
 --- !u!1 &5964163916305257261
 GameObject:
   m_ObjectHideFlags: 0
@@ -18326,7 +18325,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3736360142796464051}
   m_HandleRect: {fileID: 2198168545924613035}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -18516,18 +18515,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7773539352885431164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5415008770676370568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7806284694752024476
 GameObject:
   m_ObjectHideFlags: 0
@@ -18689,9 +18676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3498427537d9f42418656e059842fe68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contentParent: {fileID: 6417421018573299229}
-  scrollRectTransform: {fileID: 0}
-  contentRectTransform: {fileID: 0}
+  contentParent: {fileID: 9068640403700929011}
+  scrollRectTransform: {fileID: 4539783508018174780}
+  contentRectTransform: {fileID: 719833491181645127}
   questLogButtonPrefab: {fileID: 7230596964453444703, guid: f8b611f38bbbb964b9347aad96a505f1, type: 3}
 --- !u!1 &9062677987535516045
 GameObject:

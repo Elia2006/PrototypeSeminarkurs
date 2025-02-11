@@ -19,27 +19,27 @@ public class QuestLogScrollingList : MonoBehaviour
 
     // Below is code to test that the scrolling list is working as expected.
     // For it to work, you'll need to change the QuestInfoSO id field to be publicly settable
-    // private void Start()
-    // {
-    //     for (int i = 0; i < 20; i++) 
-    //     {
-    //         QuestInfoSO questInfoTest = ScriptableObject.CreateInstance<QuestInfoSO>();
-    //         questInfoTest.id = "test_" + i;
-    //         questInfoTest.displayName = "Test " + i;
-    //         questInfoTest.questStepPrefabs = new GameObject[0];
-    //         Quest quest = new Quest(questInfoTest);
+     /*private void Start()
+     {
+         for (int i = 0; i < 20; i++) 
+         {
+             QuestInfoSO questInfoTest = ScriptableObject.CreateInstance<QuestInfoSO>();
+             questInfoTest.id = "test_" + i;
+             questInfoTest.displayName = "Test " + i;
+             questInfoTest.questStepPrefabs = new GameObject[0];
+             Quest quest = new Quest(questInfoTest);
 
-    //         QuestLogButton questLogButton = CreateButtonIfNotExists(quest, () => {
-    //             Debug.Log("SELECTED: " + questInfoTest.displayName);
-    //         });
+             QuestLogButton questLogButton = CreateButtonIfNotExists(quest, () => {
+                 Debug.Log("SELECTED: " + questInfoTest.displayName);
+             });
 
-    //         if (i == 0)
-    //         {
-    //             questLogButton.button.Select();
-    //         }
-    //     }
-    // }
-
+             if (i == 0)
+             {
+                  questLogButton.button.Select();
+             }
+         }
+     }
+     */
     public QuestLogButton CreateButtonIfNotExists(Quest quest, UnityAction selectAction) 
     {
         QuestLogButton questLogButton = null;
@@ -62,7 +62,9 @@ public class QuestLogScrollingList : MonoBehaviour
             questLogButtonPrefab,
             contentParent.transform).GetComponent<QuestLogButton>();
         // game object name in the scene
+
         questLogButton.gameObject.name = quest.info.id + "_button";
+        Debug.Log(questLogButton.gameObject.name);
         // initialize and set up function for when the button is selected
         RectTransform buttonRectTransform = questLogButton.GetComponent<RectTransform>();
         questLogButton.Initialize(quest.info.displayName, () => {

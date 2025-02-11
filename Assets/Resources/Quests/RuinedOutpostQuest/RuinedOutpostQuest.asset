@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383af032eadd9b946871ea848d1c7576, type: 3}
+  m_Name: RuinedOutpostQuest
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: RuinedOutpostQuest
+  displayName: Ruined Outpost
+  levelRequirement: 0
+  questPrerequisites: []
+  questStepPrefabs:
+  - {fileID: 3802256980738393235, guid: 1ed76e157270f774eb5abf6a137f00f6, type: 3}
+  - {fileID: 2721952757043124935, guid: 03c3b7e0e13d4784c974db5a527b5af2, type: 3}
+  goldReward: 0
+  experienceReward: 0
+  rewardsList: 0
