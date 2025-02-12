@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HitTextureS : MonoBehaviour
 {
@@ -15,17 +16,22 @@ public class HitTextureS : MonoBehaviour
     void Update()
     {
         if (hitTextureCooldown > Time.time)
-            {
-                gameObject.GetComponent<CanvasRenderer>().SetAlpha(1);
-            }
-            else
-            {
-                gameObject.GetComponent<CanvasRenderer>().SetAlpha(0);
+        {
+            gameObject.GetComponent<CanvasRenderer>().SetAlpha(1);
+        }
+        else
+        {
+            gameObject.GetComponent<CanvasRenderer>().SetAlpha(0);
         }
     }
 
     public void Hit()
     {
         hitTextureCooldown = Time.time + 0.1f;
+    }
+
+    public void SetColor(Color color)
+    {
+        gameObject.GetComponent<Image>().color = color;
     }
 }

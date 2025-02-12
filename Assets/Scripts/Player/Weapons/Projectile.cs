@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Projectile : MonoBehaviour
 {
@@ -52,9 +53,21 @@ public class Projectile : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(lastPos, transform.forward, out hit);
         
+                            
 
         if(other.CompareTag("Enemy")){
-            other.GetComponent<Enemy>().TakeDamage(damage);
+
+            other.GetComponent<CollisionScript>().TakeDamage(damage);
+
+            if(other.GetComponent<CollisionScript>().GetIsWeakpoint())
+            {
+                hitTexture.GetComponent<Image>().color =  Color.red;
+                Debug.Log("red");
+            }else
+            {
+                hitTexture.GetComponent<Image>().color = Color.white;
+                Debug.Log("white");
+            }
             hitTexture.GetComponent<HitTextureS>().Hit();
             Destroy(gameObject);
             Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));

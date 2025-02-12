@@ -9,14 +9,28 @@ public class Boss_new : MonoBehaviour
     //Flamethrower
     [SerializeField] GameObject fire;
     [SerializeField] Transform flamethrowerEnd;
+
+    //Missiles
     [SerializeField] GameObject Missile;
-    private float flameCooldown;
+
+    //Maschine Gun
+    [SerializeField] Transform maschineGunTarget;
+    private LineRenderer laser;
+    private Transform gunEnd;
+    [SerializeField] GameObject maschineGunProjectile;
+    [SerializeField] LayerMask groundLayer;
+
+    //BossStomp
+    [SerializeField] GameObject BossStomp;
+
 
     // Start is called before the first frame update
     void Start()
     {
-                StartCoroutine(Missiles());
+        laser = GetComponent<LineRenderer>();
+        gunEnd = GameObject.Find("lower arm L_end").transform;
 
+        StartCoroutine(Flamethrower());
     }
 
     // Update is called once per frame
@@ -25,8 +39,36 @@ public class Boss_new : MonoBehaviour
         TurnTowardsPlayer();
         GoTowardsPlayer();
 
-
         //Flamethrower();
+    }
+
+    IEnumerator PickAttack()
+    {
+        while(true)
+        {
+            int attack = Random.Range(0, 3);
+            switch(attack)
+            {
+                case 0:
+                    yield return StartCoroutine(Flamethrower());
+                    break;
+
+                case 1:
+                    yield return StartCoroutine(Missiles());
+                    break;
+
+                case 2:
+                    yield return StartCoroutine(MaschineGun());
+                    break;
+
+                case 3:
+                    yield return StartCoroutine(Stomp());
+                    break;
+            }
+
+            yield return new WaitForSeconds(5);
+
+        }
     }
 
     private void TurnTowardsPlayer()
@@ -46,12 +88,10 @@ public class Boss_new : MonoBehaviour
         }
     }
 
-    private void Flamethrower()
+    IEnumerator Flamethrower()
     {
-        if(flameCooldown < Time.time)
+        for(int i = 0; i < 20; i++)
         {
-            
-
             flamethrowerEnd.LookAt(Player.transform);
 
             float rand = 1 / Vector3.Distance(transform.position, Player.position) * 50;
@@ -59,8 +99,10 @@ public class Boss_new : MonoBehaviour
 
             Instantiate(fire, flamethrowerEnd.position, flamethrowerEnd.rotation);  
 
-            flameCooldown = Time.time + 0.7f;
+            yield return new WaitForSeconds(0.7f);
         }
+
+        yield return null;
     }
 
     IEnumerator Missiles()
@@ -95,6 +137,62 @@ public class Boss_new : MonoBehaviour
         missile.transform.parent = null;
 
         missile.GetComponent<Missile_new>().enabled = true;
+
+        yield return null;
+    }
+
+    IEnumerator MaschineGun()
+    {
+        laser.enabled = true;
+        Coroutine laserC = StartCoroutine(Laser());
+
+        yield return new WaitForSeconds(0.5f);
+
+        for(int i = 0; i < 40; i++)
+        {
+            Instantiate(maschineGunProjectile, gunEnd.position, Quaternion.LookRotation(maschineGunTarget.position - gunEnd.position, Vector3.up));
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        StopCoroutine(laserC);
+        laser.enabled = false;
+
+        yield return null;
+    }
+
+    IEnumerator Laser()
+    {
+        while(true)
+        {
+            laser.SetPosition(0, gunEnd.position);
+            RaycastHit hit;
+            Physics.Raycast(gunEnd.position, maschineGunTarget.position - gunEnd.position, out hit, Mathf.Infinity, groundLayer);
+            laser.SetPosition(1, hit.point);
+
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+
+    private IEnumerator Stomp()
+    {
+        for(float i = 0; i < 1; i += 0.01f)
+        {
+            transform.position += new Vector3(0, Mathf.Cos(i * Mathf.PI) * 0.2f, 0);
+
+            transform.position += (Player.position + Vector3.up * 2 - transform.position).normalized * 0.1f;
+
+
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        
+
+        for(int i = 0; i < 72; i++)
+        {
+            GameObject nextCicle = Instantiate(BossStomp, transform.position, Quaternion.Euler(0, i * 5, 0));
+            nextCicle.GetComponent<BossStomp>().lifeCicle = 20;
+        }
 
         yield return null;
     }

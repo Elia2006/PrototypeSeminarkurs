@@ -135,6 +135,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   Warning: {fileID: 2845090557150423879, guid: bbb757e5bbd382f4dbe7bbe06b9aae84, type: 3}
+  explosion: {fileID: 356725072990606393, guid: 864d099ae07ce0e448d22084a693303b, type: 3}
 --- !u!54 &-8710598097402476822
 Rigidbody:
   m_ObjectHideFlags: 0

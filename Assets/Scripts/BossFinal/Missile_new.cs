@@ -11,6 +11,8 @@ public class Missile_new : MonoBehaviour
     Rigidbody myRigidbody;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] GameObject Warning;
+    private GameObject warning;
+    [SerializeField] GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,7 @@ public class Missile_new : MonoBehaviour
             Vector3.down, out hit, Mathf.Infinity, groundLayer);
         finalTarget = hit.point;
 
-        Instantiate(Warning, hit.point + Vector3.up * 0.001f, Quaternion.Euler(90, 0, 0));
+        warning = Instantiate(Warning, hit.point + Vector3.up * 0.001f, Quaternion.Euler(90, 0, 0));
 
     }
 
@@ -67,6 +69,8 @@ public class Missile_new : MonoBehaviour
     {
         if(collider.CompareTag("Ground") || collider.CompareTag("Player"))
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(warning);
             Destroy(gameObject);
         }
     }
