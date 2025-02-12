@@ -15,8 +15,11 @@ MonoBehaviour:
   <id>k__BackingField: OutpostMountain
   displayName: Robot Ratatouille!
   levelRequirement: 0
-  questPrerequisites: []
-  questStepPrefabs: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: 1281a7cf0543ce24e9eedf408524299d, type: 2}
+  questStepPrefabs:
+  - {fileID: 4448225664244530291, guid: d14d335c24b18964b92211dc630d1f7f, type: 3}
+  - {fileID: 8521343126255153011, guid: 8efa9634436bb904ead73b0d7b2cf055, type: 3}
   goldReward: 0
   experienceReward: 0
   rewardsList: 0

@@ -15,7 +15,9 @@ MonoBehaviour:
   <id>k__BackingField: FirstBoss
   displayName: Cyborg con Carne!
   levelRequirement: 0
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: 1e7d340a97a4d614a8b053de0b1fd605, type: 2}
+  - {fileID: 11400000, guid: da1cafa5527d84e4b8fb445d49c00ca0, type: 2}
   questStepPrefabs: []
   goldReward: 0
   experienceReward: 0

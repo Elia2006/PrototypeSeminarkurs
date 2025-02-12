@@ -15,7 +15,8 @@ MonoBehaviour:
   <id>k__BackingField: PlantsQuest
   displayName: 'I NEED THE HERB!!! '
   levelRequirement: 0
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: 574120cb18916f94782dda0278e010f3, type: 2}
   questStepPrefabs: []
   goldReward: 0
   experienceReward: 0

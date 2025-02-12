@@ -16,7 +16,7 @@ public class QuestManager : MonoBehaviour
     {
         questMap = CreateQuestMap();
 
-        Quest quest = GetQuestById("TestQuest");
+        Quest quest = GetQuestById("OutpostMountain");
         Debug.Log(quest.info.displayName);
     }
 

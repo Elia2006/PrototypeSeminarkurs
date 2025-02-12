@@ -16,9 +16,10 @@ MonoBehaviour:
   displayName: Bot Bolognese!
   levelRequirement: 0
   questPrerequisites:
-  - {fileID: 0}
-  - {fileID: 0}
-  questStepPrefabs: []
+  - {fileID: 11400000, guid: 1281a7cf0543ce24e9eedf408524299d, type: 2}
+  questStepPrefabs:
+  - {fileID: 4245887858179342491, guid: 40365bf0bf40fb34886d41d1d3abf64d, type: 3}
+  - {fileID: 5044580837105556360, guid: 6de6182efff773348b7f2dd63af5023a, type: 3}
   goldReward: 0
   experienceReward: 0
   rewardsList: 0

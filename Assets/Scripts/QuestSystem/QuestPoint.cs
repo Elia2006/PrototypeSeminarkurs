@@ -36,6 +36,33 @@ public class QuestPoint : MonoBehaviour
         GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
     }
 
+    private void Update()
+    {
+        Debug.Log(playerIsNear);
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("schbila " + playerIsNear);
+            if (!playerIsNear)
+            {
+                Debug.Log("Player nicht nah");
+                return;
+            }
+
+            // start or finish a quest
+            Debug.Log(currentQuestState);
+            if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
+            {
+                Debug.Log("Starte Quest");
+                GameEventsManager.instance.questEvents.StartQuest(questId);
+            }
+            else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
+            {
+                Debug.Log("schlieﬂe Quest ab");
+                GameEventsManager.instance.questEvents.FinishQuest(questId);
+            }
+        }
+    }
+
     private void SubmitPressed()
     {
         if (!playerIsNear)
@@ -69,6 +96,7 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = true;
+            Debug.Log("player near" + playerIsNear);
         }
     }
 
@@ -77,6 +105,7 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = false;
+            Debug.Log("player nichtmehr nah");
         }
     }
 }
