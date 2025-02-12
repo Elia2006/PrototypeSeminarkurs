@@ -27,6 +27,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!PauseMenu.isPaused)
         {
             Cursor.lockState = CursorLockMode.Locked;

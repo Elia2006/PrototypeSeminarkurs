@@ -31,6 +31,21 @@ public class QuestLogUI : MonoBehaviour
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
     }
 
+    private void Update()
+    {
+       if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (contentParent.activeInHierarchy)
+            {
+                HideUI();
+            }
+            else
+            {
+                ShowUI();
+            }
+        } 
+    }
+
     private void QuestLogTogglePressed()
     {
         if (contentParent.activeInHierarchy)
