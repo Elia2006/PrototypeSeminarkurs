@@ -45,5 +45,6 @@ public class Grenade : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().TakeDamage(grenadeDamage);
 
         }
+        Debug.Log(collision.transform);
     }
 }

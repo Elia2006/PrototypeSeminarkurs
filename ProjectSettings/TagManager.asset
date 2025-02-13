@@ -20,8 +20,8 @@ TagManager:
   - OnTop
   - Enemy
   - EnemyProjectile
-  - 
-  - 
+  - DontCollide
+  - PlayerProjectile
   - 
   - 
   - 

@@ -17,7 +17,6 @@ public class Explosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("hello");
         if(timer < Time.time)
         {
             Destroy(gameObject);

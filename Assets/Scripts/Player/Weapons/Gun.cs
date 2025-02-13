@@ -15,16 +15,9 @@ public class Gun : MonoBehaviour
     private float attackCooldown;
     public GameObject Player;
 
-    private float defXRot;
     private float rot;
-    private float rotD;
 
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        defXRot = transform.localRotation.eulerAngles.x;
-    }
 
     // Update is called once per frame
     void Update()
@@ -35,7 +28,6 @@ public class Gun : MonoBehaviour
             {
                 Shoot();
                 attackCooldown = Time.time + 0.3f;
-                rotD = 8;
             }
             
         }

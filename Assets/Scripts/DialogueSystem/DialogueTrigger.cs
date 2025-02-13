@@ -15,7 +15,6 @@ public class DialogueTrigger : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
         {
             TriggerDialogue();
-            Debug.Log("hello");
         }
     }
 

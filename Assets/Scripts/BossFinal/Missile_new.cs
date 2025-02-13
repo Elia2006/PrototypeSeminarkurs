@@ -5,9 +5,7 @@ using UnityEngine;
 public class Missile_new : MonoBehaviour
 {
     private Vector3 Player;
-    private Vector3 tempTarget;
     private Vector3 finalTarget;
-    private bool tempTargetReached = false;
     Rigidbody myRigidbody;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] GameObject Warning;
@@ -22,8 +20,6 @@ public class Missile_new : MonoBehaviour
         myRigidbody.isKinematic = false;
 
         Player = GameObject.Find("Player").transform.position;
-
-        tempTarget = Player + Vector3.up * 10;
 
         float random = 4;
 

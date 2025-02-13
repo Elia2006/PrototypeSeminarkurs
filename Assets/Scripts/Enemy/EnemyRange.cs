@@ -10,9 +10,6 @@ public class EnemyRange : Enemy
     private int stopDistance = 10;
     
     //Attack
-    private int bulletsLeft = 20;
-    private float ReloadTime;
-    private float ChargeTimer;
     [SerializeField] GameObject Projectile;
     [SerializeField] Transform BulletOrigin;
     [SerializeField] Rotate ring1;
