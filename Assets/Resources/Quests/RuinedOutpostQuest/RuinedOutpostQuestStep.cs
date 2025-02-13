@@ -13,7 +13,7 @@ public class RuinedOutpostQuestStep : QuestStep
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("RuinedOUtpost1");
+            Debug.Log("RuinedOutpost1");
             FinishQuestStep();
         }
     }

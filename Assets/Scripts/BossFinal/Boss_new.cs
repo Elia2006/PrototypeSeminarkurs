@@ -12,6 +12,7 @@ public class Boss_new : MonoBehaviour
 
     //Missiles
     [SerializeField] GameObject Missile;
+    [SerializeField] Transform MissileEnd;
 
     //Maschine Gun
     [SerializeField] Transform maschineGunTarget;
@@ -30,7 +31,7 @@ public class Boss_new : MonoBehaviour
         laser = GetComponent<LineRenderer>();
         gunEnd = GameObject.Find("lower arm L_end").transform;
 
-        StartCoroutine(Flamethrower());
+        StartCoroutine(PickAttack());
     }
 
     // Update is called once per frame
@@ -39,7 +40,6 @@ public class Boss_new : MonoBehaviour
         TurnTowardsPlayer();
         GoTowardsPlayer();
 
-        //Flamethrower();
     }
 
     IEnumerator PickAttack()
@@ -107,16 +107,13 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator Missiles()
     {
-        Vector3 offsetPosition = new Vector3(2.28999996f,7.32800007f,-2.14899993f);
-        Quaternion offsetQuaternion = new Quaternion(-0.0732644945f,-0.00171960483f,-0.103516184f,0.991924286f);
-        
         for(int x = 0; x < 4; x++)
         {
             for(int y = 0; y < 3; y++)
             {
-                GameObject temp = Instantiate(Missile, transform.position + offsetPosition, transform.rotation * offsetQuaternion, transform);
-                temp.transform.localPosition += -temp.transform.right * (0.23f * x);
-                temp.transform.localPosition += -temp.transform.up * (0.23f * y);
+                GameObject temp = Instantiate(Missile, MissileEnd.position, MissileEnd.rotation, transform);
+                temp.transform.position += -temp.transform.right * (0.23f * x);
+                temp.transform.position += -temp.transform.up * (0.23f * y);
                 StartCoroutine(MoveMissiles(temp.transform, 1 + x + y * 4));
             }
         }

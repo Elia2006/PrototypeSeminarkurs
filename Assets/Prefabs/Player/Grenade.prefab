@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5677789406568216547}
   - component: {fileID: 6103129218022589919}
   - component: {fileID: 3506455227033932266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 2833608971173385357}
   - component: {fileID: 8756935416032029326}
   - component: {fileID: 7408122469311136330}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ExplosionEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9733,7 +9733,7 @@ GameObject:
   - component: {fileID: 3961373303879435068}
   - component: {fileID: 85816871949477320}
   - component: {fileID: 8307642858330925727}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14624,7 +14624,7 @@ GameObject:
   - component: {fileID: 9084641254447712941}
   - component: {fileID: 8217171220905401237}
   - component: {fileID: 566781777694465330}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14639,7 +14639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4834910933568497801}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.4736604, z: -0, w: 0.88070756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 237.32184, y: 17.267818, z: 76.07182}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14771,7 +14771,7 @@ GameObject:
   - component: {fileID: 7886768074510843003}
   - component: {fileID: 2108102645209510549}
   - component: {fileID: 3723741041288834901}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19659,7 +19659,7 @@ GameObject:
   - component: {fileID: 2177312625035148224}
   - component: {fileID: 5874125080910845573}
   - component: {fileID: 6451013342450292223}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

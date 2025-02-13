@@ -23,6 +23,11 @@ public class GrenadeLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
+        Physics.Raycast(cam.position, cam.forward, out hit, 50f);
+        Debug.DrawLine(hit.point, attackPoint.position);
+
+
         if (!PauseMenu.isPaused)
         {
             if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
@@ -57,7 +62,8 @@ public class GrenadeLauncher : MonoBehaviour
             forceDirection = (hit.point - attackPoint.position).normalized;
         }
 
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
+        Vector3 forceToAdd = forceDirection;
+        //* throwForce + transform.up * throwUpwardForce;
 
         grenadeRb.AddForce(forceToAdd, ForceMode.Impulse);
     }
