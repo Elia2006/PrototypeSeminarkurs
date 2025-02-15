@@ -4,40 +4,21 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] InteractSystemPoint InteractSys;
-
-    private float lerp = 0;
-    private int lerpDirection = -1;
-    private Vector3 openPos;
-    private Vector3 closedPos;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        closedPos = transform.position;
-        openPos = closedPos + Quaternion.AngleAxis(90, Vector3.up) * transform.forward * 2.5f;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(InteractSys.interact == true)
+        if (Input.GetKeyDown(KeyCode.O)) 
         {
-            lerpDirection *= -1;
+            anim.SetTrigger("isOpen");
         }
-
-        lerp += Time.deltaTime * lerpDirection;
-
-        if(lerp < 0)
-        {
-            lerp = 0;
-        }
-        else if(lerp > 1)
-        {
-            lerp = 1;
-        }
-
-        transform.position = Vector3.Lerp(closedPos, openPos, lerp);
         
     }
 }

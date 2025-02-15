@@ -75,7 +75,7 @@ public class Boss_new : MonoBehaviour
     {
         var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.01f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
 
         transform.localRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
     }

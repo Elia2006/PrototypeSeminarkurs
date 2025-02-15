@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MaschineGunTarget : MonoBehaviour
 {
-    [SerializeField] Transform Player;
+    private Transform Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +14,6 @@ public class MaschineGunTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, Player.position, 0.02f);
+        transform.position = Vector3.Lerp(transform.position, Player.position, 0.05f);
     }
 }
