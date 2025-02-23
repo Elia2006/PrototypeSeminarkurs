@@ -18,12 +18,12 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = -9.81f * 3;
     private Vector3 velocity;
 
-    private float groundDistance;
     public bool onGround;
     public Transform groundCheck;
     [SerializeField] LayerMask groundMask;
     private float jumpTimer;
 
+    [HideInInspector]
     public Vector3 direction;
     private Vector3 lastPos;
 
@@ -33,14 +33,15 @@ public class PlayerMovement : MonoBehaviour
     private float speedReductionTimer;
     private float speedReduction;
 
-    //Dodge
-    public float dodgeTimer;
-    private float dodgeCooldown;
-    private Vector3 dodgeDirection;
 
     //sliding from steep surface
     private bool canMove = true;
     private Vector3 slidingDirection;
+
+    //aiming
+    public bool isAiming = false;
+
+
 
     void Start()
     {
@@ -66,15 +67,10 @@ public class PlayerMovement : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
-        
-
         Move();
-
-        Dodge();
 
         Sprint();
         if(!locked && canMove) {
-
             controller.Move(move.normalized * speed * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround) && jumpTimer < Time.time)
@@ -95,22 +91,6 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(KnockbackForce);
         KnockbackForce = Vector3.Lerp(KnockbackForce, new Vector3(), 0.05f);
 
-        
-
-    }
-
-    private void Dodge()
-    {
-        if(dodgeTimer > Time.time)
-        {
-            controller.Move(dodgeDirection * 30 * Time.deltaTime);
-        }
-        else if(Input.GetKeyDown(KeyCode.LeftAlt) && dodgeCooldown < Time.time)
-        {
-            dodgeTimer = 0.1f + Time.time;
-            dodgeCooldown = 2 + Time.time;
-            dodgeDirection = move;
-        }
     }
 
     
@@ -120,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = speedReduction;
         }
-        else if(y > 0 && Input.GetKey(KeyCode.LeftShift))
+        else if(y > 0 && Input.GetKey(KeyCode.LeftShift) && !isAiming)
         {
             speed = 8;
         }else

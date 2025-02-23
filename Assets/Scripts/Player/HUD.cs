@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -22,9 +24,12 @@ public class HUD : MonoBehaviour
 
     private CharacterController playerCc;
 
+    //health
     private Image healthBar;
     private Image healthBar2;
     private TextMeshProUGUI playerHealthText;
+    [SerializeField] Volume volume;
+    [SerializeField] Vignette vignette;
 
 
     [SerializeField] GameObject TaskText;
@@ -40,6 +45,10 @@ public class HUD : MonoBehaviour
         healthBar = GameObject.Find("healthBar").GetComponent<Image>();
         healthBar2 = GameObject.Find("healthBar2").GetComponent<Image>();
         playerHealthText = GameObject.Find("playerHealthText").GetComponent<TextMeshProUGUI>();
+
+        volume.profile.TryGet(out vignette);     
+
+        StartCoroutine(Vignete()); 
     }
 
     void Update()
@@ -69,8 +78,9 @@ public class HUD : MonoBehaviour
 
     public void TakeDamage(int amount, float speedReduction, Transform enemy, float knockbackForce)
     {
+        StartCoroutine(Vignete());
+
         playerHealth -= amount;
-        damageAlphaColor = 0.8f;
 
         playerMovement.ReduceSpeed(speedReduction, 1);
         playerMovement.Knockback(enemy, knockbackForce);
@@ -79,6 +89,26 @@ public class HUD : MonoBehaviour
         {
             //Die();
         }
+    }
+
+    IEnumerator Vignete()
+    {
+        for(float i = 0; i < 0.4f; i += 0.1f)
+        {
+            vignette.intensity.value = i;
+            damageImage.GetComponent<CanvasRenderer>().SetAlpha(i);
+            yield return new WaitForSeconds(0.01f);
+        }
+        for(float i = 0.4f; i > 0; i -= 0.03f)
+        {
+            damageImage.GetComponent<CanvasRenderer>().SetAlpha(i);
+            vignette.intensity.value = i;
+            yield return new WaitForSeconds(0.1f);
+        }
+        vignette.intensity.value = 0;
+
+        
+        yield return null;
     }
 
     private void Tasks()

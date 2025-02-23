@@ -20,11 +20,18 @@ public class SMG : MonoBehaviour
     private Vector3 position;
     [SerializeField] float weaponOffset;
 
+    //Animation
+    [SerializeField] Animator animShoot;
+    [SerializeField] Animator animAim;
 
-    // Start is called before the first frame update
+
+    //Audio
+    private AudioSource shoot;
+
     void Awake()
     {
         position = transform.localPosition;
+        shoot = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,20 +41,31 @@ public class SMG : MonoBehaviour
         {
             if (Input.GetButton("Fire1") && attackCooldown < Time.time)
             {
+                shoot.Play();
                 Shoot();
                 attackCooldown = Time.time + 0.1f;
-
-
-
-                transform.localPosition = position + new Vector3(Random.Range(-weaponOffset, weaponOffset), 
-                Random.Range(-weaponOffset, weaponOffset), Random.Range(-weaponOffset, weaponOffset) - acuracy * 0.3f);
-
                 
             }
 
-            if(!Input.GetButton("Fire1"))
+            if(Input.GetButton("Fire1"))
             {
-                transform.localPosition = position;
+                animShoot.SetBool("IsShooting", true);
+            }else
+            {
+                animShoot.SetBool("IsShooting", false);
+            }
+
+            if(Input.GetMouseButton(1))
+            {
+                animAim.SetBool("IsAiming", true);
+                //acuracy = 1;
+
+                Player.GetComponent<PlayerMovement>().isAiming = true;
+            }else
+            {
+                animAim.SetBool("IsAiming", false);
+                //acuracy = 10;
+                Player.GetComponent<PlayerMovement>().isAiming = false;
             }
             
             Acuracy();
@@ -81,11 +99,13 @@ public class SMG : MonoBehaviour
 
     void Shoot() 
     {
+
         RaycastHit hit;
 
         Physics.Raycast(Cam.position, Cam.forward, out hit);
 
-        if(hit.transform != null && !hit.transform.CompareTag("Player"))
+
+        if(hit.point.sqrMagnitude > .01f)
         {
             GunEnd.LookAt(hit.point);
         }

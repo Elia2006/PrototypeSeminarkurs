@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -11,48 +9,69 @@ public class Gun : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject ImpactEffect;
     [SerializeField] Transform GunEnd;
-    [SerializeField] Animator anim;
     private float attackCooldown;
     public GameObject Player;
 
-    private float rot;
+    //Aim
+    private float acuracy = 10;
+
+    //Animation
+    [SerializeField] Animator animShoot;
+    [SerializeField] Animator animAim;
 
 
+    //Audio
+    private AudioSource shoot;
+
+    void Start()
+    {
+        shoot = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(!PauseMenu.isPaused)
+        if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
         {
-            if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
-            {
-                Shoot();
-                attackCooldown = Time.time + 0.3f;
-            }
-            
+            shoot.Play();
+            Shoot();
+            attackCooldown = Time.time + 0.3f;
+        }
+
+        if(Input.GetMouseButton(1))
+        {
+            animAim.SetBool("IsAiming", true);
+            acuracy = 1;
+
+            Player.GetComponent<PlayerMovement>().isAiming = true;
+        }else
+        {
+            animAim.SetBool("IsAiming", false);
+            acuracy = 10;
+            Player.GetComponent<PlayerMovement>().isAiming = false;
         }
     }
 
     void Shoot() 
     {
-        anim.SetTrigger("Shoot");
+        animShoot.SetTrigger("Shoot");
 
         RaycastHit hit;
 
         Physics.Raycast(Cam.position, Cam.forward, out hit);
 
-        if(hit.transform != null)
+        if(hit.point.sqrMagnitude > .01f)
         {
             GunEnd.LookAt(hit.point);
         }
         else
         {
             GunEnd.LookAt(Cam.position + Cam.forward * 50);
-        }
-        GunEnd.localRotation *= Quaternion.Euler(-rot, 0, 0);
-        
+        }        
 
-        Instantiate(Projectile, GunEnd.position, GunEnd.rotation);
+        Vector3 spread = new Vector3(Random.Range(acuracy, -acuracy), Random.Range(acuracy, -acuracy), 0);
+
+        Instantiate(Projectile, GunEnd.position, GunEnd.rotation * Quaternion.Euler(spread));
 
         muzzleFlash.Play();
         

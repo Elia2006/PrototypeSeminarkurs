@@ -38,7 +38,7 @@ public class QuestPoint : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(playerIsNear);
+        //Debug.Log(playerIsNear);
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("schbila " + playerIsNear);
@@ -57,7 +57,7 @@ public class QuestPoint : MonoBehaviour
             }
             else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
             {
-                Debug.Log("schließe Quest ab");
+                Debug.Log("schlieï¿½e Quest ab");
                 GameEventsManager.instance.questEvents.FinishQuest(questId);
             }
         }

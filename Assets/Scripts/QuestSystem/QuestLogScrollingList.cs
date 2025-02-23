@@ -64,7 +64,6 @@ public class QuestLogScrollingList : MonoBehaviour
         // game object name in the scene
 
         questLogButton.gameObject.name = quest.info.id + "_button";
-        Debug.Log(questLogButton.gameObject.name);
         // initialize and set up function for when the button is selected
         RectTransform buttonRectTransform = questLogButton.GetComponent<RectTransform>();
         questLogButton.Initialize(quest.info.displayName, () => {

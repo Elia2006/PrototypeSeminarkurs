@@ -184,13 +184,14 @@ public class QuestManager : MonoBehaviour
         {
             SaveQuest(quest);
             QuestData questData = quest.GetQuestData();
+            /*
             Debug.Log(quest.info.id);
             Debug.Log("state = " + questData.state);
             Debug.Log("index = " + questData.questStepIndex);
             foreach (QuestStepState stepState in questData.questStepStates)
             {
                 Debug.Log("step state = " + stepState.state);
-            }
+            }*/
         }
     }
 
@@ -206,11 +207,11 @@ public class QuestManager : MonoBehaviour
             // you probably don't want to save this info there long-term.
             // instead, use an actual Save & Load system and write to a file, the cloud, etc..
             PlayerPrefs.SetString(quest.info.id, serializedData);
-            Debug.Log(serializedData);
+            //Debug.Log(serializedData);
         }
         catch (System.Exception e)
         {
-            Debug.LogError("Failed to save quest with id " + quest.info.id + ": " + e);
+            //Debug.LogError("Failed to save quest with id " + quest.info.id + ": " + e);
         }
     }
 

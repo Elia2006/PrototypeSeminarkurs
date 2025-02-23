@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class MouseLook : MonoBehaviour
 {
@@ -17,15 +18,20 @@ public class MouseLook : MonoBehaviour
     private float wigwag; 
     private Vector3 lastFramePos;
 
+    //Audio
+    private AudioSource step;
+    Boolean audioReset;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        step = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         
         if (!PauseMenu.isPaused)
@@ -53,25 +59,12 @@ public class MouseLook : MonoBehaviour
 
     }
 
+
     private void camWigWag()
     {
         PlayerMovement playerMov = Player.GetComponent<PlayerMovement>();
 
-        //dodge
-        if(playerMov.dodgeTimer > Time.time)
-        {
-            float percentOfDodge = (playerMov.dodgeTimer - Time.time) / 0.1f;
-            if(percentOfDodge < 0.5f)
-            {
-                transform.localPosition = new Vector3(0, Mathf.Lerp(0.6f, 0, percentOfDodge * 2), 0);
-                Debug.Log(percentOfDodge);
-            }else
-            {
-                transform.localPosition = new Vector3(0, Mathf.Lerp(0, 0.6f, (percentOfDodge - 0.5f) * 2), 0);
-            }
-            
-        }
-        else if(playerMov.move != new Vector3())
+        if(playerMov.move != new Vector3())
         {
             Vector3 diff = transform.position - lastFramePos;
 
@@ -83,6 +76,17 @@ public class MouseLook : MonoBehaviour
             }
 
             transform.localPosition = new Vector3(0, 0.6f + Mathf.Sin(wigwag * 0.5f) * 0.07f, 0);
+
+            if(Mathf.Sin(wigwag * 0.5f) > 0.9f && audioReset)
+            {
+                step.Play();
+                audioReset = false;
+            }
+            if(Mathf.Sin(wigwag * 0.5f) < 0.9f)
+            {
+                audioReset = true;
+            }
+
 
             lastFramePos = transform.position;
         }

@@ -16,7 +16,8 @@ public class Projectile : MonoBehaviour
     Vector3 lastPos;
 
     
-    RaycastHit hit;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,17 +57,18 @@ public class Projectile : MonoBehaviour
                             
 
         if(other.CompareTag("Enemy")){
+            Debug.Log(other.transform);
 
+            
             other.GetComponent<CollisionScript>().TakeDamage(damage);
 
+            
             if(other.GetComponent<CollisionScript>().GetIsWeakpoint())
             {
                 hitTexture.GetComponent<Image>().color =  Color.red;
-                Debug.Log("red");
             }else
             {
                 hitTexture.GetComponent<Image>().color = Color.white;
-                Debug.Log("white");
             }
             hitTexture.GetComponent<HitTextureS>().Hit();
             Destroy(gameObject);
