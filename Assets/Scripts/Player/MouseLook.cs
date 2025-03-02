@@ -13,6 +13,8 @@ public class MouseLook : MonoBehaviour
 
     public Transform playerBody;
     public GameObject Player;
+
+    public Map map;
     
     //camwigwag
     private float wigwag; 
@@ -34,7 +36,7 @@ public class MouseLook : MonoBehaviour
     void LateUpdate()
     {
         
-        if (!PauseMenu.isPaused)
+        if (!PauseMenu.isPaused && !map.mapOpen)
         {
             Cursor.lockState = CursorLockMode.Locked;
 
@@ -52,7 +54,7 @@ public class MouseLook : MonoBehaviour
             camWigWag();
 
 
-        }else if(PauseMenu.isPaused)
+        }else if(PauseMenu.isPaused || map.mapOpen)
         {
             Cursor.lockState = CursorLockMode.Confined;
         }

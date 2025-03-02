@@ -14,26 +14,30 @@ public class Map : MonoBehaviour
     public GameObject MapCamera;
     public GameObject PlayerCamera;
     public GameObject InvManager;
-    public bool canMapOpen = false;
+    public bool canMapOpen = true;
     public bool toggle = false;
     public bool mapOpen = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        MapCanvas.SetActive(false);
+        MapCamera.SetActive(false);
+        arrow.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(PauseMenu.isPaused);
         if (!PauseMenu.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.M) && canMapOpen)
+            if (Input.GetKeyDown(KeyCode.M)) //&& canMapOpen
             {
+                //Debug.Log(toggle + "toggle");
                 toggle = !toggle;
             }
 
-            if (toggle && canMapOpen)
+            if (toggle) //&& canMapOpen)
             {
                 ActivateCanvas();
             }
@@ -47,7 +51,7 @@ public class Map : MonoBehaviour
                 mapOpen = false;
 
 
-                if (canMapOpen && !toggle)
+                if (!toggle)
                 {
                     Time.timeScale = 1f;
                     Debug.Log(canMapOpen + " " + toggle);
@@ -60,12 +64,12 @@ public class Map : MonoBehaviour
 
     public void ActivateCanvas()
     {
-        if (InvManager.GetComponent<InventoryManager>().invactive) 
+        /*if (InvManager.GetComponent<InventoryManager>().invactive) 
         {
             InvManager.GetComponent<InventoryManager>().Inventory.SetActive(false);
             InvManager.GetComponent<InventoryManager>().invactive = false;
             Debug.Log("invactive false map");
-        }
+        }*/
         StandardCanvas.SetActive(false);
         MapCanvas.SetActive(true);
         
