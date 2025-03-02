@@ -14,12 +14,13 @@ public class SpiderAnimation : MonoBehaviour
     public float lerp = 1;
 
     //Audio
-    [SerializeField] AudioSource stepSound;
+    private AudioSource stepSound;
 
     // Start is called before the first frame update
     void Start()
     {
         currentPos = transform.position;
+        stepSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class SpiderAnimation : MonoBehaviour
 
     public void SetNewPos(Vector3 newPosition)
     {
+        stepSound.Play();
         oldPos = transform.position;
         newPos = newPosition;
         lerp = 0;

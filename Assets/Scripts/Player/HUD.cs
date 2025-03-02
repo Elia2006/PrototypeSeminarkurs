@@ -47,8 +47,7 @@ public class HUD : MonoBehaviour
         playerHealthText = GameObject.Find("playerHealthText").GetComponent<TextMeshProUGUI>();
 
         volume.profile.TryGet(out vignette);     
-
-        StartCoroutine(Vignete()); 
+        damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
     }
 
     void Update()

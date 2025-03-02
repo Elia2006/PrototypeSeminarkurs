@@ -21,11 +21,13 @@ public class LegMove6 : MonoBehaviour
     void Start()
     {
         currentLeg = Legs[0];
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (moveCicle >= Legs.Length)
         {
             moveCicle = 0;

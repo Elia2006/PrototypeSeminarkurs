@@ -19,6 +19,7 @@ public class EnemyMelee1 : Enemy
 
     //get direction
     private Vector3 lastPos;
+    private bool goingToLastPos;
     private Vector3 currentDirection;
     [SerializeField] Transform RotationFix;
 
@@ -55,12 +56,18 @@ public class EnemyMelee1 : Enemy
             agent.isStopped = false;
             if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
             {
+                goingToLastPos = true;
                 Attack();
+            }else if(goingToLastPos)
+            {
+                if(Vector3.Distance(transform.position, agent.destination) < 2)
+                {
+                    goingToLastPos = false;
+                }
             }else
             {     
                 Patroll();
             }
-            continueCharge = false;
         }
 
         //Rotation();
@@ -90,8 +97,7 @@ public class EnemyMelee1 : Enemy
         }else
         {
             agent.isStopped = false;
-            newPos = Player.transform.position;
-            agent.destination = newPos;
+            agent.destination = Player.transform.position;
         }
 
         RaycastHit hit;
@@ -125,8 +131,7 @@ public class EnemyMelee1 : Enemy
         speedMultiplier = 1;
         if(isStationary)
         {
-            newPos = patrollPoint.position;
-            agent.destination = newPos;
+            agent.destination = patrollPoint.position;
         }else
         {
             if(Vector3.Distance(transform.position, newPos) < 2 && waitTime < Time.time)
@@ -140,7 +145,7 @@ public class EnemyMelee1 : Enemy
                 }
             }
             else if(waitTime < Time.time)
-            {         
+            {
                 agent.destination = newPos;
             }
         }

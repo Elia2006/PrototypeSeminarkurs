@@ -26,12 +26,12 @@ public class SMG : MonoBehaviour
 
 
     //Audio
-    private AudioSource shoot;
+    [SerializeField] AudioSource shoot;
+    [SerializeField] AudioSource aim;
 
     void Awake()
     {
         position = transform.localPosition;
-        shoot = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

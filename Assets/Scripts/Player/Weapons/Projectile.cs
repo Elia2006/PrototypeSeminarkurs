@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     Vector3 lastPos;
 
     
-
+    
 
 
     // Start is called before the first frame update
@@ -57,9 +57,6 @@ public class Projectile : MonoBehaviour
                             
 
         if(other.CompareTag("Enemy")){
-            Debug.Log(other.transform);
-
-            
             other.GetComponent<CollisionScript>().TakeDamage(damage);
 
             

@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
 
 
-    
+    public bool goingToLastPos;
     protected Vector3 newPos;
     protected int prevState = 0;
 

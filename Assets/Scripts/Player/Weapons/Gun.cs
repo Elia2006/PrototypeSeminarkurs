@@ -21,11 +21,12 @@ public class Gun : MonoBehaviour
 
 
     //Audio
-    private AudioSource shoot;
+    [SerializeField] AudioSource shoot;
+    [SerializeField] AudioSource aim;
 
     void Start()
     {
-        shoot = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
