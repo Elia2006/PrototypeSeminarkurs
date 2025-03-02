@@ -53,8 +53,7 @@ public class HUD : MonoBehaviour
         pressE = GameObject.Find("PressE");
 
         volume.profile.TryGet(out vignette);     
-
-        StartCoroutine(Vignete()); 
+        damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
     }
 
     void Update()
