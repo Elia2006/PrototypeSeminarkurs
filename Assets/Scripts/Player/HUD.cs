@@ -35,6 +35,7 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject TaskText;
     [SerializeField] GameObject Canvas;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] GameObject DeathScreen;
     void Start()
     {
         maxHealth = playerHealth;
@@ -87,7 +88,7 @@ public class HUD : MonoBehaviour
 
         if(playerHealth <= 0)
         {
-            //Die();
+            Die();
         }
     }
 
@@ -118,7 +119,8 @@ public class HUD : MonoBehaviour
 
     public void Die()
     {
-        SceneManager.LoadScene("StartMenu");
+        Time.timeScale = 0f;
+        DeathScreen.SetActive(true);
     }
 
     public void SavePlayer ()
@@ -153,5 +155,18 @@ public class HUD : MonoBehaviour
         playerCc.enabled = true;
 
     }
+
+    public void TitleScreen()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void Retry() 
+    { 
+        Time.timeScale = 1f;
+        LoadPlayer();
+    }
+    
 }
    

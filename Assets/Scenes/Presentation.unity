@@ -3399,7 +3399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &503834966
 Transform:
   m_ObjectHideFlags: 0
@@ -5112,7 +5112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &834453079
 Transform:
   m_ObjectHideFlags: 0
@@ -9191,6 +9191,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4983455304203270450, guid: c70bbee854518b644b70c35fd6ed9162, type: 3}
   m_PrefabInstance: {fileID: 9061561414262329125}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1488902683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 661262150022227346, guid: c70bbee854518b644b70c35fd6ed9162, type: 3}
+  m_PrefabInstance: {fileID: 9061561414262329125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488902682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9489ef12703e045956405f62b0b592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499267572
 GameObject:
   m_ObjectHideFlags: 0
@@ -16289,6 +16300,10 @@ PrefabInstance:
       propertyPath: volume
       value: 
       objectReference: {fileID: 2094625525}
+    - target: {fileID: 2488356977455224901, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1488902683}
     - target: {fileID: 3469249682880252921, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_Name
       value: Player
@@ -17876,7 +17891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6448551310527805998
 Transform:
   m_ObjectHideFlags: 0
@@ -18121,7 +18136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &7091949171542563863
 CanvasRenderer:
   m_ObjectHideFlags: 0
