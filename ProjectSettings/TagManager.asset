@@ -10,6 +10,7 @@ TagManager:
   - OutpostMountainItem
   - OutpostArchItem
   - Herb
+  - Item
   layers:
   - Default
   - TransparentFX

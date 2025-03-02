@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     protected float allertDistance = 40;
     protected float attackCooldown = 0;
 
+    public bool goingToLastPos;
 
 
 

@@ -36,6 +36,9 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject Canvas;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GameObject DeathScreen;
+
+    //Items
+    private GameObject pressE;
     void Start()
     {
         maxHealth = playerHealth;
@@ -47,6 +50,8 @@ public class HUD : MonoBehaviour
         healthBar2 = GameObject.Find("healthBar2").GetComponent<Image>();
         playerHealthText = GameObject.Find("playerHealthText").GetComponent<TextMeshProUGUI>();
 
+        pressE = GameObject.Find("PressE");
+
         volume.profile.TryGet(out vignette);     
 
         StartCoroutine(Vignete()); 
@@ -56,9 +61,8 @@ public class HUD : MonoBehaviour
     {
 
         HealthBar();
+        ItemPickup();
 
-        Color newColor = new Color(1, 1, 1, damageAlphaColor);
-        //damageImage.color = newColor;
 
         damageAlphaColor -= Time.deltaTime * 2;
     }
@@ -110,6 +114,26 @@ public class HUD : MonoBehaviour
 
         
         yield return null;
+    }
+
+    private void ItemPickup()
+    {
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, transform.forward, out hit, 2) && hit.transform.CompareTag("Item"))
+        {
+            pressE.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                if(hit.transform.name == "Ammo")
+                {
+                    Debug.Log("hello");
+                }
+            }
+        }else
+        {
+            pressE.SetActive(false);
+        }
     }
 
     private void Tasks()

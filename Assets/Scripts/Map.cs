@@ -54,7 +54,7 @@ public class Map : MonoBehaviour
                 if (!toggle)
                 {
                     Time.timeScale = 1f;
-                    Debug.Log(canMapOpen + " " + toggle);
+                    //Debug.Log(canMapOpen + " " + toggle);
                 }
             }
         }

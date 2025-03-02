@@ -115,7 +115,8 @@ public class SMG : MonoBehaviour
         }
         GunEnd.Rotate(-cappedAcuracy * 15, Random.Range(cappedAcuracy * 8, -cappedAcuracy * 8), 0);        
 
-        Instantiate(Projectile, GunEnd.position, GunEnd.rotation);
+        GameObject proj = Instantiate(Projectile, GunEnd.position, GunEnd.rotation);
+        proj.GetComponent<Projectile>().playerVelocity = Player.GetComponent<PlayerMovement>().direction;
 
         muzzleFlash.Play();
         
