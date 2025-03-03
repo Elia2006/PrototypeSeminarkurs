@@ -20,6 +20,8 @@ public class SMG : MonoBehaviour
     private Vector3 position;
     [SerializeField] float weaponOffset;
 
+    [SerializeField] LayerMask enemyLayer;
+
     //Animation
     [SerializeField] Animator animShoot;
     [SerializeField] Animator animAim;
@@ -102,7 +104,7 @@ public class SMG : MonoBehaviour
 
         RaycastHit hit;
 
-        Physics.Raycast(Cam.position, Cam.forward, out hit);
+        Physics.Raycast(Cam.position, Cam.forward, out hit, Mathf.Infinity, enemyLayer);
 
 
         if(hit.point.sqrMagnitude > .01f)

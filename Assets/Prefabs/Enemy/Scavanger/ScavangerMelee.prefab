@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4531600070486666834}
   - component: {fileID: 8387584346572055125}
   - component: {fileID: 4078469915161724728}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 1403477743598695818}
   - component: {fileID: 157935392578570894}
   - component: {fileID: 4026741329981358003}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 1164834995036793238}
   - component: {fileID: 2670583095593095686}
   - component: {fileID: 4373687413114622765}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 917631676373296332}
   - component: {fileID: 7271748257358515051}
   - component: {fileID: 3663441701464607032}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ScavangerMelee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -386,6 +386,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  goingToLastPos: 0
   AllertEffect: {fileID: 0}
   patrollPoint: {fileID: 0}
   AttackCollider: {fileID: 4078469915161724728}
@@ -419,7 +420,7 @@ GameObject:
   - component: {fileID: 6538348249290878575}
   - component: {fileID: 8792445781655953172}
   - component: {fileID: 2302999766401587026}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +503,7 @@ GameObject:
   - component: {fileID: 5660310531362827135}
   - component: {fileID: 6647699366393121391}
   - component: {fileID: 7955691786678175334}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5332,7 +5333,7 @@ GameObject:
   - component: {fileID: 6111050324138005664}
   - component: {fileID: 8686478963775162744}
   - component: {fileID: 1885759628228749973}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7860380078908908467}
   - component: {fileID: 7499529565995698835}
   - component: {fileID: 1829629603147391069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyMelee 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -79,6 +79,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  goingToLastPos: 0
   AllertEffect: {fileID: 0}
   patrollPoint: {fileID: 0}
   Hit: {fileID: 4480088679705732583, guid: fe809ef9e6c07dc4da256f5ec47d4b16, type: 3}
@@ -177,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1186273359565659979}
   - component: {fileID: 5227871899301032584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4258084795479489681}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3267506126961770331}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.002_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3121537484064024564}
   - component: {fileID: 3350251905255586976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1836059750188480087}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5788862291053853958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.004_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8937082364511348371}
   - component: {fileID: 411538148932223779}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +483,7 @@ GameObject:
   - component: {fileID: 6157888007591965499}
   - component: {fileID: 6806898450319211133}
   - component: {fileID: 419717407422576808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weakpoint
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -549,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8931826642231310455}
   - component: {fileID: 1084286859521963658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5216781306178178837}
   - component: {fileID: 2497446946103821862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5136012266978593041}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3592232360533650727}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7997803786546104140}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DPosRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -783,7 +784,7 @@ GameObject:
   - component: {fileID: 768299373603491422}
   - component: {fileID: 3349954028531323080}
   - component: {fileID: 6454649836006990755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: arm right
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -910,7 +911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4908448562539602959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DPosLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,7 +945,7 @@ GameObject:
   - component: {fileID: 2275759630208920494}
   - component: {fileID: 8101932189235849142}
   - component: {fileID: 3058219510893192413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1069,7 +1070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8962424171926767166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,7 +1105,7 @@ GameObject:
   - component: {fileID: 6824531269665507070}
   - component: {fileID: 7429206832478014377}
   - component: {fileID: 6259556952994482033}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1177,7 @@ GameObject:
   - component: {fileID: 3033103470284615249}
   - component: {fileID: 4734361921656979471}
   - component: {fileID: 8796076589423596847}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: arm left
   m_TagString: Enemy
   m_Icon: {fileID: 0}

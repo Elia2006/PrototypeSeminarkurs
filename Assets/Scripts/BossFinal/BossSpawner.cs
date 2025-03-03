@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossSpawner : MonoBehaviour
 {
     [SerializeField] GameObject Boss;
-  
+    [SerializeField] GameObject bossHealth;
     
 
     private void OnTriggerEnter(Collider other)
@@ -13,6 +13,7 @@ public class BossSpawner : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             Boss.SetActive(true);
+            bossHealth.SetActive(true);
         }
     }
 }

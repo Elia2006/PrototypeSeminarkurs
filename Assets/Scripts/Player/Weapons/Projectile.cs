@@ -57,9 +57,6 @@ public class Projectile : MonoBehaviour
                             
 
         if(other.CompareTag("Enemy")){
-            Debug.Log(other.transform);
-
-            
             other.GetComponent<CollisionScript>().TakeDamage(damage);
 
             

@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform GunEnd;
     private float attackCooldown;
     public GameObject Player;
+    [SerializeField] LayerMask enemyLayer;
 
     //Aim
     private float acuracy = 10;
@@ -58,7 +59,7 @@ public class Gun : MonoBehaviour
 
         RaycastHit hit;
 
-        Physics.Raycast(Cam.position, Cam.forward, out hit);
+        Physics.Raycast(Cam.position, Cam.forward, out hit, Mathf.Infinity, enemyLayer);
 
         if(hit.point.sqrMagnitude > .01f)
         {

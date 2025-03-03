@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Boss_new : MonoBehaviour
+public class Boss_new : Enemy
 {
-    [SerializeField] Transform Player;
-
     //Flamethrower
     [SerializeField] GameObject fire;
     [SerializeField] Transform flamethrowerEnd;
@@ -19,10 +18,14 @@ public class Boss_new : MonoBehaviour
     private LineRenderer laser;
     private Transform gunEnd;
     [SerializeField] GameObject maschineGunProjectile;
-    [SerializeField] LayerMask groundLayer;
 
     //BossStomp
     [SerializeField] GameObject BossStomp;
+
+    //health
+    [SerializeField] Image healthBar1;
+    [SerializeField] Image healthBar2;
+    private readonly float maxHealth = 1000;
 
 
     // Start is called before the first frame update
@@ -30,6 +33,9 @@ public class Boss_new : MonoBehaviour
     {
         laser = GetComponent<LineRenderer>();
         gunEnd = GameObject.Find("lower arm L_end").transform;
+        Player = GameObject.Find("Player");
+
+        health = 1000;
 
         StartCoroutine(PickAttack());
     }
@@ -40,13 +46,14 @@ public class Boss_new : MonoBehaviour
         TurnTowardsPlayer();
         GoTowardsPlayer();
 
+        HealthBar();
     }
 
     IEnumerator PickAttack()
     {
         while(true)
         {
-            int attack = Random.Range(0, 3);
+            int attack = Random.Range(0, 4);
             switch(attack)
             {
                 case 0:
@@ -82,9 +89,9 @@ public class Boss_new : MonoBehaviour
 
     private void GoTowardsPlayer()
     {
-        if(Vector3.Distance(transform.position, Player.position) > 20)
+        if(Vector3.Distance(transform.position, Player.transform.position) > 10)
         {
-            transform.position += transform.forward * Time.deltaTime;
+            transform.position += transform.forward * Time.deltaTime * 2;
         }
     }
 
@@ -94,7 +101,7 @@ public class Boss_new : MonoBehaviour
         {
             flamethrowerEnd.LookAt(Player.transform);
 
-            float rand = 1 / Vector3.Distance(transform.position, Player.position) * 50;
+            float rand = 1 / Vector3.Distance(transform.position, Player.transform.position) * 50;
             flamethrowerEnd.rotation *= Quaternion.Euler(Random.Range(-rand, rand), Random.Range(-rand, rand), 0);
 
             Instantiate(fire, flamethrowerEnd.position, flamethrowerEnd.rotation);  
@@ -170,14 +177,13 @@ public class Boss_new : MonoBehaviour
         }
     }
 
-
     private IEnumerator Stomp()
     {
         for(float i = 0; i < 1; i += 0.01f)
         {
             transform.position += new Vector3(0, Mathf.Cos(i * Mathf.PI) * 0.2f, 0);
 
-            transform.position += (Player.position + Vector3.up * 2 - transform.position).normalized * 0.1f;
+            transform.position += (Player.transform.position + Vector3.up * 2 - transform.position).normalized * 0.1f;
 
 
 
@@ -192,5 +198,22 @@ public class Boss_new : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    private void HealthBar()
+    {
+        Debug.Log(health/maxHealth);
+
+        healthBar1.fillAmount = Mathf.Clamp(health/maxHealth,0,1);
+
+        if(healthBar2.fillAmount > healthBar1.fillAmount)
+        {
+            healthBar2.fillAmount -= Time.deltaTime * 0.04f;
+        }else if(healthBar2.fillAmount < healthBar1.fillAmount)
+        {
+            healthBar2.fillAmount = healthBar1.fillAmount;
+        }
+
+        //playerHealthText.text = health + "/" + maxHealth;
     }
 }
