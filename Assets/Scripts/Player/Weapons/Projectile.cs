@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] int damage;
     Vector3 lastPos;
 
-    
+    public Vector3 playerVelocity;
 
 
 
@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
     {
         
         distanceTravelled = speed * (Time.time - startTime);
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += (transform.forward * speed + playerVelocity) * Time.deltaTime;
         
         if(distanceTravelled >= range)
         {

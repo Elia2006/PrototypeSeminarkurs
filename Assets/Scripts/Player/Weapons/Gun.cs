@@ -71,7 +71,8 @@ public class Gun : MonoBehaviour
 
         Vector3 spread = new Vector3(Random.Range(acuracy, -acuracy), Random.Range(acuracy, -acuracy), 0);
 
-        Instantiate(Projectile, GunEnd.position, GunEnd.rotation * Quaternion.Euler(spread));
+        GameObject proj = Instantiate(Projectile, GunEnd.position, GunEnd.rotation * Quaternion.Euler(spread));
+        proj.GetComponent<Projectile>().playerVelocity = Player.GetComponent<PlayerMovement>().direction;
 
         muzzleFlash.Play();
         
