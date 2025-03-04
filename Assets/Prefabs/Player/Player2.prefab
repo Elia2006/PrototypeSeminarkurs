@@ -168,6 +168,9 @@ MonoBehaviour:
   ImpactEffect: {fileID: 7064578073857615942, guid: b505eed47dab6364cbd2189077c5cd35, type: 3}
   GunEnd: {fileID: 4384932121632265666}
   Player: {fileID: 3469249682880252921}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   animShoot: {fileID: 6335913615711658420}
   animAim: {fileID: 2433129869921138902}
 --- !u!95 &2433129869921138902
@@ -5284,7 +5287,7 @@ MonoBehaviour:
   speedCurve: 0
   travelLimit: {x: 0.025, y: 0.025, z: 0.025}
   bobLimit: {x: 0.01, y: 0.01, z: 0.01}
-  bobExaggeration: 0
+  bobExaggeration: 1
   multiplier: {x: 0, y: 0, z: 0}
 --- !u!1 &2540556392969032699
 GameObject:
@@ -10242,7 +10245,6 @@ GameObject:
   - component: {fileID: 3294770686795390774}
   - component: {fileID: 4357074555532523554}
   - component: {fileID: 5815479918595157923}
-  - component: {fileID: 2105840106519883846}
   - component: {fileID: 1644216022779387422}
   - component: {fileID: 7467256976990264991}
   m_Layer: 0
@@ -10341,32 +10343,11 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0, w: 0}
   Player: {fileID: 3469249682880252921}
   volume: {fileID: 0}
+  vignette: {fileID: 0}
   TaskText: {fileID: 0}
   Canvas: {fileID: 0}
   playerMovement: {fileID: 4357074555532523554}
---- !u!136 &2105840106519883846
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3469249682880252921}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  DeathScreen: {fileID: 0}
 --- !u!136 &1644216022779387422
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20218,7 +20199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7352232814405428424
 Transform:
   m_ObjectHideFlags: 0
@@ -25528,6 +25509,7 @@ MonoBehaviour:
   xRotation: 0
   playerBody: {fileID: 8795115664668336719}
   Player: {fileID: 3469249682880252921}
+  map: {fileID: 0}
 --- !u!114 &1640348728925694865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25899,7 +25881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3e5b6a3f8eeaa1044b28777713f8e824, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3e5b6a3f8eeaa1044b28777713f8e824, type: 3}
       propertyPath: m_TagString
@@ -25955,6 +25937,9 @@ MonoBehaviour:
   maxAcuracy: 1
   acuracyAdd: 0.007
   weaponOffset: 0.01
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   animShoot: {fileID: 7666654844968339344}
   animAim: {fileID: 4873807911532858724}
 --- !u!82 &3730198169637929584

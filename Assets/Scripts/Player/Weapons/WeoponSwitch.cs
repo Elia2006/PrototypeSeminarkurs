@@ -8,6 +8,10 @@ public class WeoponSwitch : MonoBehaviour
     [SerializeField] GameObject Weapon2;
     [SerializeField] GameObject Weapon3;
     [SerializeField] GameObject Weapon4;
+
+    private GameObject ammoText;
+
+    [SerializeField] AudioSource switchSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +19,7 @@ public class WeoponSwitch : MonoBehaviour
         Weapon2.SetActive(false);
         Weapon3.SetActive(false);
         Weapon4.SetActive(false);
+        ammoText.SetActive(false);
     }
 
     void Awake()
@@ -23,6 +28,7 @@ public class WeoponSwitch : MonoBehaviour
         Weapon2.SetActive(true);
         Weapon3.SetActive(true);
         Weapon4.SetActive(true);
+        ammoText = GameObject.Find("AmmoText");
     }
 
     // Update is called once per frame
@@ -34,24 +40,32 @@ public class WeoponSwitch : MonoBehaviour
             Weapon2.SetActive(false);
             Weapon3.SetActive(false);
             Weapon4.SetActive(false);
+            ammoText.SetActive(false);
+            switchSound.Play();
         } else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             Weapon1.SetActive(false);
             Weapon2.SetActive(true);
             Weapon3.SetActive(false);
             Weapon4.SetActive(false);
+            ammoText.SetActive(true);
+            switchSound.Play();
         } else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Weapon1.SetActive(false);
             Weapon2.SetActive(false);
             Weapon3.SetActive(true);
             Weapon4.SetActive(false);
+            ammoText.SetActive(true);
+            switchSound.Play();
         } else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Weapon1.SetActive(false);
             Weapon2.SetActive(false);
             Weapon3.SetActive(false);
             Weapon4.SetActive(true);
+            ammoText.SetActive(false);
+            switchSound.Play();
         }
 
     }

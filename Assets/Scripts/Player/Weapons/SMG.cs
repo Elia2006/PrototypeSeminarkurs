@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SMG : MonoBehaviour
 {
@@ -22,18 +23,30 @@ public class SMG : MonoBehaviour
 
     [SerializeField] LayerMask enemyLayer;
 
+    //Ammo
+    private int loadedAmmo = 0;
+    private TextMeshProUGUI loadedAmmoText; 
+    private readonly int maxLoadedAmmo = 20;
+
+    public int availableAmmo = 30;
+    private TextMeshProUGUI availableAmmoText; 
+
     //Animation
     [SerializeField] Animator animShoot;
     [SerializeField] Animator animAim;
 
 
     //Audio
-    private AudioSource shoot;
+    [SerializeField] AudioSource shoot;
+    [SerializeField] AudioSource reload;
 
     void Awake()
     {
         position = transform.localPosition;
         shoot = GetComponent<AudioSource>();
+
+        loadedAmmoText = GameObject.Find("LoadedAmmo").GetComponent<TextMeshProUGUI>();
+        availableAmmoText = GameObject.Find("AvailableAmmo").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -41,7 +54,7 @@ public class SMG : MonoBehaviour
     {
         if(!PauseMenu.isPaused)
         {
-            if (Input.GetButton("Fire1") && attackCooldown < Time.time)
+            if (Input.GetButton("Fire1") && attackCooldown < Time.time && loadedAmmo > 0)
             {
                 shoot.Play();
                 Shoot();
@@ -49,7 +62,7 @@ public class SMG : MonoBehaviour
                 
             }
 
-            if(Input.GetButton("Fire1"))
+            if(Input.GetButton("Fire1") && loadedAmmo > 0)
             {
                 animShoot.SetBool("IsShooting", true);
             }else
@@ -74,7 +87,7 @@ public class SMG : MonoBehaviour
 
         }
 
-
+        Ammo();
     }
 
     private void Acuracy()
@@ -101,6 +114,7 @@ public class SMG : MonoBehaviour
 
     void Shoot() 
     {
+        loadedAmmo--;
 
         RaycastHit hit;
 
@@ -122,5 +136,26 @@ public class SMG : MonoBehaviour
 
         muzzleFlash.Play();
         
+    }
+
+    private void Ammo()
+    {
+        if(Input.GetKeyDown(KeyCode.R) && loadedAmmo < maxLoadedAmmo && availableAmmo > 0)
+        {  
+            attackCooldown = Time.time + 0.5f; 
+            reload.Play();
+
+            availableAmmo -= maxLoadedAmmo - loadedAmmo;
+            loadedAmmo = maxLoadedAmmo;
+
+            if(availableAmmo < 0)
+            {
+                loadedAmmo += availableAmmo;
+                availableAmmo = 0;
+            }
+        }
+
+        loadedAmmoText.text = loadedAmmo +  "";
+        availableAmmoText.text = availableAmmo + "";
     }
 }

@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class HUD : MonoBehaviour
 {
@@ -39,6 +41,16 @@ public class HUD : MonoBehaviour
 
     //Items
     private GameObject pressE;
+    private TextMeshProUGUI pressEText;
+    [SerializeField] Transform Cam;
+
+    //Ammo
+    [SerializeField] Gun gunScript;
+    [SerializeField] SMG smgScript;
+
+    //Audio
+    [SerializeField] AudioSource itemPickup;
+
     void Start()
     {
         maxHealth = playerHealth;
@@ -51,6 +63,7 @@ public class HUD : MonoBehaviour
         playerHealthText = GameObject.Find("playerHealthText").GetComponent<TextMeshProUGUI>();
 
         pressE = GameObject.Find("PressE");
+        pressEText = GameObject.Find("PressEText").GetComponent<TextMeshProUGUI>();
 
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
@@ -119,14 +132,25 @@ public class HUD : MonoBehaviour
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, transform.forward, out hit, 2) && hit.transform.CompareTag("Item"))
+        if(Physics.Raycast(Cam.position, Cam.forward, out hit, 2) && hit.transform.CompareTag("Item"))
         {
             pressE.SetActive(true);
+            pressEText.text = "Press E to Pickup " + hit.transform.name;
+
             if(Input.GetKeyDown(KeyCode.E))
             {
-                if(hit.transform.name == "Ammo")
+                itemPickup.Play();
+
+                if(hit.transform.name[..8] == "Gun Ammo")
                 {
-                    Debug.Log("hello");
+                    gunScript.availableAmmo += Int32.Parse(hit.transform.name.Substring(9, 2));
+                    Destroy(hit.transform.gameObject);
+                }
+
+                if(hit.transform.name[..8] == "SMG Ammo")
+                {
+                    smgScript.availableAmmo += Int32.Parse(hit.transform.name.Substring(9, 2));
+                    Destroy(hit.transform.gameObject);
                 }
             }
         }else

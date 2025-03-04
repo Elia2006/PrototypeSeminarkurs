@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Gun : MonoBehaviour
 {
@@ -14,25 +16,34 @@ public class Gun : MonoBehaviour
     [SerializeField] LayerMask enemyLayer;
 
     //Aim
-    private float acuracy = 10;
+    private float acuracy = 0;
 
     //Animation
     [SerializeField] Animator animShoot;
     [SerializeField] Animator animAim;
 
+    //Ammo
+    private int loadedAmmo = 0;
+    private TextMeshProUGUI loadedAmmoText; 
+    private readonly int maxLoadedAmmo = 6;
 
+    public int availableAmmo = 10;
+    private TextMeshProUGUI availableAmmoText; 
+    
     //Audio
-    private AudioSource shoot;
+    [SerializeField] AudioSource shoot;
+    [SerializeField] AudioSource reload;
 
     void Start()
     {
-        shoot = GetComponent<AudioSource>();
+        loadedAmmoText = GameObject.Find("LoadedAmmo").GetComponent<TextMeshProUGUI>();
+        availableAmmoText = GameObject.Find("AvailableAmmo").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
+        if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time && loadedAmmo > 0)
         {
             shoot.Play();
             Shoot();
@@ -48,14 +59,17 @@ public class Gun : MonoBehaviour
         }else
         {
             animAim.SetBool("IsAiming", false);
-            acuracy = 10;
+            acuracy = 5;
             Player.GetComponent<PlayerMovement>().isAiming = false;
         }
+
+        Ammo();
     }
 
     void Shoot() 
     {
         animShoot.SetTrigger("Shoot");
+        loadedAmmo--;
 
         RaycastHit hit;
 
@@ -70,12 +84,33 @@ public class Gun : MonoBehaviour
             GunEnd.LookAt(Cam.position + Cam.forward * 50);
         }        
 
-        Vector3 spread = new Vector3(Random.Range(acuracy, -acuracy), Random.Range(acuracy, -acuracy), 0);
+        Vector3 spread = new(Random.Range(acuracy, -acuracy), Random.Range(acuracy, -acuracy), 0);
 
         GameObject proj = Instantiate(Projectile, GunEnd.position, GunEnd.rotation * Quaternion.Euler(spread));
         proj.GetComponent<Projectile>().playerVelocity = Player.GetComponent<PlayerMovement>().direction;
 
         muzzleFlash.Play();
         
+    }
+
+    private void Ammo()
+    {
+        if(Input.GetKeyDown(KeyCode.R) && loadedAmmo < maxLoadedAmmo && availableAmmo > 0)
+        {
+            attackCooldown = Time.time + 0.5f; 
+            reload.Play();
+
+            availableAmmo -= maxLoadedAmmo - loadedAmmo;
+            loadedAmmo = maxLoadedAmmo;
+
+            if(availableAmmo < 0)
+            {
+                loadedAmmo += availableAmmo;
+                availableAmmo = 0;
+            }
+        }
+
+        loadedAmmoText.text = loadedAmmo +  "";
+        availableAmmoText.text = availableAmmo + "";
     }
 }
