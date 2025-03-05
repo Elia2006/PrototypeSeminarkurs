@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     private float startTime;
     private float distanceTravelled;
     private GameObject hitTexture;
+    private Image hitTextureImage;
     [SerializeField] GameObject hitParticle;
     [SerializeField] int damage;
     Vector3 lastPos;
@@ -25,6 +26,7 @@ public class Projectile : MonoBehaviour
         startTime = Time.time;
         lastPos = transform.position;
         hitTexture = GameObject.Find("HitTexture");
+        hitTextureImage = hitTexture.GetComponent<Image>();
     }
 
 
@@ -62,10 +64,10 @@ public class Projectile : MonoBehaviour
             
             if(other.GetComponent<CollisionScript>().GetIsWeakpoint())
             {
-                hitTexture.GetComponent<Image>().color =  Color.red;
+                hitTextureImage.color =  Color.red;
             }else
             {
-                hitTexture.GetComponent<Image>().color = Color.white;
+                hitTextureImage.color = Color.white;
             }
             hitTexture.GetComponent<HitTextureS>().Hit();
             Destroy(gameObject);
