@@ -5,16 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class ClearOutpostMountainQuestStep : QuestStep
 {
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.CompareTag("Player"))
+        UpdateState();
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
+
             FinishQuestStep();
         }
     }
 
+    private void UpdateState()
+    {
+        string state = "";
+        string status = "Clear the enemies and collect the Heatshield";
+        ChangeState(state, status);
+    }
+
     protected override void SetQuestStepState(string state)
     {
-        
+
     }
 }

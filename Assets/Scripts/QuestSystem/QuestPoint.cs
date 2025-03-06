@@ -38,10 +38,10 @@ public class QuestPoint : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(playerIsNear);
+        //Debug.Log(playerIsNear);
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("schbila " + playerIsNear);
+            //Debug.Log("schbila " + playerIsNear);
             if (!playerIsNear)
             {
                 Debug.Log("Player nicht nah");
