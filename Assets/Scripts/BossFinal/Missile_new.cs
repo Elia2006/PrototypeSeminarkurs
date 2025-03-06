@@ -28,7 +28,7 @@ public class Missile_new : MonoBehaviour
             Vector3.down, out hit, Mathf.Infinity, groundLayer);
         finalTarget = hit.point;
 
-        warning = Instantiate(Warning, hit.point + Vector3.up * 0.001f, Quaternion.Euler(90, 0, 0));
+        warning = Instantiate(Warning, hit.point + Vector3.up * 0.1f, Quaternion.Euler(90, 0, 0));
 
     }
 

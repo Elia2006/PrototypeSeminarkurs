@@ -53,7 +53,7 @@ public class Boss_new : Enemy
     {
         while(true)
         {
-            int attack = Random.Range(0, 4);
+            int attack = 1; //Random.Range(0, 4);
             switch(attack)
             {
                 case 0:
