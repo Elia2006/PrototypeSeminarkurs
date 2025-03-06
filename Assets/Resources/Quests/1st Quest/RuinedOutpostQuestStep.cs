@@ -21,7 +21,7 @@ public class RuinedOutpostQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Move your tin ass over here and hurry please";
+        string status = "Go to the Ruined Outpost";
         ChangeState(state, status);
     }
 

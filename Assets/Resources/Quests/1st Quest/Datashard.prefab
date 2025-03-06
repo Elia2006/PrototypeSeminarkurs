@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7042874733590315514}
   m_Layer: 0
   m_Name: Datashard
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4857732250760867579}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -40, y: -2, z: 99.581764}
+  m_LocalPosition: {x: 94, y: 3, z: -80}
   m_LocalScale: {x: 0.43326294, y: 0.18228206, z: 0.019534351}
   m_ConstrainProportionsScale: 0
   m_Children: []

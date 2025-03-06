@@ -33,8 +33,8 @@ public class QuestLogButton : MonoBehaviour, ISelectHandler
         switch (state)
         {
             case QuestState.REQUIREMENTS_NOT_MET:
-                buttonText.color = Color.black;
-                button.enabled = false; break;
+                //buttonText.color = Color.black;
+                //button.enabled = false; break;
             case QuestState.CAN_START:
                 button.enabled = true;
                 buttonText.color = Color.red;
@@ -47,8 +47,8 @@ public class QuestLogButton : MonoBehaviour, ISelectHandler
                 buttonText.color = Color.green;
                 break;
             case QuestState.FINISHED:
-                buttonText.color = Color.black;
-                button.enabled = false;
+                //buttonText.color = Color.black;
+                //button.enabled = false;
                 break;
             default:
                 Debug.LogWarning("Quest State not recognized by switch statement: " + state);

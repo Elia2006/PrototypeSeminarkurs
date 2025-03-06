@@ -152,6 +152,13 @@ public class HUD : MonoBehaviour
                     smgScript.availableAmmo += Int32.Parse(hit.transform.name.Substring(9, 2));
                     Destroy(hit.transform.gameObject);
                 }
+
+                if (hit.transform.name[..8] == "Herb")
+                {
+
+                }
+
+              
             }
         }else
         {

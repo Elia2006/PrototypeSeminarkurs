@@ -5,13 +5,26 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class WeaponRuinedOutpostStep : QuestStep
 {
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.CompareTag("Player"))
+        UpdateState();
+    }
+
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("RuinedOutpost2");
             FinishQuestStep();
         }
+    }
+
+    private void UpdateState()
+    {
+        string state = "";
+        string status = "Collect the Data Shard";
+        ChangeState(state, status);
     }
 
     protected override void SetQuestStepState(string state)
