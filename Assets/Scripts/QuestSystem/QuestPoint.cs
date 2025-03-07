@@ -49,7 +49,7 @@ public class QuestPoint : MonoBehaviour
             //Debug.Log("schbila " + playerIsNear);
             if (!playerIsNear)
             {
-                Debug.Log("Player nicht nah");
+                //Debug.Log("Player nicht nah");
                 return;
             }
 
@@ -58,7 +58,7 @@ public class QuestPoint : MonoBehaviour
 
             if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
             {
-                Debug.Log("schlie�e Quest ab");
+                //Debug.Log("schlie�e Quest ab");
                 GameEventsManager.instance.questEvents.FinishQuest(questId);
             }
         }
@@ -97,7 +97,7 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = true;
-            Debug.Log("player near" + playerIsNear);
+            //Debug.Log("player near" + playerIsNear);
         }
     }
 
@@ -106,7 +106,7 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = false;
-            Debug.Log("player nichtmehr nah");
+            //Debug.Log("player nichtmehr nah");
         }
     }
 }

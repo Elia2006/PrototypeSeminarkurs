@@ -20,7 +20,7 @@ public class WeaponRuinedOutpostStep : QuestStep
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("RuinedOutpost2");
+            //Debug.Log("RuinedOutpost2");
             FinishQuestStep();
         }
     }
