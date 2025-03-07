@@ -93,6 +93,7 @@ public class QuestLogUI : MonoBehaviour
 
         // set the button color based on quest state
         questLogButton.SetState(quest.state);
+        SetQuestLogInfo(quest);
     }
 
     private void SetQuestLogInfo(Quest quest)
