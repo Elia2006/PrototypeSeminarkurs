@@ -11,6 +11,7 @@ TagManager:
   - OutpostArchItem
   - Herb
   - Item
+  - Deposit
   layers:
   - Default
   - TransparentFX

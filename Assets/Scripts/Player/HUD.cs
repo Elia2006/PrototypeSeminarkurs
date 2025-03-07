@@ -43,6 +43,7 @@ public class HUD : MonoBehaviour
     private GameObject pressE;
     private TextMeshProUGUI pressEText;
     [SerializeField] Transform Cam;
+    private GameObject pressEnter;
 
     //Ammo
     [SerializeField] Gun gunScript;
@@ -65,6 +66,7 @@ public class HUD : MonoBehaviour
         pressE = GameObject.Find("PressE");
         pressEText = GameObject.Find("PressEText").GetComponent<TextMeshProUGUI>();
 
+        pressEnter = GameObject.Find("PressEnter");
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
     }
@@ -74,6 +76,7 @@ public class HUD : MonoBehaviour
 
         HealthBar();
         ItemPickup();
+        PressEnter();
 
 
         damageAlphaColor -= Time.deltaTime * 2;
@@ -163,6 +166,21 @@ public class HUD : MonoBehaviour
         }else
         {
             pressE.SetActive(false);
+        }
+    }
+
+    private void PressEnter()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(Cam.position, Cam.forward, out hit, 2) && hit.transform.CompareTag("Deposit"))
+        {
+            pressEnter.SetActive(true);
+
+        }
+        else
+        {
+            pressEnter.SetActive(false);
         }
     }
 
