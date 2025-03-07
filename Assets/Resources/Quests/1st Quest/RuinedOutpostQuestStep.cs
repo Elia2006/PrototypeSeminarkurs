@@ -26,7 +26,7 @@ public class RuinedOutpostQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Go to the Ruined Outpost";
+        string status = "Begebe dich zum zerstörten Aussenposten.";
         ChangeState(state, status);
     }
 

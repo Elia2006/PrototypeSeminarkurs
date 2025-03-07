@@ -26,7 +26,7 @@ public class OutpostArchQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Reach the outpost on the arch";
+        string status = "Begebe dich zum Aussenposten auf dem Bogen";
         ChangeState(state, status);
     }
 

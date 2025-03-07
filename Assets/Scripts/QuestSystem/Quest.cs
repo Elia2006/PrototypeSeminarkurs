@@ -105,7 +105,10 @@ public class Quest
         {
             fullStatus = "Requirements are not yet met to start this quest.";
         }
-        
+        else if(state == QuestState.CAN_START)
+        {
+            fullStatus = "Diese Quest kann begonnen werden";
+        }
         else 
         {
             // display all previous quests with strikethroughs
@@ -121,7 +124,7 @@ public class Quest
             // when the quest is completed or turned in
             if (state == QuestState.CAN_FINISH)
             {
-                fullStatus += "The quest is ready to be turned in.";
+                fullStatus += "Lade die Beute ins Schiff ein";
             }
             else if (state == QuestState.FINISHED)
             {

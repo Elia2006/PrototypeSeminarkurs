@@ -28,7 +28,7 @@ public class ClearOutpostMountainQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Clear the enemies and collect the Heatshield";
+        string status = "Beseitige die Gegner und sammle das Hitzeschild ein.";
         ChangeState(state, status);
     }
 

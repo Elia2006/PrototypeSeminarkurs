@@ -28,7 +28,7 @@ public class ClearOutpostArchQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Clear the enemies and collect the Toolbox";
+        string status = "Beseitige die Gegner und sammle den Werkzeugkoffer ein.";
         ChangeState(state, status);
     }
 

@@ -25,7 +25,7 @@ public class OutpostMountainQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Reach the outpost on the mountain";
+        string status = "Erreiche den Aussenposten auf dem Berg.";
         ChangeState(state, status);
     }
 

@@ -28,7 +28,7 @@ public class WeaponRuinedOutpostStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Collect the Data Shard";
+        string status = "Sammle das Speichermodul ein.";
         ChangeState(state, status);
     }
 
