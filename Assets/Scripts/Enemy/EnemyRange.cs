@@ -32,21 +32,26 @@ public class EnemyRange : Enemy
 
     void Update()
     {
-        if(!KnockbackUpdate(1f))
-        {
-            agent.enabled = true;
-            if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance))
+        if(isActivated){
+            if(!KnockbackUpdate(1f))
             {
-                Attack();
-                agent.updateRotation = false;
-            }else
-            {
-                Patroll();
-                agent.updateRotation = true;
+                agent.enabled = true;
+                if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance))
+                {
+                    Attack();
+                    agent.updateRotation = false;
+                }else
+                {
+                    Patroll();
+                    agent.updateRotation = true;
+                }
             }
-        }
 
-        agent.speed = speed * speedMultiplier;
+            agent.speed = speed * speedMultiplier;
+        }else
+        {
+            StopAllCoroutines();
+        }
     }
 
     private void Attack()

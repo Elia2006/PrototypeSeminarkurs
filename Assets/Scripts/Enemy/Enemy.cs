@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] ParticleSystem AllertEffect;
     public Transform patrollPoint;
 
+    protected bool isActivated = true;
+
     void Start()
     {
         Player = GameObject.Find("Player");
@@ -59,7 +61,42 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void Death()
     {
-        Destroy(gameObject);
+        isActivated = false;
+
+        agent.enabled = false;
+
+        transform.GetComponent<Animator>().enabled = false;
+
+        if(transform.Find("Armature") != null)
+        {
+            Collider[] myCollider = transform.GetComponentsInChildren<Collider>();
+
+            foreach (Collider c in myCollider)
+            {
+                c.enabled = false;
+            }
+
+            
+
+            GameObject armature = transform.Find("Armature").gameObject;
+            Collider[] childCollider = armature.GetComponentsInChildren<Collider>();
+            Rigidbody[] childRigidbody = armature.GetComponentsInChildren<Rigidbody>();
+
+            foreach (Collider child in childCollider)
+            {
+                child.enabled = true;
+            }
+            foreach (Rigidbody child in childRigidbody)
+            {
+                child.isKinematic = false;
+            }
+        }else
+        {
+            Debug.Log("ded");
+            //Destroy(gameObject);
+        }
+
+        
     }
 
     protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction, NavMeshAgent agent, Vector3 originPoint)

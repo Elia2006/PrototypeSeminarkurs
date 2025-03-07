@@ -28,6 +28,7 @@ public class EnemyMelee1 : Enemy
     [SerializeField] bool isStationary;
 
 
+
     void Start()
     {
         Player = GameObject.Find("Player");
@@ -48,25 +49,26 @@ public class EnemyMelee1 : Enemy
 
     void Update()
     {
-        
-        if(!KnockbackUpdate(1f))
-        {
-
-            agent.isStopped = false;
-            if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
+        if(isActivated){
+            if(!KnockbackUpdate(1f))
             {
-                Attack();
-            }else
-            {     
-                Patroll();
+
+                agent.isStopped = false;
+                if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
+                {
+                    Attack();
+                }else
+                {     
+                    Patroll();
+                }
+                continueCharge = false;
             }
-            continueCharge = false;
+
+            //Rotation();
+
+
+            agent.speed = speed * speedMultiplier;
         }
-
-        //Rotation();
-
-
-        agent.speed = speed * speedMultiplier;
     }
 
     public void Attack()
@@ -144,17 +146,6 @@ public class EnemyMelee1 : Enemy
                 agent.destination = newPos;
             }
         }
-    }
-    protected override void Death()
-    {
-        
-        //transform.GetChild(0).gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        //transform.GetChild(0).gameObject.GetComponent<MeshCollider>().enabled = true;
-        //transform.GetChild(1).gameObject.AddComponent<Rigidbody>();
-        //transform.GetChild(2).gameObject.AddComponent<Rigidbody>();
-        //Destroy(transform.GetChild(3).gameObject);
-        //transform.DetachChildren();
-        Destroy(gameObject);
     }
 
     private void Rotation()

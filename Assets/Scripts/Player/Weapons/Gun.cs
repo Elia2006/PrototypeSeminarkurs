@@ -34,10 +34,17 @@ public class Gun : MonoBehaviour
     [SerializeField] AudioSource shoot;
     [SerializeField] AudioSource reload;
 
+    //hitTexture
+    private GameObject hitTexture;
+    private Image hitTextureImage;
+
     void Start()
     {
         loadedAmmoText = GameObject.Find("LoadedAmmo").GetComponent<TextMeshProUGUI>();
         availableAmmoText = GameObject.Find("AvailableAmmo").GetComponent<TextMeshProUGUI>();
+
+        hitTexture = GameObject.Find("HitTexture");
+        hitTextureImage = hitTexture.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -88,6 +95,8 @@ public class Gun : MonoBehaviour
 
         GameObject proj = Instantiate(Projectile, GunEnd.position, GunEnd.rotation * Quaternion.Euler(spread));
         proj.GetComponent<Projectile>().playerVelocity = Player.GetComponent<PlayerMovement>().direction;
+        proj.GetComponent<Projectile>().hitTexture = hitTexture;
+        proj.GetComponent<Projectile>().hitTextureImage = hitTextureImage;
 
         muzzleFlash.Play();
         

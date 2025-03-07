@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SMG : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class SMG : MonoBehaviour
     [SerializeField] AudioSource shoot;
     [SerializeField] AudioSource reload;
 
+    //hitTexture
+    private GameObject hitTexture;
+    private Image hitTextureImage;
+
     void Awake()
     {
         position = transform.localPosition;
@@ -47,6 +52,9 @@ public class SMG : MonoBehaviour
 
         loadedAmmoText = GameObject.Find("LoadedAmmo").GetComponent<TextMeshProUGUI>();
         availableAmmoText = GameObject.Find("AvailableAmmo").GetComponent<TextMeshProUGUI>();
+
+        hitTexture = GameObject.Find("HitTexture");
+        hitTextureImage = hitTexture.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -133,6 +141,8 @@ public class SMG : MonoBehaviour
 
         GameObject proj = Instantiate(Projectile, GunEnd.position, GunEnd.rotation);
         proj.GetComponent<Projectile>().playerVelocity = Player.GetComponent<PlayerMovement>().direction;
+        proj.GetComponent<Projectile>().hitTexture = hitTexture;
+        proj.GetComponent<Projectile>().hitTextureImage = hitTextureImage;
 
         muzzleFlash.Play();
         

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5835199561546043908}
   - component: {fileID: 2837396879953765607}
   - component: {fileID: -7290588179783568739}
+  - component: {fileID: 5472852065418295462}
   m_Layer: 0
   m_Name: ClearOutpostMountainQuestStep
   m_TagString: Item
@@ -65,6 +66,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ffc8a08000219e4194434eb22a244f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5472852065418295462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521343126255153011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1b3a5d8c2aac34288e900dc0e8fbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3331757460302515572

@@ -10,8 +10,8 @@ public class Projectile : MonoBehaviour
 
     private float startTime;
     private float distanceTravelled;
-    private GameObject hitTexture;
-    private Image hitTextureImage;
+    public GameObject hitTexture;
+    public Image hitTextureImage;
     [SerializeField] GameObject hitParticle;
     [SerializeField] int damage;
     Vector3 lastPos;
@@ -25,8 +25,6 @@ public class Projectile : MonoBehaviour
     {
         startTime = Time.time;
         lastPos = transform.position;
-        hitTexture = GameObject.Find("HitTexture");
-        hitTextureImage = hitTexture.GetComponent<Image>();
     }
 
 
@@ -58,9 +56,9 @@ public class Projectile : MonoBehaviour
         
                             
 
-        if(other.CompareTag("Enemy")){
-            other.GetComponent<CollisionScript>().TakeDamage(damage);
+        if(other.CompareTag("Enemy") && other.TryGetComponent(typeof(CollisionScript), out Component component)){
 
+            other.GetComponent<CollisionScript>().TakeDamage(damage);
             
             if(other.GetComponent<CollisionScript>().GetIsWeakpoint())
             {
