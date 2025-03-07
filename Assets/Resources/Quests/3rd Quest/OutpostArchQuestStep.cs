@@ -9,6 +9,12 @@ public class OutpostArchQuestStep : QuestStep
     {
         UpdateState();
     }
+
+
+    private void Update()
+    {
+        UpdateState();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -24,9 +24,7 @@ public class QuestIcon : MonoBehaviour
             case QuestState.REQUIREMENTS_NOT_MET:
                 if (startPoint) { requirementsNotMetToStartIcon.SetActive(true); }
                 break;
-            case QuestState.CAN_START:
-                if (startPoint) { canStartIcon.SetActive(true); }
-                break;
+            
             case QuestState.IN_PROGRESS:
                 if (finishPoint) { requirementsNotMetToFinishIcon.SetActive(true); }
                 break;

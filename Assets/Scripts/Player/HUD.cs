@@ -76,7 +76,7 @@ public class HUD : MonoBehaviour
 
         HealthBar();
         ItemPickup();
-        PressEnter();
+        //PressEnter();
 
 
         damageAlphaColor -= Time.deltaTime * 2;
@@ -169,7 +169,7 @@ public class HUD : MonoBehaviour
         }
     }
 
-    private void PressEnter()
+    /*private void PressEnter()
     {
         RaycastHit hit;
 
@@ -182,7 +182,7 @@ public class HUD : MonoBehaviour
         {
             pressEnter.SetActive(false);
         }
-    }
+    }*/
 
     private void Tasks()
     {

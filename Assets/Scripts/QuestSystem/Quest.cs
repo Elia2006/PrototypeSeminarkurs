@@ -105,10 +105,7 @@ public class Quest
         {
             fullStatus = "Requirements are not yet met to start this quest.";
         }
-        else if (state == QuestState.CAN_START)
-        {
-            fullStatus = "This quest can be started!";
-        }
+        
         else 
         {
             // display all previous quests with strikethroughs

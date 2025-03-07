@@ -15,6 +15,11 @@ public class PlantsQuestStep : QuestStep
         UpdateState();
     }
 
+    private void Update()
+    {
+        UpdateState();
+    }
+
     private void OnEnable()
     {
         GameEventsManager.instance.miscEvents.onCoinCollected += HerbCollected;

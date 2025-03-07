@@ -10,6 +10,11 @@ public class ClearOutpostArchQuestStep : QuestStep
         UpdateState();
     }
 
+    private void Update()
+    {
+        UpdateState();
+    }
+
 
     private void OnTriggerStay(Collider other)
     {
