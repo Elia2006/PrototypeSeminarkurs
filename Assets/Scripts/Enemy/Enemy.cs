@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     protected GameObject Player;
     protected NavMeshAgent agent;
     public LayerMask groundLayer;
+    public LayerMask dontColliderLayer;
     protected int speed;
     protected float speedMultiplier;
     
@@ -39,6 +40,8 @@ public class Enemy : MonoBehaviour
 
     protected bool isActivated = true;
 
+    
+
     void Start()
     {
         Player = GameObject.Find("Player");
@@ -59,7 +62,8 @@ public class Enemy : MonoBehaviour
             Death();
         }
     }
-    protected virtual void Death()
+
+    protected void Death()
     {
         StopAllCoroutines();
 
@@ -85,6 +89,7 @@ public class Enemy : MonoBehaviour
             foreach (Collider child in childCollider)
             {
                 child.enabled = true;
+                child.gameObject.layer = LayerMask.NameToLayer("DontCollide");
             }
             foreach (Rigidbody child in childRigidbody)
             {
@@ -98,7 +103,6 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(disolve.StartDisolve());
             }
 
-            Debug.Log("death");
             StartCoroutine(DieSlowly());
         }else
         {
@@ -108,7 +112,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator DieSlowly()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
         yield return null;
     }
@@ -137,9 +141,11 @@ public class Enemy : MonoBehaviour
         
     }
 
-    protected bool IsPlayerInRange(Vector3 playerPosition, LayerMask groundLayer, float sightDistance)
+    protected bool IsPlayerInRange(Vector3 playerPosition, float sightDistance)
     {
-        if(!Physics.Linecast(transform.position, playerPosition, groundLayer) && Vector3.Distance(transform.position, playerPosition) < sightDistance)
+        RaycastHit hit;
+        if(!Physics.Linecast(transform.position + Vector3.up * 2, playerPosition, out hit, groundLayer) && 
+            Vector3.Distance(transform.position, playerPosition) < sightDistance)
         {
             //Allert(allertRadius, PlayerTrans);
             return true;

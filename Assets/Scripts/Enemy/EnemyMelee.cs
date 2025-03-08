@@ -63,7 +63,7 @@ public class EnemyMelee : Enemy
         {
 
             agent.isStopped = false;
-            if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
+            if(IsPlayerInRange(Player.transform.position, sightDistance) || lerp > 0)
             {
                 Attack();
             }else
@@ -225,17 +225,7 @@ public class EnemyMelee : Enemy
             agent.destination = newPos;
         }
     }
-    protected override void Death()
-    {
-        
-        //transform.GetChild(0).gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        //transform.GetChild(0).gameObject.GetComponent<MeshCollider>().enabled = true;
-        //transform.GetChild(1).gameObject.AddComponent<Rigidbody>();
-        //transform.GetChild(2).gameObject.AddComponent<Rigidbody>();
-        //Destroy(transform.GetChild(3).gameObject);
-        //transform.DetachChildren();
-        Destroy(gameObject);
-    }
+
 
     private void Rotation()
     {

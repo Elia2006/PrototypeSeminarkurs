@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3636710668586159380}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: connector 3
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,9 +372,9 @@ GameObject:
   - component: {fileID: 1726549711956179962}
   - component: {fileID: 279258611124520595}
   - component: {fileID: 2146012581231608570}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: leg 3
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,7 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5048683644342840562}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: leg 2_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 5448932659865923904}
   m_Layer: 7
   m_Name: leg 3_end
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -833,9 +833,9 @@ GameObject:
   - component: {fileID: 2764663995984913262}
   - component: {fileID: 7615303275017106526}
   - component: {fileID: 8418912186452072179}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Armature
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,7 +918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3855553354763264612}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: main_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -949,9 +949,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3663013527874573058}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: connector 1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1012,7 +1012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1245362982779572256}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: leg 1_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7235826315096993316}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: leg 4_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1718,9 +1718,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2798213649104988887}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: connector 2
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1958,9 +1958,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6841286583294608457}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: connector 4
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2051,7 +2051,6 @@ GameObject:
   - component: {fileID: 3308725055774958480}
   - component: {fileID: 1995364455399785596}
   - component: {fileID: 217383442640504005}
-  - component: {fileID: 4766006540163974638}
   - component: {fileID: 1276560807135191729}
   - component: {fileID: 4554974821674697721}
   m_Layer: 7
@@ -2113,20 +2112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: -5807210421087147840}
-  isWeakpoint: 0
---- !u!114 &4766006540163974638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9066272254169649991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af032c63c2a336e459f02496b899ccb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
   isWeakpoint: 0
 --- !u!54 &1276560807135191729
 Rigidbody:
@@ -2251,11 +2236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4992549999457436667, guid: 2657533003111814b8e264264358ff84, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3324788133803632239, guid: 2657533003111814b8e264264358ff84, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1095815304881668751, guid: 2657533003111814b8e264264358ff84, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2267,7 +2252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2657533003111814b8e264264358ff84, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4126625445290761072, guid: 2657533003111814b8e264264358ff84, type: 3}
       propertyPath: m_Materials.Array.data[0]

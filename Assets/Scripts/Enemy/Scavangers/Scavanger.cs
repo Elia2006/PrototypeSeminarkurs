@@ -23,15 +23,16 @@ public class Scavanger : Enemy
         Collider[] allysArround = Physics.OverlapSphere(transform.position, 30);
         allyCount = 0;
 
-        foreach(var ally in allysArround)
-        {
-            Scavanger scavanger = ally.gameObject.GetComponent<Scavanger>();
-            if(scavanger != null)
+        foreach(Collider ally in allysArround)
+        {            
+            if(ally.gameObject.TryGetComponent<Scavanger>(out Scavanger s))
             {
                 allyCount++;
+                Debug.Log("2");
             }
         }
-        if(allyCount > 2)
+        
+        if(allyCount >= 2)
         {
             agent.destination = newPos;
             newPos = Player.transform.position;

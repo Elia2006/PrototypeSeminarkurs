@@ -23,7 +23,7 @@ public class ScavangerRanged : Scavanger
         if(isActivated){
             agent.isStopped = false;
 
-            if(IsPlayerInRange(Player.transform.position, groundLayer, 30))
+            if(IsPlayerInRange(Player.transform.position, 30))
             {
                 if(Attack())
                 {

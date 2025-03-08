@@ -22,7 +22,7 @@ public class ScavangerMelee : Scavanger
         if(isActivated){
             agent.isStopped = false;
 
-            if(IsPlayerInRange(Player.transform.position, groundLayer, 30))
+            if(IsPlayerInRange(Player.transform.position, 30))
             {
                 if(Attack())
                 {
@@ -32,7 +32,7 @@ public class ScavangerMelee : Scavanger
                         if(attackCooldown < Time.time)
                         {
                             Player.GetComponent<HUD>().TakeDamage(10, 1, transform.position, 0.1f);
-                            attackCooldown = Time.time + 0.5f;
+                            attackCooldown = Time.time + 1;
                         }
                     }
                 }

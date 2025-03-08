@@ -54,7 +54,7 @@ public class EnemyMelee1 : Enemy
             {
 
                 agent.isStopped = false;
-                if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance) || lerp > 0)
+                if(IsPlayerInRange(Player.transform.position, sightDistance) || lerp > 0)
                 {
                     Attack();
                 }else

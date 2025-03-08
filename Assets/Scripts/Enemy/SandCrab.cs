@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -8,14 +9,9 @@ public class SandCrab : Enemy
 {
     private Transform Cam;
     [SerializeField] AttackCollider attackCollider;
-    private Vector3 previousPos;
 
-    private float lerp = 1;
-    private int previousState;
+    [SerializeField] Animator anim;
 
-    //Attack
-    private float attackDuration;
-    private bool chargeAttack = false;
     
     void Start()
     {
@@ -26,78 +22,59 @@ public class SandCrab : Enemy
 
     void Awake()
     {
-        previousPos = transform.position;
+
     }
 
     void Update()
     {
-        Vector3 sight = (transform.position - Player.transform.position).normalized + Cam.forward;
-        float distance = Vector3.Distance(transform.position, Player.transform.position);
+        if(isActivated){
+            Vector3 sight = (transform.position - Player.transform.position).normalized + Cam.forward;
+            float distance = Vector3.Distance(transform.position, Player.transform.position);
 
-        if(distance < 5 || continueCharge)
-        {
-            chargeAttack = true;
-        }
-        else if(!IsPlayerInRange(Player.transform.position, groundLayer, 20))
-        {
-            chargeAttack = false;
-        }
-        if(!(Mathf.Abs(sight.x) > 1 || Mathf.Abs(sight.y) > 1 || Mathf.Abs(sight.z) > 1) && distance < 40 || chargeAttack)
-        {
-            if(previousState == 1)
+            if(distance < 5)
             {
-                previousState = 0;
-                lerp = 0;
+                continueCharge = true;
+            }
+            else if(!IsPlayerInRange(Player.transform.position, 40))
+            {
+                continueCharge = false;
             }
 
-            if(lerp > 1){
-                
-                if(distance < 3)
-                {
-                    agent.isStopped = true;
-                }else
-                {
-                    agent.isStopped = false;
-                }
+            bool isInSight = Mathf.Abs(sight.x) > 1 || Mathf.Abs(sight.y) > 1 || Mathf.Abs(sight.z) > 1;
 
-                agent.destination = Player.transform.position;
-                previousPos = transform.position;
+            if(!isInSight && distance < 40 || continueCharge)
+            {
+                agent.isStopped = false;
+                anim.SetBool("isHiding", false);
                 Attack();
-                
-            }
-            else
-            {
-                transform.position = Vector3.Lerp(previousPos - transform.up, previousPos, lerp);
-                lerp += Time.deltaTime * 5;
-            }
 
-        }else
-        {
-            if(previousState == 0)
+            }else
             {
-                previousState = 1;
-                lerp = 0;
                 agent.isStopped = true;
+                anim.SetBool("isHiding", true);
             }
 
-            transform.position = Vector3.Lerp(previousPos, previousPos - transform.up, lerp);
-            lerp += Time.deltaTime * 5;
-
-
-        }
-
-        if(!IsPlayerInRange(Player.transform.position, groundLayer, 45))
-        {
-            continueCharge = false;
         }
     }
+
+
     private void Attack()
     {
+        agent.destination = Player.transform.position;
+
         if(attackCooldown < Time.time && attackCollider.coll != null && attackCollider.coll.gameObject.CompareTag("Player"))
         {
             attackCooldown = Time.time + 2;
             Player.GetComponent<HUD>().TakeDamage(10, 1, transform.position, 0.2f);
-            continueCharge = true;
+        }
+
+        float distance = Vector3.Distance(transform.position, Player.transform.position);
+        if(distance < 3)
+        {
+            agent.isStopped = true;
+        }else
+        {
+            agent.isStopped = false;
         }
     }
 

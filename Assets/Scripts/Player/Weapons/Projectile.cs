@@ -18,6 +18,11 @@ public class Projectile : MonoBehaviour
 
     public Vector3 playerVelocity;
 
+    //Layers
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask enemyLayer;
+
+
 
 
     // Start is called before the first frame update
@@ -40,11 +45,6 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        /*
-        if(Physics.Linecast(transform.position, lastPos, out hit) && !hit.transform.CompareTag("Player"))
-        {
-            OnTriggerEnter(hit.transform.GetComponent<Collider>());
-        }*/
         lastPos = transform.position;
     }
 
@@ -52,15 +52,17 @@ public class Projectile : MonoBehaviour
     {
 
         RaycastHit hit;
-        Physics.Raycast(lastPos, transform.forward, out hit);
-        
-                            
 
-        if(other.CompareTag("Enemy") && other.TryGetComponent(typeof(CollisionScript), out Component component)){
+        Physics.Raycast(lastPos, transform.forward, out hit, Mathf.Infinity, groundLayer | enemyLayer);
+     
 
-            other.GetComponent<CollisionScript>().TakeDamage(damage);
+        if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript)){
+
+            Debug.Log("lol");
+
+            collisionScript.TakeDamage(damage);
             
-            if(other.GetComponent<CollisionScript>().GetIsWeakpoint())
+            if(collisionScript.GetIsWeakpoint())
             {
                 hitTextureImage.color =  Color.red;
             }else
@@ -73,11 +75,6 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        /*else if (other.CompareTag("Boss"))
-        {
-            other.GetComponent<Boss>().BossTakeDamage(20);
-            gun.HitEffect();
-        }*/
 
         Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
         

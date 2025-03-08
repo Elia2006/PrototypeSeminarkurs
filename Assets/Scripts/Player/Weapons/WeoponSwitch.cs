@@ -55,11 +55,11 @@ public class WeoponSwitch : MonoBehaviour
         {
             currentKey = 1;
             switchSound.Play();
-        }else if(Input.GetKeyDown(KeyCode.Alpha1) && currentKey != 2)
+        }else if(Input.GetKeyDown(KeyCode.Alpha2) && currentKey != 2)
         {
             currentKey = 2;
             switchSound.Play();
-        }else if(Input.GetKeyDown(KeyCode.Alpha1) && currentKey != 3)
+        }else if(Input.GetKeyDown(KeyCode.Alpha3) && currentKey != 3)
         {
             currentKey = 3;
             switchSound.Play();

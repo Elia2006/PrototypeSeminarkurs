@@ -36,7 +36,7 @@ public class EnemyRange : Enemy
             if(!KnockbackUpdate(1f))
             {
                 agent.enabled = true;
-                if(IsPlayerInRange(Player.transform.position, groundLayer, sightDistance))
+                if(IsPlayerInRange(Player.transform.position, sightDistance))
                 {
                     Attack();
                     agent.updateRotation = false;
