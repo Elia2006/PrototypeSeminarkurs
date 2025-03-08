@@ -20,31 +20,33 @@ public class ScavangerRanged : Scavanger
     // Update is called once per frame
     void Update()
     {
-        agent.isStopped = false;
+        if(isActivated){
+            agent.isStopped = false;
 
-        if(IsPlayerInRange(Player.transform.position, groundLayer, 30))
-        {
-            if(Attack())
+            if(IsPlayerInRange(Player.transform.position, groundLayer, 30))
             {
-                var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
-                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
-                transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
-
-                float distance = Vector3.Distance(transform.position, Player.transform.position);
-                if(distance < 10)
+                if(Attack())
                 {
-                    agent.isStopped = true;
+                    var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
+                    transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
-                    if(attackCooldown < Time.time){
-                        attackCooldown = Time.time + 2;
-                        var ISpeer = Instantiate(speer, transform.position, transform.rotation);
-                        ISpeer.GetComponent<Speer>().velocityY = distance * 2.2f;
+                    float distance = Vector3.Distance(transform.position, Player.transform.position);
+                    if(distance < 10)
+                    {
+                        agent.isStopped = true;
+
+                        if(attackCooldown < Time.time){
+                            attackCooldown = Time.time + 2;
+                            var ISpeer = Instantiate(speer, transform.position, transform.rotation);
+                            ISpeer.GetComponent<Speer>().velocityY = distance * 2.2f;
+                        }
                     }
                 }
+            }else
+            {     
+                Patroll();
             }
-        }else
-        {     
-            Patroll();
         }
     }
 }

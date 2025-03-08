@@ -96,7 +96,7 @@ public class HUD : MonoBehaviour
         playerHealthText.text = playerHealth + "/" + maxHealth;
     }
 
-    public void TakeDamage(int amount, float speedReduction, Transform enemy, float knockbackForce)
+    public void TakeDamage(int amount, float speedReduction, Vector3 enemy, float knockbackForce)
     {
         StartCoroutine(Vignete());
 
@@ -192,7 +192,7 @@ public class HUD : MonoBehaviour
     public void Die()
     {
         Time.timeScale = 0f;
-        DeathScreen.SetActive(true);
+        //DeathScreen.SetActive(true);
     }
 
     public void SavePlayer ()

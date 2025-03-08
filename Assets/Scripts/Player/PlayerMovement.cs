@@ -166,9 +166,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Knockback(Transform enemy, float force)
+    public void Knockback(Vector3 enemy, float force)
     {
-        KnockbackForce = (transform.position - enemy.position).normalized * force;
+        KnockbackForce = (transform.position - enemy).normalized * force;
     }
 
     public void ReduceSpeed(float speed, float time)

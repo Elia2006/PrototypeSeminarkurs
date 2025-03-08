@@ -5,9 +5,6 @@
     "m_Properties": [
         {
             "m_Id": "5ac34702f5824a81a38d32df194d8b6a"
-        },
-        {
-            "m_Id": "18d5cdde6a5d47d5a766067cb85dca7e"
         }
     ],
     "m_Keywords": [],
@@ -100,7 +97,7 @@
                 "m_Node": {
                     "m_Id": "300bdee8a43046d4b712c527a8257b1d"
                 },
-                "m_SlotId": 0
+                "m_SlotId": 1
             }
         },
         {
@@ -142,7 +139,7 @@
                 "m_Node": {
                     "m_Id": "300bdee8a43046d4b712c527a8257b1d"
                 },
-                "m_SlotId": 1
+                "m_SlotId": 0
             }
         },
         {
@@ -380,36 +377,6 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "VertexDescription.Normal"
-}
-
-{
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "18d5cdde6a5d47d5a766067cb85dca7e",
-    "m_Guid": {
-        "m_GuidSerialized": "5f9ff384-1889-4702-8748-22c193d737b4"
-    },
-    "m_Name": "Color (1)",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Color (1)",
-    "m_DefaultReferenceName": "_Color_1",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 0.0,
-        "g": 161.45458984375,
-        "b": 1024.0,
-        "a": 0.0
-    },
-    "isMainColor": false,
-    "m_ColorMode": 1
 }
 
 {
@@ -860,9 +827,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 24.821884155273439,
-        "b": 766.9961547851563,
+        "r": 2.9960784912109377,
+        "g": 0.0,
+        "b": 0.23422721028327943,
         "a": 0.0
     },
     "isMainColor": false,
@@ -1299,7 +1266,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Scale",
     "m_StageCapability": 3,
-    "m_Value": 1.0,
+    "m_Value": 0.5,
     "m_DefaultValue": 10.0,
     "m_Labels": []
 }
@@ -1523,9 +1490,6 @@
     "m_ChildObjectList": [
         {
             "m_Id": "5ac34702f5824a81a38d32df194d8b6a"
-        },
-        {
-            "m_Id": "18d5cdde6a5d47d5a766067cb85dca7e"
         }
     ]
 }

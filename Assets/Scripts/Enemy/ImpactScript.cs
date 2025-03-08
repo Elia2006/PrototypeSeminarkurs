@@ -39,7 +39,7 @@ public class ImpactScript : MonoBehaviour
     {
         if(other == Player.GetComponent<Collider>() && active)
         {
-            Player.GetComponent<HUD>().TakeDamage(damage, 1, enemy, 0.1f);
+            Player.GetComponent<HUD>().TakeDamage(damage, 1, enemy.position, 0.1f);
             active = false;
         }
     }

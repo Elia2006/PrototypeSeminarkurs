@@ -53,5 +53,6 @@ Material:
     - _Lerp: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _disolveAmount: 0
     m_Colors: []
   m_BuildTextureStacks: []

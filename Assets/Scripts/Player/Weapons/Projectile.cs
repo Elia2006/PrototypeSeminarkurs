@@ -69,17 +69,17 @@ public class Projectile : MonoBehaviour
             }
             hitTexture.GetComponent<HitTextureS>().Hit();
             Destroy(gameObject);
-            Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
         }else if(other.CompareTag("Ground"))
         {
             Destroy(gameObject);
-            Instantiate(hitParticle, lastPos, Quaternion.LookRotation(hit.normal));
         }
         /*else if (other.CompareTag("Boss"))
         {
             other.GetComponent<Boss>().BossTakeDamage(20);
             gun.HitEffect();
         }*/
+
+        Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
         
         
     }

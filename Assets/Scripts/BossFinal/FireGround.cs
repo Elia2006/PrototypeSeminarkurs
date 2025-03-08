@@ -40,7 +40,7 @@ public class FireGround : MonoBehaviour
         {
             if(collider.transform.CompareTag("Player") && damageCooldown < Time.time)
             {
-                playerHUD.TakeDamage(1, 3, transform, 0);
+                playerHUD.TakeDamage(1, 3, transform.position, 0);
 
                 damageCooldown = Time.time + 0.1f;
             }

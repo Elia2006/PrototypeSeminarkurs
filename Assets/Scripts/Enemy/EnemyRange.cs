@@ -48,9 +48,6 @@ public class EnemyRange : Enemy
             }
 
             agent.speed = speed * speedMultiplier;
-        }else
-        {
-            StopAllCoroutines();
         }
     }
 
@@ -117,8 +114,8 @@ public class EnemyRange : Enemy
 
             float lerp = (ring1.rotationSpeed - 100) / 700;
 
-            ring1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
-            ring2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
+            ring1.GetComponent<Renderer>().material.SetFloat("_Lerp", lerp);
+            ring2.GetComponent<Renderer>().material.SetFloat("_Lerp", lerp);
 
             yield return new WaitForSeconds(0.01f);
         }
@@ -134,8 +131,8 @@ public class EnemyRange : Enemy
 
             float lerp = (ring1.rotationSpeed - 100) / 700;
 
-            ring1.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
-            ring2.GetComponent<Renderer>().sharedMaterial.SetFloat("_Lerp", lerp);
+            ring1.GetComponent<Renderer>().material.SetFloat("_Lerp", lerp);
+            ring2.GetComponent<Renderer>().material.SetFloat("_Lerp", lerp);
 
             yield return new WaitForSeconds(0.01f);
         }

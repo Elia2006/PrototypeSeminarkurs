@@ -19,25 +19,27 @@ public class ScavangerMelee : Scavanger
     // Update is called once per frame
     void Update()
     {
-        agent.isStopped = false;
+        if(isActivated){
+            agent.isStopped = false;
 
-        if(IsPlayerInRange(Player.transform.position, groundLayer, 30))
-        {
-            if(Attack())
+            if(IsPlayerInRange(Player.transform.position, groundLayer, 30))
             {
-                if(AttackCollider.colliding && AttackCollider.coll != null && AttackCollider.coll.gameObject.CompareTag("Player"))
+                if(Attack())
                 {
-                    agent.isStopped = true;
-                    if(attackCooldown < Time.time)
+                    if(AttackCollider.colliding && AttackCollider.coll != null && AttackCollider.coll.gameObject.CompareTag("Player"))
                     {
-                        Player.GetComponent<HUD>().TakeDamage(10, 1, transform, 0.1f);
-                        attackCooldown = Time.time + 0.5f;
+                        agent.isStopped = true;
+                        if(attackCooldown < Time.time)
+                        {
+                            Player.GetComponent<HUD>().TakeDamage(10, 1, transform.position, 0.1f);
+                            attackCooldown = Time.time + 0.5f;
+                        }
                     }
                 }
+            }else
+            {     
+                Patroll();
             }
-        }else
-        {     
-            Patroll();
         }
     }
 }

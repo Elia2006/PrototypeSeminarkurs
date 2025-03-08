@@ -33,7 +33,7 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(gameObject);
         }else if(other.transform.CompareTag("Player"))
         {
-            playerHUD.TakeDamage(1, 1, transform, 0.05f);
+            playerHUD.TakeDamage(1, 1, transform.position, 0.05f);
             Destroy(gameObject);
         }
     }

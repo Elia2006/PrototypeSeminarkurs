@@ -96,7 +96,7 @@ public class SandCrab : Enemy
         if(attackCooldown < Time.time && attackCollider.coll != null && attackCollider.coll.gameObject.CompareTag("Player"))
         {
             attackCooldown = Time.time + 2;
-            Player.GetComponent<HUD>().TakeDamage(10, 1, transform, 0.2f);
+            Player.GetComponent<HUD>().TakeDamage(10, 1, transform.position, 0.2f);
             continueCharge = true;
         }
     }

@@ -61,6 +61,8 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void Death()
     {
+        StopAllCoroutines();
+
         isActivated = false;
 
         agent.enabled = false;
@@ -76,8 +78,6 @@ public class Enemy : MonoBehaviour
                 c.enabled = false;
             }
 
-            
-
             GameObject armature = transform.Find("Armature").gameObject;
             Collider[] childCollider = armature.GetComponentsInChildren<Collider>();
             Rigidbody[] childRigidbody = armature.GetComponentsInChildren<Rigidbody>();
@@ -90,13 +90,27 @@ public class Enemy : MonoBehaviour
             {
                 child.isKinematic = false;
             }
+
+            
+
+            if(transform.TryGetComponent<Disolve>(out Disolve disolve))
+            {
+                StartCoroutine(disolve.StartDisolve());
+            }
+
+            Debug.Log("death");
+            StartCoroutine(DieSlowly());
         }else
         {
-            Debug.Log("ded");
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
+    }
 
-        
+    IEnumerator DieSlowly()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
+        yield return null;
     }
 
     protected Vector3 FindPosOnNavMesh(int distance, Vector3 direction, NavMeshAgent agent, Vector3 originPoint)
