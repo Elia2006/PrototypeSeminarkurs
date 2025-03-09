@@ -81,6 +81,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  dontColliderLayer:
+    serializedVersion: 2
+    m_Bits: 0
   goingToLastPos: 0
   AllertEffect: {fileID: 0}
   patrollPoint: {fileID: 0}
@@ -1318,8 +1321,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6824531269665507070}
-  - component: {fileID: 7429206832478014377}
-  - component: {fileID: 6259556952994482033}
   - component: {fileID: 948876699207783465}
   - component: {fileID: 6602818774214822382}
   m_Layer: 7
@@ -1345,43 +1346,6 @@ Transform:
   - {fileID: 8962424171926767166}
   m_Father: {fileID: 3981613487860266440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7429206832478014377
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9067873978973647886}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6259556952994482033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9067873978973647886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RigLayers:
-  - m_Rig: {fileID: 0}
-    m_Active: 1
-  m_Effectors: []
 --- !u!54 &948876699207783465
 Rigidbody:
   m_ObjectHideFlags: 0

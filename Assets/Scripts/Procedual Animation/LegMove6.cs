@@ -31,7 +31,8 @@ public class LegMove6 : MonoBehaviour
             moveCicle = 0;
         }
 
-        float distance = Vector3.Distance(Legs[moveCicle].GetComponent<SpiderAnimation>().newPos, LegDefaultPos[moveCicle].transform.position);
+        float distance = Vector3.Distance(Legs[moveCicle].position, LegDefaultPos[moveCicle].position);
+
 
         if(distance > maxDistance && currentLeg.GetComponent<SpiderAnimation>().lerp >= legLerp)
         {
@@ -39,11 +40,11 @@ public class LegMove6 : MonoBehaviour
             Vector3 direction = (transform.position - lastPos).normalized * stepDistance;
             Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up, -transform.up, out hit, Mathf.Infinity, groundLayer);
 
-            if(distance > Vector3.Distance(hit.point, LegDefaultPos[moveCicle].transform.position))
-            {
+            /*if(distance > Vector3.Distance(hit.point, LegDefaultPos[moveCicle].transform.position))
+            {*/
                 Legs[moveCicle].GetComponent<SpiderAnimation>().SetNewPos(hit.point);
                 currentLeg = Legs[moveCicle];
-            }
+            //}
             
             moveCicle += 1;
         }

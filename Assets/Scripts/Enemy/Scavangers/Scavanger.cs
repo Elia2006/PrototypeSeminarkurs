@@ -20,7 +20,7 @@ public class Scavanger : Enemy
 
     protected bool Attack()
     {
-        Collider[] allysArround = Physics.OverlapSphere(transform.position, 30);
+        Collider[] allysArround = Physics.OverlapSphere(transform.position, 40);
         allyCount = 0;
 
         foreach(Collider ally in allysArround)
@@ -28,7 +28,6 @@ public class Scavanger : Enemy
             if(ally.gameObject.TryGetComponent<Scavanger>(out Scavanger s))
             {
                 allyCount++;
-                Debug.Log("2");
             }
         }
         
@@ -96,7 +95,7 @@ public class Scavanger : Enemy
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 30);
+        Gizmos.DrawWireSphere(transform.position, 40);
     }
 
 }

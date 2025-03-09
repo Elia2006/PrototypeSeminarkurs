@@ -31,8 +31,8 @@ public class ScavangerMelee : Scavanger
                         agent.isStopped = true;
                         if(attackCooldown < Time.time)
                         {
-                            Player.GetComponent<HUD>().TakeDamage(10, 1, transform.position, 0.1f);
-                            attackCooldown = Time.time + 1;
+                            Player.GetComponent<HUD>().TakeDamage(10, 2, transform.position, 0.1f);
+                            attackCooldown = Time.time + 2;
                         }
                     }
                 }

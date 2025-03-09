@@ -9,6 +9,8 @@ public class Disolve : MonoBehaviour
     // Update is called once per frame
     public IEnumerator StartDisolve()
     {
+        yield return new WaitForSeconds(2);
+
         for(float i = 0; i < 1; i += 0.01f){
             foreach (Renderer renderer in renderers)
             {
