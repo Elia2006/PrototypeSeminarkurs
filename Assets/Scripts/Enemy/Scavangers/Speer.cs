@@ -26,7 +26,6 @@ public class Speer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.transform);
         if(other.transform.CompareTag("Ground"))
         {
             Destroy(gameObject);

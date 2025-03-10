@@ -27,6 +27,9 @@ public class EnemyMelee1 : Enemy
 
     [SerializeField] bool isStationary;
 
+    //Audio
+    [SerializeField] AudioSource attackSound;
+
 
 
     void Start()
@@ -118,6 +121,8 @@ public class EnemyMelee1 : Enemy
 
             attackCooldown = Time.time + 2;
             attack = false;
+
+            attackSound.Play();
         }
     }
     private void Patroll()

@@ -12,6 +12,9 @@ public class SandCrab : Enemy
 
     [SerializeField] Animator anim;
 
+    //Audio
+    [SerializeField] AudioSource bite;
+
     
     void Start()
     {
@@ -66,6 +69,7 @@ public class SandCrab : Enemy
         {
             attackCooldown = Time.time + 2;
             Player.GetComponent<HUD>().TakeDamage(10, 1, transform.position, 0.2f);
+            bite.Play();
         }
 
         float distance = Vector3.Distance(transform.position, Player.transform.position);

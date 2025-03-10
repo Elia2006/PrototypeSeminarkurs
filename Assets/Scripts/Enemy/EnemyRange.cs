@@ -15,6 +15,9 @@ public class EnemyRange : Enemy
     [SerializeField] Rotate ring1;
     [SerializeField] Rotate ring2;
 
+    //Audio
+    [SerializeField] AudioSource shoot;
+
 
     void Start()
     {
@@ -93,6 +96,7 @@ public class EnemyRange : Enemy
         for(int i = 0; i < 20; i++)
         {
             GameObject Bullet = Instantiate(Projectile, BulletOrigin.position, BulletOrigin.rotation);
+            shoot.Play();
             Destroy(Bullet, 1);
             yield return new WaitForSeconds(0.1f);
         }

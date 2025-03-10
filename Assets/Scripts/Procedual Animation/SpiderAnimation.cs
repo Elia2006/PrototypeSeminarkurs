@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SpiderAnimation : MonoBehaviour
@@ -10,6 +11,7 @@ public class SpiderAnimation : MonoBehaviour
 
     //Audio
     [SerializeField] AudioSource stepSound;
+    private bool doneStep = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class SpiderAnimation : MonoBehaviour
     {
 
         LerpToNewPos();
+
 
         transform.position = currentPos;
     }
@@ -40,6 +43,11 @@ public class SpiderAnimation : MonoBehaviour
             lerp += Time.deltaTime * legMoveSpeed;
             currentPos = Vector3.Lerp(oldPos, newPos, lerp);
             currentPos.y += Mathf.Sin(lerp * Mathf.PI) * 0.5f;
+            doneStep = false;
+        }else if(!doneStep && stepSound != null)
+        {
+            stepSound.Play();
+            doneStep = true;
         }
     }
 
