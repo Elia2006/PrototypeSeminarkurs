@@ -10,10 +10,7 @@ public class OutpostMountainQuestStep : QuestStep
         UpdateState();
     }
 
-    private void Update()
-    {
-        UpdateState();
-    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -25,7 +22,7 @@ public class OutpostMountainQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Erreiche den Aussenposten auf dem Berg.";
+        string status = "Begebe dich zu einem der Aussenposten";
         ChangeState(state, status);
     }
 

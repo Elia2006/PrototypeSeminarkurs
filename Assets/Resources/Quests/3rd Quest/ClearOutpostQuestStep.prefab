@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -206157369300293670}
   - component: {fileID: -7528629017434702694}
   - component: {fileID: -4173663513655018993}
+  - component: {fileID: 3710659217362583239}
   m_Layer: 0
   m_Name: ClearOutpostQuestStep
   m_TagString: Item
@@ -68,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e92157f93c61843a056c39cddbb943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 3710659217362583239}
 --- !u!114 &-4173663513655018993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +82,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1b3a5d8c2aac34288e900dc0e8fbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3710659217362583239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044580837105556360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - "Hier befindet sich die Werkzeugkiste. Suche in den H\xE4usern, nachdem du
+      die Gegner ausser gefecht setzen konntest."
 --- !u!1001 &4762934785417701391
 PrefabInstance:
   m_ObjectHideFlags: 0

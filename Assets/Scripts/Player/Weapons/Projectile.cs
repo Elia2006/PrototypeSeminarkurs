@@ -58,7 +58,7 @@ public class Projectile : MonoBehaviour
 
         if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript)){
 
-            Debug.Log("lol");
+            //Debug.Log("lol");
 
             collisionScript.TakeDamage(damage);
             

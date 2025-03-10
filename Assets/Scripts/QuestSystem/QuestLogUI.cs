@@ -33,7 +33,7 @@ public class QuestLogUI : MonoBehaviour
 
     private void Update()
     {
-       if (Input.GetKeyDown(KeyCode.J))
+       /*if (Input.GetKeyDown(KeyCode.J))
         {
             if (contentParent.activeInHierarchy)
             {
@@ -43,7 +43,7 @@ public class QuestLogUI : MonoBehaviour
             {
                 ShowUI();
             }
-        } 
+        } */
     }
 
     private void QuestLogTogglePressed()

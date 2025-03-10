@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6937897689385276559}
   - component: {fileID: -6330765173014110403}
   - component: {fileID: 6193120523171834942}
+  - component: {fileID: 1007824297234285472}
   m_Layer: 0
   m_Name: OutpostArchQuestStep
   m_TagString: Untagged
@@ -66,3 +67,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d362661ba2b1409438156650d95ce769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 1007824297234285472}
+--- !u!114 &1007824297234285472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4245887858179342491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - "Super, die Strukturelle Integrit\xE4t des Raumschiffs ist zumindest halb gesichert! "
+    - "Um sie jedoch ganz zu gew\xE4hrleisten, m\xF6chte ich dich bitten, einen der
+      Aussenposten aufzusuchen um entweder ein Hitzeschild oder eine Werkzeugkiste
+      zu finden."

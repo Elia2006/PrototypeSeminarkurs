@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class WeaponRuinedOutpostStep : QuestStep
 {
+    [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
+        trigger.TriggerDialogue();
         UpdateState();
     }
 

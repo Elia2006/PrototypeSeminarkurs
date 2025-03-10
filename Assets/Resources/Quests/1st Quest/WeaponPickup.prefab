@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7221243853327529842}
   - component: {fileID: 7239288443662948306}
   - component: {fileID: 6381659640346368039}
+  - component: {fileID: 6243338082265841026}
   m_Layer: 0
   m_Name: WeaponPickup
   m_TagString: Item
@@ -68,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7eafc23f3b204e985567a6ff5b45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 6243338082265841026}
 --- !u!114 &6381659640346368039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +82,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1b3a5d8c2aac34288e900dc0e8fbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6243338082265841026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721952757043124935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - Laut meinen Daten hast du jetzt den Aussenposten gefunden, wo du mit deinem
+      Schiff reingeflogen bist.
+    - "Meine Sensoren melden ein Datenfragment, welches sich in der N\xE4he befindet.
+      Sammle es ein und bringe es zum Schiff zur\xFCck."
 --- !u!1001 &3477229800922885485
 PrefabInstance:
   m_ObjectHideFlags: 0

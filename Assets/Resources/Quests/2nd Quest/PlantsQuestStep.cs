@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlantsQuestStep : QuestStep
 {
+    [SerializeField] DialogueTrigger trigger;
 
     private int plantscollected = 0;
     private int plantstocollect = 3;
@@ -12,6 +13,7 @@ public class PlantsQuestStep : QuestStep
 
     private void Start()
     {
+        trigger.TriggerDialogue();
         UpdateState();
     }
 

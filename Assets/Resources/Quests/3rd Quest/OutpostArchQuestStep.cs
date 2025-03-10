@@ -5,16 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class OutpostArchQuestStep : QuestStep
 {
+    [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
+        trigger.TriggerDialogue();
         UpdateState();
     }
 
 
-    private void Update()
-    {
-        UpdateState();
-    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -26,7 +25,7 @@ public class OutpostArchQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Begebe dich zum Aussenposten auf dem Bogen";
+        string status = "Begebe dich zu einem der Aussenposten";
         ChangeState(state, status);
     }
 

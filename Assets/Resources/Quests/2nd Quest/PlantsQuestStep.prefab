@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2314587426145550832}
   - component: {fileID: 5758492556742735400}
+  - component: {fileID: 1278653144821348545}
   m_Layer: 0
   m_Name: PlantsQuestStep
   m_TagString: Untagged
@@ -44,3 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56196054d03434342887a3fce2f74cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 1278653144821348545}
+--- !u!114 &1278653144821348545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448489660607003722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - "Super gemacht. Mithilfe der Daten habe ich es geschafft, dir den Zugang zum
+      Teleportieren zu verschaffen. Stehe daf\xFCr auf einem Teleporter, dr\xFCcke
+      \"M\" und klicke einen anderen bereits entdeckten Teleporter an."
+    - "Au\xDFerdem habe ich dir auf der Karte deinen n\xE4chsten Auftrag vermerkt.
+      Begebe dich ins markierte Gebiet und sammle 3 Pflanzen ein. Die Fasern werden
+      f\xFCr das Raumschiff ben\xF6tigt."

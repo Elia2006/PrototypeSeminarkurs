@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4633680952121378259}
   - component: {fileID: 2589601766328808438}
   - component: {fileID: 3895372760088179145}
+  - component: {fileID: 6989832274321744415}
   m_Layer: 0
   m_Name: OutpostMountainQuestStep
   m_TagString: Untagged
@@ -66,3 +67,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28b53314a2f5164a9b0659149ccf294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6989832274321744415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448225664244530291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: 
+    sentences: []

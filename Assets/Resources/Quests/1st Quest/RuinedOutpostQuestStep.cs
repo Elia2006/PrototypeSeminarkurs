@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class RuinedOutpostQuestStep : QuestStep
 {
+    [SerializeField] DialogueTrigger trigger; 
     private void Start()
     {
+        trigger.TriggerDialogue();
         UpdateState();
     }
 
@@ -25,6 +27,7 @@ public class RuinedOutpostQuestStep : QuestStep
 
     private void UpdateState()
     {
+        
         string state = "";
         string status = "Begebe dich zum zerstörten Aussenposten.";
         ChangeState(state, status);

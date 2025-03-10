@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8060540777179305222}
   - component: {fileID: -4181972053487024929}
   - component: {fileID: 3527068928066483647}
+  - component: {fileID: -2899437505757165645}
   m_Layer: 0
   m_Name: VisitRuinedOutpostQuestStep
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb641bbe966a1b243ba557dda58f2843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: -2899437505757165645}
 --- !u!135 &3527068928066483647
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -66,3 +68,21 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2899437505757165645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802256980738393235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - "Hey du. Ja du! Es scheint, als w\xE4re das Raumschiff nicht mehr funktionst\xFCchtig...
+      Was eine Schande."
+    - eier schlecken
