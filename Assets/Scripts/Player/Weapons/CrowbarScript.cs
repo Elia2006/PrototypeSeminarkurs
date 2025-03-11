@@ -10,15 +10,18 @@ public class CrowbarScript : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     private HitTextureS hitTexture;
     private Animator anim;
-    float hitTextureCooldown;
-    bool isAttacking = false;
     private float attackCooldown;
-    List<Collider> alreadyDamaged = new List<Collider>();
+
+    private bool hasDamaged;
+    private Collider coll;
     // Start is called before the first frame update
     void Awake()
     {
         hitTexture = GameObject.Find("HitTexture").GetComponent<HitTextureS>();
         anim = GetComponent<Animator>();
+        coll = GetComponent<Collider>();
+
+        coll.enabled = false;
     }
 
     // Update is called once per frame
@@ -26,24 +29,31 @@ public class CrowbarScript : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
         {
+            hasDamaged = false;
             anim.SetTrigger("Attack");
-            isAttacking = true;
             attackCooldown = Time.time + 1;
             if(playerMovement != null) // playerMovement ist jeden 2. Frame null, keine Ahnung wieso aber das geht so erstmal
             {
                 playerMovement.ReduceSpeed(2, 0.5f);
             }
+            
         }
 
 
         AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
         if(animStateInfo.normalizedTime >= 1 && animStateInfo.IsName("CrowbarHit"))
         {
-            isAttacking = false;
-            alreadyDamaged.Clear();
-            transform.position = new Vector3(0.3f, -0.415f, 0.6f);
-            transform.rotation = Quaternion.Euler(-76.5f, 90, -90);
+            
         }
+    }
+
+    public void EnableCollider()
+    {
+        coll.enabled = true;
+    }
+    public void DisableCollider()
+    {
+        coll.enabled = false;
     }
 
     public void Unequip()
@@ -53,24 +63,13 @@ public class CrowbarScript : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.transform.CompareTag("Enemy") && isAttacking && !alreadyDamaged.Contains(other))
+        if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript) 
+            && !hasDamaged)
         {
-            alreadyDamaged.Add(other);
-
-            Enemy enemy = other.GetComponent<Enemy>();
-            enemy.TakeDamage(20);
-            enemy.KnockbackStart();
+            collisionScript.TakeDamage(4, true);
+            collisionScript.Knockback(0.1f);
             hitTexture.Hit();
+            hasDamaged = true;
         }
-        /*
-        if (other.transform.CompareTag("Boss") && isAttacking && !alreadyDamaged.Contains(other))
-        {
-            alreadyDamaged.Add(other);
-            Boss boss = other.GetComponent<Boss>();
-            boss.BossTakeDamage(20);
-            
-            hitTextureCooldown = Time.time + 0.1f;
-        }*/
-
     }
 }

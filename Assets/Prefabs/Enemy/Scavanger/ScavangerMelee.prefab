@@ -1565,13 +1565,13 @@ GameObject:
   - component: {fileID: 917631676373296332}
   - component: {fileID: 7271748257358515051}
   - component: {fileID: 3663441701464607032}
-  - component: {fileID: 6560976544027596518}
   - component: {fileID: 6751357908259691645}
   - component: {fileID: 6292490255539178147}
   - component: {fileID: 7150954087950295562}
   - component: {fileID: 4984550890065552564}
   - component: {fileID: 492049164576196921}
   - component: {fileID: 6900993990143905408}
+  - component: {fileID: 7296432214135686185}
   m_Layer: 7
   m_Name: ScavangerMelee
   m_TagString: Enemy
@@ -1661,29 +1661,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &6560976544027596518
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5707313836441786390}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6751357908259691645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,6 +1791,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 2608114351860881083}
+--- !u!65 &7296432214135686185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707313836441786390}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &5819604420562256663
 GameObject:
   m_ObjectHideFlags: 0

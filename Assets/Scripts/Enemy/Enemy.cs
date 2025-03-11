@@ -161,13 +161,13 @@ public class Enemy : MonoBehaviour
         return Quaternion.Euler(new Vector3(0, Quaternion.Lerp(transform.rotation, lookRotation, speed).eulerAngles.y, 0));
     }
 
-    public void KnockbackStart()
+    public void KnockbackStart(float strength)
     {
 
-        knockback = Player.transform.forward / 3;
+        knockback = Player.transform.forward * strength;
     }
     
-    protected bool KnockbackUpdate(float height)
+    protected bool KnockbackUpdate()
     {
         NavMeshHit hit;
         knockback *= 0.95f;

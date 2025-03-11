@@ -9,15 +9,20 @@ public class CollisionScript : MonoBehaviour
     // Start is called before the first frame update
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool weakpointOverride)
     {
-        if(isWeakpoint)
+        if(isWeakpoint && !weakpointOverride)
         {
             enemy.TakeDamage(damage * 2);
         }else
         {
             enemy.TakeDamage(damage);
         }
+    }
+
+    public void Knockback(float strength)
+    {
+        enemy.KnockbackStart(strength);
     }
 
     public bool GetIsWeakpoint()

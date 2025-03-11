@@ -56,11 +56,9 @@ public class Projectile : MonoBehaviour
         Physics.Raycast(lastPos, transform.forward, out hit, Mathf.Infinity, groundLayer | enemyLayer);
      
 
-        if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript)){
-
-            //Debug.Log("lol");
-
-            collisionScript.TakeDamage(damage);
+        if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript))
+        {
+            collisionScript.TakeDamage(damage, false);
             
             if(collisionScript.GetIsWeakpoint())
             {

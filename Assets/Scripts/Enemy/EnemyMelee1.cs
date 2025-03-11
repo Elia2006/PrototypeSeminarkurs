@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class EnemyMelee1 : Enemy
 {
     //Attack
@@ -53,7 +47,7 @@ public class EnemyMelee1 : Enemy
     void Update()
     {
         if(isActivated){
-            if(!KnockbackUpdate(1f))
+            if(!KnockbackUpdate())
             {
 
                 agent.isStopped = false;
@@ -64,10 +58,18 @@ public class EnemyMelee1 : Enemy
                 {     
                     Patroll();
                 }
-                continueCharge = false;
+                
             }
 
             //Rotation();
+
+            if(continueCharge)
+            {
+                Debug.Log("hello");
+                newPos = Player.transform.position;
+                agent.destination = newPos;
+                continueCharge = false;
+            }
 
 
             agent.speed = speed * speedMultiplier;
@@ -130,7 +132,7 @@ public class EnemyMelee1 : Enemy
         agent.updateRotation = true;
 
         speedMultiplier = 1;
-        if(isStationary)
+        if(isStationary && Vector3.Distance(transform.position, newPos) < 2)
         {
             newPos = patrollPoint.position;
             agent.destination = newPos;

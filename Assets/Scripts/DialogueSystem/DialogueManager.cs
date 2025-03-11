@@ -12,6 +12,12 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    private bool isTyping = false;
+    private bool skip;
+
+    //Audio
+    [SerializeField] AudioSource click;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +26,24 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && !isTyping)
         {
             DisplayNextSentence();
+        }else if(Input.GetKeyDown(KeyCode.E))
+        {
+            skip = true;
+        }
+        if(!isTyping)
+        {
+            skip = false;
         }
     }
 
     // Update is called once per frame
     public void StartDialogue(Dialogue dialogue)
     {
+        
+
         anim.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -38,6 +53,7 @@ public class DialogueManager : MonoBehaviour
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
+            
         }
 
         DisplayNextSentence();
@@ -59,12 +75,24 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
+        isTyping = true;
+
         dialogueText.text = "";
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
+            click.Play();
+
             yield return new WaitForSeconds(0.02f);
+
+            if(skip)
+            {
+                dialogueText.text = sentence;
+                break;
+            }
         }
+
+        isTyping = false;
     }
 
     void EndDialouge()

@@ -36,7 +36,7 @@ public class EnemyRange : Enemy
     void Update()
     {
         if(isActivated){
-            if(!KnockbackUpdate(1f))
+            if(!KnockbackUpdate())
             {
                 agent.enabled = true;
                 if(IsPlayerInRange(Player.transform.position, sightDistance))

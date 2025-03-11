@@ -59,7 +59,7 @@ public class EnemyMelee : Enemy
     void Update()
     {
         
-        if(!KnockbackUpdate(1f))
+        if(!KnockbackUpdate())
         {
 
             agent.isStopped = false;
