@@ -1,22 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 using System;
 
 public class HUD : MonoBehaviour
 {
 
     [SerializeField] Image damageImage;
-    public float playerHealth = 100;
-    public float maxHealth;
+    public float playerHealth = 60;
+    public float maxHealth = 100;
     public float playerEnergy = 100;
     public float maxEnergy;
     private float damageAlphaColor = 0;
@@ -49,12 +45,14 @@ public class HUD : MonoBehaviour
     [SerializeField] Gun gunScript;
     [SerializeField] SMG smgScript;
 
+    //Healing
+    private Coroutine healing;
+
     //Audio
     [SerializeField] AudioSource itemPickup;
 
     void Start()
     {
-        maxHealth = playerHealth;
         maxEnergy = playerEnergy;
         Tasks();
         playerCc = Player.GetComponent<CharacterController>();
@@ -76,10 +74,46 @@ public class HUD : MonoBehaviour
 
         HealthBar();
         ItemPickup();
+        CheckHealing();
         //PressEnter();
 
 
         damageAlphaColor -= Time.deltaTime * 2;
+    }
+    private void CheckHealing()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        bool anyAttacking = false;
+        foreach(Enemy enemy in enemies)
+        {
+            if(enemy.continueCharge)
+            {
+                anyAttacking = true;
+            }   
+        }
+        if(!anyAttacking && healing == null && playerHealth < maxHealth)
+        {
+            healing = StartCoroutine(Healing());
+            Debug.Log("StartHealing");
+        }
+        else if(healing != null && anyAttacking)
+        {
+            StopCoroutine(healing);
+            healing = null;
+            Debug.Log("StopHealing");
+        }
+    }
+    IEnumerator Healing()
+    {
+        yield return new WaitForSeconds(5);
+        while(playerHealth <= maxHealth - 1)
+        {
+            playerHealth += 1;
+            yield return new WaitForSeconds(0.2f);
+        }
+        playerHealth = maxHealth;
+        yield return null;
+        
     }
     private void HealthBar()
     {

@@ -17,10 +17,9 @@ public class Disolve : MonoBehaviour
                 foreach(Material material in renderer.materials)
                 {
                     material.SetFloat("_disolveAmount", i);
-                }
-                
-                yield return new WaitForSeconds(0.01f);
+                }    
             }
+            yield return new WaitForSeconds(0.02f);
         }
         foreach (Renderer renderer in renderers)
         {

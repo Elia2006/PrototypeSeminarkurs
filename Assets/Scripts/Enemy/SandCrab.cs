@@ -76,6 +76,12 @@ public class SandCrab : Enemy
         if(distance < 3)
         {
             agent.isStopped = true;
+
+            //turn towards Player
+            var lookRotation = Quaternion.LookRotation(Player.transform.position + Player.GetComponent<PlayerMovement>().direction * Vector3.Distance(transform.position, Player.transform.position) * 3 - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.05f);
+
+
         }else
         {
             agent.isStopped = false;

@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
     //Damage
     protected int health = 50;
-    protected Boolean continueCharge;
+    public Boolean continueCharge;
 
     //Knockback
     protected Vector3 knockback;
@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator DieSlowly()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         Destroy(gameObject);
         yield return null;
     }

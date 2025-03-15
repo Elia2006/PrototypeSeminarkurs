@@ -20,6 +20,8 @@ public class Scavanger : Enemy
 
     protected bool Attack()
     {
+        continueCharge = true;
+
         Collider[] allysArround = Physics.OverlapSphere(transform.position, 40);
         allyCount = 0;
 
@@ -49,6 +51,8 @@ public class Scavanger : Enemy
         }
         else
         {
+            continueCharge = false;
+
             Vector3 tempNewPos = FindPosOnNavMesh(1, (transform.position - Player.transform.position).normalized, agent, transform.position);
             if(tempNewPos != new Vector3(0, 0, 0))
             {
@@ -62,6 +66,8 @@ public class Scavanger : Enemy
     
     protected void Patroll()
     {
+        continueCharge = false;
+
         agent.destination = newPos;
 
         if(Vector3.Distance(transform.position, newPos) < 2)
