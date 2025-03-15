@@ -14,6 +14,8 @@ public class Map : MonoBehaviour
     public GameObject MapCamera;
     public GameObject PlayerCamera;
     public GameObject InvManager;
+    public GameObject Disabler1;
+    public GameObject Disabler2;
     public bool canMapOpen = true;
     public bool toggle = false;
     public bool mapOpen = false;
@@ -23,6 +25,9 @@ public class Map : MonoBehaviour
         MapCanvas.SetActive(false);
         MapCamera.SetActive(false);
         arrow.SetActive(false);
+        Disabler1.SetActive(false);
+        Disabler2.SetActive(false);
+
     }
 
     // Update is called once per frame

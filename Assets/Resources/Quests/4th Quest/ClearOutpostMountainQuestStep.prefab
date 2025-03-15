@@ -69,6 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffc8a08000219e4194434eb22a244f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Map: {fileID: 0}
+  Canvas: {fileID: 0}
+  Disabler: {fileID: 0}
+  trigger: {fileID: 8540012906627451415}
 --- !u!114 &5472852065418295462
 MonoBehaviour:
   m_ObjectHideFlags: 0

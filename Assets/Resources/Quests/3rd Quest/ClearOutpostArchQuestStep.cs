@@ -5,9 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class ClearOutpostArchQuestStep : QuestStep
 {
+    public GameObject Map;
+    public Transform Canvas;
+    public Transform Disabler;
     [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
+        Map = GameObject.Find("Map");
+        Canvas = Map.transform.Find("Canvas");
+        Disabler = Canvas.transform.Find("Disabler1");
         trigger.TriggerDialogue();
         UpdateState();
     }
@@ -22,6 +28,7 @@ public class ClearOutpostArchQuestStep : QuestStep
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
+            Disabler.gameObject.SetActive(true);
             
             FinishQuestStep();
         }
