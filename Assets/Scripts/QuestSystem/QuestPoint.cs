@@ -7,6 +7,7 @@ public class QuestPoint : MonoBehaviour
 {
     [Header("Quest")]
     [SerializeField] private QuestInfoSO questInfoForPoint;
+    [SerializeField] GameObject PressE2;
 
     [Header("Config")]
     [SerializeField] private bool startPoint = true;
@@ -39,13 +40,22 @@ public class QuestPoint : MonoBehaviour
 
     private void Update()
     {
+        if(currentQuestState.Equals(QuestState.CAN_FINISH) && playerIsNear)
+        {
+            Debug.Log("Presse2");
+            PressE2.SetActive(true);
+        } else if (currentQuestState.Equals(QuestState.IN_PROGRESS) || currentQuestState.Equals(QuestState.CAN_FINISH) && !playerIsNear)
+        {
+            Debug.Log("nicht");
+            PressE2.SetActive(false);
+        }
         if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
         {
             GameEventsManager.instance.questEvents.StartQuest(questId);
         }
 
         //Debug.Log(playerIsNear);
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             //Debug.Log("schbila " + playerIsNear);
             if (!playerIsNear)

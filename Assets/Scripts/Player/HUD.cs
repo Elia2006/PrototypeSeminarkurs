@@ -39,7 +39,7 @@ public class HUD : MonoBehaviour
     private GameObject pressE;
     private TextMeshProUGUI pressEText;
     [SerializeField] Transform Cam;
-    private GameObject pressEnter;
+    
 
     //Ammo
     [SerializeField] Gun gunScript;
@@ -64,7 +64,7 @@ public class HUD : MonoBehaviour
         pressE = GameObject.Find("PressE");
         pressEText = GameObject.Find("PressEText").GetComponent<TextMeshProUGUI>();
 
-        pressEnter = GameObject.Find("PressEnter");
+        
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
     }
