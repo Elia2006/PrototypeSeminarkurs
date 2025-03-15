@@ -9,12 +9,23 @@ public class PlantsQuestStep : QuestStep
     private int plantscollected = 0;
     private int plantstocollect = 3;
 
+    public GameObject Map;
+    public Transform Canvas;
+    public Transform highlighter;
     
+    
+        
+
+
 
     private void Start()
     {
+        Map = GameObject.Find("Map");
+        Canvas = Map.transform.Find("Canvas");
+        highlighter = Canvas.transform.Find("PlantHighlighter");
         trigger.TriggerDialogue();
         UpdateState();
+        highlighter.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -43,6 +54,7 @@ public class PlantsQuestStep : QuestStep
 
         if (plantscollected >= plantstocollect)
         {
+            highlighter.gameObject.SetActive(false);
             FinishQuestStep();
         }
     }
