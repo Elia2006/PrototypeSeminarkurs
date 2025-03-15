@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1911984376}
-  m_IndirectSpecularColor: {r: 0.3837389, g: 0.43233204, b: 0.6655982, a: 1}
+  m_IndirectSpecularColor: {r: 0.3837918, g: 0.43235877, b: 0.66559917, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1326,7 +1326,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &114790480
 MeshRenderer:
@@ -7502,7 +7502,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &597955014
 MeshRenderer:
@@ -8190,7 +8190,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &646145876
 MeshRenderer:
@@ -8897,7 +8897,7 @@ GameObject:
   - component: {fileID: 711854458}
   - component: {fileID: 711854457}
   m_Layer: 5
-  m_Name: PressEText
+  m_Name: PressEdepositText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8942,7 +8942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Enter to deposit loot
+  m_text: Press E to deposit loot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16535,6 +16535,10 @@ PrefabInstance:
       value: -153.503
       objectReference: {fileID: 0}
     - target: {fileID: 1021674204715815069, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
+      propertyPath: PressE2
+      value: 
+      objectReference: {fileID: 2112373730}
+    - target: {fileID: 1021674204715815069, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
       propertyPath: finishPoint
       value: 1
       objectReference: {fileID: 0}
@@ -16643,6 +16647,10 @@ PrefabInstance:
       value: -184.74
       objectReference: {fileID: 0}
     - target: {fileID: 3731953196585834755, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
+      propertyPath: PressE2
+      value: 
+      objectReference: {fileID: 2112373730}
+    - target: {fileID: 3731953196585834755, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
       propertyPath: finishPoint
       value: 1
       objectReference: {fileID: 0}
@@ -16707,6 +16715,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8137630813078655919, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
+      propertyPath: PressE2
+      value: 
+      objectReference: {fileID: 2112373730}
+    - target: {fileID: 8137630813078655919, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
       propertyPath: finishPoint
       value: 1
       objectReference: {fileID: 0}
@@ -16714,6 +16726,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9120421064177635313, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
+      propertyPath: PressE2
+      value: 
+      objectReference: {fileID: 2112373730}
     - target: {fileID: 9120421064177635313, guid: b748e6cb0d7d45b4b974479cbac5769d, type: 3}
       propertyPath: finishPoint
       value: 1
@@ -32196,12 +32212,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2112373731}
   m_Layer: 5
-  m_Name: PressEnter
+  m_Name: PressEdeposit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2112373731
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32220,7 +32236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -37.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2119769290
