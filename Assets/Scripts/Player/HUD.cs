@@ -47,6 +47,7 @@ public class HUD : MonoBehaviour
 
     //Healing
     private Coroutine healing;
+    public bool anyAttacking;
 
     //Audio
     [SerializeField] AudioSource itemPickup;
@@ -71,7 +72,6 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-
         HealthBar();
         ItemPickup();
         CheckHealing();
@@ -83,7 +83,8 @@ public class HUD : MonoBehaviour
     private void CheckHealing()
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>();
-        bool anyAttacking = false;
+
+        anyAttacking = false;
         foreach(Enemy enemy in enemies)
         {
             if(enemy.continueCharge)
@@ -94,13 +95,11 @@ public class HUD : MonoBehaviour
         if(!anyAttacking && healing == null && playerHealth < maxHealth)
         {
             healing = StartCoroutine(Healing());
-            Debug.Log("StartHealing");
         }
         else if(healing != null && anyAttacking)
         {
             StopCoroutine(healing);
             healing = null;
-            Debug.Log("StopHealing");
         }
     }
     IEnumerator Healing()

@@ -56,10 +56,22 @@ public class Enemy : MonoBehaviour
     {
         health -= amount;
         continueCharge = true;
+        newPos = Player.transform.position;
+        Allert(50);
 
         if (health <= 0)
         {
             Death();
+        }
+    }
+
+    protected void Search()
+    {
+        speedMultiplier = 1;
+        agent.destination = newPos;
+        if(Vector3.Distance(transform.position, newPos) < 2)
+        {
+            continueCharge = false;
         }
     }
 
@@ -187,19 +199,25 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private void Allert(float allertRadius, Transform PlayerTrans)
+    protected void Allert(float allertRadius)
     {
         RaycastHit[] hits;
-        if(prevState == 0)
+
+        //AllertEffect.Play();
+        hits = Physics.SphereCastAll(transform.position, allertRadius, Vector3.up, 1);
+        foreach(RaycastHit i in hits)
         {
-            //AllertEffect.Play();
-            hits = Physics.SphereCastAll(transform.position, allertRadius, Vector3.up, 0);
-            foreach(RaycastHit i in hits)
+            Debug.Log(i.transform.GetComponent<EnemyMelee1>() != null);
+
+            if(i.transform.parent != null)
             {
-                if(i.transform.GetComponent<Enemy>() != null){
-                    i.transform.GetComponent<Enemy>().newPos = PlayerTrans.position;
+                if(i.transform.parent.GetComponent<EnemyMelee1>() != null || i.transform.parent.GetComponent<EnemyRange>() != null){
+                    i.transform.parent.GetComponent<Enemy>().continueCharge = true;
+                    i.transform.parent.GetComponent<Enemy>().newPos = Player.transform.position;
                 }
             }
+            
         }
+
     }
 }

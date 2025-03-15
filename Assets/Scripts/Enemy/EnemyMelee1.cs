@@ -12,8 +12,6 @@ public class EnemyMelee1 : Enemy
     //ANIMATION
 
     //get direction
-    private Vector3 lastPos;
-    private Vector3 currentDirection;
     [SerializeField] Transform RotationFix;
 
     private float attackChargeTimer;
@@ -51,33 +49,31 @@ public class EnemyMelee1 : Enemy
             {
 
                 agent.isStopped = false;
-                if(IsPlayerInRange(Player.transform.position, sightDistance) || lerp > 0)
+                if(IsPlayerInRange(Player.transform.position, sightDistance) && continueCharge)
                 {
                     Attack();
+                }else if(continueCharge)
+                {
+                    Search();
                 }else
-                {     
+                {
                     Patroll();
                 }
-                
             }
-
-            //Rotation();
-
-            if(continueCharge)
-            {
-                Debug.Log("hello");
-                newPos = Player.transform.position;
-                agent.destination = newPos;
-                continueCharge = false;
-            }
-
 
             agent.speed = speed * speedMultiplier;
+        }else
+        {
+            continueCharge = false;
         }
     }
 
+
     public void Attack()
     {
+        continueCharge = true;
+        Allert(50);
+
         speedMultiplier = 2;
 
         float distance = Vector3.Distance(transform.position, Player.transform.position);
@@ -155,22 +151,11 @@ public class EnemyMelee1 : Enemy
         }
     }
 
-    private void Rotation()
+        void OnDrawGizmosSelected()
     {
-        currentDirection = transform.position - lastPos;
-
-        lastPos = transform.position;
-
-        Quaternion targetRotation = Quaternion.LookRotation(currentDirection, Vector3.up);
-
-        targetRotation = Quaternion.Lerp(targetRotation, Quaternion.Euler(Vector3.up), 0.7f);
-
-        RotationFix.rotation = targetRotation;
-
-        Debug.DrawLine(transform.position, transform.position + currentDirection * 1000);
-
-        //RotationFix.rotation = Quaternion.Euler(currentDirection.z * 1000, 90, -currentDirection.x * 1000);
-
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 30);
     }
 
 }
