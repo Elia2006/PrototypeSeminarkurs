@@ -38,11 +38,13 @@ public class EnemyRange : Enemy
         if(isActivated){
             if(!KnockbackUpdate())
             {
-                agent.enabled = true;
-                if(IsPlayerInRange(Player.transform.position, sightDistance))
+                if(IsPlayerInRange(Player.transform.position, sightDistance) && continueCharge)
                 {
                     Attack();
                     agent.updateRotation = false;
+                }else if(continueCharge)
+                {
+                    Search();
                 }else
                 {
                     Patroll();
@@ -51,11 +53,16 @@ public class EnemyRange : Enemy
             }
 
             agent.speed = speed * speedMultiplier;
+        }else
+        {
+            continueCharge = false;
         }
     }
 
     private void Attack()
     {
+        continueCharge = true;
+        Allert(50);
 
         var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
         BulletOrigin.rotation = Quaternion.Lerp(BulletOrigin.rotation, lookRotation, 0.05f);

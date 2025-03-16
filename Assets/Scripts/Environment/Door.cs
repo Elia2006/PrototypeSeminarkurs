@@ -5,6 +5,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private Animator anim;
+    [SerializeField] AudioSource sound;
+    private bool isOpen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -12,13 +14,18 @@ public class Door : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySound()
     {
-        if (Input.GetKeyDown(KeyCode.O)) 
+        sound.Play();
+    }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(!isOpen && other.transform.CompareTag("Player"))
         {
-            anim.SetTrigger("isOpen");
+            anim.SetTrigger("IsOpen");
+            isOpen = true;
         }
-        
     }
 }

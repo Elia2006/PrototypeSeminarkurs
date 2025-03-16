@@ -21,6 +21,7 @@ public class SandCrab : Enemy
         Player = GameObject.Find("Player");
         Cam = GameObject.Find("PlayerCamera").transform;
         agent = GetComponent<NavMeshAgent>();
+        health = 100;
     }
 
     void Awake()

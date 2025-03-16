@@ -42,11 +42,9 @@ public class QuestPoint : MonoBehaviour
     {
         if(currentQuestState.Equals(QuestState.CAN_FINISH) && playerIsNear)
         {
-            Debug.Log("Presse2");
             PressE2.SetActive(true);
         } else if (currentQuestState.Equals(QuestState.IN_PROGRESS) || currentQuestState.Equals(QuestState.CAN_FINISH) && !playerIsNear)
         {
-            Debug.Log("nicht");
             PressE2.SetActive(false);
         }
         if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
