@@ -12877,7 +12877,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4034260944236558057}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849589377422146257}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97a60b7caa7fb0e4793f7538be7eef0a, type: 3}
   m_Name: 
@@ -14793,6 +14793,10 @@ PrefabInstance:
       propertyPath: playerHealthText
       value: 
       objectReference: {fileID: 2021274599}
+    - target: {fileID: 7467256976990264991, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7467256976990264991, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: pauseMenu
       value: 
