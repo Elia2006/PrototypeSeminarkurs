@@ -56,7 +56,7 @@ public class DangerMusicScript : MonoBehaviour
         while(music.volume > 0)
         {
             music.volume -= 0.01f;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.2f);
         }
         music.volume = 0;
         yield return null;
