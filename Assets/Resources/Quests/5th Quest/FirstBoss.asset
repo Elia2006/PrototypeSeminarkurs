@@ -18,7 +18,10 @@ MonoBehaviour:
   questPrerequisites:
   - {fileID: 11400000, guid: 1e7d340a97a4d614a8b053de0b1fd605, type: 2}
   - {fileID: 11400000, guid: da1cafa5527d84e4b8fb445d49c00ca0, type: 2}
-  questStepPrefabs: []
+  questStepPrefabs:
+  - {fileID: 8836400188751378276, guid: 5f7d0388e917f6a45b001b0ff323c34b, type: 3}
+  - {fileID: 2910947235235795497, guid: 1f447cf6582f24343ab4236351465eaa, type: 3}
+  - {fileID: 2402865512331857067, guid: 144e76d93ce6ffc4392cafc0e897086e, type: 3}
   goldReward: 0
   experienceReward: 0
   rewardsList: 0

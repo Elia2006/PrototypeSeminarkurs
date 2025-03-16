@@ -103,7 +103,7 @@ public class Quest
 
         if (state == QuestState.REQUIREMENTS_NOT_MET)
         {
-            fullStatus = "Requirements are not yet met to start this quest.";
+            fullStatus = "Begebe dich zum anderen Aussenposten";
         }
         else if(state == QuestState.CAN_START)
         {
@@ -128,7 +128,7 @@ public class Quest
             }
             else if (state == QuestState.FINISHED)
             {
-                fullStatus += "The quest has been completed!";
+                fullStatus += "Begebe dich nun zum anderen Aussenposten";
             }
         }
 

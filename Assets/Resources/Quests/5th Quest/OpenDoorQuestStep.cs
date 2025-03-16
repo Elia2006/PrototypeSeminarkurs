@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
-public class ReachDoorQuestStep : QuestStep
+[RequireComponent(typeof(BoxCollider))]
+public class OpenDoorQuestStep : QuestStep
 {
     [SerializeField] DialogueTrigger trigger;
     private void Start()
@@ -12,12 +12,17 @@ public class ReachDoorQuestStep : QuestStep
         UpdateState();
     }
 
-
-
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        UpdateState();
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
+            //Debug.Log("RuinedOutpost2");
             FinishQuestStep();
         }
     }
@@ -25,7 +30,7 @@ public class ReachDoorQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Gehe zur großen Tür";
+        string status = "Öffne die Tür";
         ChangeState(state, status);
     }
 
