@@ -7,7 +7,6 @@ public class WeoponSwitch : MonoBehaviour
     [SerializeField] GameObject Weapon1;
     [SerializeField] GameObject Weapon2;
     [SerializeField] GameObject Weapon3;
-    [SerializeField] GameObject Weapon4;
 
     private GameObject ammoText;
     private int currentKey = 1;
@@ -19,7 +18,6 @@ public class WeoponSwitch : MonoBehaviour
         Weapon1.SetActive(true);
         Weapon2.SetActive(false);
         Weapon3.SetActive(false);
-        Weapon4.SetActive(false);
         ammoText.SetActive(false);
     }
 
@@ -28,7 +26,6 @@ public class WeoponSwitch : MonoBehaviour
         Weapon1.SetActive(true);
         Weapon2.SetActive(true);
         Weapon3.SetActive(true);
-        Weapon4.SetActive(true);
         ammoText = GameObject.Find("AmmoText");
     }
 
@@ -38,6 +35,7 @@ public class WeoponSwitch : MonoBehaviour
         if(Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             currentKey++;
+            switchSound.Play();
             if(currentKey > 3)
             {
                 currentKey = 0;
@@ -45,6 +43,7 @@ public class WeoponSwitch : MonoBehaviour
         }else if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             currentKey--;
+            switchSound.Play();
             if(currentKey < 0)
             {
                 currentKey = 3;
@@ -71,21 +70,18 @@ public class WeoponSwitch : MonoBehaviour
             Weapon1.SetActive(true);
             Weapon2.SetActive(false);
             Weapon3.SetActive(false);
-            Weapon4.SetActive(false);
             ammoText.SetActive(false);
         } else if(currentKey == 2)
         {
             Weapon1.SetActive(false);
             Weapon2.SetActive(true);
             Weapon3.SetActive(false);
-            Weapon4.SetActive(false);
             ammoText.SetActive(true);
         } else if (currentKey == 3)
         {
             Weapon1.SetActive(false);
             Weapon2.SetActive(false);
             Weapon3.SetActive(true);
-            Weapon4.SetActive(false);
             ammoText.SetActive(true);
         }
 

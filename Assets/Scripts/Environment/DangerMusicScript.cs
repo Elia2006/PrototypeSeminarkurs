@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlTypes;
 using UnityEngine;
 
@@ -11,34 +13,51 @@ public class DangerMusicScript : MonoBehaviour
     private readonly float maxVolume = 0.3f;
     private Coroutine start;
     private Coroutine stop;
+    private String currentTrackPlaying = "";
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(Danger());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerHUD.anyAttacking && start == null)
+        if(playerHUD.anyAttacking)
         {
-            if(stop != null)
-            {
-                StopCoroutine(stop);
-                stop = null;
-            }
-            
-            start = StartCoroutine(StartMusic());
-        }else if(!playerHUD.anyAttacking && stop == null)
+            Debug.Log("hello");
+            currentTrackPlaying = "Danger";
+        }else
         {
-            if(start != null)
+            currentTrackPlaying = "";
+        }
+
+        
+    }
+
+
+    IEnumerator Danger()
+    {
+        while(true)
+        {
+            if(currentTrackPlaying.Equals("Danger"))
             {
-                StopCoroutine(start);
-                start = null;
+                Debug.Log("hfe");
+                while(music.volume < maxVolume)
+                {
+                    music.volume += 2 * Time.deltaTime;
+                }
+                music.volume = maxVolume;
+            }else
+            {
+                while(music.volume > 0)
+                {
+                    music.volume -= 1 * Time.deltaTime;
+                }
+                music.volume = 0;
             }
-            
-            stop = StartCoroutine(StopMusic());
+            yield return new WaitForEndOfFrame();
         }
     }
     IEnumerator StartMusic()

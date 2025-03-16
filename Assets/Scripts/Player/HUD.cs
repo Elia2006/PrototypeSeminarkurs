@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using UnityEditor.Experimental.GraphView;
 
 public class HUD : MonoBehaviour
 {
@@ -177,21 +178,19 @@ public class HUD : MonoBehaviour
             {
                 itemPickup.Play();
 
-                if(hit.transform.name[..8] == "Gun Ammo")
+                if (hit.transform.name[..4] == "Herb")
+                {
+
+                }else if(hit.transform.name[..8] == "Gun Ammo")
                 {
                     gunScript.availableAmmo += Int32.Parse(hit.transform.name.Substring(9, 2));
                     Destroy(hit.transform.gameObject);
                 }
 
-                if(hit.transform.name[..8] == "SMG Ammo")
+                else if(hit.transform.name[..8] == "SMG Ammo")
                 {
                     smgScript.availableAmmo += Int32.Parse(hit.transform.name.Substring(9, 2));
                     Destroy(hit.transform.gameObject);
-                }
-
-                if (hit.transform.name[..8] == "Herb")
-                {
-
                 }
 
               
