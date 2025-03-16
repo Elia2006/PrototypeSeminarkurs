@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
     {
         if(!isOpen && other.transform.CompareTag("Player"))
         {
-            anim.SetTrigger("isOpen");
+            anim.SetTrigger("IsOpen");
             isOpen = true;
         }
     }
