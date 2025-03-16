@@ -5,10 +5,12 @@ using UnityEngine;
 public class BossStomp : MonoBehaviour
 {
     public int lifeCicle;
+    private HUD playerHUD;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Main());
+        playerHUD = GameObject.Find("Player").GetComponent<HUD>();
     }
 
     IEnumerator Main()
@@ -21,9 +23,25 @@ public class BossStomp : MonoBehaviour
             nextCicle.GetComponent<BossStomp>().lifeCicle = lifeCicle - 1;
         }
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.05f);
         Destroy(gameObject);
 
         yield return null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            GameObject[] bossStomps = GameObject.FindGameObjectsWithTag("BossStomp");
+
+            foreach(GameObject bossStomp in bossStomps)
+            {
+                bossStomp.GetComponent<Collider>().enabled = false;
+            }
+
+            playerHUD.TakeDamage(5, 2, transform.position, 0.1f);
+            Destroy(gameObject);
+        }
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Herb
   - Item
   - Deposit
+  - BossStomp
   layers:
   - Default
   - TransparentFX

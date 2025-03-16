@@ -21,7 +21,7 @@ public class Missile_new : MonoBehaviour
 
         Player = GameObject.Find("Player").transform.position;
 
-        float random = 4;
+        float random = 13;
 
         RaycastHit hit;
         Physics.Raycast(Player + new Vector3(Random.Range(-random, random), 0, Random.Range(-random, random)), 

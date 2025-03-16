@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Boss_new : Enemy
@@ -8,6 +9,7 @@ public class Boss_new : Enemy
     //Flamethrower
     [SerializeField] GameObject fire;
     [SerializeField] Transform flamethrowerEnd;
+    [SerializeField] FlamethrowerTarget flamethrowerTarget;
 
     //Missiles
     [SerializeField] GameObject Missile;
@@ -21,6 +23,8 @@ public class Boss_new : Enemy
 
     //BossStomp
     [SerializeField] GameObject BossStomp;
+    [SerializeField] SpiderAnimation leg1;
+    [SerializeField] SpiderAnimation leg2;
 
     //health
     [SerializeField] Image healthBar1;
@@ -53,7 +57,7 @@ public class Boss_new : Enemy
     {
         while(true)
         {
-            int attack = 1; //Random.Range(0, 4);
+            int attack = Random.Range(0, 4);
             switch(attack)
             {
                 case 0:
@@ -89,7 +93,7 @@ public class Boss_new : Enemy
 
     private void GoTowardsPlayer()
     {
-        if(Vector3.Distance(transform.position, Player.transform.position) > 10)
+        if(Vector3.Distance(transform.position, Player.transform.position) > 15)
         {
             transform.position += transform.forward * Time.deltaTime * 2;
         }
@@ -97,16 +101,13 @@ public class Boss_new : Enemy
 
     IEnumerator Flamethrower()
     {
-        for(int i = 0; i < 20; i++)
+        flamethrowerTarget.StartFlames();
+        yield return new WaitForSeconds(3);
+        for(int i = 0; i < 40; i++)
         {
-            flamethrowerEnd.LookAt(Player.transform);
+            
 
-            float rand = 1 / Vector3.Distance(transform.position, Player.transform.position) * 50;
-            flamethrowerEnd.rotation *= Quaternion.Euler(Random.Range(-rand, rand), Random.Range(-rand, rand), 0);
-
-            Instantiate(fire, flamethrowerEnd.position, flamethrowerEnd.rotation);  
-
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         yield return null;
@@ -121,7 +122,7 @@ public class Boss_new : Enemy
                 GameObject temp = Instantiate(Missile, MissileEnd.position, MissileEnd.rotation, transform);
                 temp.transform.position += -temp.transform.right * (0.23f * x);
                 temp.transform.position += -temp.transform.up * (0.23f * y);
-                StartCoroutine(MoveMissiles(temp.transform, 1 + x + y * 4));
+                StartCoroutine(MoveMissiles(temp.transform, (float)(1 + x + y * 4) / 5f));
             }
         }
 
@@ -179,17 +180,20 @@ public class Boss_new : Enemy
 
     private IEnumerator Stomp()
     {
+        leg1.enabled = false;
+        leg2.enabled = false;
         for(float i = 0; i < 1; i += 0.01f)
         {
             transform.position += new Vector3(0, Mathf.Cos(i * Mathf.PI) * 0.2f, 0);
 
             transform.position += (Player.transform.position + Vector3.up * 2 - transform.position).normalized * 0.1f;
 
-
-
             yield return new WaitForSeconds(0.01f);
         }
-        
+        leg1.enabled = true;
+        leg1.SetNewPos(leg1.transform.position);
+        leg2.enabled = true;
+        leg2.SetNewPos(leg2.transform.position);
 
         for(int i = 0; i < 72; i++)
         {
@@ -202,8 +206,6 @@ public class Boss_new : Enemy
 
     private void HealthBar()
     {
-        Debug.Log(health/maxHealth);
-
         healthBar1.fillAmount = Mathf.Clamp(health/maxHealth,0,1);
 
         if(healthBar2.fillAmount > healthBar1.fillAmount)

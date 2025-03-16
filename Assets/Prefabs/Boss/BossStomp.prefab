@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 5830465603459873380}
   m_Layer: 0
   m_Name: BossStomp
-  m_TagString: Untagged
+  m_TagString: BossStomp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,7 +361,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.21, y: 1.15, z: 6.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2035594026931564738}
   - {fileID: 2505758506192553707}
@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8929b7acc14fed745becbaa1449ebfc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeCicle: 0
 --- !u!1 &4170854628902101425
 GameObject:
   m_ObjectHideFlags: 0

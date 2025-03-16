@@ -5,7 +5,7 @@ public class SpiderAnimation : MonoBehaviour
 {
     [SerializeField] float legMoveSpeed = 8;
     private Vector3 currentPos;
-    private Vector3 oldPos;
+    public Vector3 oldPos;
     public Vector3 newPos;
     public float lerp = 1;
 

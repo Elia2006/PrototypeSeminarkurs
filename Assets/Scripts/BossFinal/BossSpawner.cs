@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class BossSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject Boss;
+    [SerializeField] Boss_new Boss;
     [SerializeField] GameObject bossHealth;
-    
+    [SerializeField] Animator doorAnim;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
         {
-            Boss.SetActive(true);
+            Boss.enabled = true;
             bossHealth.SetActive(true);
+            doorAnim.SetBool("IsOpen", false);
         }
     }
 }
