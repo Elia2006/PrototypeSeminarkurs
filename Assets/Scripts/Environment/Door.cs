@@ -6,7 +6,6 @@ public class Door : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] AudioSource sound;
-    private bool isOpen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +21,16 @@ public class Door : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(!isOpen && other.transform.CompareTag("Player"))
+        if(other.transform.CompareTag("Player"))
         {
-            anim.SetTrigger("IsOpen");
-            isOpen = true;
+            anim.SetBool("IsOpen", true);
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.transform.CompareTag("Player"))
+        {
+            anim.SetBool("IsOpen", false);
         }
     }
 }

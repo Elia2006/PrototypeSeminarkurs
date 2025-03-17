@@ -22,13 +22,13 @@ public class FireGround : MonoBehaviour
     {
         if(alive)
         {
-            if(lifeTime < Time.time - 10)
+            if(lifeTime < Time.time - 60)
             {
                 alive = false;
             }
         }
 
-        if(lifeTime < Time.time - 12)
+        if(lifeTime < Time.time - 62)
         {
             Destroy(gameObject);
         }
@@ -42,7 +42,7 @@ public class FireGround : MonoBehaviour
             {
                 playerHUD.TakeDamage(1, 3, transform.position, 0);
 
-                damageCooldown = Time.time + 0.1f;
+                damageCooldown = Time.time + 0.5f;
             }
         }
     }

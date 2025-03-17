@@ -31,6 +31,9 @@ public class Boss_new : Enemy
     [SerializeField] Image healthBar2;
     private readonly float maxHealth = 1000;
 
+    [SerializeField] GameObject BossHealth;
+    [SerializeField] Animator doorAnim;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,23 +44,34 @@ public class Boss_new : Enemy
 
         health = 1000;
 
+        disolveSpeed = 0.05f;
+
         StartCoroutine(PickAttack());
     }
 
     // Update is called once per frame
     void Update()
     {
-        TurnTowardsPlayer();
-        GoTowardsPlayer();
-
-        HealthBar();
+        if(isActivated)
+        {
+            TurnTowardsPlayer();
+            GoTowardsPlayer();
+            HealthBar();
+        }else
+        {
+            GetComponent<LineRenderer>().enabled = false;
+            BossHealth.SetActive(false);
+            continueCharge = false;
+            doorAnim.SetBool("IsOpen", true);
+        }
+            
     }
 
     IEnumerator PickAttack()
     {
         while(true)
         {
-            int attack = Random.Range(0, 4);
+            int attack = 0;Random.Range(0, 4);
             switch(attack)
             {
                 case 0:

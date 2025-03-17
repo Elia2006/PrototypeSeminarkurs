@@ -7,7 +7,7 @@ public class Disolve : MonoBehaviour
 
 
     // Update is called once per frame
-    public IEnumerator StartDisolve()
+    public IEnumerator StartDisolve(float duration)
     {
         yield return new WaitForSeconds(2);
 
@@ -17,9 +17,9 @@ public class Disolve : MonoBehaviour
                 foreach(Material material in renderer.materials)
                 {
                     material.SetFloat("_disolveAmount", i);
-                }    
+                }
             }
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(duration);
         }
         foreach (Renderer renderer in renderers)
         {

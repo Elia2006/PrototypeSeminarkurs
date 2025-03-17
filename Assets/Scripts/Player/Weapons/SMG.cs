@@ -29,7 +29,7 @@ public class SMG : MonoBehaviour
     private TextMeshProUGUI loadedAmmoText; 
     private readonly int maxLoadedAmmo = 20;
 
-    public int availableAmmo = 30;
+    public int availableAmmo = 100;
     private TextMeshProUGUI availableAmmoText; 
 
     //Animation

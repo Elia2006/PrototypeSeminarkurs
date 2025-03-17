@@ -43,14 +43,18 @@ public class FlamethrowerTarget : MonoBehaviour
         transform.LookAt(Player.transform.position);
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
 
-        for(int i = 0; i < 50; i++)
+        for(int i = 0; i < 25; i++)
         {
-            transform.position += transform.forward * 1f; 
+            transform.position += transform.forward * 2f; 
 
             //float rand = 1 / Vector3.Distance(transform.position, Player.transform.position) * 50;
             //flamethrowerEnd.rotation *= Quaternion.Euler(Random.Range(-rand, rand), Random.Range(-rand, rand), 0);
 
-            Instantiate(fire, flamethrowerEnd.position, flamethrowerEnd.rotation);  
+            GameObject gFire = Instantiate(fire, flamethrowerEnd.position, flamethrowerEnd.rotation);  
+            if(i % 5 == 0)
+            {
+                gFire.GetComponent<Fire>().isAudio = true;
+            }
 
             yield return new WaitForSeconds(0.01f);
         }

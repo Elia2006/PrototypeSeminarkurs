@@ -27,7 +27,7 @@ public class Gun : MonoBehaviour
     private TextMeshProUGUI loadedAmmoText; 
     private readonly int maxLoadedAmmo = 6;
 
-    public int availableAmmo = 10;
+    public int availableAmmo = 50;
     private TextMeshProUGUI availableAmmoText; 
     
     //Audio

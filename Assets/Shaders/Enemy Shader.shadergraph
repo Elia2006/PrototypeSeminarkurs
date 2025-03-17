@@ -11,6 +11,12 @@
         },
         {
             "m_Id": "1d2515190f914e51aa94e8d7ab9aaf4f"
+        },
+        {
+            "m_Id": "481b056f52824f59b8b62cb0b010679a"
+        },
+        {
+            "m_Id": "c8308dcfe3c14be7931bf7f758800af6"
         }
     ],
     "m_Keywords": [],
@@ -1364,6 +1370,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "481b056f52824f59b8b62cb0b010679a",
+    "m_Guid": {
+        "m_GuidSerialized": "6654fe96-8ca4-49f8-96eb-d4c624a3de09"
+    },
+    "m_Name": "metallic",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "metallic",
+    "m_DefaultReferenceName": "_metallic",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "4a4d2e3d96c34c16964c4bf6dae5c746",
@@ -1918,6 +1952,12 @@
         },
         {
             "m_Id": "1d2515190f914e51aa94e8d7ab9aaf4f"
+        },
+        {
+            "m_Id": "481b056f52824f59b8b62cb0b010679a"
+        },
+        {
+            "m_Id": "c8308dcfe3c14be7931bf7f758800af6"
         }
     ]
 }
@@ -2522,6 +2562,34 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "c8308dcfe3c14be7931bf7f758800af6",
+    "m_Guid": {
+        "m_GuidSerialized": "6660cb5e-3ec8-42ad-afb2-ca10322d927f"
+    },
+    "m_Name": "smoothness",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "smoothness",
+    "m_DefaultReferenceName": "_smoothness",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.5,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {

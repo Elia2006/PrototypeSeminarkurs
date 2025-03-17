@@ -8,10 +8,16 @@ public class IsColliding : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        isColliding = true;
+        if(other.CompareTag("Player"))
+        {
+            isColliding = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        isColliding = false;
+        if(other.CompareTag("Player"))
+        {
+            isColliding = false;
+        }
     }
 }

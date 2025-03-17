@@ -11,6 +11,7 @@ public class Fire : MonoBehaviour
     private bool alive = true;
     [SerializeField] GameObject fireGround;
     [SerializeField] LayerMask groundLayer;
+    public bool isAudio = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,14 +50,14 @@ public class Fire : MonoBehaviour
                 RaycastHit hit;
                 Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer);
 
-                Instantiate(fireGround, hit.point, Quaternion.identity);
+                GameObject gFireGround = Instantiate(fireGround, hit.point, Quaternion.identity);
+                if(isAudio)
+                {
+                    gFireGround.GetComponent<AudioSource>().enabled = true;
+                }
+                
                 alive = false;
 
-            }else if(collider.transform.CompareTag("Player") && damageCooldown < Time.time)
-            {
-                playerHUD.TakeDamage(1, 3, transform.position, 0);
-
-                damageCooldown = Time.time + 0.1f;
             }
         }
     }

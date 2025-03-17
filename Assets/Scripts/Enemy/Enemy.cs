@@ -38,7 +38,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] ParticleSystem AllertEffect;
     public Transform patrollPoint;
 
-    protected bool isActivated = true;
+    public bool isActivated = true;
+
+    //Disolve
+    protected float disolveSpeed = 0.02f;
 
     
 
@@ -81,8 +84,11 @@ public class Enemy : MonoBehaviour
 
         isActivated = false;
 
-        agent.enabled = false;
-
+        if(agent != null)
+        {
+            agent.enabled = false;
+        }
+        
         transform.GetComponent<Animator>().enabled = false;
 
         if(transform.Find("Armature") != null)
@@ -112,7 +118,7 @@ public class Enemy : MonoBehaviour
 
             if(transform.TryGetComponent<Disolve>(out Disolve disolve))
             {
-                StartCoroutine(disolve.StartDisolve());
+                StartCoroutine(disolve.StartDisolve(disolveSpeed));
             }
 
             StartCoroutine(DieSlowly());
@@ -124,7 +130,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator DieSlowly()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(disolveSpeed * 250);
         Destroy(gameObject);
         yield return null;
     }
@@ -207,8 +213,6 @@ public class Enemy : MonoBehaviour
         hits = Physics.SphereCastAll(transform.position, allertRadius, Vector3.up, 1);
         foreach(RaycastHit i in hits)
         {
-            Debug.Log(i.transform.GetComponent<EnemyMelee1>() != null);
-
             if(i.transform.parent != null)
             {
                 if(i.transform.parent.GetComponent<EnemyMelee1>() != null || i.transform.parent.GetComponent<EnemyRange>() != null){
