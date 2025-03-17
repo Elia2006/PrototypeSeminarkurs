@@ -172,35 +172,82 @@ public class HUD : MonoBehaviour
         if(Physics.Raycast(Cam.position, Cam.forward, out hit, 2) && hit.transform.CompareTag("Item"))
         {
             pressE.SetActive(true);
-            pressEText.text = "Press E to Pickup " + hit.transform.name;
+            pressEText.text = "um " + hit.transform.name + " aufzuheben";
 
-            if(Input.GetKeyDown(KeyCode.E))
+            if (hit.transform.name[..4] == "Herb")
+            {
+                pressEText.text = "um Pflanze aufzuheben";
+               
+            }
+            else if (hit.transform.name[..8] == "Gun Ammo")
+            {
+                pressEText.text = "um Pistolenmunition aufzuheben";
+                
+            }
+            else if (hit.transform.name[..8] == "SMG Ammo")
+            {
+                pressEText.text = "um SMG Munition aufzuheben";
+                
+            }
+            else if (hit.transform.name[..12] == "WeaponPickup")
+            {
+                pressEText.text = "um Speichermodul aufzuheben";
+                
+            }
+            else if (hit.transform.name[..13] == "ClearOutpostQ")
+            {
+                pressEText.text = "um Werkzeugkoffer aufzuheben";
+                
+            }
+            else if (hit.transform.name[..13] == "ClearOutpostM")
+            {
+                pressEText.text = "um Hitzeschild aufzuheben";
+                
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 itemPickup.Play();
 
                 if (hit.transform.name[..4] == "Herb")
                 {
+                    pressEText.text = "um Pflanze aufzuheben";
                     Destroy(hit.transform.gameObject);
                     GameEventsManager.instance.miscEvents.CoinCollected();
                 }
                 else if(hit.transform.name[..8] == "Gun Ammo")
                 {
+                    pressEText.text = "um Pistolenmunition aufzuheben";
                     gunScript.availableAmmo += Int32.Parse(hit.transform.name.Substring(9, 2));
                     Destroy(hit.transform.gameObject);
                 }
 
                 else if(hit.transform.name[..8] == "SMG Ammo")
                 {
+                    pressEText.text = "um SMG Munition aufzuheben";
                     smgScript.availableAmmo += Int32.Parse(hit.transform.name.Substring(9, 2));
                     Destroy(hit.transform.gameObject);
                 }
-                else
+                else if(hit.transform.name[..12] == "WeaponPickup")
                 {
+                    pressEText.text = "um Speichermodul aufzuheben";
+                    GameEventsManager.instance.miscEvents.ItemPickedUp();
+                    Destroy(hit.transform.gameObject);
+                }
+                else if (hit.transform.name[..13] == "ClearOutpostQ")
+                {
+                    pressEText.text = "um Werkzeugkoffer aufzuheben";
+                    GameEventsManager.instance.miscEvents.ItemPickedUp();
+                    Destroy(hit.transform.gameObject);
+                }
+                else if (hit.transform.name[..13] == "ClearOutpostM")
+                {
+                    pressEText.text = "um Hitzeschild aufzuheben";
                     GameEventsManager.instance.miscEvents.ItemPickedUp();
                     Destroy(hit.transform.gameObject);
                 }
 
-              
+
             }
         }else
         {

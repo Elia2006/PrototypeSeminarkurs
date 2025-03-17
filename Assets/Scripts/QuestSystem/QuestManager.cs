@@ -208,7 +208,7 @@ public class QuestManager : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            //Debug.LogError("Failed to save quest with id " + quest.info.id + ": " + e);
+            Debug.LogError("Failed to save quest with id " + quest.info.id + ": " + e);
         }
     }
 
