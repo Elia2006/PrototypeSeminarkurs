@@ -285,13 +285,58 @@ public class HUD : MonoBehaviour
 
     public void SavePlayer ()
     {
-        SaveSystem.SavePlayer(this);
+        //SaveSystem.SavePlayer(this);
+        PlayerPrefs.SetFloat("playerHealth", playerHealth);
+        PlayerPrefs.SetFloat("maxHealth", maxHealth);
+
+        PlayerPrefs.SetFloat("position.x", Player.transform.position.x);
+        PlayerPrefs.SetFloat("position.y", Player.transform.position.y);
+        PlayerPrefs.SetFloat("position.z", Player.transform.position.z);
+
+        PlayerPrefs.SetFloat("rotation.x", Player.transform.rotation.x);
+        PlayerPrefs.SetFloat("rotation.y", Player.transform.rotation.y);
+        PlayerPrefs.SetFloat("rotation.z", Player.transform.rotation.z);
+        PlayerPrefs.SetFloat("rotation.w", Player.transform.rotation.w);
     }
 
     public void LoadPlayer()
     {
         DeathScreen.SetActive(false);
-        PlayerData data = SaveSystem.LoadPlayer();
+        
+
+        playerHealth = PlayerPrefs.GetFloat("playerHealth");
+        maxHealth = PlayerPrefs.GetFloat("maxHealth");
+
+        playerCc.enabled = false;
+        Player.transform.position = new Vector3(PlayerPrefs.GetFloat("position.x"), PlayerPrefs.GetFloat("position.y"), PlayerPrefs.GetFloat("position.z"));
+        Debug.Log(new Vector3(PlayerPrefs.GetFloat("position.x"), PlayerPrefs.GetFloat("position.y"), PlayerPrefs.GetFloat("position.z")));
+        Player.transform.rotation = new Quaternion(PlayerPrefs.GetFloat("rotation.x"), PlayerPrefs.GetFloat("rotation.y"), PlayerPrefs.GetFloat("rotation.z"), PlayerPrefs.GetFloat("rotation.w"));
+        playerCc.enabled = true;
+
+    }
+
+    /*public void SavePlayer()
+    {
+        //SaveSystem.SavePlayer(this);
+        PlayerPrefs.SetFloat("playerHealth", playerHealth);
+        PlayerPrefs.SetFloat("maxHealth", maxHealth);
+
+        PlayerPrefs.SetFloat("position.x", position.x);
+        PlayerPrefs.SetFloat("position.y", position.y);
+        PlayerPrefs.SetFloat("position.z", position.z);
+
+        PlayerPrefs.SetFloat("rotation.x", rotation.x);
+        PlayerPrefs.SetFloat("rotation.y", rotation.y);
+        PlayerPrefs.SetFloat("rotation.z", rotation.z);
+        PlayerPrefs.SetFloat("rotation.w", rotation.w);
+
+
+    }
+
+    public void LoadPlayer()
+    {
+        DeathScreen.SetActive(false);
+        /*PlayerData data = SaveSystem.LoadPlayer();
         playerHealth = data.health;
         maxHealth = data.maxHealth;
         playerEnergy = data.energy;
@@ -314,9 +359,15 @@ public class HUD : MonoBehaviour
         transform.rotation = rotation;
         Debug.Log(transform.position + "aktuelle position");
         playerCc.enabled = true;
+        playerHealth = PlayerPrefs.GetFloat("playerHealth");
+        maxHealth = PlayerPrefs.GetFloat("maxHealth");
 
-    }
+        playerCc.enabled = false;
+        transform.position = new Vector3(PlayerPrefs.GetFloat("position.x"), PlayerPrefs.GetFloat("position.y"), PlayerPrefs.GetFloat("position.z"));
+        transform.rotation = new Quaternion(PlayerPrefs.GetFloat("rotation.x"), PlayerPrefs.GetFloat("rotation.y"), PlayerPrefs.GetFloat("rotation.z"), PlayerPrefs.GetFloat("rotation.w"));
+        playerCc.enabled = true;
 
+    }*/
     public void TitleScreen()
     {
         Time.timeScale = 1f;
