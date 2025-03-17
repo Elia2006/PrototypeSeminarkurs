@@ -18,9 +18,26 @@ public class ClearOutpostArchQuestStep : QuestStep
         UpdateState();
     }
 
+    private void OnEnable()
+    {
+        GameEventsManager.instance.miscEvents.onItemPickup += ItemCollected;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.instance.miscEvents.onItemPickup -= ItemCollected;
+    }
+
     private void Update()
     {
         UpdateState();
+    }
+
+    private void ItemCollected()
+    {
+        Disabler.gameObject.SetActive(true);
+
+        FinishQuestStep();
     }
 
 
@@ -28,9 +45,7 @@ public class ClearOutpostArchQuestStep : QuestStep
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
-            Disabler.gameObject.SetActive(true);
             
-            FinishQuestStep();
         }
     }
 

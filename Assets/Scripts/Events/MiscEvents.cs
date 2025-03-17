@@ -11,6 +11,15 @@ public class MiscEvents
         }
     }
 
+    public event Action onItemPickup;
+
+    public void ItemPickedUp()
+    {
+        if (onItemPickup != null) { 
+            onItemPickup();
+        }
+    }
+
     public event Action onGemCollected;
     public void GemCollected() 
     {

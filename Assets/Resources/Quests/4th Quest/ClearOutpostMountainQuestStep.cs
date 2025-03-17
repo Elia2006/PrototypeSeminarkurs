@@ -18,9 +18,26 @@ public class ClearOutpostMountainQuestStep : QuestStep
         UpdateState();
     }
 
-        private void Update()
+    private void OnEnable()
+    {
+        GameEventsManager.instance.miscEvents.onItemPickup += ItemCollected;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.instance.miscEvents.onItemPickup -= ItemCollected;
+    }
+
+    private void Update()
     {
         UpdateState();
+    }
+
+    private void ItemCollected()
+    {
+        Disabler.gameObject.SetActive(true);
+
+        FinishQuestStep();
     }
 
 
@@ -28,9 +45,7 @@ public class ClearOutpostMountainQuestStep : QuestStep
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
-            Disabler.gameObject.SetActive(true);
-
-            FinishQuestStep();
+            
         }
     }
 

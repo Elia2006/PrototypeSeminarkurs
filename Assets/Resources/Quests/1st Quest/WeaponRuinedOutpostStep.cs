@@ -17,13 +17,30 @@ public class WeaponRuinedOutpostStep : QuestStep
         UpdateState();
     }
 
+    private void OnEnable()
+    {
+        GameEventsManager.instance.miscEvents.onItemPickup += ItemCollected;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.instance.miscEvents.onItemPickup -= ItemCollected;
+    }
+
+    
+
+    private void ItemCollected()
+    {
+        FinishQuestStep();
+    }
+
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             //Debug.Log("RuinedOutpost2");
-            FinishQuestStep();
+            //FinishQuestStep();
         }
     }
 
