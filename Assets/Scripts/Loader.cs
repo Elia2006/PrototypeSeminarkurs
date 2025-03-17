@@ -43,7 +43,6 @@ public class Loader : MonoBehaviour
                     item.SetActive(false);
                 }
             }
-
             yield return new WaitForSeconds(1);
         }
     }

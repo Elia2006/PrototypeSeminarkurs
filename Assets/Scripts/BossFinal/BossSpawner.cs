@@ -12,7 +12,7 @@ public class BossSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player") && Boss != null) 
         {
             Boss.enabled = true;
             flamethrowerTarget.enabled = true;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -34,6 +35,10 @@ public class Boss_new : Enemy
     [SerializeField] GameObject BossHealth;
     [SerializeField] Animator doorAnim;
 
+    //Audio
+    [SerializeField] AudioSource maschineGunSound;
+    [SerializeField] AudioSource impactSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +57,7 @@ public class Boss_new : Enemy
     // Update is called once per frame
     void Update()
     {
+        PickAttack();
         if(isActivated)
         {
             TurnTowardsPlayer();
@@ -70,34 +76,47 @@ public class Boss_new : Enemy
     {
         while(true)
         {
-            int attack = 0;Random.Range(0, 4);
-            switch(attack)
+            foreach(int i in PickAttack())
             {
-                case 0:
-                    yield return StartCoroutine(Flamethrower());
-                    break;
+                int b = 3;
+                switch(i)
+                {
+                    case 0:
+                        yield return StartCoroutine(Flamethrower());
+                        break;
 
-                case 1:
-                    yield return StartCoroutine(Missiles());
-                    break;
+                    case 1:
+                        yield return StartCoroutine(Missiles());
+                        break;
 
-                case 2:
-                    yield return StartCoroutine(MaschineGun());
-                    break;
+                    case 2:
+                        yield return StartCoroutine(MaschineGun());
+                        break;
 
-                case 3:
-                    yield return StartCoroutine(Stomp());
-                    break;
+                    case 3:
+                        yield return StartCoroutine(Stomp());
+                        break;
+                }
+                yield return new WaitForSeconds(3);
             }
 
-            yield return new WaitForSeconds(5);
-
+            yield return new WaitForSeconds(3);
         }
     }
 
-    private void PickAttack()
+    private int[] PickAttack()
     {
+        int[] attackOrder = {0, 1, 2, 3};
+        for(int i = 0; i < attackOrder.Length; i++)
+        {
+            int rand = Random.Range(0, 4);
+            int z = attackOrder[i];
+            attackOrder[i] = attackOrder[rand];
+            attackOrder[rand] = z;
+        }
+        int[] cutAttackOrder = {attackOrder[0], attackOrder[1], attackOrder[2]};
 
+        return cutAttackOrder;
     }
 
     private void TurnTowardsPlayer()
@@ -171,11 +190,14 @@ public class Boss_new : Enemy
 
         yield return new WaitForSeconds(0.5f);
 
+        maschineGunSound.mute = false;
+
         for(int i = 0; i < 40; i++)
         {
             Instantiate(maschineGunProjectile, gunEnd.position, Quaternion.LookRotation(maschineGunTarget.position - gunEnd.position, Vector3.up));
             yield return new WaitForSeconds(0.1f);
         }
+        maschineGunSound.mute = true;
 
         StopCoroutine(laserC);
         laser.enabled = false;
@@ -208,6 +230,8 @@ public class Boss_new : Enemy
 
             yield return new WaitForSeconds(0.01f);
         }
+        impactSound.Play();
+
         leg1.enabled = true;
         leg1.SetNewPos(leg1.transform.position);
         leg2.enabled = true;
