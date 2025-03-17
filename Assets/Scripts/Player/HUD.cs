@@ -69,6 +69,7 @@ public class HUD : MonoBehaviour
         
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
+        DeathScreen.SetActive(false);
     }
 
     void Update()
@@ -278,7 +279,7 @@ public class HUD : MonoBehaviour
     public void Die()
     {
         Time.timeScale = 0f;
-        //DeathScreen.SetActive(true);
+        DeathScreen.SetActive(true);
     }
 
     public void SavePlayer ()
@@ -288,6 +289,7 @@ public class HUD : MonoBehaviour
 
     public void LoadPlayer()
     {
+        DeathScreen.SetActive(false);
         PlayerData data = SaveSystem.LoadPlayer();
         playerHealth = data.health;
         maxHealth = data.maxHealth;

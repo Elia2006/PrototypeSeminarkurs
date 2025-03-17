@@ -13,6 +13,7 @@ public class MouseLook : MonoBehaviour
 
     public Transform playerBody;
     public GameObject Player;
+    public HUD hud;
 
     public Map map;
     
@@ -30,13 +31,14 @@ public class MouseLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         step = GetComponent<AudioSource>();
+        hud = Player.GetComponent<HUD>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         
-        if (!PauseMenu.isPaused && !map.mapOpen)
+        if (!PauseMenu.isPaused && !map.mapOpen && hud.playerHealth>0)
         {
             Cursor.lockState = CursorLockMode.Locked;
 
@@ -54,8 +56,9 @@ public class MouseLook : MonoBehaviour
             camWigWag();
 
 
-        }else if(PauseMenu.isPaused || map.mapOpen)
+        }else if(PauseMenu.isPaused || map.mapOpen || hud.playerHealth<=0)
         {
+            Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.Confined;
         }
 
