@@ -70,7 +70,12 @@ public class HUD : MonoBehaviour
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
         DeathScreen.SetActive(false);
-        LoadPlayer();
+        if(PlayerPrefs.GetInt("laden") == 1)
+        {
+            LoadPlayer();
+        }
+        SavePlayer();
+        
     }
 
     void Update()

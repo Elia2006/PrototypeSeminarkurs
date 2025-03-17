@@ -7,7 +7,8 @@ public static class SaveSystem
     public static void SavePlayer (HUD player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/player.json";
+        Debug.Log(path);
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(player);
@@ -19,7 +20,7 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer ()
     {
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/player.json";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
