@@ -11,6 +11,8 @@ public class Gun : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject ImpactEffect;
     [SerializeField] Transform GunEnd;
+    public HUD hud;
+    public Map map;
     private float attackCooldown;
     public GameObject Player;
     [SerializeField] LayerMask enemyLayer;
@@ -40,6 +42,7 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
+        hud = Player.GetComponent<HUD>();
         loadedAmmoText = GameObject.Find("LoadedAmmo").GetComponent<TextMeshProUGUI>();
         availableAmmoText = GameObject.Find("AvailableAmmo").GetComponent<TextMeshProUGUI>();
 
@@ -50,27 +53,32 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time && loadedAmmo > 0)
+        if (!PauseMenu.isPaused && !map.mapOpen && hud.playerHealth > 0)
         {
-            shoot.Play();
-            Shoot();
-            attackCooldown = Time.time + 0.3f;
+            if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time && loadedAmmo > 0)
+            {
+                shoot.Play();
+                Shoot();
+                attackCooldown = Time.time + 0.3f;
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                animAim.SetBool("IsAiming", true);
+                acuracy = 1;
+
+                Player.GetComponent<PlayerMovement>().isAiming = true;
+            }
+            else
+            {
+                animAim.SetBool("IsAiming", false);
+                acuracy = 5;
+                Player.GetComponent<PlayerMovement>().isAiming = false;
+            }
+
+            Ammo();
         }
-
-        if(Input.GetMouseButton(1))
-        {
-            animAim.SetBool("IsAiming", true);
-            acuracy = 1;
-
-            Player.GetComponent<PlayerMovement>().isAiming = true;
-        }else
-        {
-            animAim.SetBool("IsAiming", false);
-            acuracy = 5;
-            Player.GetComponent<PlayerMovement>().isAiming = false;
-        }
-
-        Ammo();
+        
     }
 
     void Shoot() 

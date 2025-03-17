@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem.HID;
 
 public class SMG : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class SMG : MonoBehaviour
     [SerializeField] Transform GunEnd;
     private float attackCooldown;
     public GameObject Player;
+    public HUD hud;
+    public Map map;
 
     private float acuracy = 0;
     private float cappedAcuracy;
@@ -47,6 +50,8 @@ public class SMG : MonoBehaviour
 
     void Awake()
     {
+        hud = Player.GetComponent<HUD>();
+
         position = transform.localPosition;
         shoot = GetComponent<AudioSource>();
 
@@ -60,7 +65,7 @@ public class SMG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!PauseMenu.isPaused)
+        if (!PauseMenu.isPaused && !map.mapOpen && hud.playerHealth > 0)
         {
             if (Input.GetButton("Fire1") && attackCooldown < Time.time && loadedAmmo > 0)
             {
