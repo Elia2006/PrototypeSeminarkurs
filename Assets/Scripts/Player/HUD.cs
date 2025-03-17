@@ -70,6 +70,7 @@ public class HUD : MonoBehaviour
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
         DeathScreen.SetActive(false);
+        LoadPlayer();
     }
 
     void Update()

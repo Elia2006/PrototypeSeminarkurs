@@ -7,12 +7,14 @@ public class MenuLogic : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Final");
+        
     }
 
-    public void Options()
+    public void LoadGame()
     {
-
+        SceneManager.LoadScene("Final");
     }
 
     public void QuitGame()
