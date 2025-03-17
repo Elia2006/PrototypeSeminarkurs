@@ -46,7 +46,7 @@ public class Boss_new : Enemy
 
         disolveSpeed = 0.05f;
 
-        StartCoroutine(PickAttack());
+        StartCoroutine(ExecuteAttack());
     }
 
     // Update is called once per frame
@@ -64,10 +64,9 @@ public class Boss_new : Enemy
             continueCharge = false;
             doorAnim.SetBool("IsOpen", true);
         }
-            
     }
 
-    IEnumerator PickAttack()
+    IEnumerator ExecuteAttack()
     {
         while(true)
         {
@@ -94,6 +93,11 @@ public class Boss_new : Enemy
             yield return new WaitForSeconds(5);
 
         }
+    }
+
+    private void PickAttack()
+    {
+
     }
 
     private void TurnTowardsPlayer()

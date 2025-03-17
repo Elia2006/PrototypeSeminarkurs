@@ -7,6 +7,7 @@ public class ScavangerRanged : Scavanger
 {
 
     [SerializeField] GameObject speer;
+    [SerializeField] Transform bulletOrigin;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,7 @@ public class ScavangerRanged : Scavanger
 
                         if(attackCooldown < Time.time){
                             attackCooldown = Time.time + 2;
-                            var ISpeer = Instantiate(speer, transform.position, transform.rotation);
-                            ISpeer.GetComponent<Speer>().velocityY = distance * 2.2f;
+                            Instantiate(speer, bulletOrigin.position, transform.rotation);
                         }
                     }
                 }

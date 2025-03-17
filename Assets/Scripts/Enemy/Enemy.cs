@@ -58,13 +58,15 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
-        continueCharge = true;
-        newPos = Player.transform.position;
-        Allert(50);
-
+        
         if (health <= 0)
         {
             Death();
+        }else
+        {
+            continueCharge = true;
+            newPos = Player.transform.position;
+            Allert(50);
         }
     }
 

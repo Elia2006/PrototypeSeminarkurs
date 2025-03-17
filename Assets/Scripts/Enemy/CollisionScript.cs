@@ -11,12 +11,15 @@ public class CollisionScript : MonoBehaviour
 
     public void TakeDamage(int damage, bool weakpointOverride)
     {
-        if(isWeakpoint && !weakpointOverride)
+        if(enemy.enabled)
         {
-            enemy.TakeDamage(damage * 2);
-        }else
-        {
-            enemy.TakeDamage(damage);
+            if(isWeakpoint && !weakpointOverride)
+            {
+                enemy.TakeDamage(damage * 2);
+            }else
+            {
+                enemy.TakeDamage(damage);
+            }
         }
     }
 
