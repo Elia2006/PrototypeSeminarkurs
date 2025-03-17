@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1911984376}
-  m_IndirectSpecularColor: {r: 0.3837389, g: 0.43233204, b: 0.6655982, a: 1}
+  m_IndirectSpecularColor: {r: 0.3837918, g: 0.43235877, b: 0.66559917, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2504,6 +2504,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4586573256487640013, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 661262150004563445}
+    - target: {fileID: 4586573256487640013, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: shoot
       value: 
       objectReference: {fileID: 512146639}
@@ -2563,6 +2567,10 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 6127676390731681583, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 661262150004563445}
     - target: {fileID: 6127676390731681583, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: shoot
       value: 
@@ -20035,10 +20043,7 @@ PrefabInstance:
     - {fileID: 5830908946941259430, guid: ad94d2640679dbe45b5d88d5d33156a3, type: 3}
     - {fileID: 9066524700166535933, guid: ad94d2640679dbe45b5d88d5d33156a3, type: 3}
     - {fileID: 2354261255382851422, guid: ad94d2640679dbe45b5d88d5d33156a3, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1136089774532457687, guid: ad94d2640679dbe45b5d88d5d33156a3, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 940284745}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad94d2640679dbe45b5d88d5d33156a3, type: 3}
 --- !u!1 &715848673
