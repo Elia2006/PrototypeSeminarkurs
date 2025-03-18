@@ -6,10 +6,23 @@ public class Door : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] AudioSource sound;
+    [SerializeField] SphereCollider sphereCollider;
 
     // Start is called before the first frame update
+    //
+    private void OnEnable()
+    {
+        GameEventsManager.instance.miscEvents.onDoorOpen += ActivateCollider;
+    }
+
+    void ActivateCollider()
+    {
+        sphereCollider.enabled = true;
+    }
     void Start()
     {
+        sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider.enabled = false;
         anim = GetComponent<Animator>();
     }
 

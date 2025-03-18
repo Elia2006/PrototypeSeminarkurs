@@ -82,6 +82,11 @@ public class Enemy : MonoBehaviour
 
     protected void Death()
     {
+        if (transform.name.Equals("boss als 1 objekt")) 
+        {
+            Debug.Log("Boss erkannt");
+            GameEventsManager.instance.miscEvents.BossDeath();
+        }
         StopAllCoroutines();
 
         isActivated = false;

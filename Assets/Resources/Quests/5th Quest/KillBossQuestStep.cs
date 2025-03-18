@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillBossQuestStep : MonoBehaviour
+public class KillBossQuestStep : QuestStep
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] DialogueTrigger trigger;
+    private void Start()
     {
-        
+        trigger.TriggerDialogue();
+        UpdateState();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        GameEventsManager.instance.miscEvents.onBossDeath += BossKilled;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.instance.miscEvents.onBossDeath -= BossKilled;
+    }
+
+
+    void BossKilled()
+    {
+        FinishQuestStep();
+    }
+
+    private void UpdateState()
+    {
+        string state = "";
+        string status = "Gehe zur großen Tür";
+        ChangeState(state, status);
+    }
+
+    protected override void SetQuestStepState(string state)
+    {
+
     }
 }

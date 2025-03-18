@@ -8,7 +8,7 @@ public class OpenDoorQuestStep : QuestStep
     [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
-        trigger.TriggerDialogue();
+        
         UpdateState();
     }
 
@@ -18,10 +18,11 @@ public class OpenDoorQuestStep : QuestStep
     }
 
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("Player"))
         {
+            trigger.TriggerDialogue();
             //Debug.Log("RuinedOutpost2");
             FinishQuestStep();
         }
@@ -30,7 +31,7 @@ public class OpenDoorQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Öffne die Tür";
+        string status = "Erkunde die Fabrik";
         ChangeState(state, status);
     }
 

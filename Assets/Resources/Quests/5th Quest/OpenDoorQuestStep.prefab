@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 827480638413319154}
   - component: {fileID: 538339944069134359}
   - component: {fileID: -2989262897775472105}
+  - component: {fileID: -7800881178137098887}
   m_Layer: 0
   m_Name: OpenDoorQuestStep
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2910947235235795497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 545, y: 25, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48,11 +49,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 10, y: 20, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-2989262897775472105
 MonoBehaviour:
@@ -66,4 +67,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07208dcabe04b64facc06d0a781e668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 0}
+  trigger: {fileID: -7800881178137098887}
+--- !u!114 &-7800881178137098887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910947235235795497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - "Meine Sensoren erfassen... etwas massives. Falls du beten willst, jetzt w\xE4re
+      ein guter Moment\r\n"
+    - ALARM! ERNSTHAFTE GEFAHR! Und diesmal meine ich es ernst.

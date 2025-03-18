@@ -18,6 +18,7 @@ public class ReachDoorQuestStep : QuestStep
     {
         if (other.CompareTag("Player"))
         {
+            GameEventsManager.instance.miscEvents.DoorOpened();
             FinishQuestStep();
         }
     }

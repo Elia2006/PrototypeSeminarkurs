@@ -20,6 +20,26 @@ public class MiscEvents
         }
     }
 
+    public event Action onDoorOpen;
+
+    public void DoorOpened()
+    {
+        if (onDoorOpen != null)
+        {
+            onDoorOpen();
+        }
+    }
+
+    public event Action onBossDeath;
+    
+    public void BossDeath()
+    {
+        if (onBossDeath != null)
+        {
+            onBossDeath();
+        }
+    }
+
     public event Action onGemCollected;
     public void GemCollected() 
     {

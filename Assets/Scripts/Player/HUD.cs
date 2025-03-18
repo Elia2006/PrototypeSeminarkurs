@@ -211,6 +211,10 @@ public class HUD : MonoBehaviour
                 pressEText.text = "um Hitzeschild aufzuheben";
                 
             }
+            else if (hit.transform.name[..8] == "CollectE")
+            {
+                pressEText.text = "um Energiekern aufzuheben.";
+            }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -250,6 +254,12 @@ public class HUD : MonoBehaviour
                 else if (hit.transform.name[..13] == "ClearOutpostM")
                 {
                     pressEText.text = "um Hitzeschild aufzuheben";
+                    GameEventsManager.instance.miscEvents.ItemPickedUp();
+                    Destroy(hit.transform.gameObject);
+                }
+                else if (hit.transform.name[..8] == "CollectE")
+                {
+                    pressEText.text = "um Energiekern aufzuheben.";
                     GameEventsManager.instance.miscEvents.ItemPickedUp();
                     Destroy(hit.transform.gameObject);
                 }
