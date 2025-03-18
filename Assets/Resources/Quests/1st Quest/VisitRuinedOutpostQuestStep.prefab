@@ -92,8 +92,15 @@ MonoBehaviour:
       und D. Dreh dich mit der Maus"
     - "Falls du H\xF6he gewinnen willst: Leertaste. Falls du glaubst, du kannst fliegen:
       Nein.\r\n"
-    - "Gro\xDFartig! Du hast ja bereits ein Brecheisen. Jetzt schwing das Ding mal
-      mit der linken Maustaste. Vielleicht triffst du sogar was."
+    - "Mit  den Tasten 1 - 3 kannst du deine Waffen benutzen. Mit der linken Maustaste
+      benutzt du diese. Wenn du aber was treffen m\xF6chtest, dann benutzt die rechte
+      Maustaste zum zielen"
+    - 'Wenn du Gierschlund mal wieder alle deine Patronen aufgebraucht hast dann
+      kannst du mit R nachladen.
+
+      
+
+'
     - "Kurz vor dem Absturz hat mein Radar einige Strukturen erfasst. Gute Nachricht:
       Wir sind nicht allein. Schlechte Nachricht: Du bist mittendurch geflogen\u2026\r\n"
     - "Statte ihn doch mal ein Besuch ab und hoffe das sie nicht allzu w\xFCtend
