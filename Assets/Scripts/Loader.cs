@@ -10,8 +10,8 @@ public class Loader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
+        enemies = GameObject.FindObjectsOfType<Enemy>();
+        items = GameObject.FindGameObjectsWithTag("Item");
         StartCoroutine(CheckIfLoaded());
     }
 
@@ -20,18 +20,18 @@ public class Loader : MonoBehaviour
     {
         while (true)
         {
-            enemies = GameObject.FindObjectsOfType<Enemy>();
-            items = GameObject.FindGameObjectsWithTag("Item");
+            
             foreach(Enemy enemy in enemies)
             {
+
+                    if(Vector3.Distance(Player.position, enemy.transform.position) < 100)
+                    {
+                        enemy.gameObject.SetActive(true);
+                    }else
+                    {
+                        enemy.gameObject.SetActive(false);
+                    }
                 
-                if(Vector3.Distance(Player.position, enemy.transform.position) < 100)
-                {
-                    enemy.gameObject.SetActive(true);
-                }else
-                {
-                    enemy.gameObject.SetActive(false);
-                }
             }
             foreach(GameObject item in items)
             {
@@ -48,6 +48,7 @@ public class Loader : MonoBehaviour
                 }
                 
             }
+            Debug.Log("hello");
             yield return new WaitForSeconds(1);
         }
     }
