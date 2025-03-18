@@ -49,7 +49,7 @@ public class Loader : MonoBehaviour
                 }
                 
             }
-            Debug.Log("hello");
+            //Debug.Log("hello");
             yield return new WaitForSeconds(1);
         }
     }

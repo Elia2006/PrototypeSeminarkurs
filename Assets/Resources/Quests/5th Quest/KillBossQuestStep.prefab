@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb6ca8a43a1236468287f5ce6642266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 659850030173620385}
 --- !u!114 &659850030173620385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,4 +60,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: 
-    sentences: []
+    sentences:
+    - "Wow. Du hast es tats\xE4chlich geschafft. Ich bin... beeindruckt? Schockiert?
+      Schwer zu sagen\u2026\r\n"
