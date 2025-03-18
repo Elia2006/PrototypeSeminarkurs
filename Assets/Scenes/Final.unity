@@ -24408,6 +24408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boss als 1 objekt
       objectReference: {fileID: 0}
+    - target: {fileID: 1506219371891331696, guid: b4777a591dc5f1743aa7560be567e7dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2282474149296556234, guid: b4777a591dc5f1743aa7560be567e7dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -24452,6 +24456,10 @@ PrefabInstance:
       propertyPath: doorAnim
       value: 
       objectReference: {fileID: 528861599}
+    - target: {fileID: 3521112950305000831, guid: b4777a591dc5f1743aa7560be567e7dd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3521112950305000831, guid: b4777a591dc5f1743aa7560be567e7dd, type: 3}
       propertyPath: BossHealth
       value: 
@@ -34741,7 +34749,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1012215628}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109767492}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0c2757ac5f24b04ba40720e0c3e91e2, type: 3}
   m_Name: 

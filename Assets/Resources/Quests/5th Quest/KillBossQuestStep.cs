@@ -30,7 +30,7 @@ public class KillBossQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Gehe zur großen Tür";
+        string status = "Erledige den 5AND-1N3L";
         ChangeState(state, status);
     }
 
