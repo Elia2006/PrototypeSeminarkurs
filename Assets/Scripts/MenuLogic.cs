@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuLogic : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
     public void StartGame()
     {
         PlayerPrefs.DeleteAll();
         File.Delete(Application.persistentDataPath + "/player.json");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Final");
+        SceneManager.LoadScene("SecondIntro");
         
     }
 
@@ -20,7 +24,7 @@ public class MenuLogic : MonoBehaviour
 
         PlayerPrefs.SetInt("laden", 1);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Final");
+        SceneManager.LoadScene("SecondIntro");
     }
 
     public void QuitGame()
