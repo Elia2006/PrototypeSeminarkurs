@@ -23,7 +23,8 @@ public class Loader : MonoBehaviour
             
             foreach(Enemy enemy in enemies)
             {
-
+                if(enemy.transform != null)
+                {
                     if(Vector3.Distance(Player.position, enemy.transform.position) < 100)
                     {
                         enemy.gameObject.SetActive(true);
@@ -31,11 +32,11 @@ public class Loader : MonoBehaviour
                     {
                         enemy.gameObject.SetActive(false);
                     }
-                
+                }
             }
             foreach(GameObject item in items)
             {
-                if(item.name != "Herb")
+                if(item.transform != null)
                 {
                     if (Vector3.Distance(Player.position, item.transform.position) < 100)
                     {
