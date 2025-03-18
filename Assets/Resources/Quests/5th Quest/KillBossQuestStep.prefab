@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: 
+    name: Board AI
     sentences:
     - "Wow. Du hast es tats\xE4chlich geschafft. Ich bin... beeindruckt? Schockiert?
       Schwer zu sagen\u2026\r\n"

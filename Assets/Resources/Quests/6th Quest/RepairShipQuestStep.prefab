@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: 
+    name: Board AI
     sentences:
     - "Unser Abenteuer geht hier auf ein Ende zu. Anscheinend hast du den Raumschiffabsturz
       auf einem fremden Planeten \xFCberlebt."

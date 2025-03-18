@@ -97,9 +97,8 @@ MonoBehaviour:
   dialogue:
     name: Board AI
     sentences:
-    - 'Analysieren... Pistole erkannt. Munitionsanzeige aktiv. SMRT-Spray-CTRL online. '
-    - "Dr\xFCcke 2, um sie auszur\xFCsten. Nachladen mit R. Mit RMB kannst du zielen
-      und LMB dann schie\xDFen. Verschwende mir nur blo\xDF keine Munition!"
+    - "Oho! Du hast mal was geleistet. Gro\xDFartig. Baue es schnellstm\xF6glich
+      ins Schiff ein, da k\xF6nnten sich wichtige Information drauf befinden."
 --- !u!1001 &3477229800922885485
 PrefabInstance:
   m_ObjectHideFlags: 0
