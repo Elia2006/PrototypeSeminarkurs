@@ -14,6 +14,8 @@ public class ScavangerRanged : Scavanger
     {
         Player = GameObject.Find("Player");
 
+        health = 30;
+
         agent = GetComponent<NavMeshAgent>();
         newPos = transform.position;
     }

@@ -47,13 +47,6 @@ public class CrowbarScript : MonoBehaviour
             }
         }
         
-
-
-        AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
-        if(animStateInfo.normalizedTime >= 1 && animStateInfo.IsName("CrowbarHit"))
-        {
-            
-        }
     }
 
     public void EnableCollider()
@@ -75,7 +68,7 @@ public class CrowbarScript : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript) 
             && !hasDamaged)
         {
-            collisionScript.TakeDamage(4, true);
+            collisionScript.TakeDamage(10, true);
             collisionScript.Knockback(0.1f);
             hitTexture.Hit();
             hasDamaged = true;

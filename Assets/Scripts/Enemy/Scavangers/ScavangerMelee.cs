@@ -12,6 +12,8 @@ public class ScavangerMelee : Scavanger
     {
         Player = GameObject.Find("Player");
 
+        health = 50;
+
         agent = GetComponent<NavMeshAgent>();
         newPos = transform.position;
     }

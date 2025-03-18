@@ -78,7 +78,7 @@ public class Boss_new : Enemy
         {
             foreach(int i in PickAttack())
             {
-                int b = 3;
+                //int b = 3;
                 switch(i)
                 {
                     case 0:
