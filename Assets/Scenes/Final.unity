@@ -1951,7 +1951,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(06)
+      value: Gun Ammo(15)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
@@ -3965,7 +3965,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_Name
-      value: SMG Ammo(20)
+      value: SMG Ammo(30)
       objectReference: {fileID: 0}
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_IsActive
@@ -5644,7 +5644,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_Name
-      value: SMG Ammo(10)
+      value: SMG Ammo(20)
       objectReference: {fileID: 0}
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_IsActive
@@ -7073,7 +7073,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_Name
-      value: SMG Ammo(30)
+      value: SMG Ammo(60)
       objectReference: {fileID: 0}
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_IsActive
@@ -7512,7 +7512,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(05)
+      value: Gun Ammo(20)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
@@ -9791,7 +9791,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(06)
+      value: Gun Ammo(20)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
@@ -21521,7 +21521,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(06)
+      value: Gun Ammo(20)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
@@ -30090,7 +30090,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(10)
+      value: Gun Ammo(30)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
@@ -34881,7 +34881,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_Name
-      value: SMG Ammo(20)
+      value: SMG Ammo(50)
       objectReference: {fileID: 0}
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_IsActive
@@ -36087,7 +36087,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_Name
-      value: SMG Ammo(20)
+      value: SMG Ammo(40)
       objectReference: {fileID: 0}
     - target: {fileID: 3236499769961692394, guid: 2cd8b7e7259e96047896fe98dcbcda8d, type: 3}
       propertyPath: m_IsActive
@@ -37686,7 +37686,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(08)
+      value: Gun Ammo(40)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
@@ -39951,7 +39951,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(02)
+      value: Gun Ammo(10)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
