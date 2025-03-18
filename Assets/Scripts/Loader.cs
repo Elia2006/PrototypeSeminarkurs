@@ -35,13 +35,18 @@ public class Loader : MonoBehaviour
             }
             foreach(GameObject item in items)
             {
-                if(Vector3.Distance(Player.position, item.transform.position) < 100)
+                if(item.name != "Herb")
                 {
-                    item.SetActive(true);
-                }else
-                {
-                    item.SetActive(false);
+                    if (Vector3.Distance(Player.position, item.transform.position) < 100)
+                    {
+                        item.SetActive(true);
+                    }
+                    else
+                    {
+                        item.SetActive(false);
+                    }
                 }
+                
             }
             yield return new WaitForSeconds(1);
         }

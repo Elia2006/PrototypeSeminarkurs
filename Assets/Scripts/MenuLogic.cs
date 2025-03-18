@@ -10,13 +10,16 @@ public class MenuLogic : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         File.Delete(Application.persistentDataPath + "/player.json");
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Final");
         
     }
 
     public void LoadGame()
     {
+
         PlayerPrefs.SetInt("laden", 1);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Final");
     }
 
