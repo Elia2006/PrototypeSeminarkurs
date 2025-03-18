@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SecondIntroManager : MonoBehaviour
 {
+    [SerializeField] GameObject img;
     private void Start()
     {
+        img.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -17,7 +19,10 @@ public class SecondIntroManager : MonoBehaviour
 
 
         targetTime -= Time.deltaTime;
-
+        if (targetTime < 16.9)
+        {
+            img.SetActive(false);
+        }
         if (targetTime <= 0.0f)
         {
             timerEnded();
