@@ -8,7 +8,7 @@ public class WeaponRuinedOutpostStep : QuestStep
     [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
-        trigger.TriggerDialogue();
+        
         UpdateState();
     }
 
@@ -31,6 +31,7 @@ public class WeaponRuinedOutpostStep : QuestStep
 
     private void ItemCollected()
     {
+        trigger.TriggerDialogue();
         FinishQuestStep();
     }
 

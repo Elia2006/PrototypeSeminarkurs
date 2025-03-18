@@ -103,7 +103,6 @@ MonoBehaviour:
     - "Alles klar, hier findest du das Hitzeschild, welches ben\xF6tigt wird, um
       nicht in der Atmosphaere zu zergluehen. Bring es zum Schiff, sobald die Gegner
       kampfunf\xE4hig sind."
-    - 
 --- !u!1001 &3331757460302515572
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 1278653144821348545}
+  Map: {fileID: 0}
+  Canvas: {fileID: 0}
+  highlighter: {fileID: 0}
 --- !u!114 &1278653144821348545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,9 +64,14 @@ MonoBehaviour:
   dialogue:
     name: Board AI
     sentences:
-    - "Super gemacht. Mithilfe der Daten habe ich es geschafft, dir den Zugang zum
-      Teleportieren zu verschaffen. Stehe daf\xFCr auf einem Teleporter, dr\xFCcke
-      \"M\" und klicke einen anderen bereits entdeckten Teleporter an."
-    - "Au\xDFerdem habe ich dir auf der Karte deinen n\xE4chsten Auftrag vermerkt.
-      Begebe dich ins markierte Gebiet und sammle 3 Pflanzen ein. Die Fasern werden
-      f\xFCr das Raumschiff ben\xF6tigt."
+    - " Analyse L\xE4uft... Analyse abgeschlossen. Gl\xFCckwunsch, wir wissen jetzt
+      etwas \xFCber diesen Planeten. Nicht, dass du was davon verstehen w\xFCrdest..."
+    - "Ich habe gute Nachrichten f\xFCr dich Faulenzer. Ich habe einige Teleporter
+      entdeckt. Sobald du einen gefunden hast, kannst du dich darauf stellen und
+      dich zu anderen freigeschalteten Teleportern teleportieren."
+    - "Benutze sie wenn dir nicht nach Laufen ist und hoffe das du dich wieder vollst\xE4ndig
+      materialisierst."
+    - "Meine Triangulation zeigt, dass es hier irgendwo Pflanzen gibt. Vielleicht
+      findest du dort etwas N\xFCtzliches, um unser Schiff zu flicken. Oder du wirst
+      gefressen. Wer wei\xDF?"
+    - "Ebenfalls habe ich eine Karte vom Gebiet gefunden. Dr\xFCcke M um diese aufzurufen.\r\n"

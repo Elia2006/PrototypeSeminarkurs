@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3772446938573499215}
   - component: {fileID: -5012590637388122134}
   - component: {fileID: -1831948340866007735}
+  - component: {fileID: -7679697252907031582}
   m_Layer: 0
   m_Name: ReachDoorQuestStep
   m_TagString: Untagged
@@ -66,4 +67,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2a5d0c654702149b34c89e7a39f7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 0}
+  trigger: {fileID: -7679697252907031582}
+--- !u!114 &-7679697252907031582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8836400188751378276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - " Scheint als h\xE4ttest du doch was drauf\u2026 Leider \xE4ndert das nichts
+      an dem Fakt, dass du unseren Energiekern zerst\xF6rt hast.\r\n"
+    - "Die Outposts scheinen eine Art Radar Signal zur selben Position zu senden
+      seitdem du da warst. Ich glaube du solltest das mal \xFCberpr\xFCfen.\r\n"

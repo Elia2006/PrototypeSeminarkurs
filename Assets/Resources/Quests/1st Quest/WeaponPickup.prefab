@@ -97,10 +97,9 @@ MonoBehaviour:
   dialogue:
     name: Board AI
     sentences:
-    - Laut meinen Daten hast du jetzt den Aussenposten gefunden, wo du mit deinem
-      Schiff reingeflogen bist.
-    - "Meine Sensoren melden ein Datenfragment, welches sich in der N\xE4he befindet.
-      Sammle es ein und bringe es zum Schiff zur\xFCck."
+    - 'Analysieren... Pistole erkannt. Munitionsanzeige aktiv. SMRT-Spray-CTRL online. '
+    - "Dr\xFCcke 2, um sie auszur\xFCsten. Nachladen mit R. Mit RMB kannst du zielen
+      und LMB dann schie\xDFen. Verschwende mir nur blo\xDF keine Munition!"
 --- !u!1001 &3477229800922885485
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -83,6 +83,18 @@ MonoBehaviour:
   dialogue:
     name: Board AI
     sentences:
-    - "Hey du. Ja du! Es scheint, als w\xE4re das Raumschiff nicht mehr funktionst\xFCchtig...
-      Was eine Schande."
-    - eier schlecken
+    - " Oh, schau mal einer an, du bist wach! Und... vermutlich auch ein bisschen
+      verwirrt. Lass mich raten \u2013 Absturz, Ged\xE4chtnisl\xFCcke, existenzielle
+      Panik? Ja?"
+    - "Perfekt. Dann starte ich jetzt das ReMember-Protokoll\u2122. Versuch einfach,
+      nicht gleich wieder zu sterben.\r\n"
+    - " Okay, Zeit f\xFCr eine kleine Aufw\xE4rm\xFCbung. Bewege dich mit W, A, S
+      und D. Dreh dich mit der Maus"
+    - "Falls du H\xF6he gewinnen willst: Leertaste. Falls du glaubst, du kannst fliegen:
+      Nein.\r\n"
+    - "Gro\xDFartig! Du hast ja bereits ein Brecheisen. Jetzt schwing das Ding mal
+      mit der linken Maustaste. Vielleicht triffst du sogar was."
+    - "Kurz vor dem Absturz hat mein Radar einige Strukturen erfasst. Gute Nachricht:
+      Wir sind nicht allein. Schlechte Nachricht: Du bist mittendurch geflogen\u2026\r\n"
+    - "Statte ihn doch mal ein Besuch ab und hoffe das sie nicht allzu w\xFCtend
+      auf dich sind. Vielleicht findest du ja was n\xFCtzliches.\r\n"

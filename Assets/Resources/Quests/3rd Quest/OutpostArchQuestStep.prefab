@@ -83,7 +83,7 @@ MonoBehaviour:
   dialogue:
     name: Board AI
     sentences:
-    - "Super, die Strukturelle Integrit\xE4t des Raumschiffs ist zumindest halb gesichert! "
-    - "Um sie jedoch ganz zu gew\xE4hrleisten, m\xF6chte ich dich bitten, einen der
-      Aussenposten aufzusuchen um entweder ein Hitzeschild oder eine Werkzeugkiste
-      zu finden."
+    - "Schiff stabilisiert sich, aber durch dein wahnsinniges Absturz Man\xF6ver
+      ist die Mechanik kaputt gegangen\u2026\r\n"
+    - "Meine Analysen haben ergeben das es noch andere Outposts gibt die du noch
+      nicht zerst\xF6rt hast. Vielleicht wirst du ja dort f\xFCndig.\r\n"
