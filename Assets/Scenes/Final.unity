@@ -1541,7 +1541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(10)
+      value: Gun Ammo(20)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
@@ -2982,7 +2982,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_Name
-      value: Gun Ammo(04)
+      value: Gun Ammo(20)
       objectReference: {fileID: 0}
     - target: {fileID: 1651004468500643771, guid: 75dc601f078255246b76d35dc312cf4c, type: 3}
       propertyPath: m_IsActive
