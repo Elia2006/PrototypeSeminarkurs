@@ -29,7 +29,7 @@ public class EnemyMelee1 : Enemy
         agent = GetComponent<NavMeshAgent>();
         speed = 2;
         patrollingRange = 20;
-        health = 1;
+        health = 90;
 
         sightDistance = 30;
         allertDistance = 60;
