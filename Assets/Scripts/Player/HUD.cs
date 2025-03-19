@@ -17,6 +17,7 @@ public class HUD : MonoBehaviour
     public float playerEnergy = 100;
     public float maxEnergy;
     private float damageAlphaColor = 0;
+    private float timer = 20f;
     public Vector3 position;
     public Quaternion rotation;
     public GameObject Player;
@@ -85,6 +86,7 @@ public class HUD : MonoBehaviour
         HealthBar();
         ItemPickup();
         CheckHealing();
+        Autosave();
         //PressEnter();
 
 
@@ -302,6 +304,20 @@ public class HUD : MonoBehaviour
         boss.ResetBoss();
 
         DeathScreen.SetActive(true);
+    }
+
+    public void Autosave()
+    {
+        if (!anyAttacking) 
+        {
+            timer -= Time.deltaTime;
+            if (timer < 0f)
+            {
+                SaveSystem.SavePlayer(this);
+                Debug.Log("Autosave happened");
+                timer = 120f;
+            }
+        }
     }
 
     public void SavePlayer ()
