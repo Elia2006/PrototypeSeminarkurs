@@ -27,7 +27,7 @@ public class EnemyRange : Enemy
         patrollingRange = 20;
         sightDistance = 30;
         allertDistance = 60;
-        health = 1;
+        health = 60;
     }
     private void Awake()
     {

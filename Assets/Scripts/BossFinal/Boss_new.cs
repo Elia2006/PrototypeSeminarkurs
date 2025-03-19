@@ -49,7 +49,7 @@ public class Boss_new : Enemy
         gunEnd = GameObject.Find("lower arm L_end").transform;
         Player = GameObject.Find("Player");
 
-        health = 1;
+        health = 600;
 
         disolveSpeed = 0.05f;
 
@@ -69,7 +69,7 @@ public class Boss_new : Enemy
         StopAllCoroutines();
         transform.localPosition = new Vector3(0, 0, 0);
         isActivated = false;
-        health = 1;
+        health = 600;
         maschineGunSound.mute = true;
         isReset = true;
     }
