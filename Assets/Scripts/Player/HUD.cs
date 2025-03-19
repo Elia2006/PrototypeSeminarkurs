@@ -50,6 +50,8 @@ public class HUD : MonoBehaviour
     private Coroutine healing;
     public bool anyAttacking;
 
+    [SerializeField] Boss_new boss;
+
     //Audio
     [SerializeField] AudioSource itemPickup;
 
@@ -295,6 +297,9 @@ public class HUD : MonoBehaviour
     public void Die()
     {
         Time.timeScale = 0f;
+
+        boss.ResetBoss();
+
         DeathScreen.SetActive(true);
     }
 

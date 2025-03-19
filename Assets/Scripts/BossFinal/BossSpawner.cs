@@ -14,11 +14,12 @@ public class BossSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player") && Boss != null) 
         {
-            Boss.enabled = true;
+            Boss.StartBoss();
             flamethrowerTarget.enabled = true;
             maschineGunTarget.enabled = true;
             bossHealth.SetActive(true);
             doorAnim.SetBool("IsOpen", false);
+            gameObject.GetComponent<Collider>().enabled = false;
         }
     }
 }

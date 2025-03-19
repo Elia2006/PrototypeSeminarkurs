@@ -34,6 +34,8 @@ public class Boss_new : Enemy
 
     [SerializeField] GameObject BossHealth;
     [SerializeField] Animator doorAnim;
+    [SerializeField] Collider bossSpawnColl;
+    public bool isReset = true;
 
     //Audio
     [SerializeField] AudioSource maschineGunSound;
@@ -51,24 +53,51 @@ public class Boss_new : Enemy
 
         disolveSpeed = 0.05f;
 
+        isActivated = false;
+    }
+
+    public void StartBoss()
+    {
         StartCoroutine(ExecuteAttack());
+        isReset = false;
+        isActivated = true;
+    }
+
+    public void ResetBoss()
+    {
+        bossSpawnColl.enabled = true;
+        StopAllCoroutines();
+        transform.localPosition = new Vector3(0, 0, 0);
+        isActivated = false;
+        health = 1000;
+        maschineGunSound.mute = true;
+        isReset = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PickAttack();
-        if(isActivated)
+        
+        if(isActivated && !isReset)
         {
+            PickAttack();
             TurnTowardsPlayer();
             GoTowardsPlayer();
             HealthBar();
+            continueCharge = true;
         }else
         {
             GetComponent<LineRenderer>().enabled = false;
             BossHealth.SetActive(false);
             continueCharge = false;
+            
+        }
+        if(!isActivated)
+        {
             doorAnim.SetBool("IsOpen", true);
+            GetComponent<LineRenderer>().enabled = false;
+            BossHealth.SetActive(false);
+            continueCharge = false;
         }
     }
 
