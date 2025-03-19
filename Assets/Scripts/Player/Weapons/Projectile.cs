@@ -74,7 +74,11 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
+        if(hit.normal != Vector3.zero)
+        {
+            Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
+        }
+        
         
         
     }

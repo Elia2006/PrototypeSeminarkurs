@@ -23,7 +23,7 @@ public class Loader : MonoBehaviour
             
             foreach(Enemy enemy in enemies)
             {
-                if(enemy != null)
+                if(enemy != null && enemy.name != "boss als 1 objekt")
                 {
                     if(Vector3.Distance(Player.position, enemy.transform.position) < 100)
                     {

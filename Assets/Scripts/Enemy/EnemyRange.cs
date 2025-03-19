@@ -27,7 +27,7 @@ public class EnemyRange : Enemy
         patrollingRange = 20;
         sightDistance = 30;
         allertDistance = 60;
-        health = 70;
+        health = 1;
     }
     private void Awake()
     {
@@ -39,11 +39,16 @@ public class EnemyRange : Enemy
         if(isActivated){
             if(!KnockbackUpdate())
             {
-                if(IsPlayerInRange(Player.transform.position, sightDistance) && continueCharge)
+                if(IsPlayerInRange(Player.transform.position, sightDistance))
+                {
+                    continueCharge = true;
+                }
+
+                if(continueCharge)
                 {
                     Attack();
                     agent.updateRotation = false;
-                }else if(continueCharge)
+                }else if(chase)
                 {
                     Search();
                 }else
@@ -62,7 +67,7 @@ public class EnemyRange : Enemy
 
     private void Attack()
     {
-        continueCharge = true;
+        chase = true;
         Allert(50);
 
         var lookRotation = Quaternion.LookRotation(Player.transform.position - transform.position, Vector3.up);
