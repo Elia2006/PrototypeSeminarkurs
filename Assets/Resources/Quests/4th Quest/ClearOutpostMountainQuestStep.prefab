@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: 
+    name: Board AI
     sentences:
     - "Gut gemacht! Dadurch, dass du den Aussenposten ges\xE4ubert hast, konnte ich
       uns den Teleporter hier freischalten. Falls du Sesselfurzer also wieder nicht

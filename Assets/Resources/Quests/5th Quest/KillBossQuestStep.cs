@@ -7,7 +7,7 @@ public class KillBossQuestStep : QuestStep
     [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
-        trigger.TriggerDialogue();
+        
         UpdateState();
     }
 
@@ -24,6 +24,7 @@ public class KillBossQuestStep : QuestStep
 
     void BossKilled()
     {
+        trigger.TriggerDialogue();
         FinishQuestStep();
     }
 
