@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Projectile : MonoBehaviour
 {
     private float speed = 100;
-    private float range = 40;
+    private float range = 100;
 
     private float startTime;
     private float distanceTravelled;

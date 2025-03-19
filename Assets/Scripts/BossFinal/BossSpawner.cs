@@ -10,6 +10,9 @@ public class BossSpawner : MonoBehaviour
     [SerializeField] GameObject bossHealth;
     [SerializeField] Animator doorAnim;
 
+    private void Start()
+    {
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Boss != null) 

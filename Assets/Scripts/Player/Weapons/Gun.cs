@@ -90,7 +90,7 @@ public class Gun : MonoBehaviour
 
         Physics.Raycast(Cam.position, Cam.forward, out hit, Mathf.Infinity, enemyLayer);
 
-        if(hit.point.sqrMagnitude > .01f)
+        if(hit.point.sqrMagnitude > .01f && Vector3.Distance(hit.point, GunEnd.position) < 0.1f)
         {
             GunEnd.LookAt(hit.point);
         }
