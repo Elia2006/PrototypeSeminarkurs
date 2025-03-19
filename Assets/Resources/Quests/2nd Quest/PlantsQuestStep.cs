@@ -61,7 +61,7 @@ public class PlantsQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = plantscollected + " von " + plantstocollect + " benötigten Pflanzen eingesammelt.";
+        string status = plantscollected + " von " + plantstocollect + " benötigten Artefakten eingesammelt.";
         ChangeState(state, status);
     }
 
