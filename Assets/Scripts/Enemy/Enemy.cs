@@ -43,6 +43,11 @@ public class Enemy : MonoBehaviour
     //Disolve
     protected float disolveSpeed = 0.02f;
 
+
+    public bool isStationary = false;
+
+    protected bool chase = false;
+
     
 
     void Start()
@@ -66,17 +71,23 @@ public class Enemy : MonoBehaviour
         {
             continueCharge = true;
             newPos = Player.transform.position;
-            Allert(50);
+
+            if(!isStationary)
+            {
+                Allert(50);
+            }
+            
         }
     }
 
     protected void Search()
     {
+        continueCharge = false;
         speedMultiplier = 1;
         agent.destination = newPos;
         if(Vector3.Distance(transform.position, newPos) < 2)
         {
-            continueCharge = false;
+            chase = false;
         }
     }
 
@@ -90,6 +101,7 @@ public class Enemy : MonoBehaviour
         StopAllCoroutines();
 
         isActivated = false;
+        continueCharge = false;
 
         if(agent != null)
         {

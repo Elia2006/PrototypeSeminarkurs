@@ -17,7 +17,6 @@ public class EnemyMelee1 : Enemy
     private float attackChargeTimer;
     private bool attack = false;
 
-    [SerializeField] bool isStationary;
 
     //Audio
     [SerializeField] AudioSource attackSound;
@@ -30,7 +29,7 @@ public class EnemyMelee1 : Enemy
         agent = GetComponent<NavMeshAgent>();
         speed = 2;
         patrollingRange = 20;
-        health = 100;
+        health = 1;
 
         sightDistance = 30;
         allertDistance = 60;
@@ -49,10 +48,14 @@ public class EnemyMelee1 : Enemy
             {
 
                 agent.isStopped = false;
-                if(IsPlayerInRange(Player.transform.position, sightDistance) && continueCharge)
+                if(IsPlayerInRange(Player.transform.position, sightDistance))
+                {
+                    continueCharge = true;
+                }
+                if(continueCharge)
                 {
                     Attack();
-                }else if(continueCharge)
+                }else if(chase)
                 {
                     Search();
                 }else
@@ -71,8 +74,13 @@ public class EnemyMelee1 : Enemy
 
     public void Attack()
     {
-        continueCharge = true;
-        Allert(50);
+        chase = true;
+
+        if(!isStationary)
+        {
+            Allert(50);
+        }
+        
 
         speedMultiplier = 2;
 

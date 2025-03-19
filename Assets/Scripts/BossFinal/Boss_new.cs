@@ -30,7 +30,7 @@ public class Boss_new : Enemy
     //health
     [SerializeField] Image healthBar1;
     [SerializeField] Image healthBar2;
-    private readonly float maxHealth = 1000;
+    private readonly float maxHealth = 600;
 
     [SerializeField] GameObject BossHealth;
     [SerializeField] Animator doorAnim;
@@ -49,7 +49,7 @@ public class Boss_new : Enemy
         gunEnd = GameObject.Find("lower arm L_end").transform;
         Player = GameObject.Find("Player");
 
-        health = 1000;
+        health = 1;
 
         disolveSpeed = 0.05f;
 
@@ -69,7 +69,7 @@ public class Boss_new : Enemy
         StopAllCoroutines();
         transform.localPosition = new Vector3(0, 0, 0);
         isActivated = false;
-        health = 1000;
+        health = 1;
         maschineGunSound.mute = true;
         isReset = true;
     }
@@ -113,15 +113,12 @@ public class Boss_new : Enemy
                     case 0:
                         yield return StartCoroutine(Flamethrower());
                         break;
-
                     case 1:
                         yield return StartCoroutine(Missiles());
                         break;
-
                     case 2:
                         yield return StartCoroutine(MaschineGun());
                         break;
-
                     case 3:
                         yield return StartCoroutine(Stomp());
                         break;

@@ -5,18 +5,6 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
-    
-    void Start (){
-
-    }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            TriggerDialogue();
-        }
-    }
 
     public void TriggerDialogue()
     {

@@ -99,6 +99,7 @@ public class HUD : MonoBehaviour
         {
             if(enemy.continueCharge)
             {
+                Debug.Log(enemy.transform.name);
                 anyAttacking = true;
             }   
         }
@@ -305,7 +306,10 @@ public class HUD : MonoBehaviour
 
     public void SavePlayer ()
     {
-        SaveSystem.SavePlayer(this);
+        if(!anyAttacking)
+        {
+            SaveSystem.SavePlayer(this);
+        }
     }
 
     public void LoadPlayer()
