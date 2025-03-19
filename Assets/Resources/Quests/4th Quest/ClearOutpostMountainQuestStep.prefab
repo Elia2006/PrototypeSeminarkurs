@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -7290588179783568739}
   - component: {fileID: 5472852065418295462}
   - component: {fileID: 8540012906627451415}
+  - component: {fileID: 4088613974489406413}
   m_Layer: 0
   m_Name: ClearOutpostMountainQuestStep
   m_TagString: Item
@@ -73,6 +74,7 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   Disabler: {fileID: 0}
   trigger: {fileID: 8540012906627451415}
+  trigger2: {fileID: 4088613974489406413}
 --- !u!114 &5472852065418295462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +105,25 @@ MonoBehaviour:
     - "Alles klar, hier findest du das Hitzeschild, welches ben\xF6tigt wird, um
       nicht in der Atmosphaere zu zergluehen. Bring es zum Schiff, sobald die Gegner
       kampfunf\xE4hig sind."
+--- !u!114 &4088613974489406413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521343126255153011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: 
+    sentences:
+    - "Gut gemacht! Dadurch, dass du den Aussenposten ges\xE4ubert hast, konnte ich
+      uns den Teleporter hier freischalten. Falls du Sesselfurzer also wieder nicht
+      laufen willst, lade ich dich herzlichst ein, den Teleporter zu verwenden um
+      wieder zum Schiff zu gelangen."
 --- !u!1001 &3331757460302515572
 PrefabInstance:
   m_ObjectHideFlags: 0

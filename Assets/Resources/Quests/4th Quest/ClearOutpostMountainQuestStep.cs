@@ -9,6 +9,7 @@ public class ClearOutpostMountainQuestStep : QuestStep
     public Transform Canvas;
     public Transform Disabler;
     [SerializeField] DialogueTrigger trigger;
+    [SerializeField] DialogueTrigger trigger2;
     private void Start()
     {
         Map = GameObject.Find("Map");
@@ -36,7 +37,7 @@ public class ClearOutpostMountainQuestStep : QuestStep
     private void ItemCollected()
     {
         Disabler.gameObject.SetActive(true);
-
+        trigger2.TriggerDialogue();
         FinishQuestStep();
     }
 

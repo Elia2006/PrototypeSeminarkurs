@@ -5,8 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class OutpostMountainQuestStep : QuestStep
 {
+
+    public GameObject Map;
+    public Transform Canvas;
+    public Transform highlighter;
+
+
+
+
+
+
     private void Start()
     {
+        Map = GameObject.Find("Map");
+        Canvas = Map.transform.Find("Canvas");
+        highlighter = Canvas.transform.Find("OutpostMHighlighter");
+        highlighter.gameObject.SetActive(true);    
+        
         UpdateState();
     }
 
@@ -15,6 +30,7 @@ public class OutpostMountainQuestStep : QuestStep
     {
         if (other.CompareTag("Player"))
         {
+            highlighter.gameObject.SetActive(false);
             FinishQuestStep();
         }
     }

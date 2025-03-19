@@ -6,8 +6,23 @@ using UnityEngine;
 public class ReachDoorQuestStep : QuestStep
 {
     [SerializeField] DialogueTrigger trigger;
+
+    public GameObject Map;
+    public Transform Canvas;
+    public Transform highlighter;
+
+
+
+
+
+
     private void Start()
     {
+        Map = GameObject.Find("Map");
+        Canvas = Map.transform.Find("Canvas");
+        highlighter = Canvas.transform.Find("DoorHighlighter");
+        highlighter.gameObject.SetActive(true);
+        
         trigger.TriggerDialogue();
         UpdateState();
     }
@@ -19,6 +34,7 @@ public class ReachDoorQuestStep : QuestStep
         if (other.CompareTag("Player"))
         {
             GameEventsManager.instance.miscEvents.DoorOpened();
+            highlighter.gameObject.SetActive(false);
             FinishQuestStep();
         }
     }
