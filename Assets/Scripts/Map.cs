@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
+    public GameObject DialogeCanvas;
+
     public GameObject Player;
     public GameObject SpawnPointManager;
     public GameObject StandardCanvas;
@@ -48,6 +50,7 @@ public class Map : MonoBehaviour
             }
             else
             {
+                DialogeCanvas.SetActive(true);
                 MapCanvas.SetActive(false);
                 StandardCanvas.SetActive(true);
                 MapCamera.SetActive(false);
@@ -77,7 +80,7 @@ public class Map : MonoBehaviour
         }*/
         StandardCanvas.SetActive(false);
         MapCanvas.SetActive(true);
-        
+        DialogeCanvas.SetActive(false);
         MapCamera.SetActive(true);
         arrow.SetActive(true);
         mapOpen=true;

@@ -12,6 +12,9 @@ public class PlantsQuestStep : QuestStep
     public GameObject Map;
     public Transform Canvas;
     public Transform highlighter;
+
+    public GameObject Plants;
+    public Transform PlansEnabler;
     
     
         
@@ -23,9 +26,13 @@ public class PlantsQuestStep : QuestStep
         Map = GameObject.Find("Map");
         Canvas = Map.transform.Find("Canvas");
         highlighter = Canvas.transform.Find("PlantHighlighter");
+
+        Plants = GameObject.Find("PflanzenHead");
+        PlansEnabler = Plants.transform.Find("Pflanzen");
         trigger.TriggerDialogue();
         UpdateState();
         highlighter.gameObject.SetActive(true);
+        PlansEnabler.gameObject.SetActive(true);
     }
 
     private void Update()
