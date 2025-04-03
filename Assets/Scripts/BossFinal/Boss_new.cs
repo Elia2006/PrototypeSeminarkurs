@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.Compression;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -94,10 +95,18 @@ public class Boss_new : Enemy
         }
         if(!isActivated)
         {
+            health = 600;
             doorAnim.SetBool("IsOpen", true);
             GetComponent<LineRenderer>().enabled = false;
             BossHealth.SetActive(false);
             continueCharge = false;
+
+            try
+            {
+                Destroy(GameObject.Find("FireGround(Clone)"));
+            }catch
+            {
+            }
         }
     }
 
