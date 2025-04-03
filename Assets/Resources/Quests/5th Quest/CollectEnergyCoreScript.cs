@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class CollectEnergyCoreScript : QuestStep
 {
+    public GameObject BossSpawner;
+    public Transform Boss;
 
 
     [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
+        BossSpawner = GameObject.Find("BossSpawner");
+        Boss = BossSpawner.transform.Find("boss als 1 objekt");
+        transform.position = Boss.position + Vector3.up;
+
 
         UpdateState();
     }
