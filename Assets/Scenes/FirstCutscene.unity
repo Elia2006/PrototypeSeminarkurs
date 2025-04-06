@@ -398,7 +398,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 1
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -460,6 +460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4cedcdcde7010438ce508d90e3d8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  url: 
+  source: {fileID: 0}
+  video: {fileID: 0}
   black: {fileID: 1722810166}
   targetTime: 33.5
 --- !u!4 &1220767899

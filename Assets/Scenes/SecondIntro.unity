@@ -407,6 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1629e67a1ef684ba33c8d3a53d5bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  url: 
+  source: {fileID: 0}
+  video: {fileID: 0}
   img: {fileID: 2087487024}
   targetTime: 17
 --- !u!4 &537642796
@@ -629,7 +632,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 1
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2

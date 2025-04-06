@@ -3,15 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class OutroManager : MonoBehaviour
 {
+    public string url;
+    public AudioSource source;
+
+    public VideoPlayer video;
     [SerializeField] GameObject black;
     private void Start()
-    {
+    { 
         black.SetActive(true);
         
         Cursor.lockState = CursorLockMode.Locked;
+
+        url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs outro mit credits.mp4";
+        video = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
+        video.source = VideoSource.Url;
+        video.url = url;
+
+
+        StartCoroutine(PlayVideo());
+    }
+
+    private IEnumerator PlayVideo()
+    {
+        var audioSource = video.GetComponent<AudioSource>();
+        video.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        video.controlledAudioTrackCount = 1;
+        video.EnableAudioTrack(0, true);
+        video.SetTargetAudioSource(0, audioSource);
+
+        // Wait until ready
+        video.Prepare();
+        while (!video.isPrepared)
+            yield return null;
+
+        video.Play();
+
+
+        while (video.isPlaying)
+            yield return null;
+
+
     }
 
     public float targetTime = 53.0f;
