@@ -68,6 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 1007824297234285472}
+  Map: {fileID: 0}
+  Canvas: {fileID: 0}
+  highlighter: {fileID: 0}
 --- !u!114 &1007824297234285472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +88,6 @@ MonoBehaviour:
     sentences:
     - "Schiff stabilisiert sich, aber durch dein wahnsinniges Absturz Man\xF6ver
       ist die Mechanik kaputt gegangen\u2026\r\n"
-    - "Meine Analysen haben ergeben das es noch andere Outposts gibt die du noch
-      nicht zerst\xF6rt hast. Dort wirst du bestimmt f\xFCndig und kannst die Teile
-      dann direkt hier abliefern!\r\n"
+    - "Meine Analysen haben ergeben, dass es noch andere Outposts gibt, die du noch
+      nicht zerst\xF6rt hast. Ich habe sie dir auf der Karte markiert. Dort wirst
+      du bestimmt f\xFCndig und kannst die Teile dann direkt hier abliefern!\r\n"

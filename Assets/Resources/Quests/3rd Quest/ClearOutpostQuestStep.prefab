@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -206157369300293670}
   - component: {fileID: -7528629017434702694}
   - component: {fileID: -4173663513655018993}
+  - component: {fileID: -969060403570589113}
   - component: {fileID: 3710659217362583239}
   - component: {fileID: 9130845513893799785}
   - component: {fileID: 3134462445492884197}
@@ -75,6 +76,7 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   Disabler: {fileID: 0}
   trigger: {fileID: 3710659217362583239}
+  trigger2: {fileID: -969060403570589113}
 --- !u!114 &-4173663513655018993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +89,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1b3a5d8c2aac34288e900dc0e8fbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-969060403570589113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044580837105556360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae8417ed7447b74580a61b4bf7de1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Board AI
+    sentences:
+    - Outpost gesichert. Der Teleporter wurde freigeschaltet.
 --- !u!114 &3710659217362583239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +121,7 @@ MonoBehaviour:
     name: Board AI
     sentences:
     - "Hier befindet sich die Werkzeugkiste. Suche in den H\xE4usern, nachdem du
-      die Gegner ausser gefecht setzen konntest."
+      die Gegner au\xDFer Gefecht setzen konntest."
 --- !u!108 &9130845513893799785
 Light:
   m_ObjectHideFlags: 0

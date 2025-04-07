@@ -105,8 +105,8 @@ MonoBehaviour:
     name: Board AI
     sentences:
     - "Alles klar, hier findest du das Hitzeschild, welches ben\xF6tigt wird, um
-      nicht in der Atmosphaere zu zergluehen. Bring es zum Schiff, sobald die Gegner
-      kampfunf\xE4hig sind."
+      nicht in der Atmosph\xE4re zu vergl\xFChen. Mein Scan zeigt: erh\xF6ht positioniert.
+      Zeit, um im Klettern zu \xFCben\u2026"
 --- !u!114 &4088613974489406413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,10 +122,7 @@ MonoBehaviour:
   dialogue:
     name: Board AI
     sentences:
-    - "Gut gemacht! Dadurch, dass du den Aussenposten ges\xE4ubert hast, konnte ich
-      uns den Teleporter hier freischalten. Falls du Sesselfurzer also wieder nicht
-      laufen willst, lade ich dich herzlichst ein, den Teleporter zu verwenden um
-      wieder zum Schiff zu gelangen."
+    - Outpost gesichert. Der Teleporter wurde freigeschaltet.
 --- !u!108 &4214080942544862028
 Light:
   m_ObjectHideFlags: 0

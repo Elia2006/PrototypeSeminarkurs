@@ -68,6 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: -7679697252907031582}
+  Map: {fileID: 0}
+  Canvas: {fileID: 0}
+  highlighter: {fileID: 0}
 --- !u!114 &-7679697252907031582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,5 +88,6 @@ MonoBehaviour:
     sentences:
     - " Scheint als h\xE4ttest du doch was drauf\u2026 Leider \xE4ndert das nichts
       an dem Fakt, dass du unseren Energiekern zerst\xF6rt hast.\r\n"
-    - "Die Outposts scheinen eine Art Radar Signal zur selben Position zu senden
-      seitdem du da warst. Ich glaube du solltest das mal \xFCberpr\xFCfen.\r\n"
+    - "Die Outposts scheinen eine Art Radar-Signal zur selben Position zu senden,
+      seitdem du da warst. Ich glaube du solltest das mal \xFCberpr\xFCfen. Ich habe
+      dir den Ort auf der Karte markiert."
