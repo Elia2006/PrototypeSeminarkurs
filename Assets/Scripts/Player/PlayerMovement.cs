@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     //aiming
     public bool isAiming = false;
 
+    private bool climbingLadder = false;
+
 
 
     void Start()
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         Move();
 
         Sprint();
-        if(!locked && canMove) {
+        if(!locked && canMove && !climbingLadder) {
             controller.Move(move.normalized * speed * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Space) && (hit.distance < 1 || onGround) && jumpTimer < Time.time)
@@ -175,5 +177,52 @@ public class PlayerMovement : MonoBehaviour
     {
         speedReduction = speed;
         speedReductionTimer = Time.time + time;
+    }
+
+    public void ClimbLatter(Transform pos1, Transform pos2, Transform pos3)
+    {
+        Transform[] pos = {pos1, pos2, pos3};
+        StartCoroutine(EClimbLatter(pos));
+    }
+
+    IEnumerator EClimbLatter(Transform[] pos)
+    {
+        controller.enabled = false;
+        climbingLadder = true;
+
+        Vector3 oldPos;
+        Quaternion oldRot;
+        float climbSpeed = 0;
+
+        for(int j = 0; j < 3; j++)
+        {
+            oldPos = transform.position;
+            oldRot = transform.rotation;
+
+            switch(j)
+            {
+                case 0:
+                    climbSpeed = 0.1f;
+                    break;
+                case 1:
+                    climbSpeed = 0.01f;
+                    break;
+                case 2:
+                    climbSpeed = 0.1f;
+                    break;
+            }
+
+            for(float i = 0; i < 1; i += climbSpeed)
+            {
+                transform.position = Vector3.Lerp(oldPos, pos[j].position, i);
+                transform.rotation = Quaternion.Lerp(oldRot, pos[j].rotation, i);
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
+        controller.enabled = true;
+        climbingLadder = false;
+        
+        yield return null;
     }
 }
