@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
     public bool locked = false;
+    public SteamIntegration si;
 
     private float speed;
     private float x;
     private float y;
     public Vector3 move;
     public float jumpHeight = 2;
+    public float totalJumps = 0;
 
     private readonly float gravity = -9.81f * 3;
     private Vector3 velocity;
@@ -47,9 +49,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        
         controller = GetComponent<CharacterController>();
         Application.targetFrameRate = 120;
         lastPos = transform.position;
+
+        si.IsThisAchievementUnlocked("ACH_JUMP_5000");
+        if (si.IsThisAchievementUnlocked("ACH_JUMP_5000"))
+        {
+            si.ClearAchievementStatus("ACH_JUMP_5000");
+        }
     }
 
     void Update()
@@ -79,6 +88,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 jumpTimer = Time.time + 1;
+                totalJumps++;
+                if (totalJumps >= 5 && !si.IsThisAchievementUnlocked("ACH_JUMP_5000"))
+                {
+                    si.UnlockAchievements("ACH_JUMP_5000");
+                }
             }
             
             //gravity
