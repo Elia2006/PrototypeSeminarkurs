@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class LegMove6 : MonoBehaviour
@@ -16,6 +15,9 @@ public class LegMove6 : MonoBehaviour
     [SerializeField] float maxDistance;
     [SerializeField] float stepDistance;
     [SerializeField] float legLerp;
+
+    Vector3 temp1;
+    Vector3 temp2;
 
     // Start is called before the first frame update
     void Start()
@@ -38,18 +40,21 @@ public class LegMove6 : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 direction = (transform.position - lastPos).normalized * stepDistance;
-            Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up, -transform.up, out hit, Mathf.Infinity, groundLayer);
+            Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up * 5, -transform.up, out hit, Mathf.Infinity, groundLayer);
+            
+            temp1 = LegDefaultPos[moveCicle].transform.position + direction + transform.up * 5;
+            temp2 = hit.point;
+            
 
-            /*if(distance > Vector3.Distance(hit.point, LegDefaultPos[moveCicle].transform.position))
-            {*/
+            if(hit.point != Vector3.zero)
+            {
                 Legs[moveCicle].GetComponent<SpiderAnimation>().SetNewPos(hit.point);
                 currentLeg = Legs[moveCicle];
-            //}
+            }
             
             moveCicle += 1;
         }
         lastPos = transform.position;
-
+        Debug.DrawLine(temp1, temp2);
     }
-    
 }
