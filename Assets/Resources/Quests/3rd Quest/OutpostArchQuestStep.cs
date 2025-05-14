@@ -40,9 +40,9 @@ private void Start()
         if (other.CompareTag("Player"))
         {
             highlighter.gameObject.SetActive(false);
-            if (!si.IsThisAchievementUnlocked("ACH_OUTPOST"))
+            if (!si.IsThisAchievementUnlocked("ACH_OUTPOSTS"))
             {
-                si.UnlockAchievements("ACH_OUTPOST");
+                si.UnlockAchievements("ACH_OUTPOSTS");
             }
             FinishQuestStep();
         }

@@ -16,6 +16,8 @@ public class SMG : MonoBehaviour
     public GameObject Player;
     public HUD hud;
     public Map map;
+    public Gun gun;
+    public SteamIntegration si;
 
     private float acuracy = 0;
     private float cappedAcuracy;
@@ -28,7 +30,7 @@ public class SMG : MonoBehaviour
     [SerializeField] LayerMask enemyLayer;
 
     //Ammo
-    private int loadedAmmo = 0;
+    public int loadedAmmo = 0;
     private TextMeshProUGUI loadedAmmoText; 
     private readonly int maxLoadedAmmo = 20;
 
@@ -101,6 +103,8 @@ public class SMG : MonoBehaviour
         }
 
         Ammo();
+
+        
     }
 
     private void Acuracy()
