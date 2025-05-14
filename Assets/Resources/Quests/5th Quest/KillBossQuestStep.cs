@@ -5,9 +5,15 @@ using UnityEngine;
 public class KillBossQuestStep : QuestStep
 {
     [SerializeField] DialogueTrigger trigger;
+
+    GameObject SteamManager;
+    SteamIntegration si;
+
     private void Start()
     {
-        
+        SteamManager = GameObject.Find("SteamManager");
+        si = SteamManager.GetComponent<SteamIntegration>();
+
         UpdateState();
     }
 
@@ -25,6 +31,10 @@ public class KillBossQuestStep : QuestStep
     void BossKilled()
     {
         trigger.TriggerDialogue();
+        if (!si.IsThisAchievementUnlocked("ACH_BOSS"))
+        {
+            si.UnlockAchievements("ACH_BOSS");
+        }
         FinishQuestStep();
     }
 

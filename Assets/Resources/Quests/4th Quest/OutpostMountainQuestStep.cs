@@ -10,13 +10,17 @@ public class OutpostMountainQuestStep : QuestStep
     public Transform Canvas;
     public Transform highlighter;
 
-
+    GameObject SteamManager;
+    SteamIntegration si;
 
 
 
 
     private void Start()
     {
+        SteamManager = GameObject.Find("SteamManager");
+        si = SteamManager.GetComponent<SteamIntegration>();
+
         Map = GameObject.Find("Map");
         Canvas = Map.transform.Find("Canvas");
         highlighter = Canvas.transform.Find("OutpostMHighlighter");
@@ -31,6 +35,10 @@ public class OutpostMountainQuestStep : QuestStep
         if (other.CompareTag("Player"))
         {
             highlighter.gameObject.SetActive(false);
+            if (!si.IsThisAchievementUnlocked("ACH_OUTPOST"))
+            {
+                si.UnlockAchievements("ACH_OUTPOST");
+            }
             FinishQuestStep();
         }
     }

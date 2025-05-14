@@ -11,9 +11,7 @@ public class SteamIntegration : MonoBehaviour
         {
             Steamworks.SteamClient.Init(3719970);
             PrintYourName();
-            ClearAchievementStatus("ACH_JUMP_ONCE");
-            IsThisAchievementUnlocked("ACH_JUMP_ONCE");
-            UnlockAchievements("ACH_JUMP_ONCE");
+       
         }
         catch (System.Exception e)
         {
