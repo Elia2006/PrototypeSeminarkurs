@@ -2951,6 +2951,14 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6127676390731681583, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: si
+      value: 
+      objectReference: {fileID: 66633147}
+    - target: {fileID: 6127676390731681583, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 512146641}
+    - target: {fileID: 6127676390731681583, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: map
       value: 
       objectReference: {fileID: 661262150004563445}
@@ -2974,6 +2982,18 @@ PrefabInstance:
       propertyPath: field of view
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 7437467878575686389, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: si
+      value: 
+      objectReference: {fileID: 66633147}
+    - target: {fileID: 7437467878575686389, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 512146641}
+    - target: {fileID: 7437467878575686389, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: smg
+      value: 
+      objectReference: {fileID: 1847674568}
     - target: {fileID: 7437467878575686389, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: switchSound
       value: 
@@ -23541,6 +23561,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7167986123225005177, guid: c3ad86efe29863e47a843d6ded09909e, type: 3}
+      propertyPath: si
+      value: 
+      objectReference: {fileID: 66633147}
     - target: {fileID: 7167986123225005177, guid: c3ad86efe29863e47a843d6ded09909e, type: 3}
       propertyPath: Player
       value: 
