@@ -22,6 +22,41 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a46e2eb6b1ca0c044a866a64a7b2ba29
+    m_Address: Assets/LocaleTables/Keybinds Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e1b723f256c36b46a47dc0c69e8c0a3
+    m_Address: Assets/LocaleTables/FirstQuest Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1c8bc38afae54344ba4ce1a796e330f
+    m_Address: Assets/LocaleTables/SecondQuest Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a4fd2a4c5de8d74f8d787531d422758
+    m_Address: Assets/LocaleTables/ThirdQuest Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: baa3da90a3c356846978844a1911f7ec
+    m_Address: Assets/LocaleTables/FourthQuest Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db794b51b38455247b988cd9ae00cbc0
+    m_Address: Assets/LocaleTables/FifthQuest Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ee4993f67a3b614ba35181a30a44720
+    m_Address: Assets/LocaleTables/SixthQuest Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 711c5dc5453a3bc4c99b7546658109ad, type: 2}
   m_SchemaSet:

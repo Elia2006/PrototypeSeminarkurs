@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: FirstQuest_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 1e1b723f256c36b46a47dc0c69e8c0a3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 4291153920
+    m_Localized: "Oh, schau mal einer an, du bist wach! Und... vermutlich auch ein
+      bisschen verwirrt. Lass mich raten \u2013 Absturz, Ged\xE4chtnisl\xFCcke, existenzielle
+      Panik? Ja?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129533071360
+    m_Localized: "Perfekt. Dann starte ich jetzt das ReMember-Protokoll\u2122. Versuch
+      einfach, nicht gleich wieder zu sterben."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151720939520
+    m_Localized: "Okay, Zeit f\xFCr eine kleine Aufw\xE4rm\xFCbung. Bewege dich mit
+      W, A, S und D. Dreh dich mit der Maus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168032587776
+    m_Localized: "Dr\xFCck Shift zum Sprinten. Au\xDFer du genie\xDFt es, im Schneckentempo
+      zu verrecken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180942655488
+    m_Localized: "Falls du H\xF6he gewinnen willst: Leertaste. Falls du glaubst,
+      du kannst fliegen: Nein."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196927148032
+    m_Localized: "Mit den Tasten 1 - 3 kannst du deine Waffen benutzen. Mit der linken
+      Maustaste schie\xDFt du, wenn du aber was treffen m\xF6chtest, dann benutze
+      die rechte Maustaste zum Zielen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 209350676480
+    m_Localized: 'Wenn du Gierschlund mal wieder alle deine Patronen aufgebraucht
+      hast dann kannst du mit R nachladen.
+
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 222755672064
+    m_Localized: "Deine aktuellen Aufgaben stehen oben rechts. Falls du also mal
+      wieder nicht wei\xDFt was du tun sollst, sollte dir das weiterhelfen.\r\n\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238408814592
+    m_Localized: "Kurz vor dem Absturz hat mein Radar einige Strukturen erfasst.
+      Gute Nachricht: Wir sind nicht allein. Schlechte Nachricht: Du bist mittendurch
+      geflogen\u2026\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 251847364608
+    m_Localized: "Statte ihn doch mal ein Besuch ab und hoffe das sie nicht allzu
+      w\xFCtend auf dich sind. Vielleicht findest du ja was n\xFCtzliches.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264321224704
+    m_Localized: "Oho! Du hast mal was geleistet. Gro\xDFartig. Baue es schnellstm\xF6glich
+      ins Schiff ein, da k\xF6nnten sich wichtige Information drauf befinden."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

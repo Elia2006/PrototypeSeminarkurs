@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: FirstQuest Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: FirstQuest
+  m_TableCollectionNameGuidString: 1e1b723f256c36b46a47dc0c69e8c0a3
+  m_Entries:
+  - m_Id: 4291153920
+    m_Key: FirstQuest1.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129533071360
+    m_Key: FirstQuest1.1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151720939520
+    m_Key: FirstQuest1.2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168032587776
+    m_Key: FirstQuest1.3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180942655488
+    m_Key: FirstQuest1.4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196927148032
+    m_Key: FirstQuest1.5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 209350676480
+    m_Key: FirstQuest1.6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 222755672064
+    m_Key: FirstQuest1.7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238408814592
+    m_Key: FirstQuest1.8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 251847364608
+    m_Key: FirstQuest1.9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264321224704
+    m_Key: FirstQuest2.0
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2372850941757489187
+  references:
+    version: 2
+    RefIds:
+    - rid: 2372850941757489187
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1747481019012

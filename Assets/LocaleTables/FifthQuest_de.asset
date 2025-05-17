@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: FifthQuest_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: db794b51b38455247b988cd9ae00cbc0, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 46003507200
+    m_Localized: "Scheint als h\xE4ttest du doch was drauf\u2026 Leider \xE4ndert
+      das nichts an dem Fakt, dass du unseren Energiekern zerst\xF6rt hast.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50176839680
+    m_Localized: "Die Outposts scheinen eine Art Radar-Signal zur selben Position
+      zu senden, seitdem du da warst. Ich glaube du solltest das mal \xFCberpr\xFCfen.
+      Ich habe dir den Ort auf der Karte markiert."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61845393408
+    m_Localized: "Meine Sensoren erfassen... etwas massives. Falls du beten willst,
+      jetzt w\xE4re ein guter Moment"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65091784704
+    m_Localized: ALARM! ERNSTHAFTE GEFAHR! Und diesmal meine ich es ernst.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76265410560
+    m_Localized: "Wow. Du hast es tats\xE4chlich geschafft. Ich bin... beeindruckt?
+      Schockiert? Schwer zu sagen\u2026\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 110390267904
+    m_Localized: "Jedenfalls hast du jetzt alle Teile, um das Raumschiff zu reparieren.
+      \r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113762488320
+    m_Localized: Aktiviere jetzt wieder das Raumschiff und wir sind schnurstracks
+      im Orbit!
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

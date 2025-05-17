@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: SecondQuest Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: SecondQuest
+  m_TableCollectionNameGuidString: e1c8bc38afae54344ba4ce1a796e330f
+  m_Entries:
+  - m_Id: 29813493760
+    m_Key: SecondQuest1.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34662109184
+    m_Key: SecondQuest1.1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36780232704
+    m_Key: SecondQuest1.2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41154891776
+    m_Key: SecondQuest1.3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53104463872
+    m_Key: SecondQuest1.4
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2372850941757489188
+  references:
+    version: 2
+    RefIds:
+    - rid: 2372850941757489188
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1747481211790

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: SecondQuest
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: e1c8bc38afae54344ba4ce1a796e330f, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 4850d1f8e99098f4f96cf6127b08bc8f, type: 2}
+  - {fileID: 11400000, guid: 27212ab1d42418c4b84f71ae39be3dfe, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []
