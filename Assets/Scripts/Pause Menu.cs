@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public LanguageSwitcher ls;
     public GameObject pauseMenu;
     public static bool isPaused;
 
@@ -44,6 +45,18 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Debug.Log(Time.timeScale + "resume");
         isPaused = false;   
+    }
+
+    public void SwitchLanguage()
+    {
+        if (ls.lang == true)
+        {
+            ls.lang = false;
+        }
+        else if (ls.lang == false)
+        {
+            ls.lang = true;
+        }
     }
 
     public void GoToMainMenu()
