@@ -101,7 +101,6 @@ public class HUD : MonoBehaviour
         {
             if(enemy.continueCharge)
             {
-                //Debug.Log(enemy.transform.name);
                 anyAttacking = true;
             }   
         }

@@ -60,13 +60,13 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, bool isCrowbar)
     {
         health -= amount;
         
         if (health <= 0)
         {
-            Death();
+            Death(isCrowbar);
         }else
         {
             continueCharge = true;
@@ -76,7 +76,6 @@ public class Enemy : MonoBehaviour
             {
                 Allert(50);
             }
-            
         }
     }
 
@@ -91,8 +90,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void Death()
+    protected void Death(bool isCrowbar)
     {
+        //crowbar achievement
+        if(isCrowbar)
+        {
+            if(transform.name[..8] == "SandCrab")
+            {
+                Debug.Log("SandCrab");
+            }else if(transform.name[..10] == "EnemyRange")
+            {
+                Debug.Log("EnemyRange");
+            }else if(gameObject.name[..12] == "EnemyMelee 1")
+            {
+                Debug.Log("EnemyMelee 1");
+            }else if(transform.name[..14] == "ScavangerMelee")
+            {
+                Debug.Log("ScavangerMelee");
+            }else if(transform.name[..15] == "ScavangerRanged")
+            {
+                Debug.Log("ScavangerRanged");
+            }
+        }
+
+        //Boss save
         if (transform.name.Equals("boss als 1 objekt")) 
         {
             Debug.Log("Boss erkannt");
@@ -100,6 +121,7 @@ public class Enemy : MonoBehaviour
         }
         StopAllCoroutines();
 
+        //Die animation
         isActivated = false;
         continueCharge = false;
 

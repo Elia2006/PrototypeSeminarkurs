@@ -42,7 +42,7 @@ public class Grenade : MonoBehaviour
         {
             Debug.Log("Gegner getroffen");
             Explode();
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(grenadeDamage);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(grenadeDamage, false);
 
         }
     }

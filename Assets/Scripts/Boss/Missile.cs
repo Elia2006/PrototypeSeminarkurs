@@ -46,7 +46,7 @@ public class Missile : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().TakeDamage(10);
+            other.GetComponent<Enemy>().TakeDamage(10, false);
             
         }
         else if (other.CompareTag("Player"))
