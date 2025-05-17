@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 9431715}
   - component: {fileID: 9431714}
   - component: {fileID: 9431713}
+  - component: {fileID: 9431716}
   m_Layer: 5
   m_Name: Sprache wechseln
   m_TagString: Untagged
@@ -403,9 +404,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1714464686}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: SwitchLanguage
+      - m_Target: {fileID: 9431716}
+        m_TargetAssemblyTypeName: LanguageSwitcher, Assembly-CSharp
+        m_MethodName: ChangeLocale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -453,6 +454,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9431711}
   m_CullTransparentMesh: 1
+--- !u!114 &9431716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9431711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5985393043d370242bad95b885f30db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &15858357
 PrefabInstance:
   m_ObjectHideFlags: 0

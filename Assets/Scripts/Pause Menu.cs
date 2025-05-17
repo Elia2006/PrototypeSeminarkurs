@@ -47,17 +47,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;   
     }
 
-    public void SwitchLanguage()
-    {
-        if (ls.lang == true)
-        {
-            ls.lang = false;
-        }
-        else if (ls.lang == false)
-        {
-            ls.lang = true;
-        }
-    }
+    
 
     public void GoToMainMenu()
     {

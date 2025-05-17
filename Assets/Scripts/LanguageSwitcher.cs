@@ -2,28 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Localization.Settings;
+
 public class LanguageSwitcher : MonoBehaviour
 {
-    public bool lang;
-    // Start is called before the first frame update
-    void Start()
+    private bool active = false;
+    public void ChangeLocale()
     {
+        if (active)
+        {
+            return;
+        }
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) 
+        {
+            StartCoroutine(SetLocale(1));
+        } 
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1]) 
+        {
+            StartCoroutine(SetLocale(0)); 
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SetLocale(int _localeID)
     {
-        
-    }
-
-    public void SwitchToGerman() 
-    {
-        lang = true;
-    }
-
-    public void SwitchToEnglish() 
-    {
-        lang = false;
+        active = true;
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
+        active = false;
     }
 }
