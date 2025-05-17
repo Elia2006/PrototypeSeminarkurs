@@ -60,6 +60,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - "Wow. Du hast es tats\xE4chlich geschafft. Ich bin... beeindruckt? Schockiert?
-      Schwer zu sagen\u2026\r\n"
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:db794b51b38455247b988cd9ae00cbc0
+      m_TableEntryReference:
+        m_KeyId: 76265410560
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

@@ -75,8 +75,8 @@ MonoBehaviour:
   Map: {fileID: 0}
   Canvas: {fileID: 0}
   Disabler: {fileID: 0}
-  trigger: {fileID: 3710659217362583239}
-  trigger2: {fileID: -969060403570589113}
+  trigger: {fileID: -969060403570589113}
+  trigger2: {fileID: 3710659217362583239}
 --- !u!114 &-4173663513655018993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,8 +103,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - Outpost gesichert. Der Teleporter wurde freigeschaltet.
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:1a4fd2a4c5de8d74f8d787531d422758
+      m_TableEntryReference:
+        m_KeyId: 114198695936
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &3710659217362583239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +129,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - "Hier befindet sich die Werkzeugkiste. Suche in den H\xE4usern, nachdem du
-      die Gegner au\xDFer Gefecht setzen konntest."
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:1a4fd2a4c5de8d74f8d787531d422758
+      m_TableEntryReference:
+        m_KeyId: 117386366976
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!108 &9130845513893799785
 Light:
   m_ObjectHideFlags: 0

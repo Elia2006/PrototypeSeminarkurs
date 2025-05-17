@@ -83,33 +83,90 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - " Oh, schau mal einer an, du bist wach! Und... vermutlich auch ein bisschen
-      verwirrt. Lass mich raten \u2013 Absturz, Ged\xE4chtnisl\xFCcke, existenzielle
-      Panik? Ja?"
-    - "Perfekt. Dann starte ich jetzt das ReMember-Protokoll\u2122. Versuch einfach,
-      nicht gleich wieder zu sterben.\r\n"
-    - " Okay, Zeit f\xFCr eine kleine Aufw\xE4rm\xFCbung. Bewege dich mit W, A, S
-      und D. Dreh dich mit der Maus"
-    - "Dr\xFCck Shift zum Sprinten. Au\xDFer du genie\xDFt es, im Schneckentempo
-      zu verrecken.\r\n"
-    - "Falls du H\xF6he gewinnen willst: Leertaste. Falls du glaubst, du kannst fliegen:
-      Nein.\r\n"
-    - "Mit  den Tasten 1 - 3 kannst du deine Waffen benutzen. Mit der linken Maustaste
-      schie\xDFt du, wenn du aber was treffen m\xF6chtest, dann benutze die rechte
-      Maustaste zum Zielen."
-    - 'Wenn du Gierschlund mal wieder alle deine Patronen aufgebraucht hast dann
-      kannst du mit R nachladen.
-
-
-
-'
-    - " Deine aktuellen Aufgaben stehen oben rechts. Falls du also mal wieder nicht
-      wei\xDFt was du tun sollst, sollte dir das weiterhelfen.\r\n\r\n"
-    - "Kurz vor dem Absturz hat mein Radar einige Strukturen erfasst. Gute Nachricht:
-      Wir sind nicht allein. Schlechte Nachricht: Du bist mittendurch geflogen\u2026\r\n"
-    - "Statte ihn doch mal ein Besuch ab und hoffe das sie nicht allzu w\xFCtend
-      auf dich sind. Vielleicht findest du ja was n\xFCtzliches.\r\n"
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 4291153920
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 129533071360
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 151720939520
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 168032587776
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 180942655488
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 196927148032
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 209350676480
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 222755672064
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 238408814592
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 251847364608
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &-4350926844682948682
 MonoBehaviour:
   m_ObjectHideFlags: 0

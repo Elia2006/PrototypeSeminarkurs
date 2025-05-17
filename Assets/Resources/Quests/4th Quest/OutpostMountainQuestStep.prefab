@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28b53314a2f5164a9b0659149ccf294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Map: {fileID: 0}
+  Canvas: {fileID: 0}
+  highlighter: {fileID: 0}
 --- !u!114 &6989832274321744415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,4 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: 
-    sentences: []
+    LocalizedSentences: []
+  references:
+    version: 2
+    RefIds: []

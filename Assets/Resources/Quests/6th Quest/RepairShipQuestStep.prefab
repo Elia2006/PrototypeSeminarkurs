@@ -64,9 +64,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - "Unser Abenteuer geht hier auf ein Ende zu. Anscheinend hast du den Raumschiffabsturz
-      auf einem fremden Planeten \xFCberlebt."
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:3ee4993f67a3b614ba35181a30a44720
+      m_TableEntryReference:
+        m_KeyId: 40072761344
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!135 &-6728518316437368485
 SphereCollider:
   m_ObjectHideFlags: 0

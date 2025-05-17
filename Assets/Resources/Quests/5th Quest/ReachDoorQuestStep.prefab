@@ -85,9 +85,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - " Scheint als h\xE4ttest du doch was drauf\u2026 Leider \xE4ndert das nichts
-      an dem Fakt, dass du unseren Energiekern zerst\xF6rt hast.\r\n"
-    - "Die Outposts scheinen eine Art Radar-Signal zur selben Position zu senden,
-      seitdem du da warst. Ich glaube du solltest das mal \xFCberpr\xFCfen. Ich habe
-      dir den Ort auf der Karte markiert."
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:db794b51b38455247b988cd9ae00cbc0
+      m_TableEntryReference:
+        m_KeyId: 46003507200
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:db794b51b38455247b988cd9ae00cbc0
+      m_TableEntryReference:
+        m_KeyId: 50176839680
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

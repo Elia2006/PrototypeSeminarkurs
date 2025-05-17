@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6a4f08b2645bf42b38ffd963400583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossSpawner: {fileID: 0}
+  Boss: {fileID: 0}
   trigger: {fileID: -6428665186847250541}
 --- !u!114 &-6428665186847250541
 MonoBehaviour:
@@ -66,9 +68,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - " Jedenfalls hast du jetzt alle Teile, um das Raumschiff zu reparieren. \r\n"
-    - Aktiviere jetzt wieder das Raumschiff und wir sind schnurstracks im Orbit!
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:db794b51b38455247b988cd9ae00cbc0
+      m_TableEntryReference:
+        m_KeyId: 110390267904
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:db794b51b38455247b988cd9ae00cbc0
+      m_TableEntryReference:
+        m_KeyId: 113762488320
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &7823827692554582112
 MonoBehaviour:
   m_ObjectHideFlags: 0

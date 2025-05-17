@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -50,8 +52,9 @@ public class DialogueManager : MonoBehaviour
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (LocalizedString strings in dialogue.LocalizedSentences)
         {
+            var sentence = strings.GetLocalizedString();
             sentences.Enqueue(sentence);
             
         }

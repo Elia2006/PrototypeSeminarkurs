@@ -98,9 +98,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - "Oho! Du hast mal was geleistet. Gro\xDFartig. Baue es schnellstm\xF6glich
-      ins Schiff ein, da k\xF6nnten sich wichtige Information drauf befinden."
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+      m_TableEntryReference:
+        m_KeyId: 264321224704
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!108 &-7671559793345003974
 Light:
   m_ObjectHideFlags: 0

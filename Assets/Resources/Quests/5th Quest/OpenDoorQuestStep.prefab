@@ -82,7 +82,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - "Meine Sensoren erfassen... etwas massives. Falls du beten willst, jetzt w\xE4re
-      ein guter Moment\r\n"
-    - ALARM! ERNSTHAFTE GEFAHR! Und diesmal meine ich es ernst.
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:db794b51b38455247b988cd9ae00cbc0
+      m_TableEntryReference:
+        m_KeyId: 61845393408
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:db794b51b38455247b988cd9ae00cbc0
+      m_TableEntryReference:
+        m_KeyId: 65091784704
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

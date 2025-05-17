@@ -103,10 +103,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - "Alles klar, hier findest du das Hitzeschild, welches ben\xF6tigt wird, um
-      nicht in der Atmosph\xE4re zu vergl\xFChen. Mein Scan zeigt: erh\xF6ht positioniert.
-      Zeit, um im Klettern zu \xFCben\u2026"
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:baa3da90a3c356846978844a1911f7ec
+      m_TableEntryReference:
+        m_KeyId: 5444587520
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &4088613974489406413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,8 +129,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - Outpost gesichert. Der Teleporter wurde freigeschaltet.
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:baa3da90a3c356846978844a1911f7ec
+      m_TableEntryReference:
+        m_KeyId: 9890549760
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!108 &4214080942544862028
 Light:
   m_ObjectHideFlags: 0

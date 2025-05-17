@@ -85,9 +85,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - "Schiff stabilisiert sich, aber durch dein wahnsinniges Absturz Man\xF6ver
-      ist die Mechanik kaputt gegangen\u2026\r\n"
-    - "Meine Analysen haben ergeben, dass es noch andere Outposts gibt, die du noch
-      nicht zerst\xF6rt hast. Ich habe sie dir auf der Karte markiert. Dort wirst
-      du bestimmt f\xFCndig und kannst die Teile dann direkt hier abliefern!\r\n"
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:1a4fd2a4c5de8d74f8d787531d422758
+      m_TableEntryReference:
+        m_KeyId: 107575889920
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:1a4fd2a4c5de8d74f8d787531d422758
+      m_TableEntryReference:
+        m_KeyId: 110625148928
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

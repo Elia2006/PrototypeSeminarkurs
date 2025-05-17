@@ -65,18 +65,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Board AI
-    sentences:
-    - " Analyse L\xE4uft... Analyse abgeschlossen. Gl\xFCckwunsch, wir wissen jetzt
-      etwas \xFCber diesen Planeten. Nicht, dass du was davon verstehen w\xFCrdest..."
-    - "Ich habe eine Karte vom Gebiet gefunden. Dr\xFCcke M, um diese aufzurufen.
-      Ich werde dir aktive Auftr\xE4ge immer mit einem blauen Kreis auf der Map markieren."
-    - "Meine Triangulation zeigt, dass es hier irgendwo Artefakte gibt. Ich habe
-      es dir auf deiner Karte mit einem blauen Kreis markiert. Vielleicht findest
-      du dort etwas N\xFCtzliches, um unser Schiff zu flicken. Oder du wirst gefressen.
-      Wer wei\xDF?\r\n"
-    - "Ebenfalls habe ich noch eine zweite gute  Nachricht f\xFCr dich Faulenzer.
-      Ich habe einige Teleporter entdeckt. Sobald du einen gefunden hast, kannst
-      du dich darauf stellen, M dr\xFCcken und dich zu anderen freigeschalteten Teleportern
-      teleportieren.\r\n"
-    - "Benutze sie wenn dir nicht nach Laufen ist und hoffe, dass du dich wieder
-      vollst\xE4ndig materialisierst."
+    LocalizedSentences:
+    - m_TableReference:
+        m_TableCollectionName: GUID:e1c8bc38afae54344ba4ce1a796e330f
+      m_TableEntryReference:
+        m_KeyId: 29813493760
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e1c8bc38afae54344ba4ce1a796e330f
+      m_TableEntryReference:
+        m_KeyId: 34662109184
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e1c8bc38afae54344ba4ce1a796e330f
+      m_TableEntryReference:
+        m_KeyId: 36780232704
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e1c8bc38afae54344ba4ce1a796e330f
+      m_TableEntryReference:
+        m_KeyId: 41154891776
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e1c8bc38afae54344ba4ce1a796e330f
+      m_TableEntryReference:
+        m_KeyId: 53104463872
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
