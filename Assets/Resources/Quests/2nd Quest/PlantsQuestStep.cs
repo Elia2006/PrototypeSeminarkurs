@@ -15,7 +15,9 @@ public class PlantsQuestStep : QuestStep
 
     public GameObject Plants;
     public Transform PlansEnabler;
-    
+
+    GameObject SteamManager;
+    SteamIntegration si;
     
         
 
@@ -23,6 +25,15 @@ public class PlantsQuestStep : QuestStep
 
     private void Start()
     {
+        
+        SteamManager = GameObject.Find("SteamManager");
+        si = SteamManager.GetComponent<SteamIntegration>();
+        if (!si.IsThisAchievementUnlocked("ACH_DATASHARD"))
+        {
+            si.UnlockAchievements("ACH_DATASHARD");
+        }
+        
+
         Map = GameObject.Find("Map");
         Canvas = Map.transform.Find("Canvas");
         highlighter = Canvas.transform.Find("PlantHighlighter");

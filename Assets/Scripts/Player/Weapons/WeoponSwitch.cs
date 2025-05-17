@@ -8,6 +8,10 @@ public class WeoponSwitch : MonoBehaviour
     [SerializeField] GameObject Weapon2;
     [SerializeField] GameObject Weapon3;
 
+    public SteamIntegration si;
+    public Gun gun;
+    public SMG smg;
+
     private GameObject ammoText;
     private int currentKey = 1;
 
@@ -83,6 +87,13 @@ public class WeoponSwitch : MonoBehaviour
             Weapon2.SetActive(false);
             Weapon3.SetActive(true);
             ammoText.SetActive(true);
+        }
+
+        int totalAmmo = smg.availableAmmo + smg.loadedAmmo + gun.loadedAmmo + gun.availableAmmo;
+
+        if (totalAmmo > 1000 && !si.IsThisAchievementUnlocked("ACH_FULL_AMMO"))
+        {
+            si.UnlockAchievements("ACH_FULL_AMMO");
         }
 
     }

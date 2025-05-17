@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
     [SerializeField] Animator animAim;
 
     //Ammo
-    private int loadedAmmo = 0;
+    public int loadedAmmo = 0;
     private TextMeshProUGUI loadedAmmoText; 
     private readonly int maxLoadedAmmo = 6;
 

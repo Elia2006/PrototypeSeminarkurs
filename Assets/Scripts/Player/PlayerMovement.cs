@@ -54,11 +54,8 @@ public class PlayerMovement : MonoBehaviour
         Application.targetFrameRate = 120;
         lastPos = transform.position;
 
-        si.IsThisAchievementUnlocked("ACH_JUMP_5000");
-        if (si.IsThisAchievementUnlocked("ACH_JUMP_5000"))
-        {
-            si.ClearAchievementStatus("ACH_JUMP_5000");
-        }
+        
+        
     }
 
     void Update()
@@ -89,9 +86,9 @@ public class PlayerMovement : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 jumpTimer = Time.time + 1;
                 totalJumps++;
-                if (totalJumps >= 5 && !si.IsThisAchievementUnlocked("ACH_JUMP_5000"))
+                if (totalJumps >= 1000 && !si.IsThisAchievementUnlocked("ACH_JUMP_1000"))
                 {
-                    si.UnlockAchievements("ACH_JUMP_5000");
+                    si.UnlockAchievements("ACH_JUMP_1000");
                 }
             }
             

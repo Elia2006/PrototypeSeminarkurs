@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -4181972053487024929}
   - component: {fileID: 3527068928066483647}
   - component: {fileID: -2899437505757165645}
+  - component: {fileID: -4350926844682948682}
   m_Layer: 0
   m_Name: VisitRuinedOutpostQuestStep
   m_TagString: Untagged
@@ -109,3 +110,43 @@ MonoBehaviour:
       Wir sind nicht allein. Schlechte Nachricht: Du bist mittendurch geflogen\u2026\r\n"
     - "Statte ihn doch mal ein Besuch ab und hoffe das sie nicht allzu w\xFCtend
       auf dich sind. Vielleicht findest du ja was n\xFCtzliches.\r\n"
+--- !u!114 &-4350926844682948682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802256980738393235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:1e1b723f256c36b46a47dc0c69e8c0a3
+    m_TableEntryReference:
+      m_KeyId: 4291153920
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -2899437505757165645}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []

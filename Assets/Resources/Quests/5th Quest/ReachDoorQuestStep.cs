@@ -12,12 +12,16 @@ public class ReachDoorQuestStep : QuestStep
     public Transform highlighter;
 
 
-
+    GameObject SteamManager;
+    SteamIntegration si;
 
 
 
     private void Start()
     {
+        SteamManager = GameObject.Find("SteamManager");
+        si = SteamManager.GetComponent<SteamIntegration>();
+
         Map = GameObject.Find("Map");
         Canvas = Map.transform.Find("Canvas");
         highlighter = Canvas.transform.Find("DoorHighlighter");
@@ -35,6 +39,10 @@ public class ReachDoorQuestStep : QuestStep
         {
             GameEventsManager.instance.miscEvents.DoorOpened();
             highlighter.gameObject.SetActive(false);
+            if (!si.IsThisAchievementUnlocked("ACH_FACILITY"))
+            {
+                si.UnlockAchievements("ACH_FACILITY");
+            }
             FinishQuestStep();
         }
     }

@@ -13,11 +13,17 @@ public class OutpostArchQuestStep : QuestStep
 
 
 
+    GameObject SteamManager;
+    SteamIntegration si;
+    
 
 
-
-    private void Start()
+private void Start()
     {
+        SteamManager = GameObject.Find("SteamManager");
+        si = SteamManager.GetComponent<SteamIntegration>();
+        
+
         Map = GameObject.Find("Map");
         Canvas = Map.transform.Find("Canvas");
         highlighter = Canvas.transform.Find("OutpostAHighlighter");
@@ -33,7 +39,11 @@ public class OutpostArchQuestStep : QuestStep
     {
         if (other.CompareTag("Player"))
         {
-            highlighter.gameObject.SetActive(false);    
+            highlighter.gameObject.SetActive(false);
+            if (!si.IsThisAchievementUnlocked("ACH_OUTPOSTS"))
+            {
+                si.UnlockAchievements("ACH_OUTPOSTS");
+            }
             FinishQuestStep();
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnPointManager : MonoBehaviour
 {
+    [SerializeField] SteamIntegration si;
     public GameObject[] SpawnPoints;
     public GameObject Player;
     private CharacterController playerCc;
@@ -37,6 +38,11 @@ public class SpawnPointManager : MonoBehaviour
                 GameObject.Find("PlayerCamera").transform.eulerAngles = new Vector3(0, 0, 0);
                 playerCc.enabled = true;
                 SpawnPoints[i].transform.GetChild(0).GetComponent<SpawnPoint>().teleport = false;
+
+                if (!si.IsThisAchievementUnlocked("ACH_TELEPORT"))
+                {
+                    si.UnlockAchievements("ACH_TELEPORT");
+                }
             }
         }
     }
