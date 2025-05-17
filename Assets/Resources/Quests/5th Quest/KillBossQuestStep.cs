@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class KillBossQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
     [SerializeField] DialogueTrigger trigger;
 
     GameObject SteamManager;

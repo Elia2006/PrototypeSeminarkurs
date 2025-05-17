@@ -45,12 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56196054d03434342887a3fce2f74cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trueStatus:
+    m_TableReference:
+      m_TableCollectionName: GUID:1794c04ee7d8221479b70ab0e1ad8aea
+    m_TableEntryReference:
+      m_KeyId: 10263842816
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   trigger: {fileID: 1278653144821348545}
   Map: {fileID: 0}
   Canvas: {fileID: 0}
   highlighter: {fileID: 0}
   Plants: {fileID: 0}
   PlansEnabler: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &1278653144821348545
 MonoBehaviour:
   m_ObjectHideFlags: 0

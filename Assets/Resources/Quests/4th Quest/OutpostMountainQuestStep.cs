@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(SphereCollider))]
 public class OutpostMountainQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
 
     public GameObject Map;
     public Transform Canvas;

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(SphereCollider))]
 public class ReachDoorQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
     [SerializeField] DialogueTrigger trigger;
 
     public GameObject Map;

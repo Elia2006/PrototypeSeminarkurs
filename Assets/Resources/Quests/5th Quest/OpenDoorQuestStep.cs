@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(BoxCollider))]
 public class OpenDoorQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
     [SerializeField] DialogueTrigger trigger;
     private void Start()
     {

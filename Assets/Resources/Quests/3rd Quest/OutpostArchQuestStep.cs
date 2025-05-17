@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(SphereCollider))]
 public class OutpostArchQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
     [SerializeField] DialogueTrigger trigger;
 
     public GameObject Map;
@@ -51,7 +53,7 @@ private void Start()
     private void UpdateState()
     {
         string state = "";
-        string status = "Begebe dich zu einem der Aussenposten";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

@@ -72,11 +72,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e92157f93c61843a056c39cddbb943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trueStatus:
+    m_TableReference:
+      m_TableCollectionName: GUID:1794c04ee7d8221479b70ab0e1ad8aea
+    m_TableEntryReference:
+      m_KeyId: 15674494976
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   Map: {fileID: 0}
   Canvas: {fileID: 0}
   Disabler: {fileID: 0}
   trigger: {fileID: -969060403570589113}
   trigger2: {fileID: 3710659217362583239}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &-4173663513655018993
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(SphereCollider))]
 public class RuinedOutpostQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
+    
     [SerializeField] DialogueTrigger trigger; 
     private void Start()
     {
@@ -29,7 +32,7 @@ public class RuinedOutpostQuestStep : QuestStep
     {
         
         string state = "";
-        string status = "Begebe dich zum zerstörten Aussenposten.";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

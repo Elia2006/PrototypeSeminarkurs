@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class PlantsQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
     [SerializeField] DialogueTrigger trigger;
 
     private int plantscollected = 0;
@@ -54,6 +56,7 @@ public class PlantsQuestStep : QuestStep
     private void OnEnable()
     {
         GameEventsManager.instance.miscEvents.onCoinCollected += HerbCollected;
+        trueStatus. Arguments = new object[] {plantscollected, plantstocollect};
     }
 
     private void OnDisable()
@@ -78,8 +81,10 @@ public class PlantsQuestStep : QuestStep
     }
     private void UpdateState()
     {
+        trueStatus.Arguments[0] = plantscollected;
+        trueStatus.Arguments[1] = plantstocollect;
         string state = "";
-        string status = plantscollected + " von " + plantstocollect + " benötigten Artefakten eingesammelt.";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

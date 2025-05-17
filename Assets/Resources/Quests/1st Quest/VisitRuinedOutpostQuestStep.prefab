@@ -47,7 +47,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb641bbe966a1b243ba557dda58f2843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trueStatus:
+    m_TableReference:
+      m_TableCollectionName: GUID:1794c04ee7d8221479b70ab0e1ad8aea
+    m_TableEntryReference:
+      m_KeyId: 4056272896
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   trigger: {fileID: -2899437505757165645}
+  references:
+    version: 2
+    RefIds: []
 --- !u!135 &3527068928066483647
 SphereCollider:
   m_ObjectHideFlags: 0

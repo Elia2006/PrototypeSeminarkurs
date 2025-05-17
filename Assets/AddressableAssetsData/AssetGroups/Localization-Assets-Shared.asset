@@ -57,6 +57,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1794c04ee7d8221479b70ab0e1ad8aea
+    m_Address: Assets/LocaleTables/QuestLog Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 711c5dc5453a3bc4c99b7546658109ad, type: 2}
   m_SchemaSet:

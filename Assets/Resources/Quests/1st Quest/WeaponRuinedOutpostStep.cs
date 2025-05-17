@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(BoxCollider))]
 public class WeaponRuinedOutpostStep : QuestStep
 {
-    
+    public LocalizedString trueStatus;
+
 
     [SerializeField] DialogueTrigger trigger;
     private void Start()
@@ -51,7 +53,7 @@ public class WeaponRuinedOutpostStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Sammle das Speichermodul ein.";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

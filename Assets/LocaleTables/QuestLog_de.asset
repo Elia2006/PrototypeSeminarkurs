@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: QuestLog_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 1794c04ee7d8221479b70ab0e1ad8aea, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 2372850946430205970
+  m_TableData:
+  - m_Id: 4056272896
+    m_Localized: "Begebe dich zum zerst\xF6rten Aussenposten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7936004096
+    m_Localized: Sammle das Speichermodul ein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13141135360
+    m_Localized: Begebe dich zu einem der Aussenposten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15674494976
+    m_Localized: Beseitige die Gegner und sammle den Werkzeugkoffer ein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18170105856
+    m_Localized: Begebe dich zu einem der Aussenposten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24386064384
+    m_Localized: Beseitige die Gegner und sammle das Hitzeschild ein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26336415744
+    m_Localized: "Gehe zur gro\xDFen T\xFCr."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28181909504
+    m_Localized: Erkunde die Fabrik.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30232924160
+    m_Localized: Erledige den 5AND-1N3L.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32023891968
+    m_Localized: Sammle den Energiekern ein.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35660353536
+    m_Localized: Starte das Raumschiff.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10263842816
+    m_Localized: "{0} von {1} ben\xF6tigten Artefakten eingesammelt."
+    m_Metadata:
+      m_Items:
+      - rid: 2372850946430205970
+  references:
+    version: 2
+    RefIds:
+    - rid: 2372850946430205970
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00d0c56302000000

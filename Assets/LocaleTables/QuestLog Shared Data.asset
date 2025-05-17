@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: QuestLog Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: QuestLog
+  m_TableCollectionNameGuidString: 1794c04ee7d8221479b70ab0e1ad8aea
+  m_Entries:
+  - m_Id: 4056272896
+    m_Key: QuestLog.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7936004096
+    m_Key: QuestLog.1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10263842816
+    m_Key: QuestLog.2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13141135360
+    m_Key: QuestLog.3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15674494976
+    m_Key: QuestLog.4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18170105856
+    m_Key: QuestLog.5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24386064384
+    m_Key: QuestLog.6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26336415744
+    m_Key: QuestLog.7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28181909504
+    m_Key: QuestLog.8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30232924160
+    m_Key: QuestLog.9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32023891968
+    m_Key: QuestLog.10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35660353536
+    m_Key: QuestLog.11
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2372850946430205965
+  references:
+    version: 2
+    RefIds:
+    - rid: 2372850946430205965
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1747500846567

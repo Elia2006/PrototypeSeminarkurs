@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Localization;
 public class RepairShipQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
     GameObject SteamManager;
     SteamIntegration si;
 

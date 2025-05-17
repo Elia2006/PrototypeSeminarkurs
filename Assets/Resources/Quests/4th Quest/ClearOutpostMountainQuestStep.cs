@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [RequireComponent(typeof(BoxCollider))]
 public class ClearOutpostMountainQuestStep : QuestStep
 {
+    public LocalizedString trueStatus;
     public GameObject Map;
     public Transform Canvas;
     public Transform Disabler;

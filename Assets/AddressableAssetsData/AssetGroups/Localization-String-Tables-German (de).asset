@@ -73,6 +73,12 @@ MonoBehaviour:
     - Locale-de
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d7c5848882e3b245bb2aeb5098cb041
+    m_Address: QuestLog_de
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-de
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 711c5dc5453a3bc4c99b7546658109ad, type: 2}
   m_SchemaSet:
