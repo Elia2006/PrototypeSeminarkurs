@@ -68,7 +68,7 @@ public class CrowbarScript : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript) 
             && !hasDamaged)
         {
-            collisionScript.TakeDamage(10, true);
+            collisionScript.TakeDamage(10, true, true);
             collisionScript.Knockback(0.1f);
             hitTexture.Hit();
             hasDamaged = true;
