@@ -17,7 +17,42 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: db794b51b38455247b988cd9ae00cbc0, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 46003507200
+    m_Localized: "Looks like you\u2019re not completely useless after all\u2026 Still
+      doesn\u2019t change the fact that you blew up our energy core."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50176839680
+    m_Localized: "Since you visited those Outposts, they\u2019ve all started pinging
+      one location. I\u2019ve marked it on your map. You might want to check it out.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61845393408
+    m_Localized: "My sensors are picking up\u2026 something massive. If you\u2019re
+      the praying type, now\u2019s your chance.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65091784704
+    m_Localized: "ALERT! REAL DANGER! No, seriously\u2026 I\u2019m not joking this
+      time."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76265410560
+    m_Localized: "Wow. You actually did it. I\u2019m\u2026 impressed? Shocked? Hard
+      to say\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 110390267904
+    m_Localized: "Either way, you\u2019ve now got everything you need to fix the
+      ship.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113762488320
+    m_Localized: "Fire it up and we\u2019ll be back in orbit before your next bad
+      decision.\r\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

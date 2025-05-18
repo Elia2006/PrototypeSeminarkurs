@@ -17,7 +17,27 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 1a4fd2a4c5de8d74f8d787531d422758, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 107575889920
+    m_Localized: "The ship\u2019s stabilizing, but thanks to your glorious crash
+      landing, the mechanics are toast\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 110625148928
+    m_Localized: "My scans show there are still some Outposts you haven\u2019t wrecked
+      yet. I\u2019ve marked them on your map. You\u2019ll probably find what we need
+      there \u2014 bring it back here."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114198695936
+    m_Localized: "The toolkit should be here. Search the buildings once you\u2019ve
+      dealt with the locals."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 117386366976
+    m_Localized: Outpost secured. Teleporter unlocked.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

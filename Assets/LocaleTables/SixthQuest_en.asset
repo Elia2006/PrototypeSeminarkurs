@@ -17,7 +17,12 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 3ee4993f67a3b614ba35181a30a44720, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 40072761344
+    m_Localized: Looks like our little adventure is coming to an end. Somehow, you
+      survived a spaceship crash on an alien planet.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

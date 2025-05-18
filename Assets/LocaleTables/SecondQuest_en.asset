@@ -19,7 +19,31 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 29813493760
-    m_Localized: 
+    m_Localized: "Analyzing\u2026 Analysis complete. Congrats, we know something
+      about this planet now. Not that you\u2019d understand any of it\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34662109184
+    m_Localized: "I\u2019ve extracted a map of the area. Press M to open it. I\u2019ll
+      mark active objectives with a blue circle."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36780232704
+    m_Localized: "Triangulation shows there are some rare Plants in the area. I\u2019ve
+      marked the location for you. Might be useful for repairing the ship. Or it
+      could be a death trap. Who knows?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53104463872
+    m_Localized: 'Use them when walking becomes too much of a chore. Just hope all
+      you rematerialize fully.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41154891776
+    m_Localized: "And guess what slacker\u2026 I\u2019ve also detected some teleporters.
+      Once activated, stand on one, press M, and jump to any unlocked location."
     m_Metadata:
       m_Items: []
   references:

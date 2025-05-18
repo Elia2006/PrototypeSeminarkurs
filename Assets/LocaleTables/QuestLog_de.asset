@@ -20,7 +20,7 @@ MonoBehaviour:
     - rid: 2372850946430205970
   m_TableData:
   - m_Id: 4056272896
-    m_Localized: "Begebe dich zum zerst\xF6rten Aussenposten."
+    m_Localized: "Begib dich zum zerst\xF6rten Aussenposten."
     m_Metadata:
       m_Items: []
   - m_Id: 7936004096
@@ -28,7 +28,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13141135360
-    m_Localized: Begebe dich zu einem der Aussenposten.
+    m_Localized: Begib dich zu einem der Aussenposten.
     m_Metadata:
       m_Items: []
   - m_Id: 15674494976
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 18170105856
-    m_Localized: Begebe dich zu einem der Aussenposten.
+    m_Localized: Begib dich zu einem der Aussenposten.
     m_Metadata:
       m_Items: []
   - m_Id: 24386064384

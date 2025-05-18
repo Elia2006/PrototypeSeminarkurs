@@ -17,7 +17,61 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 1e1b723f256c36b46a47dc0c69e8c0a3, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 4291153920
+    m_Localized: "Ohhh\u2026 look who\u2019s finally awake! And\u2026 probably a
+      bit confused. Let me guess \u2014 \tcrash landing, memory loss, existential
+      crisis? Yeah?\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129533071360
+    m_Localized: "Perfect. Initializing ReMember Protocol\u2122. Try not to die again
+      right away."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151720939520
+    m_Localized: Alright, time to stretch those legs. Move with W, A, S and D. Look
+      around with your mouse.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168032587776
+    m_Localized: "Hold Shift to sprint. Unless you\u2019re a fan of dying at a snail\u2019s
+      pace."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180942655488
+    m_Localized: "Wanna get some airtime? Hit Spacebar. Think you can fly? You can\u2019t."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196927148032
+    m_Localized: Use 1 through 3 to equip your weapons. Left click to shoot. If you
+      actually want to hit something, try using right click to aim.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 209350676480
+    m_Localized: "When you\u2019ve inevitably wasted all your ammo, press R to reload."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 222755672064
+    m_Localized: "Your current objectives are displayed in the top right. So when
+      you\u2019re lost, maybe check there.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238408814592
+    m_Localized: "Right before the crash, my radar picked up some structures. Good
+      news: we\u2019re not alone. Bad news: you flew straight through them\u2026\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 251847364608
+    m_Localized: "Maybe go pay them a visit. Let\u2019s hope they\u2019re not too
+      mad. Who knows, you might find something useful.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264321224704
+    m_Localized: Oh, look at you, achieving something for once. Excellent. Install
+      it into the ship ASAP, could be important data on there.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
