@@ -10,6 +10,8 @@ public class PlayerData
     public float maxHealth;
     public float energy;
     public float maxEnergy;
+    public float speedrunTimer;
+    public bool hasDiedYet;
     public float[] position;
     public float[] rotation;
 
@@ -19,6 +21,9 @@ public class PlayerData
         maxHealth = player.maxHealth;
         energy = player.playerEnergy;
         maxEnergy = player.maxEnergy;
+
+        speedrunTimer = player.speedrunTimer;
+        hasDiedYet = player.hasDiedYet;
 
         position = new float[3];
         position[0] = player.transform.position.x;

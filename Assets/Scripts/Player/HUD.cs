@@ -379,7 +379,9 @@ public class HUD : MonoBehaviour
         playerEnergy = data.energy;
         maxEnergy = data.maxEnergy;
 
-        
+        speedrunTimer = data.speedrunTimer; 
+        hasDiedYet = data.hasDiedYet;
+
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
