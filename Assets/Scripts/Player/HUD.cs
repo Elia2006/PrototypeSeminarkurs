@@ -22,9 +22,13 @@ public class HUD : MonoBehaviour
     public Quaternion rotation;
     public GameObject Player;
 
+    public float speedrunTimer = 0;
+
     private CharacterController playerCc;
 
     //health
+    public bool hasDiedYet = false;
+
     private Image healthBar;
     private Image healthBar2;
     private TextMeshProUGUI playerHealthText;
@@ -89,6 +93,7 @@ public class HUD : MonoBehaviour
         Autosave();
         //PressEnter();
 
+        speedrunTimer = speedrunTimer+Time.deltaTime;
 
         damageAlphaColor -= Time.deltaTime * 2;
     }
@@ -334,6 +339,8 @@ public class HUD : MonoBehaviour
 
     public void Die()
     {
+        hasDiedYet = true;
+
         Time.timeScale = 0f;
 
         boss.ResetBoss();

@@ -13,12 +13,15 @@ public class RepairShipQuestStep : QuestStep
     public GameObject Canvas;
     public Transform PressEStart;
 
+    public HUD hud;
+
     [SerializeField] DialogueTrigger trigger;
     private void Start()
     {
         SteamManager = GameObject.Find("SteamManager");
         si = SteamManager.GetComponent<SteamIntegration>();
 
+        hud = GameObject.Find("Player").GetComponent<HUD>();
         Canvas = GameObject.Find("Canvas");
         PressEStart = Canvas.transform.Find("PressEStart");
 
@@ -45,6 +48,22 @@ public class RepairShipQuestStep : QuestStep
                 if (!si.IsThisAchievementUnlocked("ACH_GAME_BEATEN"))
                 {
                     si.UnlockAchievements("ACH_GAME_BEATEN");
+                }
+
+                if (hud.hasDiedYet == false)
+                {
+                    if (!si.IsThisAchievementUnlocked("ACH_HARDCORE"))
+                    {
+                        si.UnlockAchievements("ACH_HARDCORE");
+                    }
+                }
+
+                if (hud.speedrunTimer <= 1200f)
+                {
+                    if (!si.IsThisAchievementUnlocked("ACH_SPEEDRUN"))
+                    {
+                        si.UnlockAchievements("ACH_SPEEDRUN");
+                    }
                 }
 
                 SceneManager.LoadScene("Outro");

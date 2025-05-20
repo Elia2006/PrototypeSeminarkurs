@@ -79,6 +79,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77e522c4e3c21aa42a9073a73554507d
+    m_Address: DeathScreen_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 711c5dc5453a3bc4c99b7546658109ad, type: 2}
   m_SchemaSet:

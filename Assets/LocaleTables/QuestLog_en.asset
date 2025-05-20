@@ -16,8 +16,80 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 1794c04ee7d8221479b70ab0e1ad8aea, type: 2}
   m_Metadata:
-    m_Items: []
-  m_TableData: []
+    m_Items:
+    - rid: 2372850991054979072
+  m_TableData:
+  - m_Id: 4056272896
+    m_Localized: 'Head to the destroyed outpost.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7936004096
+    m_Localized: 'Collect the Datashard.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10263842816
+    m_Localized: '{0} of {1} required Plants collected.'
+    m_Metadata:
+      m_Items:
+      - rid: 2372850991054979072
+  - m_Id: 13141135360
+    m_Localized: 'Head to one of the outposts.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15674494976
+    m_Localized: Eliminate the enemies and collect the toolbox.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18170105856
+    m_Localized: 'Head to one of the outposts.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24386064384
+    m_Localized: Eliminate the enemies and collect the heat shield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26336415744
+    m_Localized: 'Go to the large door.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28181909504
+    m_Localized: 'Explore the facility.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30232924160
+    m_Localized: 'Defeat the 5AND-1N3L.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32023891968
+    m_Localized: 'Collect the Energy core.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35660353536
+    m_Localized: 'Start the spaceship.
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2372850991054979072
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00d0c56302000000
