@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Localization.Settings;
+using UnityEngine.SceneManagement;
 
 public class LanguageSwitcher : MonoBehaviour
 {
@@ -30,5 +31,17 @@ public class LanguageSwitcher : MonoBehaviour
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
         active = false;
+    }
+
+    public void ChangeLocaleToGerman()
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+        SceneManager.LoadScene("StartMenu");
+    }
+
+    public void ChangeLocaleToEnglish()
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+        SceneManager.LoadScene("StartMenu");
     }
 }

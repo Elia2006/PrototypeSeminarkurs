@@ -68,6 +68,6 @@ public class FirstCutsceneManager : MonoBehaviour
 
     void timerEnded()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("SelectLanguage");
     }
 }
