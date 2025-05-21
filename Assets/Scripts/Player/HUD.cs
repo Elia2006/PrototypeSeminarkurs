@@ -6,10 +6,20 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 
 public class HUD : MonoBehaviour
 {
+    //crowbar_ach
+
+    public bool sandcrab = false;
+    public bool enemyrange = false;
+    public bool enemymelee = false;
+    public bool scavengerrange = false;
+    public bool scavengermelee = false;
+
 
     [SerializeField] Image damageImage;
     public float playerHealth = 60;
@@ -34,6 +44,8 @@ public class HUD : MonoBehaviour
     private TextMeshProUGUI playerHealthText;
     [SerializeField] Volume volume;
     [SerializeField] Vignette vignette;
+
+    [SerializeField] SteamIntegration si;
 
 
     [SerializeField] GameObject TaskText;
@@ -91,11 +103,23 @@ public class HUD : MonoBehaviour
         ItemPickup();
         CheckHealing();
         Autosave();
+        CrowbarAchievement();
         //PressEnter();
 
         speedrunTimer = speedrunTimer+Time.deltaTime;
 
         damageAlphaColor -= Time.deltaTime * 2;
+    }
+
+    void CrowbarAchievement()
+    {
+        if (sandcrab && enemymelee && enemyrange && scavengermelee && scavengerrange)
+        {
+            if(!si.IsThisAchievementUnlocked("ACH_MELEE"))
+            {
+                si.UnlockAchievements("ACH_MELEE");
+            }
+        }
     }
     private void CheckHealing()
     {
@@ -207,45 +231,124 @@ public class HUD : MonoBehaviour
 
             if (tempTrans.name[..4] == "Herb")
             {
-                pressEText.text = "um Pflanze aufzuheben";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Pflanze aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pickup Plant";
+                }
+                
             
             }            
             else if(tempTrans.name[..7] == "LeiterV")
             {
-                pressEText.text = "um Leiter hochzuklettern.";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Leiter hochzuklettern.";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to climb up Ladder";
+                }
+                
             }
             else if(tempTrans.name[..7] == "LeiterR")
             {
-                pressEText.text = "um Leiter runterzuklettern.";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Leiter herunterzuklettern.";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to climb down Ladder";
+                }
+
+                
             }
             else if (tempTrans.name[..8] == "CollectE")
             {
-                pressEText.text = "um Energiekern aufzuheben.";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um den Energiekern aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pick up the energy core";
+                }
+
+                //pressEText.text = "um Energiekern aufzuheben.";
             }
             else if (tempTrans.name[..8] == "Gun Ammo")
             {
-                pressEText.text = "um Pistolenmunition aufzuheben";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Pistolenmunition aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pick up pistol ammo";
+                }
+
+                //pressEText.text = "um Pistolenmunition aufzuheben";
                 
             }
             else if (tempTrans.name[..8] == "SMG Ammo")
             {
-                pressEText.text = "um SMG Munition aufzuheben";
-                
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um SMG Munition aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pick up SMG Ammo";
+                }
+
+                //pressEText.text = "um SMG Munition aufzuheben";
+
             }
             else if (tempTrans.name[..12] == "WeaponPickup")
             {
-                pressEText.text = "um Speichermodul aufzuheben";
-                
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Speichermodul aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pick up Data Shard";
+                }
+
+                //pressEText.text = "um Speichermodul aufzuheben";
+
             }
             else if (tempTrans.name[..13] == "ClearOutpostQ")
             {
-                pressEText.text = "um Werkzeugkoffer aufzuheben";
-                
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Werkzeugkoffer aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pick up Toolbox";
+                }
+
+                //pressEText.text = "um Werkzeugkoffer aufzuheben";
+
             }
             else if (tempTrans.name[..13] == "ClearOutpostM")
             {
-                pressEText.text = "um Hitzeschild aufzuheben";
-                
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Hitzeschild aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pick up Heat Shield";
+                }
+
+                //pressEText.text = "um Hitzeschild aufzuheben";
+
             }
 
 
@@ -256,54 +359,117 @@ public class HUD : MonoBehaviour
 
                 if (tempTrans.name[..4] == "Herb")
                 {
-                    pressEText.text = "um Pflanze aufzuheben";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Pflanze aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pickup Plant";
+                    }
                     Destroy(tempTrans.gameObject);
                     GameEventsManager.instance.miscEvents.CoinCollected();
                 }
                 else if(tempTrans.name[..7] == "LeiterV")
                 {
-                    pressEText.text = "um Leiter hochzuklettern.";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Leiter hochzuklettern.";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to climb up Ladder";
+                    }
                     Player.GetComponent<PlayerMovement>().ClimbLatter(tempTrans.parent.GetChild(1).transform, tempTrans.parent.GetChild(2).transform, tempTrans.parent.GetChild(3).transform);
                 }
                 else if(tempTrans.name[..7] == "LeiterR")
                 {
-                    pressEText.text = "um Leiter runterzuklettern.";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Leiter herunterzuklettern.";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to climb down Ladder";
+                    }
                     Player.GetComponent<PlayerMovement>().ClimbLatter(tempTrans.parent.GetChild(2).transform, tempTrans.parent.GetChild(1).transform, tempTrans.parent.GetChild(0).transform);
                 }
                 else if (tempTrans.name[..8] == "CollectE")
                 {
-                    pressEText.text = "um Energiekern aufzuheben.";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um den Energiekern aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pick up the energy core";
+                    }
                     GameEventsManager.instance.miscEvents.ItemPickedUp();
                     Destroy(tempTrans.gameObject);
                 }
                 else if(tempTrans.name[..8] == "Gun Ammo")
                 {
-                    pressEText.text = "um Pistolenmunition aufzuheben";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Pistolenmunition aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pick up pistol ammo";
+                    }
                     gunScript.availableAmmo += Int32.Parse(tempTrans.name.Substring(9, 2));
                     Destroy(tempTrans.gameObject);
                 }
 
                 else if(tempTrans.name[..8] == "SMG Ammo")
                 {
-                    pressEText.text = "um SMG Munition aufzuheben";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um SMG Munition aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pick up SMG Ammo";
+                    }
                     smgScript.availableAmmo += Int32.Parse(tempTrans.name.Substring(9, 2));
                     Destroy(tempTrans.gameObject);
                 }
                 else if(tempTrans.name[..12] == "WeaponPickup")
                 {
-                    pressEText.text = "um Speichermodul aufzuheben";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Speichermodul aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pick up Data Shard";
+                    }
                     GameEventsManager.instance.miscEvents.ItemPickedUp();
                     Destroy(tempTrans.gameObject);
                 }
                 else if (tempTrans.name[..13] == "ClearOutpostQ")
                 {
-                    pressEText.text = "um Werkzeugkoffer aufzuheben";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Werkzeugkoffer aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pick up Toolbox";
+                    }
                     GameEventsManager.instance.miscEvents.ItemPickedUp();
                     Destroy(tempTrans.gameObject);
                 }
                 else if (tempTrans.name[..13] == "ClearOutpostM")
                 {
-                    pressEText.text = "um Hitzeschild aufzuheben";
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Hitzeschild aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pick up Heat Shield";
+                    }
                     GameEventsManager.instance.miscEvents.ItemPickedUp();
                     Destroy(tempTrans.gameObject);
                 }
@@ -381,6 +547,14 @@ public class HUD : MonoBehaviour
 
         speedrunTimer = data.speedrunTimer; 
         hasDiedYet = data.hasDiedYet;
+
+        //das crowbar zeug
+
+        sandcrab = data.sandcrab;
+        enemyrange = data.enemyrange;
+        enemymelee  = data.enemymelee;
+        scavengerrange = data.scavengerrange;
+        scavengermelee = data.scavengermelee;
 
         position.x = data.position[0];
         position.y = data.position[1];

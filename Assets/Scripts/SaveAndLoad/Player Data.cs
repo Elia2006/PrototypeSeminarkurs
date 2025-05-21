@@ -15,6 +15,12 @@ public class PlayerData
     public float[] position;
     public float[] rotation;
 
+    public bool sandcrab;
+    public bool enemyrange;
+    public bool enemymelee;
+    public bool scavengerrange;
+    public bool scavengermelee;
+
     public PlayerData (HUD player)
     {
         health = player.playerHealth;
@@ -24,6 +30,14 @@ public class PlayerData
 
         speedrunTimer = player.speedrunTimer;
         hasDiedYet = player.hasDiedYet;
+
+        sandcrab = player.sandcrab;
+        enemyrange = player.enemyrange;
+        enemymelee = player.enemymelee;
+        scavengerrange = player.scavengerrange;
+        scavengermelee = player.scavengermelee;
+
+
 
         position = new float[3];
         position[0] = player.transform.position.x;

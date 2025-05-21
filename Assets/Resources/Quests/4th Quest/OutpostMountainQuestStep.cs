@@ -48,7 +48,7 @@ public class OutpostMountainQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Begebe dich zu einem der Aussenposten";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

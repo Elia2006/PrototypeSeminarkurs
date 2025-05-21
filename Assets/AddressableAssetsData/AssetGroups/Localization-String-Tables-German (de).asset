@@ -85,6 +85,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-de
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61c05d1dd4362114b8fffa9665afd8c7
+    m_Address: Pickups_de
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-de
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 711c5dc5453a3bc4c99b7546658109ad, type: 2}
   m_SchemaSet:

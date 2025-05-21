@@ -3071,6 +3071,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: si
+      value: 
+      objectReference: {fileID: 66633147}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: Cam
       value: 
       objectReference: {fileID: 512324399}
@@ -3087,6 +3091,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 156458377}
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: sandcrab
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: gunScript
       value: 
       objectReference: {fileID: 512146641}
@@ -3098,6 +3106,14 @@ PrefabInstance:
       propertyPath: smgScript
       value: 
       objectReference: {fileID: 1847674568}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: enemymelee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: enemyrange
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: itemPickup
       value: 
@@ -3113,6 +3129,14 @@ PrefabInstance:
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: playerHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: scavengermelee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: scavengerrange
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6127676390731681583, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: si
@@ -21382,6 +21406,7 @@ GameObject:
   - component: {fileID: 711854456}
   - component: {fileID: 711854458}
   - component: {fileID: 711854457}
+  - component: {fileID: 711854459}
   m_Layer: 5
   m_Name: PressEdepositText
   m_TagString: Untagged
@@ -21428,7 +21453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '       um Beute zu deponieren'
+  m_text: um Beute zu deponieren
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21491,7 +21516,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 26.847485, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -21505,6 +21530,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711854455}
   m_CullTransparentMesh: 1
+--- !u!114 &711854459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711854455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:f74fbce2e23c7b342855d420bef2a835
+    m_TableEntryReference:
+      m_KeyId: 6321197056
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 711854457}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &712242059
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class Quest
 {
@@ -124,11 +125,18 @@ public class Quest
             // when the quest is completed or turned in
             if (state == QuestState.CAN_FINISH)
             {
-                fullStatus += "Lade die Beute ins Schiff ein";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    fullStatus += "Lade die Beute ins Schiff ein";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    fullStatus += "Deposit the loot into the ship";
+                }
             }
             else if (state == QuestState.FINISHED)
             {
-                fullStatus += "Begebe dich nun zum anderen Aussenposten";
+                fullStatus += "ERROR: Data Log corrupted \n ";
             }
         }
 

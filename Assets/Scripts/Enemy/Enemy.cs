@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
+    public HUD hud;
     protected GameObject Player;
     protected NavMeshAgent agent;
     public LayerMask groundLayer;
@@ -22,6 +23,8 @@ public class Enemy : MonoBehaviour
 
     public bool goingToLastPos;
 
+
+    
 
 
     
@@ -52,12 +55,16 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+
         Player = GameObject.Find("Player");
+        hud = GameObject.Find("Player").GetComponent<HUD>();
+        if (hud != null ) { Debug.Log("HUDDi"); }
     }
 
     void Update()
     {
-
+        hud = GameObject.Find("Player").GetComponent<HUD>();
+        
     }
 
     public void TakeDamage(int amount, bool isCrowbar)
@@ -97,19 +104,23 @@ public class Enemy : MonoBehaviour
         {
             if(transform.name[..8] == "SandCrab")
             {
-                Debug.Log("SandCrab");
+                Player.GetComponent<HUD>().sandcrab = true;
+                
             }else if(transform.name[..10] == "EnemyRange")
             {
-                Debug.Log("EnemyRange");
+                Player.GetComponent<HUD>().enemyrange = true;
+               
             }else if(gameObject.name[..12] == "EnemyMelee 1")
             {
-                Debug.Log("EnemyMelee 1");
+                Player.GetComponent<HUD>().enemymelee = true;
+
             }else if(transform.name[..14] == "ScavangerMelee")
             {
-                Debug.Log("ScavangerMelee");
+                Player.GetComponent<HUD>().scavengermelee = true;
             }else if(transform.name[..15] == "ScavangerRanged")
             {
-                Debug.Log("ScavangerRanged");
+                Debug.Log("Scavenger Range");
+                Player.GetComponent<HUD>().scavengerrange = true;
             }
         }
 
