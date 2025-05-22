@@ -53,6 +53,14 @@ public class LanguageSwitcher : MonoBehaviour
 
     public void LoadCutscene()
     {
-        SceneManager.LoadScene("FirstCutscene");
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            SceneManager.LoadScene("FirstCutscene");
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            SceneManager.LoadScene("FirstCutsceneEN");
+        }
+        
     }
 }

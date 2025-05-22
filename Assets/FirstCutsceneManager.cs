@@ -17,8 +17,18 @@ public class FirstCutsceneManager : MonoBehaviour
     {
         black.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            //deutsch
+            url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs intro part 1 deutsch.mp4";
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            //englisch
+            url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs intro part 1 englisch.mp4";
+        }
+
         
-        url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs intro part 1.mp4";
         video = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
         video.source = VideoSource.Url;
         video.url = url;

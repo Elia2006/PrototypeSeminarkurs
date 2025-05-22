@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 
 public class MenuLogic : MonoBehaviour
@@ -15,7 +16,18 @@ public class MenuLogic : MonoBehaviour
         PlayerPrefs.DeleteAll();
         File.Delete(Application.persistentDataPath + "/player.json");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("SecondIntro");
+
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            //deutsch
+            SceneManager.LoadScene("SecondIntro");
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            //englisch
+            SceneManager.LoadScene("SecondIntroEN");
+        }
+        
         
     }
 
@@ -24,7 +36,16 @@ public class MenuLogic : MonoBehaviour
 
         PlayerPrefs.SetInt("laden", 1);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("SecondIntro");
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            //deutsch
+            SceneManager.LoadScene("SecondIntro");
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            //englisch
+            SceneManager.LoadScene("SecondIntroEN");
+        }
     }
 
     public void QuitGame()

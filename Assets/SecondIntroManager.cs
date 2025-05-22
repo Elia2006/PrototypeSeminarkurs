@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
@@ -17,7 +18,18 @@ public class SecondIntroManager : MonoBehaviour
         img.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
 
-        url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs intro part 2.mp4";
+        
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            //deutsch
+            url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs intro part 2 deutsch.mp4";
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            //englisch
+            url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs intro part 2 englisch.mp4";
+        }
+
         video = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
         video.source = VideoSource.Url;
         video.url = url;

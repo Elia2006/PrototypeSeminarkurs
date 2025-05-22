@@ -4,6 +4,7 @@ using UnityEngine;
 using static Unity.Collections.AllocatorManager;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using UnityEngine.Localization.Settings;
 
 public class OutroManager : MonoBehaviour
 {
@@ -18,7 +19,18 @@ public class OutroManager : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
 
-        url = "File://" + Application.streamingAssetsPath + "/" + "Seminarkurs outro mit credits.mp4";
+        //LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            //deutsch
+            url = "File://" + Application.streamingAssetsPath + "/" + "outro mit credits deutsch.mp4";
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            //englisch
+            url = "File://" + Application.streamingAssetsPath + "/" + "outro mit credits englisch.mp4";
+        }
         video = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
         video.source = VideoSource.Url;
         video.url = url;
