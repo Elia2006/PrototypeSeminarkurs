@@ -20,15 +20,11 @@ MonoBehaviour:
     - rid: 2372850991054979072
   m_TableData:
   - m_Id: 4056272896
-    m_Localized: 'Head to the destroyed outpost.
-
-'
+    m_Localized: Head to the destroyed outpost.
     m_Metadata:
       m_Items: []
   - m_Id: 7936004096
-    m_Localized: 'Collect the Datashard.
-
-'
+    m_Localized: Collect the Datashard.
     m_Metadata:
       m_Items: []
   - m_Id: 10263842816
@@ -37,9 +33,7 @@ MonoBehaviour:
       m_Items:
       - rid: 2372850991054979072
   - m_Id: 13141135360
-    m_Localized: 'Head to one of the outposts.
-
-'
+    m_Localized: Head to one of the outposts.
     m_Metadata:
       m_Items: []
   - m_Id: 15674494976
@@ -47,9 +41,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 18170105856
-    m_Localized: 'Head to one of the outposts.
-
-'
+    m_Localized: Head to one of the outposts.
     m_Metadata:
       m_Items: []
   - m_Id: 24386064384
@@ -57,9 +49,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26336415744
-    m_Localized: 'Go to the large door.
-
-'
+    m_Localized: Go to the large door.
     m_Metadata:
       m_Items: []
   - m_Id: 28181909504

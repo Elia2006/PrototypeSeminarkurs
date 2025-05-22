@@ -82,6 +82,16 @@ public class OutroManager : MonoBehaviour
 
     void timerEnded()
     {
-        SceneManager.LoadScene("StartMenu");
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            //deutsch
+            SceneManager.LoadScene("StartMenu");
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            //englisch
+            SceneManager.LoadScene("StartMenuEN");
+        }
+        
     }
 }
