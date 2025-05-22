@@ -57,7 +57,7 @@ public class CollectEnergyCoreScript : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Sammle den Energiekern ein.";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

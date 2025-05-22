@@ -63,27 +63,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 28181909504
-    m_Localized: 'Explore the facility.
-
-'
+    m_Localized: Explore the facility.
     m_Metadata:
       m_Items: []
   - m_Id: 30232924160
-    m_Localized: 'Defeat the 5AND-1N3L.
-
-'
+    m_Localized: Defeat the 5AND-1N3L.
     m_Metadata:
       m_Items: []
   - m_Id: 32023891968
-    m_Localized: 'Collect the Energy core.
-
-'
+    m_Localized: Collect the Energy core.
     m_Metadata:
       m_Items: []
   - m_Id: 35660353536
-    m_Localized: 'Start the spaceship.
-
-'
+    m_Localized: Start the spaceship.
     m_Metadata:
       m_Items: []
   references:

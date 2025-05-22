@@ -85,7 +85,7 @@ public class RepairShipQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Starte das Raumschiff";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

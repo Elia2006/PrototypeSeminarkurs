@@ -55,7 +55,7 @@ public class ClearOutpostArchQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Beseitige die Gegner und sammle den Werkzeugkoffer ein.";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

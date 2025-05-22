@@ -52,7 +52,7 @@ public class ReachDoorQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Gehe zur großen Tür";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

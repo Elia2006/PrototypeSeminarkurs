@@ -33,7 +33,7 @@ public class OpenDoorQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Erkunde die Fabrik";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

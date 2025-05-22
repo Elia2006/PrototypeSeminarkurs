@@ -43,7 +43,7 @@ public class KillBossQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Erledige den 5AND-1N3L";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 

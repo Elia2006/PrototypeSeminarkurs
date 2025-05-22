@@ -64,7 +64,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10263842816
-    m_Localized: "{0} von {1} ben\xF6tigten Artefakten eingesammelt."
+    m_Localized: "{0} von {1} ben\xF6tigten Pflanzen eingesammelt."
     m_Metadata:
       m_Items:
       - rid: 2372850946430205970

@@ -136,7 +136,16 @@ public class Quest
             }
             else if (state == QuestState.FINISHED)
             {
-                fullStatus += "ERROR: Data Log corrupted \n ";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    fullStatus += "Erreiche den anderen Aussenposten";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    fullStatus += "Reach the other Outpost";
+                }
+
+                //fullStatus += "ERROR: Data Log corrupted \n ";
             }
         }
 

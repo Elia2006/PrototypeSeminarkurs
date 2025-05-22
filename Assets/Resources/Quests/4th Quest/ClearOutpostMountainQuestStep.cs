@@ -55,7 +55,7 @@ public class ClearOutpostMountainQuestStep : QuestStep
     private void UpdateState()
     {
         string state = "";
-        string status = "Beseitige die Gegner und sammle das Hitzeschild ein.";
+        string status = trueStatus.GetLocalizedString();
         ChangeState(state, status);
     }
 
