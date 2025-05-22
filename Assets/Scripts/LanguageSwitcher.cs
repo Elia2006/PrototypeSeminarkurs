@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class LanguageSwitcher : MonoBehaviour
 {
     private bool active = false;
+    [SerializeField] GameObject imageGER;
+    [SerializeField] GameObject imageEN;
     public void ChangeLocale()
     {
         if (active)
@@ -36,12 +38,21 @@ public class LanguageSwitcher : MonoBehaviour
     public void ChangeLocaleToGerman()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
-        SceneManager.LoadScene("StartMenu");
+        imageGER.SetActive(true);
+        imageEN.SetActive(false);
+        
     }
 
     public void ChangeLocaleToEnglish()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
-        SceneManager.LoadScene("StartMenu");
+        imageEN.SetActive(true);
+        imageGER.SetActive(false);
+        
+    }
+
+    public void LoadCutscene()
+    {
+        SceneManager.LoadScene("FirstCutscene");
     }
 }

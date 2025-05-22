@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class FirstCutsceneManager : MonoBehaviour
 {
@@ -68,6 +70,13 @@ public class FirstCutsceneManager : MonoBehaviour
 
     void timerEnded()
     {
-        SceneManager.LoadScene("SelectLanguage");
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            SceneManager.LoadScene("StartMenuEN");
+        }
     }
 }
