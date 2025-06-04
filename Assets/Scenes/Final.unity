@@ -3076,6 +3076,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 512324399}
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 661262150004563445}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: Boss
       value: 
       objectReference: {fileID: 109767492}
@@ -3183,6 +3187,10 @@ PrefabInstance:
       propertyPath: switchSound
       value: 
       objectReference: {fileID: 1672790092}
+    - target: {fileID: 7467256976990264991, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 661262150004563445}
     - target: {fileID: 7467256976990264991, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_Enabled
       value: 1

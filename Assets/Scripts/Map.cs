@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,6 +43,24 @@ public class Map : MonoBehaviour
                 //Debug.Log(toggle + "toggle");
                 toggle = !toggle;
             }
+            else if (Input.GetKeyDown(KeyCode.Escape) && mapOpen)
+            {
+                toggle = !toggle;
+                DialogeCanvas.SetActive(true);
+                MapCanvas.SetActive(false);
+                StandardCanvas.SetActive(true);
+                MapCamera.SetActive(false);
+                PlayerCamera.SetActive(true);
+                arrow.SetActive(false);
+                mapOpen = false;
+
+
+                if (!toggle)
+                {
+                    Time.timeScale = 1f;
+                    //Debug.Log(canMapOpen + " " + toggle);
+                }
+            }
 
             if (toggle) //&& canMapOpen)
             {
@@ -65,6 +83,7 @@ public class Map : MonoBehaviour
                     //Debug.Log(canMapOpen + " " + toggle);
                 }
             }
+            
         }
         
 

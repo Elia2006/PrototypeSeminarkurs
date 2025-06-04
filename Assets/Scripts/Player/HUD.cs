@@ -46,6 +46,8 @@ public class HUD : MonoBehaviour
     [SerializeField] Vignette vignette;
 
     [SerializeField] SteamIntegration si;
+    [SerializeField] Map map;
+    [SerializeField] PauseMenu pm;
 
 
     [SerializeField] GameObject TaskText;
@@ -92,13 +94,15 @@ public class HUD : MonoBehaviour
         if(PlayerPrefs.GetInt("laden") == 1)
         {
             LoadPlayer();
+            Time.timeScale = 1f;
         }
         SavePlayer();
-        
+        Time.timeScale = 1f;
     }
 
     void Update()
     {
+        //Debug.Log(Time.timeScale);
         HealthBar();
         ItemPickup();
         CheckHealing();
@@ -109,6 +113,15 @@ public class HUD : MonoBehaviour
         speedrunTimer = speedrunTimer+Time.deltaTime;
 
         damageAlphaColor -= Time.deltaTime * 2;
+        bool ip;
+        ip = PauseMenu.isPaused;
+
+        if (!map.mapOpen && !ip) 
+        {
+            
+            Time.timeScale = 1f;
+        }
+        
     }
 
     void CrowbarAchievement()
@@ -538,6 +551,8 @@ public class HUD : MonoBehaviour
 
     public void LoadPlayer()
     {
+        Debug.Log("hier beginnt load");
+
         DeathScreen.SetActive(false);
         PlayerData data = SaveSystem.LoadPlayer();
         playerHealth = data.health;
@@ -546,7 +561,11 @@ public class HUD : MonoBehaviour
         maxEnergy = data.maxEnergy;
 
         speedrunTimer = data.speedrunTimer; 
-        hasDiedYet = data.hasDiedYet;
+        if (data.hasDiedYet)
+        {
+            hasDiedYet = true;
+        }
+        
 
         //das crowbar zeug
 
@@ -572,6 +591,10 @@ public class HUD : MonoBehaviour
         transform.rotation = rotation;
         Debug.Log(transform.position + "aktuelle position");
         playerCc.enabled = true;
+
+        Time.timeScale = 1f;
+
+        Debug.Log("hier endet load");
 
     }
 

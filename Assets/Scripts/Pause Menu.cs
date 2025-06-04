@@ -9,17 +9,19 @@ public class PauseMenu : MonoBehaviour
     public LanguageSwitcher ls;
     public GameObject pauseMenu;
     public static bool isPaused;
+    public Map map;
 
     // Start is called before the first frame update
     void Start()
     {
+        isPaused = false;
         pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && !map.mapOpen)
         {
             if (isPaused)
             {

@@ -39,12 +39,14 @@ public class MenuLogic : MonoBehaviour
         if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
         {
             //deutsch
-            SceneManager.LoadScene("SecondIntro");
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("Final");
         }
         else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
         {
             //englisch
-            SceneManager.LoadScene("SecondIntroEN");
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("Final");
         }
     }
 
