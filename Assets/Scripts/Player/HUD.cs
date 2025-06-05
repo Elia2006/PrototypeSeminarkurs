@@ -99,11 +99,11 @@ public class HUD : MonoBehaviour
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
         DeathScreen.SetActive(false);
-        /*if(PlayerPrefs.GetInt("laden") == 1)
+        if(PlayerPrefs.GetInt("laden") == 1)
         {
             LoadPlayer();
             Time.timeScale = 1f;
-        }*/
+        }
         SavePlayer();
         Time.timeScale = 1f;
     }
