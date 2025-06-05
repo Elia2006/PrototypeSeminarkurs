@@ -19,9 +19,9 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 5444587520
-    m_Localized: "Alright, here\u2019s the heat shield. You\u2019ll need it unless
-      you want to burn in the atmosphere. My scan says it\u2019s not on the floor
-      level. Time to work on those climbing skills\u2026\r\n"
+    m_Localized: "Alright, here you can find the heat shield. You\u2019ll need it
+      unless you want to burn in the atmosphere. My scan says it\u2019s not on the
+      floor level. Time to work on those climbing skills\u2026\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 9890549760

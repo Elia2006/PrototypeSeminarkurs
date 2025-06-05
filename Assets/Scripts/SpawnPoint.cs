@@ -40,23 +40,31 @@ public class SpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        collision = true;
-        Map.GetComponent<Map>().canMapOpen = true;
-        PressM.SetActive(true);
-        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        if (other.CompareTag("Player"))
         {
-            pressMText.text = "und wähle einen Teleporter aus um dich zu teleportieren.";
+            collision = true;
+            Map.GetComponent<Map>().canMapOpen = true;
+            PressM.SetActive(true);
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+            {
+                pressMText.text = "und wähle einen Teleporter aus um dich zu teleportieren.";
+            }
+            else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+            {
+                pressMText.text = "and select another Teleporter to fast travel to.";
+            }
         }
-        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
-        {
-            pressMText.text = "and select another Teleporter to fast travel to.";
-        }
+        
     }
     private void OnTriggerExit(Collider other)
     {
-        collision = false;
-        Map.GetComponent<Map>().canMapOpen = false;
-        PressM.SetActive(false);
+        if (other.CompareTag("Player"))
+        {
+            collision = false;
+            Map.GetComponent<Map>().canMapOpen = false;
+            PressM.SetActive(false);
+        }
+        
         
     }
 

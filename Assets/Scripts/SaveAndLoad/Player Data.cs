@@ -16,6 +16,8 @@ public class PlayerData
     public float[] position;
     public float[] rotation;
 
+    public float totalJumps;
+
     public int loadedAmmoGun;
     public int loadedAmmoSMG;
     public int maxAmmoGun;
@@ -33,6 +35,8 @@ public class PlayerData
         maxHealth = player.maxHealth;
         energy = player.playerEnergy;
         maxEnergy = player.maxEnergy;
+
+        totalJumps = player.totalJumps;
 
         loadedAmmoGun = player.loadedAmmoGun;
         loadedAmmoSMG = player.loadedAmmoSMG;
