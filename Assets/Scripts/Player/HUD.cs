@@ -83,7 +83,7 @@ public class HUD : MonoBehaviour
     //Audio
     [SerializeField] AudioSource itemPickup;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     void Start()
     {
