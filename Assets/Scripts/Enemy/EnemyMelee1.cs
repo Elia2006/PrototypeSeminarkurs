@@ -48,9 +48,13 @@ public class EnemyMelee1 : Enemy
             {
 
                 agent.isStopped = false;
-                if(IsPlayerInRange(Player.transform.position, sightDistance))
+                if (IsPlayerInRange(Player.transform.position, sightDistance))
                 {
                     continueCharge = true;
+                }
+                else
+                { 
+                    continueCharge = false;
                 }
                 if(continueCharge)
                 {

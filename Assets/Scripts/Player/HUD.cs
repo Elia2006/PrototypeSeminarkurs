@@ -82,6 +82,8 @@ public class HUD : MonoBehaviour
     //Audio
     [SerializeField] AudioSource itemPickup;
 
+    private bool isDead = false;
+
     void Start()
     {
         maxEnergy = playerEnergy;
@@ -219,7 +221,7 @@ public class HUD : MonoBehaviour
         playerMovement.ReduceSpeed(speedReduction, 1);
         playerMovement.Knockback(enemy, knockbackForce);
 
-        if(playerHealth <= 0)
+        if(playerHealth <= 0 && !isDead)
         {
             Die();
         }
@@ -545,8 +547,10 @@ public class HUD : MonoBehaviour
 
     public void Die()
     {
+        isDead = true;
         hasDiedYet = true;
         howManyDeaths++;
+        Debug.Log(howManyDeaths);
 
         Time.timeScale = 0f;
 
@@ -583,6 +587,7 @@ public class HUD : MonoBehaviour
 
     public void LoadPlayer()
     {
+        isDead = false;
         Debug.Log("hier beginnt load");
 
         DeathScreen.SetActive(false);
