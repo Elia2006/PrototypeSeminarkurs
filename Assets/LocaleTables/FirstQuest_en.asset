@@ -20,8 +20,8 @@ MonoBehaviour:
   m_TableData:
   - m_Id: 4291153920
     m_Localized: "Ohhh\u2026 look who\u2019s finally awake! And\u2026 probably a
-      bit confused. Let me guess \u2014 \tcrash landing, memory loss, existential
-      crisis? Yeah?\r\n"
+      bit confused. Let me guess \u2014 crash landing, memory loss, existential crisis?
+      Yeah?\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 129533071360
@@ -69,7 +69,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 264321224704
     m_Localized: Oh, look at you, achieving something for once. Excellent. Install
-      it into the ship ASAP, could be important data on there.
+      it into the ship ASAP, there could be important data located on it.
     m_Metadata:
       m_Items: []
   references:

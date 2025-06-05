@@ -19,8 +19,8 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 40072761344
-    m_Localized: "Unser Abenteuer geht hier auf ein Ende zu. Anscheinend hast du
-      den Raumschiffabsturz auf einem fremden Planeten \xFCberlebt."
+    m_Localized: "Unser gemeinsames Abenteuer neigt sich dem Ende zu. Anscheinend
+      hast du den Raumschiffabsturz auf einem fremden Planeten \xFCberlebt."
     m_Metadata:
       m_Items: []
   references:

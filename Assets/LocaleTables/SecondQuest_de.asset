@@ -20,25 +20,25 @@ MonoBehaviour:
   m_TableData:
   - m_Id: 29813493760
     m_Localized: "Analyse L\xE4uft... Analyse abgeschlossen. Gl\xFCckwunsch, wir
-      wissen jetzt etwas \xFCber diesen Planeten. Nicht, dass du was davon verstehen
+      wissen jetzt etwas \xFCber diesen Planeten. Nicht, dass du etwas davon verstehen
       w\xFCrdest..."
     m_Metadata:
       m_Items: []
   - m_Id: 34662109184
     m_Localized: "Ich habe eine Karte vom Gebiet gefunden. Dr\xFCcke M, um diese
       aufzurufen. Ich werde dir aktive Auftr\xE4ge immer mit einem blauen Kreis auf
-      der Map markieren."
+      der Karte markieren."
     m_Metadata:
       m_Items: []
   - m_Id: 36780232704
     m_Localized: "Meine Triangulation zeigt, dass es hier irgendwo Artefakte gibt.
-      Ich habe es dir auf deiner Karte mit einem blauen Kreis markiert. Vielleicht
-      findest du dort etwas N\xFCtzliches, um unser Schiff zu flicken. Oder du wirst
-      gefressen. Wer wei\xDF?\r\n"
+      Ich habe es dir auch auf deiner Karte markiert. Vielleicht findest du dort
+      etwas N\xFCtzliches, um unser Schiff zu flicken. Oder du wirst gefressen. Wer
+      wei\xDF?\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 41154891776
-    m_Localized: "Ebenfalls habe ich noch eine zweite gute  Nachricht f\xFCr dich
+    m_Localized: "Ebenfalls habe ich noch eine zweite gute Nachricht f\xFCr dich,
       Faulenzer. Ich habe einige Teleporter entdeckt. Sobald du einen gefunden hast,
       kannst du dich darauf stellen, M dr\xFCcken und dich zu anderen freigeschalteten
       Teleportern teleportieren.\r\n"

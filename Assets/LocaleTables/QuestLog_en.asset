@@ -28,7 +28,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10263842816
-    m_Localized: '{0} of {1} required Plants collected.'
+    m_Localized: '{0} of {1} required plants collected.'
     m_Metadata:
       m_Items:
       - rid: 2372850991054979072
@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 32023891968
-    m_Localized: Collect the Energy core.
+    m_Localized: Collect the Energy Core.
     m_Metadata:
       m_Items: []
   - m_Id: 35660353536
