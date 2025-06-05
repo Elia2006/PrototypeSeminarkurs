@@ -53,7 +53,7 @@ public class BigBoyAttack : MonoBehaviour
         RaycastHit hit;
         if(Physics.Linecast(transform.position, BigBoy.position + BigBoy.transform.up * 6, out hit) && hit.transform.CompareTag("Player"))
         {
-            Player.GetComponent<HUD>().TakeDamage(1, 1, hit.point, 0.1f);
+            Player.GetComponent<HUD>().TakeDamage(10, 1, hit.point, 0.1f);
         }
     }
 
