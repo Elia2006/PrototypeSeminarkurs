@@ -284,7 +284,21 @@ public class HUD : MonoBehaviour
                 }
                 
             
-            }            
+            }
+            else if (tempTrans.name[..5] == "Gnome")
+            {
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    pressEText.text = "um Chompski aufzuheben";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    pressEText.text = "to pick up Chompski";
+                }
+
+            }
+
+
             else if(tempTrans.name[..7] == "LeiterV")
             {
                 if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
@@ -412,6 +426,23 @@ public class HUD : MonoBehaviour
                     }
                     Destroy(tempTrans.gameObject);
                     GameEventsManager.instance.miscEvents.CoinCollected();
+                }
+                else if (tempTrans.name[..5] == "Gnome")
+                {
+                    if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                    {
+                        pressEText.text = "um Chompski aufzuheben";
+                    }
+                    else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                    {
+                        pressEText.text = "to pick up Chompski";
+                    }
+                    if (!si.IsThisAchievementUnlocked("ACH_GNOME"))
+                    {
+                        si.UnlockAchievements("ACH_GNOME");
+                    }
+                    Destroy(tempTrans.gameObject);  
+
                 }
                 else if(tempTrans.name[..7] == "LeiterV")
                 {
