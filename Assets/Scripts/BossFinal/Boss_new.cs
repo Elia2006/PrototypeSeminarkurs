@@ -41,6 +41,8 @@ public class Boss_new : Enemy
     [SerializeField] AudioSource maschineGunSound;
     [SerializeField] AudioSource impactSound;
 
+    [SerializeField] GameObject shield;
+
 
     // Start is called before the first frame update
     void Start()
@@ -85,18 +87,26 @@ public class Boss_new : Enemy
             GoTowardsPlayer();
             HealthBar();
             continueCharge = true;
+            shield.SetActive(false);
         }
         else
         {
+            if (!isDead)
+            {
+                shield.SetActive(true);
+            }
+
+
             health = 600;
             GetComponent<LineRenderer>().enabled = false;
             BossHealth.SetActive(false);
             continueCharge = false;
-            
+
             try
             {
                 Destroy(GameObject.Find("FireGround(Clone)"));
-            }catch
+            }
+            catch
             {
             }
         }
