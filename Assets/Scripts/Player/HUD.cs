@@ -43,6 +43,7 @@ public class HUD : MonoBehaviour
 
     //health
     public bool hasDiedYet = false;
+    public int howManyDeaths = 0;
 
     private Image healthBar;
     private Image healthBar2;
@@ -115,6 +116,7 @@ public class HUD : MonoBehaviour
         CheckHealing();
         Autosave();
         CrowbarAchievement();
+        DeathAchievement();
         //PressEnter();
 
         speedrunTimer = speedrunTimer+Time.deltaTime;
@@ -129,6 +131,24 @@ public class HUD : MonoBehaviour
             Time.timeScale = 1f;
         }
         
+    }
+
+    void DeathAchievement()
+    {
+        if(hasDiedYet)
+        {
+            if (!si.IsThisAchievementUnlocked("ACH_DIE"))
+            {
+                si.UnlockAchievements("ACH_DIE");
+            }
+        }
+        if(howManyDeaths>=5)
+        {
+            if (!si.IsThisAchievementUnlocked("ACH_DIE_10"))
+            {
+                si.UnlockAchievements("ACH_DIE_10");
+            }
+        } 
     }
 
     void CrowbarAchievement()
@@ -526,6 +546,7 @@ public class HUD : MonoBehaviour
     public void Die()
     {
         hasDiedYet = true;
+        howManyDeaths++;
 
         Time.timeScale = 0f;
 
@@ -592,7 +613,11 @@ public class HUD : MonoBehaviour
         {
             hasDiedYet = true;
         }
-        
+
+        if (data.howManyDeaths > 0)
+        {
+            howManyDeaths++;
+        }
 
         //das crowbar zeug
 

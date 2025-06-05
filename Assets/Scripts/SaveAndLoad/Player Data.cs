@@ -12,6 +12,7 @@ public class PlayerData
     public float maxEnergy;
     public float speedrunTimer;
     public bool hasDiedYet;
+    public int howManyDeaths;
     public float[] position;
     public float[] rotation;
 
@@ -40,6 +41,7 @@ public class PlayerData
 
         speedrunTimer = player.speedrunTimer;
         hasDiedYet = player.hasDiedYet;
+        howManyDeaths = player.howManyDeaths;
 
         sandcrab = player.sandcrab;
         enemyrange = player.enemyrange;
