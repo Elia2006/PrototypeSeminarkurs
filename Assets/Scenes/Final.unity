@@ -3076,9 +3076,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 512324399}
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 512146641}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: map
       value: 
       objectReference: {fileID: 661262150004563445}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: smg
+      value: 
+      objectReference: {fileID: 1847674568}
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: Boss
       value: 

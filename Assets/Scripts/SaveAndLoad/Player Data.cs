@@ -15,6 +15,11 @@ public class PlayerData
     public float[] position;
     public float[] rotation;
 
+    public int loadedAmmoGun;
+    public int loadedAmmoSMG;
+    public int maxAmmoGun;
+    public int maxAmmoSMG;
+
     public bool sandcrab;
     public bool enemyrange;
     public bool enemymelee;
@@ -27,6 +32,11 @@ public class PlayerData
         maxHealth = player.maxHealth;
         energy = player.playerEnergy;
         maxEnergy = player.maxEnergy;
+
+        loadedAmmoGun = player.loadedAmmoGun;
+        loadedAmmoSMG = player.loadedAmmoSMG;
+        maxAmmoSMG = player.maxAmmoSMG;
+        maxAmmoGun = player.maxAmmoGun;
 
         speedrunTimer = player.speedrunTimer;
         hasDiedYet = player.hasDiedYet;

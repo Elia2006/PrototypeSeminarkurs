@@ -26,6 +26,11 @@ public class HUD : MonoBehaviour
     public float maxHealth = 100;
     public float playerEnergy = 100;
     public float maxEnergy;
+
+    public int loadedAmmoGun = 0;
+    public int loadedAmmoSMG = 0;
+    public int maxAmmoGun = 50;
+    public int maxAmmoSMG = 100;
     private float damageAlphaColor = 0;
     private float timer = 20f;
     public Vector3 position;
@@ -48,6 +53,8 @@ public class HUD : MonoBehaviour
     [SerializeField] SteamIntegration si;
     [SerializeField] Map map;
     [SerializeField] PauseMenu pm;
+    [SerializeField] SMG smg;
+    [SerializeField] Gun gun;
 
 
     [SerializeField] GameObject TaskText;
@@ -91,11 +98,11 @@ public class HUD : MonoBehaviour
         volume.profile.TryGet(out vignette);     
         damageImage.GetComponent<CanvasRenderer>().SetAlpha(0);
         DeathScreen.SetActive(false);
-        if(PlayerPrefs.GetInt("laden") == 1)
+        /*if(PlayerPrefs.GetInt("laden") == 1)
         {
             LoadPlayer();
             Time.timeScale = 1f;
-        }
+        }*/
         SavePlayer();
         Time.timeScale = 1f;
     }
@@ -545,6 +552,10 @@ public class HUD : MonoBehaviour
     {
         if(!anyAttacking)
         {
+            loadedAmmoSMG = smg.loadedAmmo;
+            maxAmmoSMG = smg.availableAmmo;
+            loadedAmmoGun = gun.loadedAmmo;
+            maxAmmoGun = gun.availableAmmo;
             SaveSystem.SavePlayer(this);
         }
     }
@@ -559,6 +570,22 @@ public class HUD : MonoBehaviour
         maxHealth = data.maxHealth;
         playerEnergy = data.energy;
         maxEnergy = data.maxEnergy;
+
+
+        //hier noch ein kurzer fix
+
+
+        loadedAmmoSMG = data.loadedAmmoSMG;
+        maxAmmoSMG = data.maxAmmoSMG;
+        Debug.Log(maxAmmoSMG);
+        maxAmmoGun = data.maxAmmoGun;
+        Debug.Log(maxAmmoGun);
+        loadedAmmoGun = data.loadedAmmoGun;
+
+        smg.loadedAmmo = loadedAmmoSMG;
+        smg.availableAmmo = maxAmmoSMG;
+        gun.availableAmmo = maxAmmoGun;
+        gun.loadedAmmo = loadedAmmoGun;
 
         speedrunTimer = data.speedrunTimer; 
         if (data.hasDiedYet)

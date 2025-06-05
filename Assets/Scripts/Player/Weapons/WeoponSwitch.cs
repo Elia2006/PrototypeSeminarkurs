@@ -36,37 +36,44 @@ public class WeoponSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+        if (Time.timeScale == 1f)
         {
-            currentKey++;
-            switchSound.Play();
-            if(currentKey > 3)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
-                currentKey = 0;
+                currentKey++;
+                switchSound.Play();
+                if (currentKey > 3)
+                {
+                    currentKey = 0;
+                }
             }
-        }else if(Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            currentKey--;
-            switchSound.Play();
-            if(currentKey < 0)
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                currentKey--;
+                switchSound.Play();
+                if (currentKey < 0)
+                {
+                    currentKey = 3;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) && currentKey != 1)
+            {
+                currentKey = 1;
+                switchSound.Play();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && currentKey != 2)
+            {
+                currentKey = 2;
+                switchSound.Play();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && currentKey != 3)
             {
                 currentKey = 3;
+                switchSound.Play();
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.Alpha1) && currentKey != 1)
-        {
-            currentKey = 1;
-            switchSound.Play();
-        }else if(Input.GetKeyDown(KeyCode.Alpha2) && currentKey != 2)
-        {
-            currentKey = 2;
-            switchSound.Play();
-        }else if(Input.GetKeyDown(KeyCode.Alpha3) && currentKey != 3)
-        {
-            currentKey = 3;
-            switchSound.Play();
-        }
+        
     
 
         if(currentKey == 1)
