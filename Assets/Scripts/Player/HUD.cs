@@ -20,6 +20,7 @@ public class HUD : MonoBehaviour
     public bool scavengerrange = false;
     public bool scavengermelee = false;
 
+    public float totalJumps = 0;
 
     [SerializeField] Image damageImage;
     public float playerHealth = 60;
@@ -577,6 +578,7 @@ public class HUD : MonoBehaviour
     {
         if(!anyAttacking)
         {
+            totalJumps = playerMovement.totalJumps;
             loadedAmmoSMG = smg.loadedAmmo;
             maxAmmoSMG = smg.availableAmmo;
             loadedAmmoGun = gun.loadedAmmo;
@@ -597,7 +599,8 @@ public class HUD : MonoBehaviour
         playerEnergy = data.energy;
         maxEnergy = data.maxEnergy;
 
-
+        totalJumps = data.totalJumps;
+        playerMovement.totalJumps = totalJumps;
         //hier noch ein kurzer fix
 
 
@@ -657,6 +660,7 @@ public class HUD : MonoBehaviour
 
     public void TitleScreen()
     {
+        isDead = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScreen");
     }
