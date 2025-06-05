@@ -19,8 +19,8 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 107575889920
-    m_Localized: "Schiff stabilisiert sich, aber durch dein wahnsinniges Absturz
-      Man\xF6ver ist die Mechanik kaputt gegangen\u2026\r\n"
+    m_Localized: "Das Schiff stabilisiert sich, aber durch dein wahnsinniges Absturzman\xF6ver
+      ist die Mechanik kaputt gegangen\u2026\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 110625148928
@@ -30,7 +30,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 114198695936
-    m_Localized: "Hier befindet sich die Werkzeugkiste. Suche in den H\xE4usern,
+    m_Localized: "Hier befindet sich eine Kiste mit Ersatzteilen. Suche in den H\xE4usern,
       nachdem du die Gegner au\xDFer Gefecht setzen konntest."
     m_Metadata:
       m_Items: []
