@@ -51,6 +51,8 @@ public class Enemy : MonoBehaviour
 
     protected bool chase = false;
 
+    public bool isDead = false;
+
     
 
     void Start()
@@ -99,25 +101,31 @@ public class Enemy : MonoBehaviour
 
     protected void Death(bool isCrowbar)
     {
+        isDead = true;
+
         //crowbar achievement
-        if(isCrowbar)
+        if (isCrowbar)
         {
-            if(transform.name[..8] == "SandCrab")
+            if (transform.name[..8] == "SandCrab")
             {
                 Player.GetComponent<HUD>().sandcrab = true;
-                
-            }else if(transform.name[..10] == "EnemyRange")
+
+            }
+            else if (transform.name[..10] == "EnemyRange")
             {
                 Player.GetComponent<HUD>().enemyrange = true;
-               
-            }else if(gameObject.name[..12] == "EnemyMelee 1")
+
+            }
+            else if (gameObject.name[..12] == "EnemyMelee 1")
             {
                 Player.GetComponent<HUD>().enemymelee = true;
 
-            }else if(transform.name[..14] == "ScavangerMelee")
+            }
+            else if (transform.name[..14] == "ScavangerMelee")
             {
                 Player.GetComponent<HUD>().scavengermelee = true;
-            }else if(transform.name[..15] == "ScavangerRanged")
+            }
+            else if (transform.name[..15] == "ScavangerRanged")
             {
                 Debug.Log("Scavenger Range");
                 Player.GetComponent<HUD>().scavengerrange = true;

@@ -34,7 +34,6 @@ public class Boss_new : Enemy
     private readonly float maxHealth = 600;
 
     [SerializeField] GameObject BossHealth;
-    [SerializeField] Animator doorAnim;
     [SerializeField] Collider bossSpawnColl;
     public bool isReset = true;
 
@@ -78,29 +77,22 @@ public class Boss_new : Enemy
     // Update is called once per frame
     void Update()
     {
-        
-        if(isActivated && !isReset)
+
+        if (isActivated)
         {
             PickAttack();
             TurnTowardsPlayer();
             GoTowardsPlayer();
             HealthBar();
             continueCharge = true;
-        }else
+        }
+        else
         {
+            health = 600;
             GetComponent<LineRenderer>().enabled = false;
             BossHealth.SetActive(false);
             continueCharge = false;
             
-        }
-        if(!isActivated)
-        {
-            health = 600;
-            doorAnim.SetBool("IsOpen", true);
-            GetComponent<LineRenderer>().enabled = false;
-            BossHealth.SetActive(false);
-            continueCharge = false;
-
             try
             {
                 Destroy(GameObject.Find("FireGround(Clone)"));

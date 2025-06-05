@@ -54,22 +54,27 @@ public class Projectile : MonoBehaviour
         RaycastHit hit;
 
         Physics.Raycast(lastPos, transform.forward, out hit, Mathf.Infinity, groundLayer | enemyLayer);
-     
 
-        if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript))
+
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            collisionScript.TakeDamage(damage, false, false);
-            
-            if(collisionScript.GetIsWeakpoint())
+            if (other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript))
             {
-                hitTextureImage.color =  Color.red;
-            }else
-            {
-                hitTextureImage.color = Color.white;
+                collisionScript.TakeDamage(damage, false, false);
+
+                if (collisionScript.GetIsWeakpoint())
+                {
+                    hitTextureImage.color = Color.red;
+                }
+                else
+                {
+                    hitTextureImage.color = Color.white;
+                }
+                hitTexture.GetComponent<HitTextureS>().Hit();
             }
-            hitTexture.GetComponent<HitTextureS>().Hit();
             Destroy(gameObject);
-        }else if(other.CompareTag("Ground"))
+        }
+        else if (other.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }

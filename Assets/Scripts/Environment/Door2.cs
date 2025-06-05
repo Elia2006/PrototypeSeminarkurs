@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Door2 : MonoBehaviour
@@ -8,23 +6,13 @@ public class Door2 : MonoBehaviour
     [SerializeField] AudioSource sound;
     [SerializeField] SphereCollider sphereCollider;
 
+    [SerializeField] Boss_new Boss;
+
     // Start is called before the first frame update
     //
-    private void OnEnable()
-    {
-        //GameEventsManager.instance.miscEvents.onDoorOpen += ActivateCollider;
-    }
-
-    void ActivateCollider()
-    {
-        
-    }
     void Start()
     {
-        sphereCollider = GetComponent<SphereCollider>();
-        sphereCollider.enabled = true;
         anim = GetComponent<Animator>();
-        
     }
 
     public void PlaySound()
@@ -32,13 +20,23 @@ public class Door2 : MonoBehaviour
         sound.Play();
     }
 
-
-    public void OnTriggerEnter(Collider other)
+    void Update()
     {
-        if(other.transform.CompareTag("Player"))
+        Debug.Log(Boss.isActivated);
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.transform.CompareTag("Player"))
         {
-            sphereCollider.enabled = true;
-            anim.SetBool("IsOpen", true);
+            if (Boss.isActivated == false)
+            {
+                anim.SetBool("IsOpen", true);
+            }
+            else
+            {
+                anim.SetBool("IsOpen", false);
+            }
         }
     }
     public void OnTriggerExit(Collider other)

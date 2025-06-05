@@ -40,7 +40,7 @@ public class BossStomp : MonoBehaviour
                 bossStomp.GetComponent<Collider>().enabled = false;
             }
 
-            playerHUD.TakeDamage(20, 2, transform.position, 0.1f);
+            playerHUD.TakeDamage(30, 2, transform.position, 0.1f);
             Destroy(gameObject);
         }
     }

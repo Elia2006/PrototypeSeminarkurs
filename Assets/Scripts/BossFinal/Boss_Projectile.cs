@@ -28,7 +28,7 @@ public class Boss_Projectile : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            hud.TakeDamage(5, 2, transform.position, 0.05f);
+            hud.TakeDamage(10, 2, transform.position, 0.05f);
             Destroy(gameObject);
         }
     }

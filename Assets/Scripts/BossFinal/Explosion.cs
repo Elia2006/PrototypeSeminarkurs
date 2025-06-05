@@ -27,7 +27,7 @@ public class Explosion : MonoBehaviour
     {
         if(collider.CompareTag("Player"))
         {
-            hud.TakeDamage(10, 1, transform.position, 0.1f);
+            hud.TakeDamage(20, 1, transform.position, 0.1f);
             Destroy(gameObject);
         }
     }
