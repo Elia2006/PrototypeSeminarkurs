@@ -18,6 +18,9 @@ public class CrowbarScript : MonoBehaviour
 
     private bool hasDamaged;
     private Collider coll;
+
+    [SerializeField] AudioSource swingAudio;
+    [SerializeField] AudioSource hitAudio;
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,6 +39,7 @@ public class CrowbarScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
             {
+                swingAudio.Play();
                 hasDamaged = false;
                 anim.SetTrigger("Attack");
                 attackCooldown = Time.time + 1;
@@ -68,6 +72,7 @@ public class CrowbarScript : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy") && other.gameObject.TryGetComponent<CollisionScript>(out CollisionScript collisionScript) 
             && !hasDamaged)
         {
+            hitAudio.Play();
             collisionScript.TakeDamage(10, true, true);
             collisionScript.Knockback(0.1f);
             hitTexture.Hit();

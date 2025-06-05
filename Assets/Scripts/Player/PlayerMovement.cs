@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool climbingLadder = false;
 
-
+    [SerializeField] HUD playerHud; 
 
     void Start()
     {
@@ -66,9 +66,19 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(groundCheck.position, Vector3.down, out hit, Mathf.Infinity, groundMask);
 
-        if(onGround && velocity.y < 0)
+
+
+        if (onGround)
         {
-            velocity.y = -2;
+            if (velocity.y < -20)
+            {
+                playerHud.TakeDamage(-(int)velocity.y, 0, Vector3.zero, 0);
+                velocity.y = -2;
+            }
+            else if (velocity.y < 0)
+            {
+                velocity.y = -2;
+            }
         }
 
 
