@@ -22,7 +22,7 @@ public class Door2 : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Boss.isActivated);
+        //Debug.Log(Boss.isActivated);
     }
 
     public void OnTriggerStay(Collider other)
