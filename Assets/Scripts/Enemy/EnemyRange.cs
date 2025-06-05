@@ -39,9 +39,13 @@ public class EnemyRange : Enemy
         if(isActivated){
             if(!KnockbackUpdate())
             {
-                if(IsPlayerInRange(Player.transform.position, sightDistance))
+                if (IsPlayerInRange(Player.transform.position, sightDistance))
                 {
                     continueCharge = true;
+                }
+                else
+                {
+                    continueCharge = false;
                 }
 
                 if(continueCharge)
