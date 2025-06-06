@@ -15,6 +15,7 @@ public class OutroManager : MonoBehaviour
     [SerializeField] GameObject black;
     private void Start()
     { 
+
         black.SetActive(true);
         
         Cursor.lockState = CursorLockMode.Locked;
@@ -24,12 +25,12 @@ public class OutroManager : MonoBehaviour
         if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
         {
             //deutsch
-            url = "File://" + Application.streamingAssetsPath + "/" + "outro mit credits deutsch.mp4";
+            url = "File://" + Application.streamingAssetsPath + "/" + "outro deutsch diesmal wirklich das letzte mal .mp4";
         }
         else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
         {
             //englisch
-            url = "File://" + Application.streamingAssetsPath + "/" + "outro mit credits englisch.mp4";
+            url = "File://" + Application.streamingAssetsPath + "/" + "outro englisch diesmal wirklich das letzte mal .mp4";
         }
         video = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
         video.source = VideoSource.Url;
