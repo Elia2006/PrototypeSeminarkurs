@@ -76,6 +76,7 @@ public class HUD : MonoBehaviour
 
     //Healing
     private Coroutine healing;
+    private bool isHealing = false;
     public bool anyAttacking;
 
     [SerializeField] Boss_new boss;
@@ -169,25 +170,25 @@ public class HUD : MonoBehaviour
         Enemy[] enemies = FindObjectsOfType<Enemy>();
 
         anyAttacking = false;
-        foreach(Enemy enemy in enemies)
+        foreach (Enemy enemy in enemies)
         {
-            if(enemy.continueCharge)
+            if (enemy.continueCharge)
             {
                 anyAttacking = true;
-            }   
+            }
         }
-        if(!anyAttacking && healing == null && playerHealth < maxHealth)
+        if (!anyAttacking && !isHealing && playerHealth < maxHealth)
         {
             healing = StartCoroutine(Healing());
         }
-        else if(healing != null && anyAttacking)
+        else if (isHealing && anyAttacking)
         {
             StopCoroutine(healing);
-            healing = null;
         }
     }
     IEnumerator Healing()
     {
+        isHealing = true;
         yield return new WaitForSeconds(5);
         while(playerHealth <= maxHealth - 1)
         {
@@ -195,8 +196,10 @@ public class HUD : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         playerHealth = maxHealth;
+
+        isHealing = false;
         yield return null;
-        
+
     }
     private void HealthBar()
     {
