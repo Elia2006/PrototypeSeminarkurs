@@ -146,7 +146,7 @@ public class HUD : MonoBehaviour
                 si.UnlockAchievements("ACH_DIE");
             }
         }
-        if(howManyDeaths>=5)
+        if(howManyDeaths>=10)
         {
             if (!si.IsThisAchievementUnlocked("ACH_DIE_10"))
             {
@@ -386,11 +386,11 @@ public class HUD : MonoBehaviour
             {
                 if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
                 {
-                    pressEText.text = "um Werkzeugkoffer aufzuheben";
+                    pressEText.text = "um Ersatzteilkiste aufzuheben";
                 }
                 else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
                 {
-                    pressEText.text = "to pick up Toolbox";
+                    pressEText.text = "to pick up Box with Replacement Parts";
                 }
 
                 //pressEText.text = "um Werkzeugkoffer aufzuheben";
@@ -528,11 +528,11 @@ public class HUD : MonoBehaviour
                 {
                     if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
                     {
-                        pressEText.text = "um Werkzeugkoffer aufzuheben";
+                        pressEText.text = "um Ersatzteilkiste aufzuheben";
                     }
                     else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
                     {
-                        pressEText.text = "to pick up Toolbox";
+                        pressEText.text = "to pick up Box with Replacement Parts";
                     }
                     GameEventsManager.instance.miscEvents.ItemPickedUp();
                     Destroy(tempTrans.gameObject);
