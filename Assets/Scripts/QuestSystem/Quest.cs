@@ -104,7 +104,14 @@ public class Quest
 
         if (state == QuestState.REQUIREMENTS_NOT_MET)
         {
-            fullStatus = "Begebe dich zum anderen Aussenposten";
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+            {
+                fullStatus += "Lade die Beute ins Schiff ein";
+            }
+            else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+            {
+                fullStatus += "Deposit the loot into the ship";
+            }
         }
         else if(state == QuestState.CAN_START)
         {
