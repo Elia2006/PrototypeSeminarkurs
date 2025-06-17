@@ -2980,6 +2980,7 @@ MonoBehaviour:
   maxDistance: 0.2
   stepDistance: 0.5
   legLerp: 0.5
+  legCheckHeight: 1
 --- !u!114 &6049703499329303847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3036,6 +3037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f6dcbe893181d43b5ddc7cfaeeffcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hud: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -3047,9 +3049,12 @@ MonoBehaviour:
   AllertEffect: {fileID: 0}
   patrollPoint: {fileID: 0}
   isActivated: 1
+  isStationary: 0
+  isDead: 0
   attackCollider: {fileID: 7988825829513361506}
   anim: {fileID: 4688332797071974359}
   bite: {fileID: 75967938005316100}
+  legs: {fileID: 6974103050350762570}
 --- !u!95 &8492518170849453335
 Animator:
   serializedVersion: 5

@@ -648,6 +648,8 @@ MonoBehaviour:
   legDef: {fileID: 2821781016781823611}
   leg: {fileID: 4539024946909515162}
   def: {fileID: 8930712445276655359}
+  aimTarget: {fileID: 0}
+  scav: {fileID: 0}
 --- !u!1 &2297298877635466726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1418,8 @@ MonoBehaviour:
   legDef: {fileID: 102541947958307966}
   leg: {fileID: 8177605771066463093}
   def: {fileID: 320099020156805935}
+  aimTarget: {fileID: 0}
+  scav: {fileID: 0}
 --- !u!1 &4500127533382617556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,6 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65469148b9344b047ba4d79dbaa89a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hud: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1920,6 +1925,8 @@ MonoBehaviour:
   AllertEffect: {fileID: 0}
   patrollPoint: {fileID: 0}
   isActivated: 1
+  isStationary: 0
+  isDead: 0
   AttackCollider: {fileID: 4078469915161724728}
 --- !u!114 &3663441701464607032
 MonoBehaviour:
@@ -2056,6 +2063,7 @@ MonoBehaviour:
   maxDistance: 0.5
   stepDistance: 0.5
   legLerp: 1
+  legCheckHeight: 1
 --- !u!114 &6900993990143905408
 MonoBehaviour:
   m_ObjectHideFlags: 0

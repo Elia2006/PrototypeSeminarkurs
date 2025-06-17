@@ -35,10 +35,11 @@ public class CrowbarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.isPaused && !map.mapOpen && hud.playerHealth > 0)
+        if (!PauseMenu.isPaused && !map.mapOpen && hud.health > 0)
         {
             if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time)
             {
+                hud.healTimer = Time.time + 5;
                 swingAudio.Play();
                 hasDamaged = false;
                 anim.SetTrigger("Attack");

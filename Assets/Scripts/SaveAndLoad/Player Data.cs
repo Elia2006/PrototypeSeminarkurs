@@ -31,7 +31,7 @@ public class PlayerData
 
     public PlayerData (HUD player)
     {
-        health = player.playerHealth;
+        health = player.health;
         maxHealth = player.maxHealth;
         energy = player.playerEnergy;
         maxEnergy = player.maxEnergy;

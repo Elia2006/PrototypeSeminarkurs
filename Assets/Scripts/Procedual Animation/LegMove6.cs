@@ -15,6 +15,7 @@ public class LegMove6 : MonoBehaviour
     [SerializeField] float maxDistance;
     [SerializeField] float stepDistance;
     [SerializeField] float legLerp;
+    [SerializeField] float legCheckHeight;
 
     Vector3 temp1;
     Vector3 temp2;
@@ -40,7 +41,7 @@ public class LegMove6 : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 direction = (transform.position - lastPos).normalized * stepDistance;
-            Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up * 5, -transform.up, out hit, Mathf.Infinity, groundLayer);
+            Physics.Raycast(LegDefaultPos[moveCicle].transform.position + direction + transform.up * legCheckHeight, -transform.up, out hit, Mathf.Infinity, groundLayer);
             
             temp1 = LegDefaultPos[moveCicle].transform.position + direction + transform.up * 5;
             temp2 = hit.point;

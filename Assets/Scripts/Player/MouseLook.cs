@@ -38,7 +38,7 @@ public class MouseLook : MonoBehaviour
     void LateUpdate()
     {
         
-        if (!PauseMenu.isPaused && !map.mapOpen && hud.playerHealth>0)
+        if (!PauseMenu.isPaused && !map.mapOpen && hud.health>0)
         {
             Cursor.lockState = CursorLockMode.Locked;
 
@@ -56,7 +56,7 @@ public class MouseLook : MonoBehaviour
             camWigWag();
 
 
-        }else if(PauseMenu.isPaused || map.mapOpen || hud.playerHealth<=0)
+        }else if(PauseMenu.isPaused || map.mapOpen || hud.health<=0)
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.Confined;

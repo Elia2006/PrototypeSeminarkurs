@@ -15,6 +15,8 @@ public class SandCrab : Enemy
     //Audio
     [SerializeField] AudioSource bite;
 
+    [SerializeField] LegMove6 legs;
+
     
     void Start()
     {
@@ -48,12 +50,14 @@ public class SandCrab : Enemy
 
             if(!isInSight && distance < 40 || continueCharge)
             {
+                legs.enabled = true;
                 agent.isStopped = false;
                 anim.SetBool("isHiding", false);
                 Attack();
 
             }else
             {
+                legs.enabled = false;
                 agent.isStopped = true;
                 anim.SetBool("isHiding", true);
             }
@@ -68,6 +72,7 @@ public class SandCrab : Enemy
 
         if(attackCooldown < Time.time && attackCollider.coll != null && attackCollider.coll.gameObject.CompareTag("Player"))
         {
+            continueCharge = true;
             attackCooldown = Time.time + 2;
             Player.GetComponent<HUD>().TakeDamage(10, 1, transform.position, 0.2f);
             bite.Play();

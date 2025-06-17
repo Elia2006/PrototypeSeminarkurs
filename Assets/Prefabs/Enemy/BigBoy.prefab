@@ -27634,6 +27634,7 @@ MonoBehaviour:
   maxDistance: 1.5
   stepDistance: 1.5
   legLerp: 1
+  legCheckHeight: 5
 --- !u!114 &4088126297914547917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27679,6 +27680,7 @@ MonoBehaviour:
   patrollPoint: {fileID: 0}
   isActivated: 1
   isStationary: 0
+  isDead: 0
   patrollPoints:
   - {fileID: 0}
   - {fileID: 0}

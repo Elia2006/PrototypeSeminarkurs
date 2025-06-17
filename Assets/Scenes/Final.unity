@@ -3353,15 +3353,15 @@ PrefabInstance:
       objectReference: {fileID: 636802206}
     - target: {fileID: 8795115664668336719, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 68.025
+      value: 180.18091
       objectReference: {fileID: 0}
     - target: {fileID: 8795115664668336719, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.646
+      value: 6.584118
       objectReference: {fileID: 0}
     - target: {fileID: 8795115664668336719, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -155.336
+      value: -198.65851
       objectReference: {fileID: 0}
     - target: {fileID: 8795115664668336719, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23429,6 +23429,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771075338}
   m_CullTransparentMesh: 1
+--- !u!1 &771847169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771847170}
+  m_Layer: 0
+  m_Name: PlayerDummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771847170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771847169}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.99062425, z: -0, w: 0.1366147}
+  m_LocalPosition: {x: 68.025, y: -1.646, z: -155.336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &773522990
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27657,10 +27688,6 @@ PrefabInstance:
     - target: {fileID: 5707313836441786390, guid: 37e9015f6a1d8464788c086a4ea4faf3, type: 3}
       propertyPath: m_Name
       value: ScavangerMelee (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5707313836441786390, guid: 37e9015f6a1d8464788c086a4ea4faf3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7264265112762532731, guid: 37e9015f6a1d8464788c086a4ea4faf3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35009,6 +35036,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandCrab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6974103050350762570, guid: 132f33ff297cb564aac7b8a2c7b9be60, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36152,7 +36183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1473320489
 Transform:
   m_ObjectHideFlags: 0
@@ -37970,10 +38001,6 @@ PrefabInstance:
     - target: {fileID: 5707313836441786390, guid: 72a44f7952b238246b61cb997188b045, type: 3}
       propertyPath: m_Name
       value: ScavangerRanged (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5707313836441786390, guid: 72a44f7952b238246b61cb997188b045, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7264265112762532731, guid: 72a44f7952b238246b61cb997188b045, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50152,6 +50179,7 @@ SceneRoots:
   - {fileID: 165804803}
   - {fileID: 1894234378}
   - {fileID: 1718181408}
+  - {fileID: 771847170}
   - {fileID: 138662115}
   - {fileID: 2142303735}
   - {fileID: 7869840145561013289}

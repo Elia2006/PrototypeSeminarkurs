@@ -53,10 +53,11 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.isPaused && !map.mapOpen && hud.playerHealth > 0)
+        if (!PauseMenu.isPaused && !map.mapOpen && hud.health > 0)
         {
             if (Input.GetButtonDown("Fire1") && attackCooldown < Time.time && loadedAmmo > 0)
             {
+                hud.healTimer = Time.time + 5;
                 shoot.Play();
                 Shoot();
                 attackCooldown = Time.time + 0.3f;

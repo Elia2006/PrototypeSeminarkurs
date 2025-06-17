@@ -23,7 +23,7 @@ public class HUD : MonoBehaviour
     public float totalJumps = 0;
 
     [SerializeField] Image damageImage;
-    public float playerHealth = 60;
+    public float health = 60;
     public float maxHealth = 100;
     public float playerEnergy = 100;
     public float maxEnergy;
@@ -75,8 +75,7 @@ public class HUD : MonoBehaviour
     [SerializeField] SMG smgScript;
 
     //Healing
-    private Coroutine healing;
-    private bool isHealing = false;
+    public float healTimer;
     public bool anyAttacking;
 
     [SerializeField] Boss_new boss;
@@ -123,6 +122,11 @@ public class HUD : MonoBehaviour
         DeathAchievement();
         //PressEnter();
 
+
+        if (Input.GetKeyDown(KeyCode.P)){
+            TakeDamage(10, 3, transform.position, 0);
+        }
+
         speedrunTimer = speedrunTimer+Time.deltaTime;
 
         damageAlphaColor -= Time.deltaTime * 2;
@@ -165,67 +169,46 @@ public class HUD : MonoBehaviour
             }
         }
     }
+
     private void CheckHealing()
     {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
-
-        anyAttacking = false;
-        foreach (Enemy enemy in enemies)
+        if (healTimer < Time.time)
         {
-            if (enemy.continueCharge)
-            {
-                anyAttacking = true;
-            }
+            health += 1;
+            healTimer = Time.time + 0.4f;
         }
-        if (!anyAttacking && !isHealing && playerHealth < maxHealth)
+        if(health > maxHealth)
         {
-            healing = StartCoroutine(Healing());
-        }
-        else if (isHealing && anyAttacking)
-        {
-            StopCoroutine(healing);
+            health = maxHealth;
         }
     }
-    IEnumerator Healing()
-    {
-        isHealing = true;
-        yield return new WaitForSeconds(5);
-        while(playerHealth <= maxHealth - 1)
-        {
-            playerHealth += 1;
-            yield return new WaitForSeconds(0.2f);
-        }
-        playerHealth = maxHealth;
 
-        isHealing = false;
-        yield return null;
-
-    }
     private void HealthBar()
     {
-        healthBar.fillAmount = Mathf.Clamp(playerHealth/maxHealth,0,1);
+        healthBar.fillAmount = Mathf.Clamp(health/maxHealth,0,1);
 
-        if(healthBar2.fillAmount > playerHealth/maxHealth)
+        if(healthBar2.fillAmount > health/maxHealth)
         {
             healthBar2.fillAmount -= 0.001f;
-        }else if(healthBar2.fillAmount < playerHealth/maxHealth)
+        }else if(healthBar2.fillAmount < health/maxHealth)
         {
-            healthBar2.fillAmount = playerHealth/maxHealth;
+            healthBar2.fillAmount = health/maxHealth;
         }
 
-        playerHealthText.text = playerHealth + "/" + maxHealth;
+        playerHealthText.text = health + "/" + maxHealth;
     }
 
     public void TakeDamage(int amount, float speedReduction, Vector3 enemy, float knockbackForce)
     {
         StartCoroutine(Vignete());
 
-        playerHealth -= amount;
+        healTimer = Time.time + 5;
+        health -= amount;
 
         playerMovement.ReduceSpeed(speedReduction, 1);
         playerMovement.Knockback(enemy, knockbackForce);
 
-        if(playerHealth <= 0 && !isDead)
+        if(health <= 0 && !isDead)
         {
             Die();
         }
@@ -596,7 +579,18 @@ public class HUD : MonoBehaviour
 
     public void Autosave()
     {
-        if (!anyAttacking) 
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+
+        anyAttacking = false;
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.continueCharge)
+            {
+                anyAttacking = true;
+            }
+        }
+
+        if (!anyAttacking)
         {
             timer -= Time.deltaTime;
             if (timer < 0f)
@@ -628,7 +622,7 @@ public class HUD : MonoBehaviour
 
         DeathScreen.SetActive(false);
         PlayerData data = SaveSystem.LoadPlayer();
-        playerHealth = data.health;
+        health = data.health;
         maxHealth = data.maxHealth;
         playerEnergy = data.energy;
         maxEnergy = data.maxEnergy;

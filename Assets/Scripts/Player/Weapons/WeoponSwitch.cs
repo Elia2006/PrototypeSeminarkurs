@@ -44,14 +44,14 @@ public class WeoponSwitch : MonoBehaviour
                 switchSound.Play();
                 if (currentKey > 3)
                 {
-                    currentKey = 0;
+                    currentKey = 1;
                 }
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
                 currentKey--;
                 switchSound.Play();
-                if (currentKey < 0)
+                if (currentKey < 1)
                 {
                     currentKey = 3;
                 }
