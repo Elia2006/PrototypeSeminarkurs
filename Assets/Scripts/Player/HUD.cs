@@ -426,7 +426,7 @@ public class HUD : MonoBehaviour
                     Destroy(tempTrans.gameObject);  
 
                 }
-                else if(tempTrans.name[..7] == "LeiterV")
+                else if(tempTrans.name[..7] == "LeiterV" && !Player.GetComponent<PlayerMovement>().climbingLadder)
                 {
                     if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
                     {
@@ -438,7 +438,7 @@ public class HUD : MonoBehaviour
                     }
                     Player.GetComponent<PlayerMovement>().ClimbLatter(tempTrans.parent.GetChild(1).transform, tempTrans.parent.GetChild(2).transform, tempTrans.parent.GetChild(3).transform);
                 }
-                else if(tempTrans.name[..7] == "LeiterR")
+                else if(tempTrans.name[..7] == "LeiterR" && !Player.GetComponent<PlayerMovement>().climbingLadder)
                 {
                     if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
                     {

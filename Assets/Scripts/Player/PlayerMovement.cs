@@ -43,9 +43,10 @@ public class PlayerMovement : MonoBehaviour
     //aiming
     public bool isAiming = false;
 
-    private bool climbingLadder = false;
+    public bool climbingLadder = false;
 
-    [SerializeField] HUD playerHud; 
+    [SerializeField] HUD playerHud;
+
 
     void Start()
     {
