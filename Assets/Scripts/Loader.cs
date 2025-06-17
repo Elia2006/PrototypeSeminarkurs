@@ -7,6 +7,7 @@ public class Loader : MonoBehaviour
     [SerializeField] Transform Player;
     private Enemy[] enemies;
     private GameObject[] items;
+    [SerializeField] HUD hud;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +52,49 @@ public class Loader : MonoBehaviour
             }
             //Debug.Log("hello");
             yield return new WaitForSeconds(1);
+        }
+    }
+
+    public void UnloadAll()
+    {
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy != null && enemy.name != "boss als 1 objekt")
+            {
+                Debug.Log(enemy.name);
+                    enemy.gameObject.SetActive(false);
+                
+            }
+        }
+        foreach (GameObject item in items)
+        {
+            if (item != null)
+            {
+                    item.SetActive(false);
+                
+            }
+
+        }
+    }
+
+    public void LoadAll()
+    {
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy != null && enemy.name != "boss als 1 objekt")
+            {
+                enemy.gameObject.SetActive(true);
+
+            }
+        }
+        foreach (GameObject item in items)
+        {
+            if (item != null)
+            {
+                item.SetActive(true);
+
+            }
+
         }
     }
 }

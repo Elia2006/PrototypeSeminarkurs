@@ -57,6 +57,7 @@ public class HUD : MonoBehaviour
     [SerializeField] PauseMenu pm;
     [SerializeField] SMG smg;
     [SerializeField] Gun gun;
+    [SerializeField] Loader load;
 
 
     [SerializeField] GameObject TaskText;
@@ -119,7 +120,7 @@ public class HUD : MonoBehaviour
         CheckHealing();
         Autosave();
         CrowbarAchievement();
-        DeathAchievement();
+       
         //PressEnter();
 
         speedrunTimer = speedrunTimer+Time.deltaTime;
@@ -560,10 +561,12 @@ public class HUD : MonoBehaviour
 
     public void Die()
     {
+        DeathAchievement();
         isDead = true;
         hasDiedYet = true;
         howManyDeaths++;
         Debug.Log(howManyDeaths);
+        load.UnloadAll();
 
         Time.timeScale = 0f;
 
