@@ -122,11 +122,6 @@ public class HUD : MonoBehaviour
         DeathAchievement();
         //PressEnter();
 
-
-        if (Input.GetKeyDown(KeyCode.P)){
-            TakeDamage(10, 3, transform.position, 0);
-        }
-
         speedrunTimer = speedrunTimer+Time.deltaTime;
 
         damageAlphaColor -= Time.deltaTime * 2;
