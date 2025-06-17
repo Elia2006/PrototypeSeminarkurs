@@ -3236,6 +3236,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1672576051}
     - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
+      propertyPath: load
+      value: 
+      objectReference: {fileID: 1076397426}
+    - target: {fileID: 5815479918595157923, guid: 089ee9b5509007c409b3aaa0d7a25595, type: 3}
       propertyPath: volume
       value: 
       objectReference: {fileID: 156458377}
@@ -28801,6 +28805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1714464687}
+  hud: {fileID: 1714464683}
 --- !u!4 &1076397427
 Transform:
   m_ObjectHideFlags: 0
@@ -36184,7 +36189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1473320489
 Transform:
   m_ObjectHideFlags: 0
