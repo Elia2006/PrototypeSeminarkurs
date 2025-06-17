@@ -23,7 +23,7 @@ public class HUD : MonoBehaviour
     public float totalJumps = 0;
 
     [SerializeField] Image damageImage;
-    public float health = 60;
+    public float health = 100;
     public float maxHealth = 100;
     public float playerEnergy = 100;
     public float maxEnergy;
