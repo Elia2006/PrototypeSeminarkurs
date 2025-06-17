@@ -28,6 +28,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 2372851034022215688
+  - m_Id: 9764917158989824
+    m_Localized: to start the ship
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

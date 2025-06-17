@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: Pickups.pickup
     m_Metadata:
       m_Items: []
+  - m_Id: 9764917158989824
+    m_Key: Pickups.start
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
