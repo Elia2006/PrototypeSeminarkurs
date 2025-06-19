@@ -588,7 +588,7 @@ public class HUD : MonoBehaviour
             }
         }
 
-        if (!anyAttacking)
+        if (!anyAttacking && !isDead)
         {
             timer -= Time.deltaTime;
             if (timer < 0f)
